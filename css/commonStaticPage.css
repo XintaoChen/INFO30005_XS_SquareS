@@ -1,20 +1,42 @@
+/* font */
+@font-face {
+  font-family: "lato";
+  src: url("../font/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "playfairDisplay";
+  src: url("../font/PlayfairDisplay-VariableFont_wght.ttf");
+
+}
+
 /* common part */
 
 body {
   font-size: 14px;
-  
+  font-family: "lato";
+  color: #5c4435;
 }
 
-p{
+p {
   margin: 16px 0;
+  font-size: 14px;
+  font-family: "lato";
+  font-weight: 400px;
+  line-height: 18px;
+  color: #5c4435;
 }
 
-.left{
+span {
+  color: #5c4435;
+}
+
+.left {
   position: absolute;
   left: 0;
 }
 
-.right{
+.right {
   position: absolute;
   right: 0;
 }
@@ -32,6 +54,7 @@ header {
 }
 
 header .logo {
+  height: 100%;
   color: #5c4435;
   display: flex;
   align-items: center;
@@ -41,11 +64,15 @@ header .logo {
 header .logo .logoIcon {
   width: 50px;
   height: 45px;
-  /* background-color: #5c4435; */
+  background-image: url("../img/logo_brown\ 1.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 header .logo .homeTitle {
   color: inherit;
+  font-size: 26px;
+  text-align: center;
 }
 
 header .memuIcon {
@@ -57,7 +84,12 @@ header .memuIcon {
   background-color: #5c4435;
 }
 
-
+header .address {
+  height: 32px;
+  line-height: 32px;
+  font-size: 12px;
+  background-color: #f4f2f0;
+}
 
 /* content part */
 
@@ -68,11 +100,6 @@ header .memuIcon {
   background-color: #e5e5e5;
 }
 
-.content .address {
-  height: 32px;
-  line-height: 32px;
-  font-size: 12px;
-}
 
 .content .title {
   position: absolute;
@@ -89,16 +116,16 @@ header .memuIcon {
 }
 
 .content .article ul li {
-  list-style:disc;
+  list-style: disc;
   margin: 1em 0 1em 3em;
 }
 
-.content .btnArea{
+.content .btnArea {
   display: flex;
   flex-direction: column;
 }
 
-.content .btnArea .btnContainer .btn{
+.content .btnArea .btnContainer .btn {
   margin: 10px;
   display: flex;
   align-items: center;
@@ -106,8 +133,7 @@ header .memuIcon {
   width: 260px;
   height: 40px;
   border-radius: 10px;
-  box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
-  border:2px solid #5c4435;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 2px solid #5c4435;
   position: relative;
 }
-
