@@ -102,6 +102,11 @@
     background-position: center;
   }
 
+  .desktopOnly {
+    display: none;
+  }
+
+
   /* header part */
 
   header {
@@ -110,6 +115,10 @@
     position: fixed;
     background-color: white;
     z-index: 1;
+  }
+
+  header .naviBar {
+    display: none;
   }
 
   header .menuButton .memuIcon {
@@ -339,6 +348,9 @@
     color: #f4f2f0;
   }
 
+  .mobileOnly {
+    display: none;
+  }
 
   /* header part */
 
@@ -392,10 +404,11 @@
     flex-direction: column;
     margin-right: 80px;
     color: #867167;
-    font-family: playfairDisplay;
+    font-family: "playfairDisplay";
     font-size: 38px;
     font-weight: 400;
     text-align: center;
+    cursor: pointer;
   }
 
   header .naviBarItem:hover .highLight {
@@ -426,7 +439,12 @@
   }
 
   header .login:hover {
+    cursor: pointer;
     background-color: #BFA38A;
+  }
+
+  header .menuButton {
+    display: none;
   }
 
   header .menuButton .memuIcon {
@@ -503,12 +521,13 @@
   .content .title {
     position: absolute;
     left: 0;
-    background-image: url("../img/Title.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     width: 100%;
     height: 786px;
+  }
+
+  .content .title img {
+    width: 100%;
+    height: 100%;
   }
 
   .content .article {
@@ -560,20 +579,21 @@
     padding: 20px 24px;
     background: #5C4435;
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
     height: 120px;
     font-family: playfairDisplay;
   }
 
-  footer .left {
+  footer .leftFlex {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     font-size: 16px;
   }
 
-  footer .right {
+  footer .rightFlex {
     width: 264px;
     display: flex;
     flex-direction: column;
