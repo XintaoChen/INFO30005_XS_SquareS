@@ -21,7 +21,7 @@
 }
 
 /* Mobile Version (iphone 375*812) */
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 1365px) {
 
   /* common part */
   body {
@@ -238,6 +238,7 @@
     background: #5C4435;
   }
 
+
   footer .logo {
     width: 260px;
     height: 60px;
@@ -285,7 +286,7 @@
 
 
 /* Desktop Version (1920*1080) */
-@media screen and (min-width: 426px) {
+@media screen and (min-width: 1366px) {
   body {
     font-size: 14px;
     font-family: "lato";
@@ -310,16 +311,6 @@
     letter-spacing: 0em;
     text-align: left;
     color: #5C4435;
-  }
-
-  .left {
-    position: absolute;
-    left: 10px;
-  }
-
-  .right {
-    position: absolute;
-    right: 10px;
   }
 
   b {
@@ -348,6 +339,21 @@
     color: #f4f2f0;
   }
 
+
+  /* header part */
+
+  header {
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    background-color: white;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .logo {
     height: 100%;
     color: inherit;
@@ -362,9 +368,9 @@
     background-size: contain;
     padding: 0px;
     position: absolute;
-    width: 583px;
-    height: 100.48px;
-    top: 10px;
+    width: 280px;
+    height: 55px;
+    top: 15px;
   }
 
   .logo .homeTitle {
@@ -373,17 +379,58 @@
     text-align: center;
   }
 
-  /* header part */
+  header .naviBar {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    height: 100%;
+  }
 
-  header {
-    height: 120px;
+  header .naviBarItem {
+    /* display: flex; */
+    align-items: center;
+    flex-direction: column;
+    margin-right: 80px;
+    color: #867167;
+    font-family: playfairDisplay;
+    font-size: 38px;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  header .naviBarItem:hover .highLight {
+    display: block;
+  }
+
+
+  header .naviBarItem .itemName {
+    /* display: flex; */
+    line-height: 80px;
+  }
+
+  header .naviBarItem .highLight {
+    display: none;
+    position: relative;
+    top: -5px;
     width: 100%;
-    position: fixed;
-    background-color: white;
-    z-index: 1;
+    height: 5px;
+    background-color: #867167;
+  }
+
+  header .login {
+    line-height: 80px;
+    margin: 0;
+    padding: 0px 20px;
+    background-color: #867167;
+    color: #FFFFFF;
+  }
+
+  header .login:hover {
+    background-color: #BFA38A;
   }
 
   header .menuButton .memuIcon {
+    display: none;
     position: absolute;
     width: 33px;
     height: 32px;
@@ -449,7 +496,7 @@
 
   .content {
     padding: 20px 24px;
-    padding-top: 120px;
+    padding-top: 80px;
     background-color: rgba(243, 240, 238);
   }
 
@@ -513,14 +560,17 @@
     padding: 20px 24px;
     background: #5C4435;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    align-items: center;
     height: 120px;
+    font-family: playfairDisplay;
   }
 
   footer .left {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    font-size: 16px;
   }
 
   footer .right {
@@ -528,6 +578,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    font-size: 16px;
   }
 
   footer .logo {
@@ -538,15 +589,17 @@
   }
 
   footer .logo .logoIcon {
+    position: inherit;
     top: 0;
     left: 0;
     width: 288px;
     height: 50px;
     background-image: url(../img/logo_highres_white.svg);
+    background-position: right;
   }
 
   footer .info {
-    margin: 10px 0;
+    margin: 0 0 20px 0;
   }
 
   footer .info span {
@@ -575,7 +628,6 @@
   }
 
   footer .copyright span {
-    font-size: 10px;
+    font-size: 14px;
   }
-
 }
