@@ -281,8 +281,11 @@
 
   footer .copyright span {
     font-size: 10px;
-  }    
+  }
 }
+
+
+
 /* Desktop Version (1920*1080) */
 @media screen and (min-width: 1366px){
   body {
@@ -290,6 +293,7 @@
     font-family: "lato";
     color: #5c4435;
   }
+
   .iconfont {
     color: inherit;
     font-family: "iconfont" !important;
@@ -298,6 +302,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
   p {
     font-family: Lato;
     font-size: 28px;
@@ -312,7 +317,8 @@
   b {
     font-weight: bold;
   }
-  h1{
+
+  h1 {
     font-family: "playfairDisplay";
     font-size: 44px;
     font-style: normal;
@@ -321,6 +327,7 @@
     letter-spacing: 0em;
     text-align: left;
   }
+
   .highLight {
     color: #92633a;
     text-decoration-line: underline;
@@ -328,6 +335,7 @@
     line-height: 19px;
     font-family: "playfairDisplay";
   }
+
   .whiteText {
     color: #f4f2f0;
   }
