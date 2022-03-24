@@ -188,7 +188,7 @@
 
   .content {
     padding: 20px 24px;
-    padding-top: 60px;
+    padding-top: 92px;
     background-color: #e5e5e5;
   }
 
@@ -197,7 +197,7 @@
     position: absolute;
     left: 0;
     width: 100vw;
-    height: calc(254/375*100vw);
+    height: calc(786/1920*100vw);
   }
 
   .content .title img {
@@ -207,7 +207,7 @@
   }
 
   .content .article {
-    margin-top: calc(16px + 254/375*100vw);
+    margin-top: calc(16px + 786/1920*100vw);
   }
 
   .content .article ul li {
@@ -521,8 +521,8 @@
   .content .title {
     position: absolute;
     left: 0;
-    width: 100%;
-    height: 786px;
+    width: 100vw;
+    height: calc(694/1584*100vw);
   }
 
   .content .title img {
@@ -531,7 +531,7 @@
   }
 
   .content .article {
-    margin-top: calc(16px + 786px);
+    margin-top: calc(16px + 694/1584*100vw);
   }
 
   .content .article ul li {
