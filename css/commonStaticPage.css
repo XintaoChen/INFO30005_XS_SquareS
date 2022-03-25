@@ -388,6 +388,11 @@ table {
     align-items: center;
   }
 
+  .content .videoArea iframe {
+    width: 100%;
+    height: 100%;
+  }
+
   /* footer */
 
   footer {
@@ -720,6 +725,8 @@ table {
     color: #5C4435;
   }
 
+
+
   .content .btnArea {
     display: flex;
     flex-direction: column;
@@ -766,6 +773,22 @@ table {
     padding: 20px 24px;
     position: relative;
     background-color: #E2D8CC;
+  }
+
+  .content .videoArea {
+    width: 100%;
+    margin-top: 10px;
+    background-color: gray;
+    height: calc(185/327*100vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content .videoArea iframe {
+    width: 100%;
+    height: 100%;
+    
   }
 
   /* footer */
