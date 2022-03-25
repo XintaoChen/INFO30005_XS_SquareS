@@ -397,6 +397,7 @@ table {
 
 
   footer .logo {
+    margin-left: 0px;
     width: 260px;
     height: 60px;
     background-image: url("../img/logo_highres_white.svg");
@@ -674,6 +675,11 @@ table {
     line-height: 32px;
     font-size: 12px;
     background-color: #f4f2f0;
+  }
+
+  .contactInfo p {
+    font-size: 34px;
+    margin: 5px 0;
   }
 
   /* content part */
