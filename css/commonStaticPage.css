@@ -12,14 +12,13 @@
 
 
 @font-face {
-  font-family: 'iconfont';
+  font-family: "iconfont";
   /* Project id 3263062 */
-  src: url('//at.alicdn.com/t/font_3263062_cpjhoyt1s5.woff2?t=1647835769963') format('woff2'),
-    url('//at.alicdn.com/t/font_3263062_cpjhoyt1s5.woff?t=1647835769963') format('woff'),
-    url('//at.alicdn.com/t/font_3263062_cpjhoyt1s5.ttf?t=1647835769963') format('truetype'),
-    url('//at.alicdn.com/t/font_3263062_cpjhoyt1s5.svg?t=1647835769963#iconfont') format('svg');
+  src: url('../font/icon-font/iconfont.woff2?t=1648121252195') format('woff2'),
+    url('../font/icon-font/iconfont.woff?t=1648121252195') format('woff'),
+    url('../font/icon-font/iconfont.ttf?t=1648121252195') format('truetype'),
+    url('../font/icon-font/iconfont.svg?t=1648121252195#iconfont') format('svg');
 }
-
 
 /* Mobile Version (iphone 375*812) */
 @media screen and (max-width: 1365px) {
