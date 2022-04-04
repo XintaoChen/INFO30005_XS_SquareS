@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style type="text/css">
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      #data {
+        width: 280px;
+        margin: 20px auto;
+      }
+      #data > header {
+        display: flex;
+        justify-content: space-between;
+        height: 32px;
+        align-items: center;
+      }
+
+      #data > footer {
+        display: flex;
+        justify-content: space-between;
+        font-size: 8px;
+        cursor: pointer;
+      }
+      #year,
+      #month {
+        font-size: 18px;
+        line-height: 22px;
+        color: #5c4435;
+        margin-right: 5px;
+      }
+      #title {
+        font-size: 12px;
+        line-height: 14px;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        align-items: right;
+      }
+      #weeks {
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+        list-style: none;
+        align-items: center;
+        height: 40px;
+      }
+      #weeks > li {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 12px;
+        line-height: 15px;
+      }
+      #date {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-flow: row wrap;
+      }
+      #date > li {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #dfdfdf;
+        line-height: 34px;
+        text-align: center;
+        cursor: pointer;
+        box-sizing: border-box;
+      }
+      #date > .hover:hover {
+        border: 1px solid red;
+      }
+
+      #date > .notCurMonth {
+        color: #dfdfdf;
+      }
+
+      .active {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="container">
+      <header>
+        <div>
+          <span id="month">April</span>
+          <span id="year">2022</span>
+        </div>
+        <div id="title"><span>Completion</span> <span>Rate</span></div>
+      </header>
+      <ul id="weeks">
+        <li>日</li>
+        <li>一</li>
+        <li>二</li>
+        <li>三</li>
+        <li>四</li>
+        <li>五</li>
+        <li>六</li>
+      </ul>
+      <ul id="date"></ul>
+    </div> -->
+    <div id="container"></div>
+    <script type="module" src="./test.js"></script>
+    <script type="text/javascript">
+      window.onload = function () {
+        CalenderPlugin("container");
+      };
+    </script>
+  </body>
+</html>
