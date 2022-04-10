@@ -1,20 +1,17 @@
 {
-  "name": "info30005_activity_11_group_2",
+  "name": "demo",
   "version": "1.0.0",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "description": "test",
+  "main": "app.js",  
   "scripts": {
     "start": "",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/XintaoChen/INFO30005_Activity_11_Group_2.git"
-  },
-  "author": "",
+  "author": "jesse",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/XintaoChen/INFO30005_Activity_11_Group_2/issues"
-  },
-  "homepage": "https://github.com/XintaoChen/INFO30005_Activity_11_Group_2#readme"
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "handlebars": "^4.7.7"
+  }
 }
