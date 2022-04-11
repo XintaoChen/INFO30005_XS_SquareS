@@ -18,7 +18,8 @@ app.set('view engine', 'hbs');
 const peopleRouter = require('./routes/peopleRouter')
 const demoRouter = require('./routes/demoRouter')
 
-const patientRouter = require('./routes/patientRouter')
+const patientRouter = require('./routes/patientRouter');
+const { patientDashboardRouter } = require('./routes/patientDashboardRouter');
 
 // middleware to log a message each time a request arrives at the server - handy for debugging
 app.use((req,res,next) => {
@@ -30,6 +31,8 @@ app.use((req,res,next) => {
 app.use('/people', peopleRouter)
 
 app.use('/patient', patientRouter)
+
+app.use('/today', patientDashboardRouter)
 
 
 
