@@ -259,6 +259,7 @@ table {
     display: none;
   }
 
+
   header .menuButton .memuIcon {
     position: absolute;
     width: 33px;
@@ -527,8 +528,9 @@ table {
     height: 80px;
     width: 100%;
     position: fixed;
+    top: 0;
     background-color: white;
-    z-index: 1;
+    z-index: 999;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -566,6 +568,10 @@ table {
     position: relative;
     height: 100%;
     margin-right: 10px;
+  }
+  
+  header .naviBar a {
+    text-decoration: none;
   }
 
   header .naviBarItem {
@@ -690,13 +696,21 @@ table {
   /* content part */
 
   .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 80px;
     padding: 30px 10vw;
-    padding-top: 80px;
     background-color: rgba(243, 240, 238);
+
+    min-height: 600px;
   }
 
   .content .title {
     position: absolute;
+    top: 0;
     left: 0;
     width: 100vw;
     height: calc(694/1584*100vw);
@@ -770,7 +784,7 @@ table {
   }
 
   .contactInfo {
-    padding: 20px 24px;
+    /* padding: 20px 24px; */
     position: relative;
     background-color: #E2D8CC;
   }
@@ -791,16 +805,20 @@ table {
     
   }
 
+
+
   /* footer */
 
   footer {
+    position: relative;
+    top:  80px;
     padding: 40px 34px;
     background: #5C4435;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
-    height: 120px;
+    /* height: 120px; */
     font-family: "playfairDisplay";
   }
 
@@ -812,7 +830,7 @@ table {
   }
 
   footer .rightFlex {
-    width: 264px;
+    /* width: 264px; */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
