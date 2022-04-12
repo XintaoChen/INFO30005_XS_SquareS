@@ -292,6 +292,7 @@ table {
     font-size: 22px;
     line-height: 140%;
     letter-spacing: 0.01em;
+    background-color: #F4F2F0;
   }
 
   header .menuButton .menu button span {
@@ -326,7 +327,8 @@ table {
   /* content part */
 
   .content {
-    padding: 20px 24px;
+    /* padding: 20px 24px; */
+    padding: 20px 10px;
     position: relative;
     padding-top: 92px;
     background-color: #e5e5e5;
