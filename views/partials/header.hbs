@@ -1,0 +1,34 @@
+<header class="header">
+      <div class="logo">
+        <div class="logoIcon"></div>
+        <!-- <span class="homeTitle">Diabetes@Home</span> -->
+      </div>
+      <nav class="naviBar">
+        <a href="/home">
+          <div class="naviBarItem" onclick="window.location.href=‘/’;">       
+            <div class="itemName">Home</div>
+            <div class="highLight"></div>
+          </div>
+        </a> 
+        <a href="/aboutDiabetes">
+          <div class="naviBarItem">
+            <div class="itemName" >About Diabetes</div>
+            <div class="highLight" style="display: block"></div>
+          </div>
+        </a>
+        <a href="/aboutUs">
+          <div class="naviBarItem">
+            <div class="itemName">About Us</div>
+            <div class="highLight"></div>
+          </div>
+        </a>
+        <div class="naviBarItem login">Log in</div>
+      </nav>
+      <div class="menuButton">
+        <i class="iconfont memuIcon">&#xe615;</i>
+        {{> unloginMenu}}
+      </div>
+      <div class="address">
+        <span> Home > About diabetes</span>
+      </div>
+    </header>

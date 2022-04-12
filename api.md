@@ -2,19 +2,52 @@
 
 ## index
 
-1. postLogin
-2. getPatientList
-3. getCommentList
-4. getDataTypesByPatientId
-5. getOneRecordBypatientId
-6. postUpdateRecordValue
-7. postUpdateComment
+1. postPatientLogin
+2. postClinicianLogin
+3. getPatientList
+4. getCommentList
+5. getDataTypesByPatientId
+6. getOneRecordBypatientId
+7. postUpdateRecordValue
+8. postUpdateComment
 
-## 1. postLogin
+## postPatientLogin
 
 ### Request Url
 
-http://localhost:3000/login
+http://localhost:3000/patientLogin
+
+### Request method
+
+post
+
+### Parameters
+
+| Parameters   | is required | Data Type | Description |
+| :----------- | :---------: | :-------: | :---------- |
+| email        |   Y         | string    | email       |
+| password     |   Y         | string    | password    |
+
+### Return Value
+
+```json
+  Success:
+  {
+    "status":0
+  }
+  Fail:
+  {
+    "status":1,
+    "msg":"Incorrect username or password"
+  }
+
+```
+
+## postClinicianLogin
+
+### Request Url
+
+http://localhost:3000/clinicianLogin
 
 ### Request method
 
@@ -32,16 +65,7 @@ post
 ```json
   Success:
   {
-    "status":0,
-    "data":{
-      "_id":"5c3b297dea95883f340178b0",
-      "username":"user001",
-      "role":"P",
-      "avatarName":"Pat",
-      "email":"pat123@gmail.com",
-      "phoneNum":"0411111111",
-      "address":"10 Wreckyn Street, North Melbourne, Melbourne, VIC"
-    }
+    "status":0
   }
   Fail:
   {
@@ -51,7 +75,7 @@ post
 
 ```
 
-## 2. getPatientList
+## getPatientList
 
 ### Request Url
 
@@ -82,7 +106,7 @@ get
 
 ```
 
-## 3. getCommentList
+## getCommentList
 
 ### Request Url
 
@@ -118,7 +142,7 @@ get
 
 ```
 
-## 4. getDataTypesByPatientId
+## getDataTypesByPatientId
 
 ### Request Url
 
@@ -150,7 +174,7 @@ get
 
 ```
 
-## 5. getOneRecordBypatientId
+## getOneRecordBypatientId
 
 ### Request Url
 
@@ -196,7 +220,7 @@ get
 
 ```
 
-## 6. postUpdateRecordValue
+## postUpdateRecordValue
 
 ### Request Url
 
@@ -225,7 +249,7 @@ post
 
 ```
 
-## 7. postUpdateComment
+## postUpdateComment
 
 ### Request Url
 
