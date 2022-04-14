@@ -8,7 +8,10 @@ app.use(express.static('public'));
 const exphbs = require("express-handlebars");
 app.engine('hbs', exphbs.engine({
     extname:'hbs', 
-    defaultLayout:'main.hbs'
+    defaultLayout:'main.hbs',
+    helpers: {
+        bgLevelLow: x => x < 11
+    }
 }));
 
 app.set('view engine', 'hbs');

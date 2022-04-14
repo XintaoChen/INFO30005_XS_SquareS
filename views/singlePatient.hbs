@@ -48,7 +48,7 @@
                 <tr class="data-row">
                     <td class="date">{{this.date}}</td>
                     {{!-- <td class="bgLevel">{{#if this.bgLevel}}{{#if this.bgLevel eq ''}}need record{{/if}}{{else}}{{this.bgLevel}}{{else}}-{{/if}}</td> --}}
-                    <td class="bgLevel">{{#if this.bgLevel}}{{this.bgLevel}}{{else}}-{{/if}}</td>
+                    <td class="bgLevel">{{#if this.bgLevel}}{{#if (bgLevelLow this.bgLevel)}}⬇️{{else}}{{this.bgLevel}}{{/if}}{{else}}-{{/if}}</td>
                     <td class="weight">{{#if this.weight}}{{this.weight}}{{else}}-{{/if}}</td>
                     <td class="insulinTaken">{{#if this.insulinTaken}}{{this.insulinTaken}}{{else}}-{{/if}}</td>
                     <td class="exercise">{{#if this.exercise}}{{this.exercise}}{{else}}-{{/if}}</td>
