@@ -5,5 +5,5 @@ const patientDashboardRouter = express.Router()
 patientDashboardRouter.get('/:id', patientDashboardController.getTodayData)
 
 module.exports = {
-    patientDashboardRouter
+    patientDashboardRouter,
 }

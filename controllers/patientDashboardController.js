@@ -1,4 +1,4 @@
-const todayHealthData = require("../models/patientHealthDataTodayModel")
+const todayHealthData = require('../models/patientHealthDataTodayModel')
 
 const getTodayData = (req, res) => {
     // const tempData = patientData.find(data => data.id === req.params.id)
@@ -11,5 +11,5 @@ const getTodayData = (req, res) => {
 }
 
 module.exports = {
-    getTodayData
+    getTodayData,
 }

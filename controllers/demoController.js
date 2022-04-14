@@ -1,24 +1,24 @@
-// import demo model 
-const demoData = require('../models/demoModel') 
+// import demo model
+const demoData = require('../models/demoModel')
 
-// handle request to get all demo data instances 
-const getAllDemoData = (req, res) => { 
-    res.send(demoData) // send list to browser 
-} 
-const getDataById = (req, res) =>{
-    const data = demoData.find(data => data.id === req.params.id)
-    if (data){
+// handle request to get all demo data instances
+const getAllDemoData = (req, res) => {
+    res.send(demoData) // send list to browser
+}
+const getDataById = (req, res) => {
+    const data = demoData.find((data) => data.id === req.params.id)
+    if (data) {
         res.send(data)
-    }else{
+    } else {
         res.sendStatus(404)
     }
 }
 
-// exports an object, which contains a function named getAllDemoData 
-module.exports = { 
+// exports an object, which contains a function named getAllDemoData
+module.exports = {
     getAllDemoData,
-    getDataById 
-} 
+    getDataById,
+}
 
 // For clinician:
 // get all patients' latest comments
@@ -43,7 +43,3 @@ module.exports = {
 // Others:
 // Rank
 // Auto Bandage
-
-
-
-
