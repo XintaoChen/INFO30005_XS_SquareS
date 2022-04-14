@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 // the demo routes are added to the end of the '/demo-management' path
 app.use('/people', peopleRouter)
 
-app.use('/patient', patientRouter)
+app.use('/patient1', patientRouter)
 
 app.use('/today', patientDashboardRouter)
 
@@ -66,6 +66,6 @@ app.use('/demo-management', demoRouter)
 
 // Tells the app to listen on port 3000 and logs that information to the
 // console.
-app.listen(3001, () => {
-    console.log('Demo app is listening on port 3001!')
+app.listen(process.env.PORT || 3001, () => {
+    console.log('Demo app is running!')
 })
