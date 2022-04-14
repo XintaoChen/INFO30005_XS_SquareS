@@ -4,13 +4,13 @@ const peopleData = require('../models/peopleModel')
 // handle request to get all data
 const getAllPeopleData = (req, res) => {
     // res.send(peopleData) // send data to browser
-    res.render('allData.hbs', {data: peopleData})
+    res.render('allData.hbs', { data: peopleData })
 }
 
 // handle request to get one data instance
 const getDataById = (req, res) => {
     // search the database by ID
-    const data = peopleData.find(data => data.id === req.params.id)
+    const data = peopleData.find((data) => data.id === req.params.id)
 
     // return data if this ID exists
     if (data) {
@@ -23,7 +23,7 @@ const getDataById = (req, res) => {
 }
 
 // add an object to the database
-const insertData = (req,res) => {
+const insertData = (req, res) => {
     // push the incoming JSON object to the array. (Note, we are not validating the data - should fix this later.)
     peopleData.push(req.body)
     // return the updated database
@@ -33,5 +33,5 @@ const insertData = (req,res) => {
 module.exports = {
     getAllPeopleData,
     getDataById,
-    insertData
+    insertData,
 }
