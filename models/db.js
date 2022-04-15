@@ -1,13 +1,19 @@
 const mongoose = require('mongoose')
 
-connectionURL = 'mongodb+srv://XS_SquareS:xs_squares123@cluster0.tpmnr.mongodb.net/test'
+//connectionURL = 'mongodb+srv://XS_SquareS:xs_squares123@cluster0.tpmnr.mongodb.net/test'
 
+mongoose.connect('mongodb+srv://XS_SquareS:xs_squares123@cluster0.tpmnr.mongodb.net/test' || 'mongodb://localhost', {
+ useNewUrlParser: true,
+ useUnifiedTopology: true,
+ dbName: 'Diabetes@Home'
+})
 
-mongoose.connect(connectionURL, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, dbName: 'Diabetes@Home'})
+// Exit on error
+const db = mongoose.connection.on('error', err => { 
+    console.error(err); 
+    process.exit(1) 
+}) 
 
-const index = mongoose.connection
-
-db.on('error', console.error.bind(console, 'connection error: '))
-db.once('open', () => {
-    console.log('connected to Mongo')
+db.once('open', async () => {
+    console.log(`Mongo connection started on ${db.host}:${db.port}`)
 })
