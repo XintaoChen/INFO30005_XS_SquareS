@@ -7,17 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Diabetes</title>
     {{!-- <link rel="stylesheet" href="/css/commonStaticPage.css" /> --}}
-    {{{_sections.css}}}
+    
 </head>
 <body>
     {{> header}}
     <containt class="content">
-
         {{{body}}}
-
     </containt>
     {{> footer}}
-    
-    
+    {{#each cssList}}
+      <link rel="stylesheet" href={{this}}>
+    {{/each}}
 </body>
 </html>
