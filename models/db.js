@@ -1,8 +1,9 @@
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
 const mongoose = require('mongoose')
 
-//connectionURL = 'mongodb+srv://XS_SquareS:xs_squares123@cluster0.tpmnr.mongodb.net/test'
-
-mongoose.connect('mongodb+srv://XS_SquareS:xs_squares123@cluster0.tpmnr.mongodb.net/test' || 'mongodb://localhost', {
+mongoose.connect(process.env.MONGO_URL || 'mongodb://localhost', {
  useNewUrlParser: true,
  useUnifiedTopology: true,
  dbName: 'Diabetes@Home'
