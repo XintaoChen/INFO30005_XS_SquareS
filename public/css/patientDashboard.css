@@ -88,6 +88,11 @@
         text-align: center;
         line-height: 40px;
     }
+    .record-item .item-down{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
     .record-item .value{
         width: 160px;
         height: 40px;
@@ -111,6 +116,10 @@
         color: white;
         text-align: center;
         line-height: 40px;
+    }
+
+    .dashboard-middle-line{
+        display: none;
     }
 
     .leader-board{
@@ -148,4 +157,149 @@
     .board-item-right{
         margin-right: 10px;
     }
+}
+
+@media screen and (min-width: 1366px) {
+    .content{
+        padding: 0 2vw 30px 2vw;
+    }
+    .banner {
+        width: 100%;
+        height: 80px;
+        background-color: #F4F2F0;
+    }
+    .support-message{
+        line-height: 80px;
+        font-size: 32px;
+    }
+    .clinician-icon{
+        float: right;
+        position: relative;
+        top: -80px;
+        right: 5px;
+        line-height: 80px;
+        font-size: 44px;
+    }
+
+    .today-content{
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        background-image: url('/img/desktop background.png');
+    }
+    .today-records{
+        width: 55%;
+        display: flex;
+        flex-direction: column;
+    }
+    .records-title{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+    }
+    .records-title .text{
+        display: flex;
+        flex-direction: column;
+    }
+    .records-title .completion{
+        display: flex;
+        width: 100px;
+        height: 100px;
+        border-radius: 64px;
+        background-color: rgb(21, 202, 81);
+        text-align: center;
+        line-height: 64px;
+    }
+    .record-area{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .record-item{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: 30px;
+    }
+    .record-item .item-down{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .record-item .item{
+        width: 480px;
+        height: 60px;
+        background-color: #5C4435;
+        border-radius: 10px;
+        color: white;
+        font-size: 28px;
+        text-align: center;
+        line-height: 60px;
+    }
+    .record-item .value{
+        width: 380px;
+        height: 100px;
+        margin-right: 10px;
+        background-color: #F4F2F0;
+        border-radius: 10px;
+    }
+    .record-item .edit{
+        width: 40px;
+        height: 40px;
+        background-color: tomato;
+    }
+    .more-data{
+        text-align: right;
+        margin-top: 30px;
+    }
+    .dashboard-middle-line{
+        background-color: #5C4435;
+        width: 3px;
+        margin: 0px 30px;
+    }
+    .leader-board{
+        width: 40%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+    .board-title{
+        display: flex;
+        height: 80px;
+        align-items: center;
+    }
+    .board-area{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .board-item{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        height: 70px;
+        align-items: center;
+        background-color: rgb(98, 202, 112);
+        border-radius: 10px;
+        margin-top: 10px;
+    }    
+    .board-item-left{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 35%;
+    }
+    .board-item-right{
+        margin-right: 10px;
+    }
+
 }
