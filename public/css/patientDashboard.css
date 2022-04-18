@@ -145,7 +145,7 @@
         justify-content: space-between;
         height: 40px;
         align-items: center;
-        background-color: rgb(98, 202, 112);
+        background-color: #F4F2F0;
         border-radius: 10px;
     }    
     .board-item-left{
@@ -288,7 +288,7 @@
         justify-content: space-between;
         height: 70px;
         align-items: center;
-        background-color: rgb(98, 202, 112);
+        background-color: #F4F2F0;
         border-radius: 10px;
         margin-top: 10px;
     }    
