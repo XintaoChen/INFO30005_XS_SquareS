@@ -1,9 +1,9 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3263062 */
-  src: url('iconfont.woff2?t=1648121252195') format('woff2'),
-       url('iconfont.woff?t=1648121252195') format('woff'),
-       url('iconfont.ttf?t=1648121252195') format('truetype'),
-       url('iconfont.svg?t=1648121252195#iconfont') format('svg');
+  src: url('iconfont.woff2?t=1650327807251') format('woff2'),
+       url('iconfont.woff?t=1650327807251') format('woff'),
+       url('iconfont.ttf?t=1650327807251') format('truetype'),
+       url('iconfont.svg?t=1650327807251#iconfont') format('svg');
 }
 
 .iconfont {
@@ -14,8 +14,124 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-heart:before {
-  content: "\e8e7";
+.icon-Edit:before {
+  content: "\e6af";
+}
+
+.icon-user2:before {
+  content: "\e67b";
+}
+
+.icon-i-badge:before {
+  content: "\e612";
+}
+
+.icon-Leaderboard:before {
+  content: "\e661";
+}
+
+.icon-save1:before {
+  content: "\e6c0";
+}
+
+.icon-graph:before {
+  content: "\e6fa";
+}
+
+.icon-Clip:before {
+  content: "\e639";
+}
+
+.icon-eyeclose:before {
+  content: "\e62c";
+}
+
+.icon-left-arrow:before {
+  content: "\e7c0";
+}
+
+.icon-right-arrow:before {
+  content: "\e7c3";
+}
+
+.icon-circle-confirm:before {
+  content: "\e63b";
+}
+
+.icon-comment:before {
+  content: "\e668";
+}
+
+.icon-about:before {
+  content: "\e61e";
+}
+
+.icon-repeat:before {
+  content: "\e648";
+}
+
+.icon-logout1:before {
+  content: "\e66b";
+}
+
+.icon-arrow-l:before {
+  content: "\e788";
+}
+
+.icon-arrow-r:before {
+  content: "\e789";
+}
+
+.icon-medical_heart_medici:before {
+  content: "\ea76";
+}
+
+.icon-dashboard:before {
+  content: "\e78b";
+}
+
+.icon-menu2:before {
+  content: "\e61d";
+}
+
+.icon-arrow-sortdown-smal:before {
+  content: "\e877";
+}
+
+.icon-announce:before {
+  content: "\e7cb";
+}
+
+.icon-home1:before {
+  content: "\e6bb";
+}
+
+.icon-double-arrow-left-:before {
+  content: "\e62b";
+}
+
+.icon-search:before {
+  content: "\e6bc";
+}
+
+.icon-shanchu:before {
+  content: "\e634";
+}
+
+.icon-plus-circle-fill:before {
+  content: "\e845";
+}
+
+.icon-warning-circle-fill:before {
+  content: "\e848";
+}
+
+.icon-edit1:before {
+  content: "\e7a0";
+}
+
+.icon-doctor-:before {
+  content: "\e616";
 }
 
 .icon-warning:before {
@@ -36,25 +152,5 @@
 
 .icon-linkedin1:before {
   content: "\e60b";
-}
-
-.icon-menu1:before {
-  content: "\e615";
-}
-
-.icon-user1:before {
-  content: "\e608";
-}
-
-.icon-arrow-right:before {
-  content: "\e840";
-}
-
-.icon-search2:before {
-  content: "\e64c";
-}
-
-.icon-edit:before {
-  content: "\e7e1";
 }
 
