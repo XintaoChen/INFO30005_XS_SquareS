@@ -1,6 +1,8 @@
 <head>
     <link rel="stylesheet" href="/css/patientDashboard.css" />
 </head>
+<script src="/public/js/patientDashboard.js"></script>
+
 <div class="welcome-banner">
     <div class="welcome-message">Welcome Pat the Patient!<i class="iconfont">&#xe6bf;</i></div>
     <button class="support-msg-btn">
@@ -16,42 +18,60 @@
                 <div class="date">18/04/2022</div>
             </div>
             <div class="completion">
-                <div></div>
-                <p style="margin: auto;">66%</p>
+                <div>Completion Rate</div>
+                <div class="completion-chart">
+                    <p style="margin: auto;">66%</p>
+                </div>
             </div>
         </div>
         <div class="record-area">
             <div class="record-item">
                 <div class="item">Blood Glucose Level</div>
-                <div class="item-down">
-                    <div class="value"></div>
-                    <div class="edit"></div>
+                <div class="value-comment">
+                    <input type="text" placeholder="Enter value" class="value" disabled="true">
+                    <input type="text" placeholder="Enter comment" class="comment">
+                </div>
+                <div class="edit-save">
+                    <button class="edit-btn"><i class="icon-edit-patient"></i></button>
+                    <button class="save-btn"><i class="icon-save"></i></button>
                 </div>
             </div>
             <div class="record-item">
                 <div class="item">Weight</div>
-                <div class="item-down">
-                    <div class="value"></div>
-                    <div class="edit"></div>
+                <div class="value-comment">
+                    <input type="text" placeholder="Enter value" class="value" disabled="true">
+                    <input type="text" placeholder="Enter comment" class="comment">
+                </div>
+                <div class="edit-save">
+                    <button class="edit-btn"><i class="icon-edit-patient"></i></button>
+                    <button class="save-btn"><i class="icon-save"></i></button>
                 </div>
             </div>
             <div class="record-item">
                 <div class="item">Insulin Doses</div>
-                <div class="item-down">
-                    <div class="value"></div>
-                    <div class="edit"></div>
+                <div class="value-comment">
+                    <input type="text" placeholder="Enter value" class="value" disabled="true">
+                    <input type="text" placeholder="Enter comment" class="comment">
+                </div>
+                <div class="edit-save">
+                    <button class="edit-btn"><i class="icon-edit-patient"></i></button>
+                    <button class="save-btn"><i class="icon-save"></i></button>
                 </div>
             </div>
             <div class="record-item">
                 <div class="item">Step Counts</div>
-                <div class="item-down">
-                    <div class="value"></div>
-                    <div class="edit"></div>
+                <div class="value-comment">
+                    <input type="text" placeholder="Enter value" class="value" disabled="true">
+                    <input type="text" placeholder="Enter comment" class="comment">
+                </div>
+                <div class="edit-save">
+                    <button class="edit-btn"><i class="icon-edit-patient"></i></button>
+                    <button class="save-btn"><i class="icon-save"></i></button>
                 </div>
             </div>
         </div>
          <div class="more-data">
-            View More Data
+            View more data
         </div>
     </div>
     <div class="dashboard-middle-line"></div>
