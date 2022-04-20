@@ -1,0 +1,1 @@
+editIcon = (icon) => icon.classList.toggle('icon-save')

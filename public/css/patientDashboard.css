@@ -4,6 +4,32 @@
     src: url("../font/Lato-Regular.ttf");
 }
 
+input{
+    border: hidden;
+}
+
+input:focus, input:active{
+    outline-color: #BFA38A;
+    outline-width: 0.5px;;
+}
+
+input::placeholder{
+    color: #8B8DA0;
+    opacity: 1;
+    font-family: "lato";
+    font-style: italic;
+}
+
+button{
+    cursor: pointer;
+    padding: 0px;
+    border: none;
+    background-color: transparent;
+    max-width: fit-content;
+    max-height: fit-content;
+    align-items: center;
+}
+
 @media screen and (max-width: 1365px) {
     .address{
         display: none;
@@ -37,7 +63,6 @@
         border-color: #5C4435;
         border-width: 2px;
         border-radius: 51%;
-        cursor: pointer;
         box-shadow: 2px 7px 7px #5C4435;
     }
     .welcome-banner .support-msg-btn .unread-status{
@@ -53,7 +78,8 @@
     }
 
     .today-content{
-        padding: 16px;
+        padding-left: 16px;
+        padding-right: 16px;
         display: flex;
         flex-direction: column;
         font-family: "lato";
@@ -69,6 +95,7 @@
         justify-content: space-between;
         align-items: center;
         height: 80px;
+        padding-top: 8px;
     }
     .records-heading .text{
         display: flex;
@@ -82,55 +109,101 @@
     }
     .records-heading .completion{
         display: flex;
-        width: 64px;
-        height: 64px;
-        border-radius: 64px;
-        background-color: rgb(255, 251, 0);
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 76px;
+        font-size: 12px;
+        font-weight: lighter;
+    }
+    .records-heading .completion .completion-chart{
+        display: flex;
+        width: 56px;
+        height: 56px;
+        border-radius: 56px;
+        background-color: #23DC3D;
         text-align: center;
-        line-height: 64px;
+        line-height: 56px;
     }
     .record-area{
+        font-size: 14px;
+        padding-top: 8px;
         display: flex;
         flex-direction: column;
-        height: 175px;
+        min-height: 184px;
+
         justify-content: space-between;
     }
     .record-item{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
-        align-items: center;
-        height: 40px;
+        justify-content: space-between;
+        height: max-content;
+        width: max-content;
     }
     .record-item .item{
         width: 140px;
         height: 40px;
-        margin-right: 5px;
-        background-color: #5C4435;
+        background-color: #867167;
         border-radius: 10px;
         color: white;
         font-size: 14px;
         text-align: center;
-        line-height: 40px;
+        line-height: 3.5;
     }
-    .record-item .item-down{
+    .record-item .value-comment{
+        width: 160px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
     }
-    .record-item .value{
-        width: 160px;
+    .record-item .value-comment .value{
+        width: 150px;
         height: 40px;
-        margin-right: 10px;
         background-color: #F4F2F0;
         border-radius: 10px;
     }
-    .record-item .edit{
+    .record-item .value-comment .comment{
+        width: 150px;
+        height: 40px;
+        background-color: #F4F2F0;
+        border-radius: 10px;
+        display: none;
+    }
+    .record-item .edit-save{
+        width: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+    .record-item .edit-save .edit-btn{
         width: 40px;
         height: 40px;
-        background-color: tomato;
+    }
+    .record-item .edit-save .save-btn{
+        width: 40px;
+        height: 40px;
+        display: none;
     }
 
+    .icon-edit-patient:before {
+        content: "\e6af";
+        font-family: "iconfont" !important;
+        font-size: 32px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        color:#5C4435;
+        padding: 4px 4px;
+    }
+    .icon-save:before {
+        content: "\e6c0";
+        font-family: "iconfont" !important;
+        font-size: 32px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        color: #5C4435;
+        padding: 4px 4px;
+
+      }
 
     .more-data{
         width: 100%;
