@@ -1,9 +1,9 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3263062 */
-  src: url('iconfont.woff2?t=1650327807251') format('woff2'),
-       url('iconfont.woff?t=1650327807251') format('woff'),
-       url('iconfont.ttf?t=1650327807251') format('truetype'),
-       url('iconfont.svg?t=1650327807251#iconfont') format('svg');
+  src: url('iconfont.woff2?t=1650417927751') format('woff2'),
+       url('iconfont.woff?t=1650417927751') format('woff'),
+       url('iconfont.ttf?t=1650417927751') format('truetype'),
+       url('iconfont.svg?t=1650417927751#iconfont') format('svg');
 }
 
 .iconfont {
@@ -14,23 +14,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-Edit:before {
+.icon-badge1:before {
+  content: "\e6bf";
+}
+
+.icon-edit-patient:before {
   content: "\e6af";
 }
 
-.icon-user2:before {
+.icon-user:before {
   content: "\e67b";
-}
-
-.icon-i-badge:before {
-  content: "\e612";
 }
 
 .icon-Leaderboard:before {
   content: "\e661";
 }
 
-.icon-save1:before {
+.icon-save:before {
   content: "\e6c0";
 }
 
@@ -38,23 +38,23 @@
   content: "\e6fa";
 }
 
-.icon-Clip:before {
+.icon-eye-open:before {
   content: "\e639";
 }
 
-.icon-eyeclose:before {
+.icon-eye-close:before {
   content: "\e62c";
 }
 
-.icon-left-arrow:before {
+.icon-long-left-arrow:before {
   content: "\e7c0";
 }
 
-.icon-right-arrow:before {
+.icon-long-right-arrow:before {
   content: "\e7c3";
 }
 
-.icon-circle-confirm:before {
+.icon-confirm:before {
   content: "\e63b";
 }
 
@@ -62,27 +62,27 @@
   content: "\e668";
 }
 
-.icon-about:before {
+.icon-about-diabetes:before {
   content: "\e61e";
 }
 
-.icon-repeat:before {
+.icon-reselect:before {
   content: "\e648";
 }
 
-.icon-logout1:before {
+.icon-logout:before {
   content: "\e66b";
 }
 
-.icon-arrow-l:before {
+.icon-circle-left-arrow:before {
   content: "\e788";
 }
 
-.icon-arrow-r:before {
+.icon-circle-right-arrow:before {
   content: "\e789";
 }
 
-.icon-medical_heart_medici:before {
+.icon-about-us:before {
   content: "\ea76";
 }
 
@@ -90,23 +90,23 @@
   content: "\e78b";
 }
 
-.icon-menu2:before {
+.icon-menu:before {
   content: "\e61d";
 }
 
-.icon-arrow-sortdown-smal:before {
+.icon-small-down-arrow:before {
   content: "\e877";
 }
 
-.icon-announce:before {
+.icon-announcement:before {
   content: "\e7cb";
 }
 
-.icon-home1:before {
+.icon-home:before {
   content: "\e6bb";
 }
 
-.icon-double-arrow-left-:before {
+.icon-double-left-arrow:before {
   content: "\e62b";
 }
 
@@ -114,11 +114,11 @@
   content: "\e6bc";
 }
 
-.icon-shanchu:before {
+.icon-delete:before {
   content: "\e634";
 }
 
-.icon-plus-circle-fill:before {
+.icon-plus-circle:before {
   content: "\e845";
 }
 
@@ -126,23 +126,23 @@
   content: "\e848";
 }
 
-.icon-edit1:before {
+.icon-edit-clinician:before {
   content: "\e7a0";
 }
 
-.icon-doctor-:before {
+.icon-clinician-support-message:before {
   content: "\e616";
 }
 
-.icon-warning:before {
+.icon-clinician-info:before {
+  content: "\ea77";
+}
+
+.icon-warning-no-fill:before {
   content: "\e682";
 }
 
-.icon-home:before {
-  content: "\e7c6";
-}
-
-.icon--twitter:before {
+.icon-twitter:before {
   content: "\e628";
 }
 
@@ -150,7 +150,7 @@
   content: "\e601";
 }
 
-.icon-linkedin1:before {
+.icon-linkedin:before {
   content: "\e60b";
 }
 
