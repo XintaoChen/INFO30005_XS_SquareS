@@ -3,28 +3,33 @@ const express = require('express')
 // Set your app up as an express app
 const app = express()
 
-app.use(express.static('public'))
 // set up handlebars view engine
 const exphbs = require('express-handlebars')
+// Set app to use handlebars engine
+app.set('view engine', 'hbs')
+
+// set handlebars configurations
 app.engine(
     'hbs',
     exphbs.engine({
         extname: 'hbs',
         defaultLayout: 'main.hbs',
+        partialsDir: '${__dirname}/views/partials',
         helpers: {
             bgLevelLow: (x) => x < 11,
         },
     })
 )
 
-app.set('view engine', 'hbs')
+app.use(express.static('public'))
 
 // link to our router
 const peopleRouter = require('./routes/peopleRouter')
 const demoRouter = require('./routes/demoRouter')
 
 const patientRouter = require('./routes/patientRouter')
-const { patientDashboardRouter } = require('./routes/patientDashboardRouter')
+const { patientHomeRouter } = require('./routes/patientHomeRouter')
+
 
 // middleware to log a message each time a request arrives at the server - handy for debugging
 app.use((req, res, next) => {
@@ -37,7 +42,7 @@ app.use('/people', peopleRouter)
 
 app.use('/patient', patientRouter)
 
-app.use('/today', patientDashboardRouter)
+app.use('/today', patientHomeRouter)
 
 // Tells the app to send the string: "Our demo app is working!" when you
 // hit the '/' endpoint.
@@ -66,6 +71,6 @@ app.use('/demo-management', demoRouter)
 
 // Tells the app to listen on port 3000 and logs that information to the
 // console.
-app.listen(process.env.PORT || 3001, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('Demo app is running!')
 })

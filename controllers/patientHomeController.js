@@ -1,7 +1,8 @@
-const todayHealthData = require('../models/patientHealthDataTodayModel')
+const todayHealthData = require('../models/patientHomeDataModel')
+const { param } = require('../routes/patientHomeRouter')
 
 const getTodayData = (req, res) => {
-    // const tempData = patientData.find(data => data.id === req.params.id)
+    // const tempData = todayHealthData.find(data => data.id === req.params.id)
     // if(tempData){
     //     res.render('patientDashboard.hbs', {singlePatientData: tempData})
     // }else{
