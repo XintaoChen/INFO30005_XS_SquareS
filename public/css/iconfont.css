@@ -1,9 +1,9 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3263062 */
-  src: url('iconfont.woff2?t=1648121252195') format('woff2'),
-       url('iconfont.woff?t=1648121252195') format('woff'),
-       url('iconfont.ttf?t=1648121252195') format('truetype'),
-       url('iconfont.svg?t=1648121252195#iconfont') format('svg');
+  src: url('iconfont.woff2?t=1650417927751') format('woff2'),
+       url('iconfont.woff?t=1650417927751') format('woff'),
+       url('iconfont.ttf?t=1650417927751') format('truetype'),
+       url('iconfont.svg?t=1650417927751#iconfont') format('svg');
 }
 
 .iconfont {
@@ -14,19 +14,135 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-heart:before {
-  content: "\e8e7";
+.icon-badge1:before {
+  content: "\e6bf";
 }
 
-.icon-warning:before {
-  content: "\e682";
+.icon-edit-patient:before {
+  content: "\e6af";
+}
+
+.icon-user:before {
+  content: "\e67b";
+}
+
+.icon-Leaderboard:before {
+  content: "\e661";
+}
+
+.icon-save:before {
+  content: "\e6c0";
+}
+
+.icon-graph:before {
+  content: "\e6fa";
+}
+
+.icon-eye-open:before {
+  content: "\e639";
+}
+
+.icon-eye-close:before {
+  content: "\e62c";
+}
+
+.icon-long-left-arrow:before {
+  content: "\e7c0";
+}
+
+.icon-long-right-arrow:before {
+  content: "\e7c3";
+}
+
+.icon-confirm:before {
+  content: "\e63b";
+}
+
+.icon-comment:before {
+  content: "\e668";
+}
+
+.icon-about-diabetes:before {
+  content: "\e61e";
+}
+
+.icon-reselect:before {
+  content: "\e648";
+}
+
+.icon-logout:before {
+  content: "\e66b";
+}
+
+.icon-circle-left-arrow:before {
+  content: "\e788";
+}
+
+.icon-circle-right-arrow:before {
+  content: "\e789";
+}
+
+.icon-about-us:before {
+  content: "\ea76";
+}
+
+.icon-dashboard:before {
+  content: "\e78b";
+}
+
+.icon-menu:before {
+  content: "\e61d";
+}
+
+.icon-small-down-arrow:before {
+  content: "\e877";
+}
+
+.icon-announcement:before {
+  content: "\e7cb";
 }
 
 .icon-home:before {
-  content: "\e7c6";
+  content: "\e6bb";
 }
 
-.icon--twitter:before {
+.icon-double-left-arrow:before {
+  content: "\e62b";
+}
+
+.icon-search:before {
+  content: "\e6bc";
+}
+
+.icon-delete:before {
+  content: "\e634";
+}
+
+.icon-plus-circle:before {
+  content: "\e845";
+}
+
+.icon-warning-circle-fill:before {
+  content: "\e848";
+}
+
+.icon-edit-clinician:before {
+  content: "\e7a0";
+}
+
+.icon-clinician-support-message:before {
+  content: "\e616";
+}
+
+.icon-clinician-info:before {
+  content: "\ea77";
+}
+
+.icon-warning-no-fill:before {
+  content: "\e682";
+}
+
+.icon-twitter:before {
   content: "\e628";
 }
 
@@ -34,27 +150,7 @@
   content: "\e601";
 }
 
-.icon-linkedin1:before {
+.icon-linkedin:before {
   content: "\e60b";
-}
-
-.icon-menu1:before {
-  content: "\e615";
-}
-
-.icon-user1:before {
-  content: "\e608";
-}
-
-.icon-arrow-right:before {
-  content: "\e840";
-}
-
-.icon-search2:before {
-  content: "\e64c";
-}
-
-.icon-edit:before {
-  content: "\e7e1";
 }
 
