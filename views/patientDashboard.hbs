@@ -1,7 +1,6 @@
 <head>
     <link rel="stylesheet" href="/css/patientDashboard.css" />
 </head>
-<script src="/public/js/patientDashboard.js"></script>
 
 <div class="welcome-banner">
     <div class="welcome-message">Welcome Pat the Patient!<i class="iconfont">&#xe6bf;</i></div>
@@ -15,7 +14,7 @@
         <div class="records-heading">
             <div class="text">
                 <div>Today's records</div>
-                <div class="date">18/04/2022</div>
+                <div id="displayDate"></div>
             </div>
             <div class="completion">
                 <div>Completion Rate</div>
@@ -28,18 +27,18 @@
             <div class="record-item">
                 <div class="item">Blood Glucose Level</div>
                 <div class="value-comment">
-                    <input type="text" placeholder="Enter value" class="value" disabled="true">
-                    <input type="text" placeholder="Enter comment" class="comment">
+                    <input type="number" placeholder="Enter value" id="value" class="value" disabled="true" min="0">
+                    <input type="text" placeholder="Enter comment" id="comment">
                 </div>
                 <div class="edit-save">
-                    <button class="edit-btn"><i class="icon-edit-patient"></i></button>
+                    <button onclick="editValueComment()" id="edit-btn"><i class="icon-edit-patient"></i></button>
                     <button class="save-btn"><i class="icon-save"></i></button>
                 </div>
             </div>
             <div class="record-item">
                 <div class="item">Weight</div>
                 <div class="value-comment">
-                    <input type="text" placeholder="Enter value" class="value" disabled="true">
+                    <input type="number" placeholder="Enter value" class="value" disabled="true">
                     <input type="text" placeholder="Enter comment" class="comment">
                 </div>
                 <div class="edit-save">
@@ -50,7 +49,7 @@
             <div class="record-item">
                 <div class="item">Insulin Doses</div>
                 <div class="value-comment">
-                    <input type="text" placeholder="Enter value" class="value" disabled="true">
+                    <input type="number" placeholder="Enter value" class="value" disabled="true">
                     <input type="text" placeholder="Enter comment" class="comment">
                 </div>
                 <div class="edit-save">
@@ -61,7 +60,7 @@
             <div class="record-item">
                 <div class="item">Step Counts</div>
                 <div class="value-comment">
-                    <input type="text" placeholder="Enter value" class="value" disabled="true">
+                    <input type="number" placeholder="Enter value" class="value" disabled="true">
                     <input type="text" placeholder="Enter comment" class="comment">
                 </div>
                 <div class="edit-save">
@@ -126,3 +125,6 @@
         </div>
     </div>
 </div>
+
+{{!-- link javascript --}}
+<script src="/js/patientDashboard.js"></script>

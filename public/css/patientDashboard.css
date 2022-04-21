@@ -104,7 +104,7 @@ button{
         height: 40px;
         font-size: 16px;
     }
-    .records-heading .text .date{
+    #displayDate{
         font-size: 12px;
     }
     .records-heading .completion{
@@ -170,6 +170,15 @@ button{
         border-radius: 10px;
         display: none;
     }
+    #comment{
+        width: 150px;
+        height: 40px;
+        background-color: #F4F2F0;
+        border-radius: 10px;
+        display: none;
+        margin: 4px;
+    }
+
     .record-item .edit-save{
         width: 40px;
         display: flex;
@@ -179,6 +188,12 @@ button{
         width: 40px;
         height: 40px;
     }
+
+    #edit-btn {
+        width: 40px;
+        height: 40px;
+    }
+
     .record-item .edit-save .save-btn{
         width: 40px;
         height: 40px;
