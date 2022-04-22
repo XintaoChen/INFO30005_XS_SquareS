@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="/css/patientDashboard.css" />
 </head>
+{{#with todayHealthData}}
 <div class="banner">
     <div class="support-message">Welcome Sunny! 🏠</div>
     <div class="clinician-icon">
@@ -20,13 +21,18 @@
             </div>
         </div>
         <div class="record-area">
+            {{#each this.recordingData}}
+            {{#if (hData1 this.healthDataId)}}
             <div class="record-item">
                 <div class="item">Blood Glucose Level</div>
                 <div class="item-down">
-                    <div class="value"></div>
-                    <div class="edit"></div>
+                    <div class="value">{{value}}</div>
+                    <div class="edit">
+                    </div>
                 </div>
             </div>
+            {{/if}}
+            {{#if (hData2 this.healthDataId)}}
             <div class="record-item">
                 <div class="item">Weight</div>
                 <div class="item-down">
@@ -34,6 +40,8 @@
                     <div class="edit"></div>
                 </div>
             </div>
+            {{/if}}
+            {{#if (hData3 this.healthDataId)}}
             <div class="record-item">
                 <div class="item">Insulin Doses</div>
                 <div class="item-down">
@@ -41,13 +49,18 @@
                     <div class="edit"></div>
                 </div>
             </div>
+            {{/if}}
+            {{#if (hData4 this.healthDataId)}}
             <div class="record-item">
+                            {{!-- {{todayHealthData.recordingData[3]}} --}}
                 <div class="item">Step Counts</div>
                 <div class="item-down">
                     <div class="value"></div>
                     <div class="edit"></div>
                 </div>
             </div>
+            {{/if}}
+            {{/each}}
         </div>
          <div class="more-data">
             View More Data
@@ -105,3 +118,5 @@
         </div>
     </div>
 </div>
+
+{{/with}}

@@ -68,7 +68,8 @@
         display: flex;
         flex-direction: column;
         height: 175px;
-        justify-content: space-between;
+        /* justify-content: space-between; */
+        justify-content: space-evenly;
     }
     .record-item{
         display: flex;
@@ -76,6 +77,24 @@
         justify-content: space-around;
         align-items: center;
         height: 40px;
+    }
+    .record-noitem{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        height: 40px;
+    }
+    .record-noitem .item{
+        width: 140px;
+        height: 40px;
+        margin-right: 5px;
+        border-radius: 10px;
+        color: white;
+        font-size: 14px;
+        text-align: center;
+        line-height: 40px;
+        background-color: #5c4435b0;
     }
     .record-item .item{
         width: 140px;
