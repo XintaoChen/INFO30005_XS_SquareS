@@ -1,6 +1,38 @@
 const Patient = require("../models/patient");
 const HealthData = require("../models/healthData");
 
+const getPatientList = async (req, res) => {
+  try {
+    const { clinicianId } = req.query;
+    const pageNum = Number(req.query.pageNum);
+    const pageSize = Number(req.query.pageSize);
+
+    const total = await Patient.find({
+      clinicianId: clinicianId,
+    }).countDocuments();
+    const patients = await Patient.find(
+      { clinicianId: clinicianId },
+      "profileName"
+    )
+      .skip((pageNum - 1) * pageSize)
+      .limit(pageSize);
+    if (!patients) {
+      res.json({
+        status: 1,
+        msg: "error",
+      });
+    } else {
+      res.json({
+        status: 0,
+        total: total,
+        data: patients,
+      });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const getDataTypesByPatientId = async (req, res) => {
   try {
     const { patientId } = req.query;
@@ -34,5 +66,4 @@ const getDataTypesByPatientId = async (req, res) => {
   }
 };
 
-
-module.exports = { getDataTypesByPatientId };
+module.exports = { getDataTypesByPatientId, getPatientList };
