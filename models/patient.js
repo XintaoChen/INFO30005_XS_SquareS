@@ -4,7 +4,7 @@ const HealthData = require("./healthData");
 
 const patientSchema = new mongoose.Schema({
   emailAddress: { type: String, required: true, unique: true },
-  password: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
   nameFamily: { type: String, required: true },
   nameGiven: { type: String, required: true },
   dateOfBirth: { type: Date, required: true },
@@ -12,7 +12,6 @@ const patientSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: clinicianSchema,
     required: true,
-    unique: true,
   },
   phoneNumber: String,
   homeAddress: String,
