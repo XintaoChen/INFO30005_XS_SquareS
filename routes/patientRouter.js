@@ -8,4 +8,9 @@ patientRouter.get("/getDataTypes", (req, res) => {
   patientController.getDataTypesByPatientId(req, res);
 });
 
+// get list of patient
+patientRouter.get("/getlist", (req, res) => {
+  patientController.getPatientList(req, res);
+});
+
 module.exports = patientRouter;

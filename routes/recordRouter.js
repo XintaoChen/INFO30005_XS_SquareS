@@ -8,4 +8,9 @@ recordRouter.get("/get", (req, res) => {
   recordController.getOneRecordBypatientId(req, res);
 });
 
+// get list of comment
+recordRouter.get("/comments", (req, res) => {
+  recordController.getCommentList(req, res);
+});
+
 module.exports = recordRouter;
