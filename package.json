@@ -18,6 +18,7 @@
   "homepage": "https://github.com/XintaoChen/INFO30005_XS_SquareS#readme",
   "dependencies": {
     "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
     "mongoose": "^6.3.0"
   }
 }
