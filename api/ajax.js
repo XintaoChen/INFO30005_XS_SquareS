@@ -51,16 +51,3 @@ export default function ajax(options) {
     };
   });
 }
-
-// test demo
-const test = async () => {
-  var a = await ajax({
-    path: "/patient/getList",
-    method: "get",
-    data: {
-      clinicianId: "6254e9b4bcd6f0a12a5e5eda",
-    },
-  });
-  console.log(a);
-};
-test();
