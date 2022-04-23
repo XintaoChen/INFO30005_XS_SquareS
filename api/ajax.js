@@ -19,7 +19,7 @@ export default function ajax(options) {
   options.dataType = options.dataType || "json";
   options.timeout = options.timeout || 30000;
   let params = formatParams(options.data);
-  console.log(params);
+
   let xhr;
   if (window.XMLHttpRequest) {
     xhr = new XMLHttpRequest();

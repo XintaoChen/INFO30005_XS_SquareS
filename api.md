@@ -251,39 +251,13 @@ post
 
 ### Parameters
 
-| Parameters | is required | Data Type | Description    |
-| :--------- | :---------: | :-------: | :------------- |
-| patientId  |   Y         | string    | patient id     |
-| date       |   Y         | string    | recording date |
-| typeId     |   Y         | string    | data type id   |
-| value      |   Y         | number    | value of data  |
-
-### Return Value
-
-```json
-  success:
-  {
-    "status":0
-  }
-
-```
-
-## postUpdateComment
-
-### Request Url
-
-http://localhost:3000/record/updateComment
-
-### Request method
-
-post
-
-### Parameters
-
 | Parameters | is required | Data Type | Description     |
 | :--------- | :---------: | :-------: | :-------------- |
-| recordId   |   Y         | string    | record id       |
-| comment    |   Y         | string    | comment of data |
+| patientId  |   Y         | string    | patient id      |
+| date       |   Y         | string    | recording date  |
+| typeId     |   Y         | string    | data type id    |
+| value      |   Y         | number    | value of data   |
+| comment    |   N         | string    | comment of data |
 
 ### Return Value
 

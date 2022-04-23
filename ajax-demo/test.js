@@ -12,10 +12,9 @@ const test = async () => {
 
   // check the status
   if (patientList.status === 0) {
-    
     // so here we get list of data
     var list = patientList.data;
-
+    
     // present data into html
     var demoContainer = document.getElementById("demo-container");
     var pateints = document.createElement("ul");
