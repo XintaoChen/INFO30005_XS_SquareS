@@ -1,5 +1,6 @@
 <head>
     <link rel="stylesheet" href="/css/patientDashboard.css" />
+    <link rel="stylesheet" href="/css/completionRateChartPlugin.css">
 </head>
 
 <div class="welcome-banner">
@@ -16,14 +17,15 @@
                 <div>Today's records</div>
                 <div id="displayDate"></div>
             </div>
-            <div class="completion">
+            {{!-- <div class="completion">
                 <div>Completion Rate</div>
                 <div class="completion-chart">
                     <p style="margin: auto;">66%</p>
                 </div>
-            </div>
+            </div> --}}
+            <div id="completion-container" style="width: 100px;height: 100px; position: relative;"></div>
         </div>
-        <div class="record-area">
+        <div class="record-area" id="record-area">
             <div class="record-item">
                 <div class="item">Blood Glucose Level</div>
                 <div class="value-comment">
@@ -128,3 +130,9 @@
 
 {{!-- link javascript --}}
 <script src="/js/patientDashboard.js"></script>
+<script type="module" src="/js/completionRateChartPlugin.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        CompletionRateChartPlugin("completion-container", 66)
+    };
+</script>

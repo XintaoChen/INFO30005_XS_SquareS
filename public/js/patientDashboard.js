@@ -1,3 +1,5 @@
+// import recordItemGenerator from "/js/recordItemGenerator.js"
+
 // to change edit button to save button
 editIcon = (icon) => icon.classList.toggle('icon-save')
 
@@ -7,7 +9,7 @@ function editValueComment() {
     var valueBox = document.getElementById('value');
     // var editBtn = document.getElementsByClassName('edit-btn');
     if (commentBox.style.display == 'none') {
-        commentBox.style.display = 'block';
+        commentBox.style.display = 'block' ;
     } else {
         commentBox.style.display = 'none';
     }
@@ -33,3 +35,8 @@ var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
 // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 // var dateTime = date+' '+time;
 document.getElementById("displayDate").innerHTML = date + ', ' + daylist[day];
+
+// recordItemGenerator().generate("Blood Glucose Level","record-area")
+// recordItemGenerator().generate("Weight","record-area")
+// recordItemGenerator().generate("Insulin Doses","record-area")
+// recordItemGenerator().generate("Step Counts","record-area")
