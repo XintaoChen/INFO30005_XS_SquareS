@@ -36,7 +36,7 @@ var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
 // var dateTime = date+' '+time;
 document.getElementById("displayDate").innerHTML = date + ', ' + daylist[day];
 
-// recordItemGenerator().generate("Blood Glucose Level","record-area")
-// recordItemGenerator().generate("Weight","record-area")
-// recordItemGenerator().generate("Insulin Doses","record-area")
-// recordItemGenerator().generate("Step Counts","record-area")
+recordItemGenerator().generate("Blood Glucose Level","record-area")
+recordItemGenerator().generate("Weight","record-area")
+recordItemGenerator().generate("Insulin Doses","record-area")
+recordItemGenerator().generate("Step Counts","record-area")
