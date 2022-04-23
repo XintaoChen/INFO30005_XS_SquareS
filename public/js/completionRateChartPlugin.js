@@ -1,5 +1,4 @@
 (function (window, document) {
-  
   var CompletionRateChartPlugin = function (element_id, completionRate) {
     if (!(this instanceof CompletionRateChartPlugin))
       return new CompletionRateChartPlugin(element_id,completionRate);
@@ -7,10 +6,12 @@
   };
   CompletionRateChartPlugin.prototype = {
     totalCompletion:283,
+
     init: function (element_id,completionRate) {
       this.build(element_id);
       this.update(completionRate);
     },
+
     build:function (element_id){
       var svg = document.createElementNS("http://www.w3.org/2000/svg",'svg')
       svg.classList.add("crcp-svg")
@@ -41,6 +42,7 @@
       document.getElementById(element_id).appendChild(rate);
       
     },
+
     update:function(completionRate){
       document.getElementById('crcp-value').innerText=completionRate;
       let completion = this.totalCompletion - completionRate*this.totalCompletion/100 + "px";
