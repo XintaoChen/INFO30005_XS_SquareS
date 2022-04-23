@@ -15,8 +15,9 @@ function editValueComment() {
     }
 
     valueBox.removeAttribute("disabled");
+    //valueBox.classList.remove
     //valueBox.setAttribute("disabled", "disabled");
-
+    
     // for (i=0; i<commentBox.length; i++) {
     //     if (commentBox[i].style.display == 'none') {
     //         commentBox[i].style.display = 'block';
