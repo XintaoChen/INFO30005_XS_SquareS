@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./public/css/completionRateChartPlugin.css">
+  <style>
+    body{
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    #container{
+      width: 100px;
+      height: 100px;
+      position: relative;
+    }
+/*     
+    #container svg{
+      width: 100%;
+      height: 100%;
+    }
+    svg circle{
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke-width: 10%;
+      stroke: rgba(0, 0, 0, 0.25);
+      transform: translate(5px,5px);
+      stroke-linecap: round;
+    }
+    svg circle:nth-child(2){
+      stroke: green;
+      stroke-dasharray: 283px;
+      stroke-dashoffset: calc(283px - (283px*90) / 100)
+    }
+
+    #container div{
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      font-size: 1.8rem;
+      text-align: center;
+      line-height: 100px;
+    } */
+
+  </style>
+</head>
+<body>
+  <div id="container">
+
+    <!-- <svg class="crcp-svg">
+      <circle class="crcp-circle" cx="45" cy="45" r="45"></circle>
+      <circle class="crcp-circle" cx="45" cy="45" r="45"></circle>
+    </svg>
+    <div class="crcp-rate"><span>90</span><span style="font-size: 0.5rem;">%</span></div> -->
+  </div>
+  <script type="module" src="./public/js/completionRateChartPlugin.js"></script>
+  <script type="text/javascript">
+    window.onload = function () {
+      CompletionRateChartPlugin("container", 80)
+    };
+  </script>
+</body>
+</html>
