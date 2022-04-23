@@ -90,9 +90,13 @@ const getCommentList = async (req, res) => {
 const postUpdateRecordValue = async (req, res) => {
   
   const newRecord = new Record({
+    patientId: req.body.patientId,
+    healthDataId: req.body.patientId,
+    clinicianId: req.body.patientId,
+    timestamps: req.body.timestamps,
     value: req.body.value,
     comment: req.body.comment
-  })
+  }) 
 
   try {
     const savedRecord = await post.save()
@@ -106,4 +110,4 @@ const postUpdateRecordValue = async (req, res) => {
 
 }
 
-module.exports = { getOneRecordBypatientId, getCommentList };
+module.exports = { getOneRecordBypatientId, getCommentList, postUpdateRecordValue };
