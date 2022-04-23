@@ -22,5 +22,8 @@
     "express": "^4.17.3",
     "express-handlebars": "^6.0.5",
     "mongoose": "^6.3.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.6.2"
   }
 }
