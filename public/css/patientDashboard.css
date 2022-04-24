@@ -4,23 +4,25 @@
     src: url("../font/Lato-Regular.ttf");
 }
 
-input{
+input {
     border: hidden;
 }
 
-input:focus, input:active{
+input:focus,
+input:active {
     outline-color: #BFA38A;
-    outline-width: 0.5px;;
+    outline-width: 0.5px;
+    ;
 }
 
-input::placeholder{
+input::placeholder {
     color: #8B8DA0;
     opacity: 1;
     font-family: "lato";
     font-style: italic;
 }
 
-button{
+button {
     cursor: pointer;
     padding: 0px;
     border: none;
@@ -31,12 +33,18 @@ button{
 }
 
 @media screen and (max-width: 1365px) {
-    .address{
+    .pdb-hidden {
         display: none;
     }
-    .content{
+
+    .address {
+        display: none;
+    }
+
+    .content {
         padding: 60px 0 0;
     }
+
     .welcome-banner {
         padding: 60px 0 0;
         width: 100%;
@@ -46,11 +54,13 @@ button{
         font-family: "lato";
         background-color: #F4F2F0;
     }
-    .welcome-message{
+
+    .welcome-message {
         line-height: 80px;
         font-size: 18px;
     }
-    .support-msg-btn{
+
+    .support-msg-btn {
         position: fixed;
         top: 80px;
         right: 10px;
@@ -65,7 +75,8 @@ button{
         border-radius: 51%;
         box-shadow: 2px 7px 7px #5C4435;
     }
-    .welcome-banner .support-msg-btn .unread-status{
+
+    .welcome-banner .support-msg-btn .unread-status {
         position: absolute;
         top: 0px;
         right: 0px;
@@ -74,22 +85,24 @@ button{
         height: 8px;
         background-color: #ca0e0e;
         border-radius: 50%;
-;
+        ;
     }
 
-    .today-content{
+    .today-content {
         padding-left: 16px;
         padding-right: 16px;
         display: flex;
         flex-direction: column;
         font-family: "lato";
     }
-    .today-records{
+
+    .today-records {
         width: 100%;
         display: flex;
         flex-direction: column;
     }
-    .records-heading{
+
+    .records-heading {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -97,17 +110,20 @@ button{
         height: 80px;
         padding-top: 8px;
     }
-    .records-heading .text{
+
+    .records-heading .text {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
         height: 40px;
         font-size: 16px;
     }
-    #displayDate{
+
+    #displayDate {
         font-size: 12px;
     }
-    .records-heading .completion{
+
+    .records-heading .completion {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -116,7 +132,8 @@ button{
         font-size: 12px;
         font-weight: lighter;
     }
-    .records-heading .completion .completion-chart{
+
+    .records-heading .completion .completion-chart {
         display: flex;
         width: 56px;
         height: 56px;
@@ -125,7 +142,8 @@ button{
         text-align: center;
         line-height: 56px;
     }
-    .record-area{
+
+    .record-area {
         font-size: 14px;
         padding-top: 8px;
         display: flex;
@@ -134,14 +152,16 @@ button{
 
         justify-content: space-between;
     }
-    .record-item{
+
+    .record-item {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         height: max-content;
         width: max-content;
     }
-    .record-item .item{
+
+    .record-item .item {
         width: 140px;
         height: 40px;
         background-color: #867167;
@@ -151,26 +171,29 @@ button{
         text-align: center;
         line-height: 3.5;
     }
-    .record-item .value-comment{
+
+    .record-item .value-comment {
         width: 160px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .record-item .value-comment .value{
+
+    .record-item .value-comment .value {
         width: 150px;
         height: 40px;
         background-color: #F4F2F0;
         border-radius: 10px;
     }
-    .record-item .value-comment .comment{
+
+    .record-item .value-comment .comment {
         width: 150px;
         height: 40px;
         background-color: #F4F2F0;
         border-radius: 10px;
-        display: none;
     }
-    #comment{
+
+    #comment {
         width: 150px;
         height: 40px;
         background-color: #F4F2F0;
@@ -179,12 +202,13 @@ button{
         margin: 4px;
     }
 
-    .record-item .edit-save{
+    .record-item .edit-save {
         width: 40px;
         display: flex;
         flex-direction: column;
     }
-    .record-item .edit-save .edit-btn{
+
+    .record-item .edit-save .edit-btn {
         width: 40px;
         height: 40px;
     }
@@ -194,7 +218,7 @@ button{
         height: 40px;
     }
 
-    .record-item .edit-save .save-btn{
+    .record-item .edit-save .save-btn {
         width: 40px;
         height: 40px;
         display: none;
@@ -206,9 +230,10 @@ button{
         font-size: 32px;
         font-style: normal;
         -webkit-font-smoothing: antialiased;
-        color:#5C4435;
+        color: #5C4435;
         padding: 4px 4px;
     }
+
     .icon-save:before {
         content: "\e6c0";
         font-family: "iconfont" !important;
@@ -218,9 +243,9 @@ button{
         color: #5C4435;
         padding: 4px 4px;
 
-      }
+    }
 
-    .more-data{
+    .more-data {
         width: 100%;
         height: 40px;
         margin-top: 10px;
@@ -231,28 +256,31 @@ button{
         line-height: 40px;
     }
 
-    .dashboard-middle-line{
+    .dashboard-middle-line {
         display: none;
     }
 
-    .leader-board{
+    .leader-board {
         width: 100%;
         margin-top: 10px;
         display: flex;
         flex-direction: column;
     }
-    .board-title{
+
+    .board-title {
         display: flex;
         height: 80px;
         align-items: center;
     }
-    .board-area{
+
+    .board-area {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         height: 220px;
     }
-    .board-item{
+
+    .board-item {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -260,32 +288,37 @@ button{
         align-items: center;
         background-color: #F4F2F0;
         border-radius: 10px;
-    }    
-    .board-item-left{
+    }
+
+    .board-item-left {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         width: 35%;
     }
-    .board-item-right{
+
+    .board-item-right {
         margin-right: 10px;
     }
 }
 
 @media screen and (min-width: 1366px) {
-    .content{
+    .content {
         padding: 0 2vw 30px 2vw;
     }
+
     .banner {
         width: 100%;
         height: 80px;
         background-color: #F4F2F0;
     }
-    .support-message{
+
+    .support-message {
         line-height: 80px;
         font-size: 32px;
     }
-    .clinician-icon{
+
+    .clinician-icon {
         float: right;
         position: relative;
         top: -80px;
@@ -294,30 +327,34 @@ button{
         font-size: 44px;
     }
 
-    .today-content{
+    .today-content {
         width: 100%;
         padding: 10px;
         display: flex;
         justify-content: space-between;
         background-image: url('/img/desktop background.png');
     }
-    .today-records{
+
+    .today-records {
         width: 55%;
         display: flex;
         flex-direction: column;
     }
-    .records-title{
+
+    .records-title {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         height: 80px;
     }
-    .records-title .text{
+
+    .records-title .text {
         display: flex;
         flex-direction: column;
     }
-    .records-title .completion{
+
+    .records-title .completion {
         display: flex;
         width: 100px;
         height: 100px;
@@ -326,13 +363,15 @@ button{
         text-align: center;
         line-height: 64px;
     }
-    .record-area{
+
+    .record-area {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: space-between;
     }
-    .record-item{
+
+    .record-item {
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -340,14 +379,16 @@ button{
         flex-wrap: wrap;
         margin-top: 30px;
     }
-    .record-item .item-down{
+
+    .record-item .item-down {
         width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-    .record-item .item{
+
+    .record-item .item {
         width: 480px;
         height: 60px;
         background-color: #5C4435;
@@ -357,45 +398,53 @@ button{
         text-align: center;
         line-height: 60px;
     }
-    .record-item .value{
+
+    .record-item .value {
         width: 380px;
         height: 100px;
         margin-right: 10px;
         background-color: #F4F2F0;
         border-radius: 10px;
     }
-    .record-item .edit{
+
+    .record-item .edit {
         width: 40px;
         height: 40px;
         background-color: tomato;
     }
-    .more-data{
+
+    .more-data {
         text-align: right;
         margin-top: 30px;
     }
-    .dashboard-middle-line{
+
+    .dashboard-middle-line {
         background-color: #5C4435;
         width: 3px;
         margin: 0px 30px;
     }
-    .leader-board{
+
+    .leader-board {
         width: 40%;
         margin-top: 10px;
         display: flex;
         flex-direction: column;
         margin: auto;
     }
-    .board-title{
+
+    .board-title {
         display: flex;
         height: 80px;
         align-items: center;
     }
-    .board-area{
+
+    .board-area {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
-    .board-item{
+
+    .board-item {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -404,14 +453,16 @@ button{
         background-color: #F4F2F0;
         border-radius: 10px;
         margin-top: 10px;
-    }    
-    .board-item-left{
+    }
+
+    .board-item-left {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         width: 35%;
     }
-    .board-item-right{
+
+    .board-item-right {
         margin-right: 10px;
     }
 
