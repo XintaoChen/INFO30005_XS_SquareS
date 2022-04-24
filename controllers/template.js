@@ -1,6 +1,6 @@
 // 
 let clinicianInfo = await ajax({})
-let patientList = await ajax({pageNum: 1, pageSize: 10, clinicianInfo._id})
+let patientList = await ajax({pageNum: 1, pageSize: 10, clinicianInfo})
 let healthDataList = await ajax({});
 patientList.map((item)=>{
     let id = item._id;
