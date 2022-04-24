@@ -27,13 +27,13 @@
 
 // // to display current date
 
-// var today = new Date();
-// var day = today.getDay();
-// var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
-// var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();    
-// // var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-// // var dateTime = date+' '+time;
-// document.getElementById("displayDate").innerHTML = date + ', ' + daylist[day];
+var today = new Date();
+var day = today.getDay();
+var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
+var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();    
+// var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+// var dateTime = date+' '+time;
+document.getElementById("displayDate").innerHTML = date + ', ' + daylist[day];
 
 
 import recordItemGenerator from "/js/recordItemGenerator.js"
