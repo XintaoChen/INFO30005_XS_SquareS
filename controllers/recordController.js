@@ -87,27 +87,35 @@ const getCommentList = async (req, res) => {
   }
 };
 
-const postUpdateRecordValue = async (req, res) => {
-  
-  const newRecord = new Record({
-    patientId: req.body.patientId,
-    healthDataId: req.body.patientId,
-    clinicianId: req.body.patientId,
-    timestamps: req.body.timestamps,
-    value: req.body.value,
-    comment: req.body.comment
-  }) 
-
+const postUpdateRecord = async (req, res) => {
   try {
-    const savedRecord = await post.save()
-    res.json({
-      status: 0,
-      data: savedRecord
-    });
+
+    const newRecord = new Record({
+      patientId: req.body.patientId,
+      healthDataId: req.body.patientId,
+      clinicianId: req.body.patientId,
+      timestamps: req.body.timestamps,
+      value: req.body.value,
+      comment: req.body.comment
+    })
+
+    newRecord.save((err)=>{
+      if(err){
+        res.json({
+          status:1,
+          msg:err
+        })
+      } else{
+        res.json({
+          status: 0,
+        });
+      }
+    })
+    
   } catch (error) {
     console.log(err)
   }
 
 }
 
-module.exports = { getOneRecordBypatientId, getCommentList, postUpdateRecordValue };
+module.exports = { getOneRecordBypatientId, getCommentList, postUpdateRecord };

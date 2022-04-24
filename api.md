@@ -8,8 +8,7 @@
 4. getCommentList
 5. getDataTypesByPatientId
 6. getOneRecordBypatientId
-7. postUpdateRecordValue
-8. postUpdateComment
+7. postUpdateRecord
 
 ## postPatientLogin
 
@@ -243,7 +242,7 @@ get
 
 ### Request Url
 
-http://localhost:3000/record/updateValue
+http://localhost:3000/record/update
 
 ### Request method
 
@@ -255,7 +254,7 @@ post
 | :--------- | :---------: | :-------: | :-------------- |
 | patientId  |   Y         | string    | patient id      |
 | date       |   Y         | string    | recording date  |
-| typeId     |   Y         | string    | data type id    |
+| healthDataId     |   Y         | string    | data type id    |
 | value      |   Y         | number    | value of data   |
 | comment    |   N         | string    | comment of data |
 

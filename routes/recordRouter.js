@@ -14,8 +14,8 @@ recordRouter.get("/comments", (req, res) => {
 });
 
 // insert new record into collection
-recordRouter.post("/addRecord", async (req, res) => {
-  recordController.postUpdateRecordValue(req, res);
+recordRouter.post("/update", async (req, res) => {
+  recordController.postUpdateRecord(req, res);
 });
 
 module.exports = recordRouter;
