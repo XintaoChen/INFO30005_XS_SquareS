@@ -1,6 +1,7 @@
 const Record = require("../models/record");
 const HealthData = require("../models/healthData");
 const Patient = require("../models/patient");
+const { post } = require("../routes/patientRouter");
 
 const getOneRecordBypatientId = async (req, res) => {
   try {
@@ -86,4 +87,27 @@ const getCommentList = async (req, res) => {
   }
 };
 
-module.exports = { getOneRecordBypatientId, getCommentList };
+const postUpdateRecordValue = async (req, res) => {
+  
+  const newRecord = new Record({
+    patientId: req.body.patientId,
+    healthDataId: req.body.patientId,
+    clinicianId: req.body.patientId,
+    timestamps: req.body.timestamps,
+    value: req.body.value,
+    comment: req.body.comment
+  }) 
+
+  try {
+    const savedRecord = await post.save()
+    res.json({
+      status: 0,
+      data: savedRecord
+    });
+  } catch (error) {
+    console.log(err)
+  }
+
+}
+
+module.exports = { getOneRecordBypatientId, getCommentList, postUpdateRecordValue };
