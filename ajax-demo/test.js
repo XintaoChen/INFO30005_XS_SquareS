@@ -1,14 +1,8 @@
-import ajax from "../api/ajax.js";
+import {getPatientList} from "../api";
 
 const test = async () => {
   // send request
-  var patientList = await ajax({
-    path: "/patient/getList",
-    method: "get",
-    data: {
-      clinicianId: "6254e9b4bcd6f0a12a5e5eda",
-    },
-  });
+  var patientList = await getPatientList("6254e9b4bcd6f0a12a5e5eda");
 
   // check the status
   if (patientList.status === 0) {
