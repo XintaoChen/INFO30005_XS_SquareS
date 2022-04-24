@@ -1,27 +1,14 @@
 // const todayHealthData = require('../models/patientHealthDataTodayModel')
 const todayHealthData = require('../models/patient')
 
-// const getTodayData = async (req, res, next) => {
-//     try{
-//         const tempData = await todayHealthData.findById(req.params.id).lean()
-//         if (tempData) {
-//             console.log(JSON.stringify(tempData))  
-//             res.render('patientDashboard.hbs', { todayHealthData: tempData })
-//         } else {
-//             res.render('noRecords.hbs')
-//         }
-//     }catch(err){
-//         return next(err)
-//     }
-// }
-
 const mongoose = require("mongoose");
 const patientModel = require("../models/patient");
 const recordModel = require("../models/record");
 
-const getTodayData = async (req, res, next) => {
+const getTodayDataPatient = async (req, res, next) => {
     try{
         let tempData = {}
+        //get all required data from database
         patientModel.aggregate([
             {
                 $lookup:{
@@ -51,6 +38,7 @@ const getTodayData = async (req, res, next) => {
             tempData = docs[0]
 
             if(tempData){
+                //manipulate data to satisfy .hbs page data logic
                 for(i=0; i<tempData.recordInfo.length; i++){
                     for(j=0; j<tempData.recordingData.length; j++){
                         if(tempData.recordInfo[i].healthDataId.toString()== tempData.recordingData[j].healthDataId.toString()){
@@ -72,5 +60,5 @@ const getTodayData = async (req, res, next) => {
 }
 
 module.exports = {
-    getTodayData,
+    getTodayDataPatient,
 }
