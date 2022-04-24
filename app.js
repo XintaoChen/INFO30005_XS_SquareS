@@ -30,7 +30,7 @@ const peopleRouter = require('./routes/peopleRouter')
 const demoRouter = require('./routes/demoRouter')
 
 const patientRouter = require('./routes/patientRouter')
-const patientRouter2 = require('./routes/patientRouter-2')
+// const patientRouter2 = require('./routes/patientRouter-2')
 const recordRouter = require('./routes/recordRouter')
 
 const { patientDashboardRouter } = require('./routes/patientDashboardRouter')
@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 app.use('/people', peopleRouter)
 
 app.use('/patient', patientRouter)
-app.use('/patient-2', patientRouter2)
+// app.use('/patient-2', patientRouter2)
 
 app.use('/today', patientDashboardRouter)
 
@@ -56,6 +56,9 @@ app.use("/record", recordRouter)
 app.get('/', (req, res) => {
     // res.send('Our demo app is working!')
     res.render('home.hbs')
+})
+app.get('/ajax',(req,res)=>{
+    res.render('test.hbs')
 })
 app.get('/home', (req, res) => {
     // res.send('Our demo app is working!')
