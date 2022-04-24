@@ -16,7 +16,14 @@ export default function generateRecordItem() {
       <button class='save-btn'><i class='icon-save'></i></button>\
     "
     editBtn.onclick = (e) => {
-      let commentInput = e.target.parentElement.parentElement.previousElementSibling.children[1];
+      let inputs = e.target.parentElement.parentElement.previousElementSibling;
+      let valueInput = inputs.children[0];
+      if(!valueInput.getAttribute("disabled")){
+        valueInput.setAttribute("disabled", "true")
+      } else {
+        valueInput.removeAttribute("disabled")
+      }
+      let commentInput = inputs.children[1];
       if(commentInput.classList.contains("pdb-hidden")){
         commentInput.classList.remove("pdb-hidden")
       }else{
