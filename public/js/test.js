@@ -9,7 +9,6 @@ const test = async () => {
       clinicianId: "6254e9b4bcd6f0a12a5e5eda",
     },
   });
-
   // check the status
   if (patientList.status === 0) {
     

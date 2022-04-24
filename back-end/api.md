@@ -8,8 +8,9 @@
 4. getCommentList
 5. getDataTypesByPatientId
 6. getOneRecordBypatientId
-7. postUpdateRecordValue
-8. postUpdateComment
+7. postUpdateRecord
+8. getHealthData
+
 
 ## postPatientLogin
 
@@ -257,6 +258,7 @@ post
 | date       |   Y         | string    | recording date |
 | typeId     |   Y         | string    | data type id   |
 | value      |   Y         | number    | value of data  |
+| comment    |   Y         | number    | comment of data|
 
 ### Return Value
 
@@ -265,32 +267,35 @@ post
   {
     "status":0
   }
-
 ```
 
-## postUpdateComment
+## getHealthData
 
 ### Request Url
 
-http://localhost:3000/record/updateComment
+http://localhost:3000/healthData/get
 
 ### Request method
 
-post
+get
 
 ### Parameters
 
-| Parameters | is required | Data Type | Description     |
-| :--------- | :---------: | :-------: | :-------------- |
-| recordId   |   Y         | string    | record id       |
-| comment    |   Y         | string    | comment of data |
+| Parameters | is required | Data Type | Description    |
+| :--------- | :---------: | :-------: | :------------- |
 
 ### Return Value
 
 ```json
   success:
   {
-    "status":0
+    "status":0,
+    "data":[
+      {
+        "_id":"xxx",
+        "dataName":"xxx",
+        "unit":"xxx"
+      }
+    ]
   }
-
 ```
