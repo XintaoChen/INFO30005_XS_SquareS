@@ -26,6 +26,7 @@ const patientSchema = new mongoose.Schema({
       },
       upperBound: Number,
       lowerBound: Number,
+      isRequired: Boolean
     },
   ],
   profilePhoto: Buffer,
