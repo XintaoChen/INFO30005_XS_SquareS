@@ -253,8 +253,8 @@ post
 | Parameters | is required | Data Type | Description     |
 | :--------- | :---------: | :-------: | :-------------- |
 | patientId  |   Y         | string    | patient id      |
-| date       |   Y         | string    | recording date  |
-| healthDataId     |   Y         | string    | data type id    |
+| clinicianId |   Y        | string    | clinician id    |
+| healthDataId |   Y       | string    | data type id    |
 | value      |   Y         | number    | value of data   |
 | comment    |   N         | string    | comment of data |
 
@@ -264,6 +264,11 @@ post
   success:
   {
     "status":0
+  }
+  fail:
+  {
+    "status":1,
+    "msg":"err"
   }
 
 ```

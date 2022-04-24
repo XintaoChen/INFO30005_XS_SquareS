@@ -12,6 +12,7 @@ function formatParams(data) {
   arr.push(("v=" + Math.random()).replace(".", ""));
   return arr.join("&");
 }
+
 export default function ajax(options) {
   options = options || {};
   options.baseUrl = options.baseUrl || "http://localhost:4000";
@@ -41,6 +42,7 @@ export default function ajax(options) {
         xhr.abort();
       }
     }, options.timeout);
+    
     xhr.onreadystatechange = function () {
       if (xhr.readyState == 4) {
         let status = xhr.status;

@@ -1,7 +1,6 @@
 const Record = require("../models/record");
 const HealthData = require("../models/healthData");
 const Patient = require("../models/patient");
-const { post } = require("../routes/patientRouter");
 
 const getOneRecordBypatientId = async (req, res) => {
   try {
@@ -90,14 +89,16 @@ const getCommentList = async (req, res) => {
 const postUpdateRecord = async (req, res) => {
   try {
 
+    const {patientId, healthDataId, clinicianId, value, comment} = req.body;
+
     const newRecord = new Record({
-      patientId: req.body.patientId,
-      healthDataId: req.body.patientId,
-      clinicianId: req.body.patientId,
-      timestamps: req.body.timestamps,
-      value: req.body.value,
-      comment: req.body.comment
-    })
+      patientId: patientId,
+      healthDataId: healthDataId,
+      clinicianId: clinicianId,
+      date: Date.now(),
+      value: value,
+      comment: comment
+    }) 
 
     newRecord.save((err)=>{
       if(err){
@@ -107,12 +108,14 @@ const postUpdateRecord = async (req, res) => {
         })
       } else{
         res.json({
-          status: 0,
+          status: 0
         });
       }
     })
+
     
-  } catch (error) {
+
+  } catch (err) {
     console.log(err)
   }
 
