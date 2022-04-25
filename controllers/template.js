@@ -16,7 +16,7 @@ patientList.map((item)=>{
         return {
             healthDataId:item._id,
             lowerBound: lowerBound,
-            upperBound:upperBound,
+            upperBound: upperBound,
             unit: item.unit,
             isRequired: Boolean(upperBound)
         }
