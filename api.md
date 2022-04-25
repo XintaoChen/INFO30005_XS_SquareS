@@ -9,6 +9,9 @@
 5. getDataTypesByPatientId
 6. getOneRecordBypatientId
 7. postUpdateRecord
+8. getPatientInfo
+9. getClinicianInfo
+10. getHealthDataList
 
 ## postPatientLogin
 
@@ -269,6 +272,94 @@ post
   {
     "status":1,
     "msg":"err"
+  }
+
+```
+
+## getPatientInfo
+
+### Request Url
+
+http://localhost:4000/patient/getPatientInfo
+
+### Request method
+
+get
+
+### Parameters
+
+| Parameters | is required | Data Type | Description     |
+| :--------- | :---------: | :-------: | :-------------- |
+| patientId  |   Y         | string    | patient id      |
+
+### Return Value
+
+```json
+  success:
+  {
+    "status":0,
+    "data": {
+    "_id": ,
+    "emailAddress": ,
+    "password": ,
+    "nameFamily": ,
+    "nameGiven": ,
+    "dateOfBirth": ,
+    "clinicianId": ,
+    "phoneNumber": ,
+    "homeAddress": ,
+    "profileName": ,
+    "recordingData":
+    }
+  }
+  
+  fail:
+  {
+    "status":1,
+    "msg":"Error! No data found!"
+  }
+
+```
+
+## getClinicianInfo
+
+### Request Url
+
+http://localhost:4000/clinician/getClinicianInfo
+
+### Request method
+
+get
+
+### Parameters
+
+| Parameters | is required | Data Type | Description     |
+| :--------- | :---------: | :-------: | :-------------- |
+| clinicianId  |   Y         | string    | clinician id      |
+
+### Return Value
+
+```json
+  success:
+  {
+    "status":0,
+    "data": {
+    "_id": ,
+    "emailAddress": ,
+    "password": ,
+    "nameFamily": ,
+    "nameGiven": ,
+    "clinicNumber": ,
+    "clinicAddress": ,
+    "profilePhoto": ,
+    "brietTextBio":
+    }
+  }
+  
+  fail:
+  {
+    "status":1,
+    "msg":"Error! No data found!"
   }
 
 ```

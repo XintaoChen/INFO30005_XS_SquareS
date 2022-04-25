@@ -2,6 +2,7 @@ const Record = require("../models/record");
 const HealthData = require("../models/healthData");
 const Patient = require("../models/patient");
 
+
 const getOneRecordBypatientId = async (req, res) => {
   try {
     const { patientId, date, healthDataId } = req.query;
