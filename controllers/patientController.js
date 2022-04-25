@@ -66,4 +66,24 @@ const getDataTypesByPatientId = async (req, res) => {
   }
 };
 
-module.exports = { getDataTypesByPatientId, getPatientList };
+const getPatientInfo = async (req, res) => {
+  try { 
+    const patientId = req.query._id;
+    
+    const patient = await Patient.findOne(patientId);
+    if (!patient) {
+      res.json({
+        status: 1,
+        msg: "Error! No data found!",
+      });
+    }
+    res.json({
+      status:0,
+      data: patient
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { getDataTypesByPatientId, getPatientList, getPatientInfo };

@@ -13,9 +13,12 @@ require("./models/db");
 // link to routes
 const patientRouter = require("./routes/patientRouter");
 const recordRouter = require("./routes/recordRouter");
+const clinicianRouter = require("./routes/clinicianRouter");
 
 app.use("/patient", patientRouter);
 app.use("/record", recordRouter);
+app.use("/clinician", clinicianRouter);
+
 // set up server
 app.listen(4000, (err) => {
   if (!err) console.log("server set up. send request to http://localhost:4000");
