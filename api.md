@@ -363,3 +363,38 @@ get
   }
 
 ```
+## getHealthDataList
+
+### Request Url
+
+http://localhost:4000/healthData/getHealthDataList
+
+### Request method
+
+get
+
+### Parameters
+
+| Parameters | is required | Data Type | Description     |
+| :--------- | :---------: | :-------: | :-------------- |
+
+### Return Value
+
+```json
+  success:
+  {
+    "status":0,
+    "data": {
+    "_id": ,
+    "dataName": ,
+    "unit": 
+    }
+  }
+  
+  fail:
+  {
+    "status":1,
+    "msg":"Error! No data found!"
+  }
+
+```
