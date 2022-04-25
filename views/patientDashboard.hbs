@@ -22,12 +22,29 @@
         </div>
         <div class="record-area">
             {{#if (hData this.recordingData.[0].isRequired)}}
-            <div class="record-item">
+            <div class="record-item  form-group">
                 <div class="item">Blood Glucose Level</div>
                 <div class="item-down">
-                    <div class="value">{{this.recordingData.[0].value}}</div>
-                    <div class="edit">
-                    </div>
+                    <form action="/today/add" method="POST" style="display: contents;">
+                        <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
+                        <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
+                        <input type="text" class="form-control" name="healthDataId" value="625576a5bcd6f0a12a5e5fa6" style="display:none">
+                        <input type="text" class="form-control" name="comment" value="default comment" style="display:none">
+                        <div class="value">
+                            {{#if this.recordingData.[0].value}}
+                            <input type="text" class="form-control" name="value" placeholder="{{this.recordingData.[0].value}}" disabled>
+                            {{else}}
+                            <input type="text" class="form-control" name="value" placeholder="">
+                            {{/if}}
+                        </div>
+                        <div class="edit">
+                            {{#if this.recordingData.[0].value}}
+                            <button type="submit" class="btn btn-primary disabled" disabled></button>
+                            {{else}}
+                            <button type="submit" class="btn btn-primary enabled"></button>
+                            {{/if}}
+                        </div>
+                    </form>
                 </div>
             </div>
             {{else}}
@@ -41,11 +58,29 @@
             </div>
             {{/if}}
             {{#if (hData this.recordingData.[1].isRequired)}}
-            <div class="record-item">
+            <div class="record-item  form-group">
                 <div class="item">Weight</div>
                 <div class="item-down">
-                    <div class="value">{{this.recordingData.[1].value}}</div>
-                    <div class="edit"></div>
+                    <form action="/today/add" method="POST" style="display: contents;">
+                        <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
+                        <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
+                        <input type="text" class="form-control" name="healthDataId" value="625576a8bcd6f0a12a5e5fa7" style="display:none">
+                        <input type="text" class="form-control" name="comment" value="default comment" style="display:none">
+                        <div class="value">
+                            {{#if this.recordingData.[1].value}}
+                            <input type="text" class="form-control" name="value" placeholder="{{this.recordingData.[1].value}}" disabled>
+                            {{else}}
+                            <input type="text" class="form-control" name="value" placeholder="">
+                            {{/if}}
+                        </div>
+                        <div class="edit">
+                            {{#if this.recordingData.[1].value}}
+                            <button type="submit" class="btn btn-primary disabled" disabled></button>
+                            {{else}}
+                            <button type="submit" class="btn btn-primary enabled"></button>
+                            {{/if}}                       
+                        </div>
+                    </form>
                 </div>
             </div>
             {{else}}
@@ -58,11 +93,29 @@
             </div>
             {{/if}}
             {{#if (hData this.recordingData.[2].isRequired)}}
-            <div class="record-item">
+            <div class="record-item  form-group">
                 <div class="item">Insulin Doses</div>
                 <div class="item-down">
-                    <div class="value">{{this.recordingData.[2].value}}</div>
-                    <div class="edit"></div>
+                    <form action="/today/add" method="POST" style="display: contents;">
+                        <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
+                        <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
+                        <input type="text" class="form-control" name="healthDataId" value="625576acbcd6f0a12a5e5fa8" style="display:none">
+                        <input type="text" class="form-control" name="comment" value="default comment" style="display:none">
+                        <div class="value">
+                            {{#if this.recordingData.[2].value}}
+                            <input type="text" class="form-control" name="value" placeholder="{{this.recordingData.[2].value}}" disabled>
+                            {{else}}
+                            <input type="text" class="form-control" name="value" placeholder="">
+                            {{/if}}
+                        </div>
+                        <div class="edit">
+                            {{#if this.recordingData.[2].value}}
+                            <button type="submit" class="btn btn-primary disabled" disabled></button>
+                            {{else}}
+                            <button type="submit" class="btn btn-primary enabled"></button>
+                            {{/if}}                        
+                        </div>
+                    </form>
                 </div>
             </div>
             {{else}}
@@ -75,11 +128,29 @@
             </div>
             {{/if}}
             {{#if (hData this.recordingData.[3].isRequired)}}
-            <div class="record-item">
+            <div class="record-item  form-group">
                 <div class="item">Step Counts</div>
                 <div class="item-down">
-                    <div class="value">{{this.recordingData.[3].value}}</div>
-                    <div class="edit"></div>
+                    <form action="/today/add" method="POST" style="display: contents;">
+                        <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
+                        <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
+                        <input type="text" class="form-control" name="healthDataId" value="625576b0bcd6f0a12a5e5fa9" style="display:none">
+                        <input type="text" class="form-control" name="comment" value="default comment" style="display:none">
+                        <div class="value">
+                            {{#if this.recordingData.[3].value}}
+                            <input type="text" class="form-control" name="value" placeholder="{{this.recordingData.[3].value}}" disabled>
+                            {{else}}
+                            <input type="text" class="form-control" name="value" placeholder="">
+                            {{/if}}
+                        </div>
+                        <div class="edit">
+                            {{#if this.recordingData.[3].value}}
+                            <button type="submit" class="btn btn-primary disabled" disabled></button>
+                            {{else}}
+                            <button type="submit" class="btn btn-primary enabled"></button>
+                            {{/if}}                        
+                        </div>
+                    </form>
                 </div>
             </div>
             {{else}}

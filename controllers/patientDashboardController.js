@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const patientModel = require("../models/patient");
 const recordModel = require("../models/record");
 
+
+
 const getTodayDataPatient = async (req, res, next) => {
     try{
         let tempData = {}
@@ -59,6 +61,23 @@ const getTodayDataPatient = async (req, res, next) => {
     }
 }
 
+const postTodayDataPatient= (req) => {
+    var Record = require("../models/record")
+    var tempRecord = new Record({
+        "comment": req.comment,
+        "date": "2022-04-24T13:00:00.000+00:00",
+        "value": req.value,
+        "patientId": req.patientId,
+        "healthDataId": req.healthDataId,
+        "clinicianId": req.clinicianId
+    })
+    tempRecord.save(function (err, res) {
+        if (err) return console.error(err);
+        console.log(res.value + " saved to db.");
+      });
+}
+
 module.exports = {
     getTodayDataPatient,
+    postTodayDataPatient
 }

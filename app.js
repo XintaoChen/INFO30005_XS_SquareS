@@ -2,6 +2,9 @@
 const express = require('express')
 // Set your app up as an express app
 const app = express()
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.use(express.static('public'))
 // set up handlebars view engine
@@ -79,7 +82,7 @@ app.get('/aboutUs', (req, res) => {
 // const demoRouter = require('./routes/demoRouter')
 
 // the demo routes are added to the end of the '/demo-management' path
-app.use('/demo-management', demoRouter)
+// app.use('/demo-management', demoRouter)
 
 
 // Tells the app to listen on port 3000 and logs that information to the

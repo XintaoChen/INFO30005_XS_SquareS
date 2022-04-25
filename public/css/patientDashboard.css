@@ -195,6 +195,34 @@
     .board-item-right{
         margin-right: 10px;
     }
+
+    .item-down .form-control{
+        width: 100%;
+        line-height: 40px;
+        background: transparent;
+        border: none;
+        font-size: 18px;
+    }
+    .item-down .enabled{
+        height: 40px;
+        width: 40px;
+        background-color: tomato;
+        border: none;
+    }
+    .item-down .disabled{
+        height: 40px;
+        width: 40px;
+        border: none;
+    }
+
+    .item-down button:hover{
+        background-color: rgb(251, 136, 116);
+    }
+    .item-down button:active{
+        background-color: rgb(203, 98, 80);
+        border:#5C4435;
+        border-width: 1px;
+    }
 }
 
 @media screen and (min-width: 1366px) {
