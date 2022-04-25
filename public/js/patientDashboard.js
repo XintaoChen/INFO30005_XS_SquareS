@@ -27,6 +27,9 @@
 
 // // to display current date
 
+import recordItemGenerator from "/js/recordItemGenerator.js"
+import "/js/completionRateChartPlugin.js"
+
 var today = new Date();
 var day = today.getDay();
 var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
@@ -36,8 +39,7 @@ var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
 document.getElementById("displayDate").innerHTML = date + ', ' + daylist[day];
 
 
-import recordItemGenerator from "/js/recordItemGenerator.js"
-import "/js/completionRateChartPlugin.js"
+
 
 window.onload = function () {
     CompletionRateChartPlugin("completion-container", 66)
