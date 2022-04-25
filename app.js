@@ -14,10 +14,12 @@ require("./models/db");
 const patientRouter = require("./routes/patientRouter");
 const recordRouter = require("./routes/recordRouter");
 const clinicianRouter = require("./routes/clinicianRouter");
+const healthDataRouter = require("./routes/healthDataRouter");
 
 app.use("/patient", patientRouter);
 app.use("/record", recordRouter);
 app.use("/clinician", clinicianRouter);
+app.use("/healthData", healthDataRouter);
 
 // set up server
 app.listen(4000, (err) => {
