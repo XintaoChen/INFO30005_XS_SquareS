@@ -1,0 +1,53 @@
+{{css "/css/singlePatient.css"}}
+
+{{#with todayPatientData}}
+<div class="banner">
+    <div class="left"> < back </div>
+    <div class="right">
+        <div style="font-weight: 800;">Support Message: </div>
+        <div class="message">"{{#if this.supportMessage}}{{this.supportMessage}}{{else}}default support message{{/if}}"</div>
+    </div>
+</div>
+<div class="single-patient">
+    <div class="left-page">
+        <h4>Clinician Name: {{this.nameGiven}} {{this.nameFamily}}</h4>
+        <p>Patients Healthdata Today:</p>
+        <div class="data-record">
+            <div class="table-title">
+                <table>
+                    <tr class="first-row">
+                        <td class="date">Name</td>
+                        <td class="bgLevel">Blood Glucose Level (mmol/L)</td>
+                        <td class="weight">Weight (kg)</td>
+                        <td class="insulinTaken">Insulin Taken (dose)</td>
+                        <td class="exercise">Exercise(step count)</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-data">
+                <table>
+                    {{#each this.patientList}}
+                        <tr class="data-row">
+                            <td class="date">{{this.nameGiven}} {{this.nameFamily}}{{this.value}}</td>
+                            <td class="bgLevel">{{#if (hData this.recordingData.[0].isRequired)}}{{#if this.recordingData.[0].value}}{{this.recordingData.[0].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
+                            <td class="weight">{{#if (hData this.recordingData.[1].isRequired)}}{{#if this.recordingData.[1].value}}{{this.recordingData.[1].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
+                            <td class="insulinTaken">{{#if (hData this.recordingData.[2].isRequired)}}{{#if this.recordingData.[2].value}}{{this.recordingData.[2].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
+                            <td class="exercise">{{#if (hData this.recordingData.[3].isRequired)}}{{#if this.recordingData.[3].value}}{{this.recordingData.[3].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
+                        </tr>
+                    {{/each}}
+            </table>
+            </div>
+            
+        </div>
+    </div>
+    <div class="right-page">
+        <div class="data-setting">
+
+        </div>
+        <div class="notes">
+
+        </div>
+    </div>
+</div>
+
+{{/with}}

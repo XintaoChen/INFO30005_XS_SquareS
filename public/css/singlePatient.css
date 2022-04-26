@@ -1,8 +1,9 @@
 @media screen and (min-width: 1366px) {
-    .content{
+    .content {
         padding: 40px 0 0;
     }
-    .banner{
+
+    .banner {
         position: absolute;
         top: 0;
         width: 100%;
@@ -10,21 +11,22 @@
         display: flex;
         flex-direction: row;
         font-size: 30px;
-      }
+    }
 
-    .banner .left{
+    .banner .left {
         width: 10%;
         background-color: #867167;
         text-align: center;
         line-height: 60px;
         color: #FFFFFF;
-    } 
-    .banner .left:hover{
-    cursor: pointer;
-    background-color: #BFA38A;
     }
 
-    .banner .right{
+    .banner .left:hover {
+        cursor: pointer;
+        background-color: #BFA38A;
+    }
+
+    .banner .right {
         width: 90%;
         background-color: #E3D1BD;
         text-align: left;
@@ -34,87 +36,99 @@
         display: flex;
         flex-direction: row;
     }
-    .banner .right .message{
-    color: #867167;
-    padding-left: 15px;
+
+    .banner .right .message {
+        color: #867167;
+        padding-left: 15px;
     }
 
-    .single-patient{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 900px;
-    padding-top: 20px;
+    .single-patient {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 900px;
+        padding-top: 20px;
     }
-    .left-page{
+
+    .left-page {
         display: flex;
         flex-direction: column;
         width: 60%;
     }
-    .left-page .info{
-    /* background-color: rgb(168, 157, 233); */
-    height: 250px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+
+    .left-page .info {
+        /* background-color: rgb(168, 157, 233); */
+        height: 250px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
     }
-    .left-page .info .avatar{
+
+    .left-page .info .avatar {
         background-image: url('/img/avatar.png');
         width: 220px;
         height: 220px;
         border-radius: 110px;
         margin-left: 15px;
     }
-    .left-page .info .info-text{
+
+    .left-page .info .info-text {
         display: flex;
         flex-direction: column;
         padding-left: 15px;
     }
-    .left-page .info .info-text h1{
+
+    .left-page .info .info-text h1 {
         font-size: 36px;
         font-weight: bolder;
         color: #A09E9D;
         padding-bottom: 10px;
     }
-    .left-page .info .info-text p{
+
+    .left-page .info .info-text p {
         font-size: 18px;
         line-height: 2;
     }
 
-    .left-page .data-record{
-    /* background-color: rgb(202, 221, 31); */
-    height: 650px;
+    .left-page .data-record {
+        /* background-color: rgb(202, 221, 31); */
+        height: 650px;
     }
 
-    .right-page{
+    .right-page {
         display: flex;
         flex-direction: column;
         width: 40%;
     }
-    .right-page .data-setting{
-            background-color: aqua;
-            height: 400px;
+
+    .right-page .data-setting {
+        background-color: aqua;
+        height: 400px;
     }
-    .right-page    .notes{
+
+    .right-page .notes {
         background-color: rgb(119, 160, 33);
         height: 500px;
     }
 
 
-    .data-record{
+    .data-record {
         margin: 0 0 5px 0;
     }
-    .data-record table{
+
+    .data-record table {
         width: 100%;
     }
-    .table-title{
+
+    .table-title {
         width: 97%;
         height: 50px;
         margin: auto;
         background-color: #867167;
         border-radius: 15px 15px 0 0;
     }
-    .table-data{
+
+    .table-data {
         width: 97%;
         height: 600px;
         margin: auto;
@@ -127,7 +141,7 @@
         margin-bottom: 5px;
     }
 
-    .first-row{
+    .first-row {
         height: 50px;
         margin: auto;
         color: #FFFFFF;
@@ -139,7 +153,8 @@
         justify-content: space-around;
         text-align: center;
     }
-    .data-row{
+
+    .data-row {
         height: 50px;
         margin: auto;
         font-size: 18px;
@@ -150,22 +165,27 @@
         text-align: center;
         background-color: #A09E9D;
     }
+
     /* .data-row td{
         text-align: center;
     } */
-    td.date{
+    td.date {
         width: 130px;
     }
-    td.bgLevel{
+
+    td.bgLevel {
         width: 270px;
     }
-    td.weight{
+
+    td.weight {
         width: 135px;
     }
-    td.insulinTaken{
+
+    td.insulinTaken {
         width: 200px;
     }
-    td.exercise{
+
+    td.exercise {
         width: 200px;
     }
 }

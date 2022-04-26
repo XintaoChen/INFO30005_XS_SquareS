@@ -24,13 +24,19 @@ var hbs = exphbs.create({
             cssList.push(str);
           }
           this.cssList = cssList.concat();
-      }
+      },
+        hData1: (x) => x == "625576a5bcd6f0a12a5e5fa6",
+        hData2: (x) => x == "625576a8bcd6f0a12a5e5fa7",
+        hData3: (x) => x == "625576acbcd6f0a12a5e5fa8",
+        hData4: (x) => x == "625576b0bcd6f0a12a5e5fa9",
+        hData: (x) => x == true
     },
   })
 app.engine(
     'hbs',
     hbs.engine
 )
+require("./models/db");
 
 app.set('view engine', 'hbs')
 
@@ -40,6 +46,8 @@ const demoRouter = require('./routes/demoRouter')
 
 const patientRouter = require('./routes/patientRouter')
 const { patientDashboardRouter } = require('./routes/patientDashboardRouter')
+// const recordRouter = require('./routes/recordRouter')
+const clinicianRouter = require('./routes/clinicianDashboardRouter')
 
 // middleware to log a message each time a request arrives at the server - handy for debugging
 app.use((req, res, next) => {
@@ -53,6 +61,9 @@ app.use('/people', peopleRouter)
 app.use('/patient', patientRouter)
 
 app.use('/today', patientDashboardRouter)
+
+app.use('/clinician', clinicianRouter)
+// app.use("/record", recordRouter)
 
 // Tells the app to send the string: "Our demo app is working!" when you
 // hit the '/' endpoint.

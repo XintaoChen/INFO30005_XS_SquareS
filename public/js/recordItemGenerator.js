@@ -72,9 +72,23 @@ export default function generateRecordItem() {
     document.getElementById(containerId).appendChild(recordItemStructure);
   }
 
+  let generateInvalid = (itemName,containerId) =>{
+    let recordItemStructure = init();
+    let id = itemName.replace(/[ ]/g, "-");
+    recordItemStructure.id=id;
+    recordItemStructure.children[0].innerHTML = itemName;
+    recordItemStructure.children[0].style.backgroundColor = "red"
+    recordItemStructure.children[1].innerHTML = "\
+      <input type='number' placeholder='Not in required' class='value' disabled='true'>\
+    "
+    recordItemStructure.children[2].remove()
+    document.getElementById(containerId).appendChild(recordItemStructure);
+  }
+
   return {
     generateInput,
-    generateDiv
+    generateDiv,
+    generateInvalid
   }
 }
 
