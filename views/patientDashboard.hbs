@@ -1,54 +1,38 @@
-<head>
+{{!-- <head>
     <link rel="stylesheet" href="/css/patientDashboard.css" />
-</head>
-<div class="banner">
-    <div class="support-message">Welcome Sunny! 🏠</div>
-    <div class="clinician-icon">
-        <i>🙋🏽</i>
-        <div class="red-dot"></div>
-    </div>
+    <link rel="stylesheet" href="/css/completionRateChartPlugin.css">
+</head> --}}
+{{css '/css/patientDashboard.css'}}
+{{css '/css/completionRateChartPlugin.css'}}
+<div class="welcome-banner">
+    <div class="welcome-message">Welcome Pat the Patient!<i class="iconfont">&#xe6bf;</i></div>
+    <button class="support-msg-btn">
+        <i class="iconfont">&#xe616;</i>
+        <span class="unread-status"></span>
+    </button>
 </div>
 <div class="today-content">
     <div class="today-records">
-        <div class="records-title">
+        <div class="records-heading">
             <div class="text">
-                <div>Today's Records:</div>
-                <div>18/04/2022</div>
+                <div>Today's records</div>
+                <div id="displayDate"></div>
             </div>
-            <div class="completion">
-                <p style="margin: auto;">66%</p>
-            </div>
+            <div id="completion-container" style="width: 100px;height: 100px; position: relative;"></div>
         </div>
-        <div class="record-area">
-            <div class="record-item">
-                <div class="item">Blood Glucose Level</div>
-                <div class="value"></div>
-                <div class="edit"></div>
-            </div>
-            <div class="record-item">
-                <div class="item">Weight</div>
-                <div class="value"></div>
-                <div class="edit"></div>
-            </div>
-            <div class="record-item">
-                <div class="item">Insulin Doses</div>
-                <div class="value"></div>
-                <div class="edit"></div>
-            </div>
-            <div class="record-item">
-                <div class="item">Step Counts</div>
-                <div class="value"></div>
-                <div class="edit"></div>
-            </div>
+        <div class="record-area" id="record-area">
+            
+            
+        </div>
+         <div class="more-data">
+            View more data
         </div>
     </div>
-    <div class="more-data">
-        View More Data
-    </div>
+    <div class="dashboard-middle-line"></div>
     <div class="leader-board">
         <div class="board-title">
             <div class="text">
-                <div>Today's Records:</div>
+                <div>Leaderboard:</div>
                 <div>18/04/2022</div>
             </div>
         </div>
@@ -96,3 +80,7 @@
         </div>
     </div>
 </div>
+
+{{!-- link javascript --}}
+<script type="module" src="/js/patientDashboard.js"></script>
+

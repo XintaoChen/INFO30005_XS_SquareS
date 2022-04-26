@@ -81,6 +81,6 @@ app.use('/demo-management', demoRouter)
 
 // Tells the app to listen on port 3000 and logs that information to the
 // console.
-app.listen(process.env.PORT || 3001, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('Demo app is running!')
 })

@@ -7,6 +7,7 @@ const getTodayData = (req, res) => {
     // }else{
     //     res.render('noRecords.hbs')
     // }
+    
     res.render('patientDashboard.hbs')
 }
 
