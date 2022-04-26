@@ -19,7 +19,7 @@ const getTodayDataPatient = async (req, res, next) => {
                         { $match: { 
                             date: {
                                 // change this to current date
-                                $gte: new Date("2022,04,24"),
+                                $gte: new Date("2022,4,24"),
                                 $lt: new Date("2022,4,25")
                             },
                          } }
@@ -45,7 +45,7 @@ const getTodayDataPatient = async (req, res, next) => {
                     for(j=0; j<tempData.recordingData.length; j++){
                         if(tempData.recordInfo[i].healthDataId.toString()== tempData.recordingData[j].healthDataId.toString()){
                             tempData.recordingData[j].comment = tempData.recordInfo[i].comment
-                            tempData.recordingData[j].date = tempData.recordInfo[i].date
+                            tempData.recordingData[j].time = tempData.recordInfo[i].date
                             tempData.recordingData[j].value = tempData.recordInfo[i].value
                         }
                     }

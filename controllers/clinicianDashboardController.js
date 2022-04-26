@@ -21,7 +21,11 @@ const getTodayDataClinician = async (req, res, next) => {
                 $match: {
                     _id: mongoose.Types.ObjectId(req.params.id),
                 }
-            },{
+            }
+            ,{
+                $skip: 0
+            }
+            ,{
                 $unwind: '$patient' //  You have to use $unwind on an array if you want to use a field in the subdocument array to further usage with `$lookup` 
               },
               {
@@ -33,8 +37,9 @@ const getTodayDataClinician = async (req, res, next) => {
                                 // change this to current date
                                 $gte: new Date("2022,04,24"),
                                 $lt: new Date("2022,04,25")
-                            },
-                         } }
+                            }
+                         }
+                        }
                      ],
                   localField: "patient._id",
                   foreignField: "patientId",
@@ -70,8 +75,6 @@ const getTodayDataClinician = async (req, res, next) => {
                         }
                     }
                 }
-
-
                 console.log(tempData)  
                 res.render('clinicianDashboard.hbs', { todayPatientData: tempData})
             } else {
@@ -84,6 +87,51 @@ const getTodayDataClinician = async (req, res, next) => {
         return next(err)
     }
 }
+
+// const getTodayDataClinician = async (req, res, next) => {
+//     try{
+//         const tempDataClicianInfo = await Patient.findById(req.params.id).lean()
+//     }catch(err){
+//         return next(err)
+//     }
+//     try{
+//         const tempDataPatientList = await Patient.findById(req.params.id).lean()
+//     }catch(err){
+//         return next(err)
+//     }
+//     try{
+//         const tempDataHealthDataList = await Patient.findById(req.params.id).lean()
+//     }catch(err){
+//         return next(err)
+//     }
+// tempDataPatientList.map((item)=>{
+//     let id = item._id;
+//     let patientInfo = await ajax({patientId:id})
+//     let requiredData = healthDataList.map((item)=>{
+//         let upperBound = "", lowerBound = "";
+//         for(dataType of patientInfo.recordingData){
+//             if(dataType.healthDataId === item._id){
+//                 upperBound = dataType.upperBound;
+//                 lowerBound = dataType.lowerBound;
+//             }
+//         }
+//         return {
+//             healthDataId:item._id,
+//             lowerBound: lowerBound,
+//             upperBound: upperBound,
+//             unit: item.unit,
+//             isRequired: Boolean(upperBound)
+//         }
+//     })
+    
+//     return {recordingData:requiredData, ...item}
+// })
+//     if (tempData) {
+//         res.render('clinicianDashboard.hbs', { todayPatientData: tempData })
+//     } else {
+//         res.render('noRecords.hbs')
+//     }
+// }
 
 module.exports = {
     getTodayDataClinician
