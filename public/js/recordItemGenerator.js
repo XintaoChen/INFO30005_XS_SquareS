@@ -7,18 +7,16 @@ export default function generateRecordItem() {
       <div class='value-comment'>\
           <input type='number' placeholder='Enter value' class='value' disabled='true'>\
           <input type='text' placeholder='Enter comment' class='comment pdb-hidden'>\
-          <button class='save-btn pdb-hidden'>Save</button>\
+          <div class='btn-area pdb-hidden'>\
+            <button>Cancel</button>\
+            <button class='save-btn'>Submit</button>\
+          </div>\
       </div>\
     "
-    let editBtn = document.createElement("div")
-    editBtn.classList.add('edit-save')
-    editBtn.innerHTML = "\
-      <button class='edit-btn'><i class='icon-edit-patient'></i></button>\
-    "
-    editBtn.onclick = (e) => {
-      let inputs = e.target.parentElement.parentElement.previousElementSibling;
+    const handleClick = (e) => {
       let valueInput = inputs.children[0];
       if(!valueInput.getAttribute("disabled")){
+        valueInput.value = ""
         valueInput.setAttribute("disabled", "true")
       } else {
         valueInput.removeAttribute("disabled")
@@ -27,6 +25,7 @@ export default function generateRecordItem() {
       if(commentInput.classList.contains("pdb-hidden")){
         commentInput.classList.remove("pdb-hidden")
       }else{
+        commentInput.value = ""
         commentInput.classList.add("pdb-hidden")
       }
       let saveBtn = inputs.children[2];
@@ -36,7 +35,16 @@ export default function generateRecordItem() {
         saveBtn.classList.add("pdb-hidden")
       }
     }
+    let inputs = recordItemStructure.children[1]
+
+    let editBtn = document.createElement("div")
+    editBtn.classList.add('edit-save')
+    editBtn.onclick = handleClick
     recordItemStructure.appendChild(editBtn)
+
+    let cancelBtn = editBtn.previousElementSibling.children[2].children[0];
+    cancelBtn.onclick = handleClick
+    
     return recordItemStructure
   }
 
@@ -45,7 +53,7 @@ export default function generateRecordItem() {
     let id = itemName.replace(/[ ]/g, "-");
     recordItemStructure.id=id;
     recordItemStructure.children[0].innerHTML = itemName;
-    recordItemStructure.children[1].children[2].onclick = (e) => {
+    recordItemStructure.children[1].children[2].children[1].onclick = (e) => {
       let value = e.target.previousElementSibling.previousElementSibling.value;
       let comment = e.target.previousElementSibling.value;
       request(healthDataId, value, comment);
@@ -75,13 +83,17 @@ export default function generateRecordItem() {
   let generateInvalid = (itemName,containerId) =>{
     let recordItemStructure = init();
     let id = itemName.replace(/[ ]/g, "-");
+    recordItemStructure.classList.add("pdb-invalid")
     recordItemStructure.id=id;
     recordItemStructure.children[0].innerHTML = itemName;
-    recordItemStructure.children[0].style.backgroundColor = "red"
+    recordItemStructure.children[0].style.backgroundColor = "#5c4435b0"
     recordItemStructure.children[1].innerHTML = "\
-      <input type='number' placeholder='Not in required' class='value' disabled='true'>\
+    <div class='value-unit-time'>\
+      <span class='record-item-invalid'> - </span><br>\
+      <span class='record-item-invalid'>Not required</span>\
+    </div>\
     "
-    recordItemStructure.children[2].remove()
+    recordItemStructure.children[2].onclick = () => {}
     document.getElementById(containerId).appendChild(recordItemStructure);
   }
 
