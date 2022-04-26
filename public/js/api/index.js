@@ -36,3 +36,9 @@ export const getOneRecordBypatientId = (patientId, date, healthDataId) => ajax({
   method: GET,
   data:{ patientId:patientId, date:date, healthDataId:healthDataId }
 })
+
+export const getDataTypesByPatientId = (patientId) => ajax({
+  path:"/patient/getDataTypes",
+  method:GET,
+  data:{patientId:patientId}
+})
