@@ -3,7 +3,7 @@
 </head>
 {{#with todayHealthData}}
 <div class="banner">
-    <div class="support-message">Welcome Sunny! 🏠</div>
+    <div class="support-message">{{this.supportMessage}}</div>
     <div class="clinician-icon">
         <i>🙋🏽</i>
         <div class="red-dot"></div>
@@ -16,9 +16,9 @@
                 <div>Today's Records:</div>
                 <div>18/04/2022</div>
             </div>
-            <div class="completion">
+            {{!-- <div class="completion">
                 <p style="margin: auto;">66%</p>
-            </div>
+            </div> --}}
         </div>
         <div class="record-area">
             {{#if (hData this.recordingData.[0].isRequired)}}
@@ -32,19 +32,23 @@
                         <div class="value-comment">
                             <div class="value">
                                 {{#if this.recordingData.[0].value}}
-                                <input type="text" class="form-control" value="{{this.recordingData.[0].value}}" disabled>
+                                <div class="isValue">
+                                    <input type="text" class="form-control" value="{{this.recordingData.[0].value}}" disabled>
+                                </div>
                                 <div class="time">12:06 PM</div>      
                                 {{else}}
-                                <input type="text" class="form-control" name="value" id="value-0" placeholder="" disabled="disabled">
+                                <div class="noValue">
+                                    <input type="text" class="form-control" name="value" id="value-0" placeholder="" disabled="disabled">
+                                </div>
                                 {{/if}}
                             </div>
                             {{#if this.recordingData.[0].comment}}
                             <div class="comment" name="commentBlock" id="commentBlock-0">
-                                <textarea type="text" class="form-control" disabled>{{this.recordingData.[0].comment}}</textarea>
+                                <textarea type="text" class="form-control area" disabled>{{this.recordingData.[0].comment}}</textarea>
                             </div>
                             {{else}}
                             <div class="comment" name="commentBlock" id="commentBlock-0"  style="display: none;">
-                                <textarea type="text" class="form-control" id="comment-0" name="comment" placeholder=""></textarea>
+                                <textarea type="text" class="form-control area" id="comment-0" name="comment" placeholder=""></textarea>
                             </div>
                             {{/if}}
                             <div class="cancel-submit" id="cancel-submit-0" name="cancel-submit" style="display: none;">
@@ -68,7 +72,9 @@
                 <div class="item-down">
                     <div class="value-comment">
                         <div class="value">
-                            <input type="text" class="form-control" placeholder="-" disabled>
+                            <div class="isValue">
+                                <input type="text" class="form-control" placeholder="-" disabled>
+                            </div>
                             <div class="not-required">Not required</div>   
                         </div>
                     </div>
@@ -88,19 +94,21 @@
                         <div class="value-comment">
                             <div class="value">
                                 {{#if this.recordingData.[1].value}}
-                                <input type="text" class="form-control" value="{{this.recordingData.[1].value}}" disabled>
-                                <div class="time">12:06 PM</div>      
+                                <div class="isValue">
+                                    <input type="text" class="form-control" value="{{this.recordingData.[1].value}}" disabled>
+                                </div>
+                                <div class="time">12:06 PM</div>    
                                 {{else}}
                                 <input type="text" class="form-control" name="value" id="value-1" placeholder="" disabled="disabled">
                                 {{/if}}
                             </div>
                             {{#if this.recordingData.[1].comment}}
                             <div class="comment" name="commentBlock" id="commentBlock-1">
-                                <textarea type="text" class="form-control" disabled>{{this.recordingData.[1].comment}}</textarea>
+                                <textarea type="text" class="form-control area" disabled>{{this.recordingData.[1].comment}}</textarea>
                             </div>
                                 {{else}}
                             <div class="comment" name="commentBlock" id="commentBlock-1"  style="display: none;">
-                                <textarea type="text" class="form-control" id="comment-1" name="comment" placeholder=""></textarea>
+                                <textarea type="text" class="form-control area" id="comment-1" name="comment" placeholder=""></textarea>
                             </div>
                             {{/if}}
                             <div class="cancel-submit" id="cancel-submit-1" name="cancel-submit" style="display: none;">
@@ -124,7 +132,9 @@
                 <div class="item-down">
                     <div class="value-comment">
                         <div class="value">
-                            <input type="text" class="form-control" placeholder="-" disabled>
+                            <div class="isValue">
+                                <input type="text" class="form-control" placeholder="-" disabled>
+                            </div>
                             <div class="not-required">Not required</div>   
                         </div>
                     </div>
@@ -143,19 +153,21 @@
                         <div class="value-comment">
                             <div class="value">
                                 {{#if this.recordingData.[2].value}}
-                                <input type="text" class="form-control" value="{{this.recordingData.[2].value}}" disabled>
-                                <div class="time">12:06 PM</div>      
+                                <div class="isValue">
+                                    <input type="text" class="form-control" value="{{this.recordingData.[2].value}}" disabled>
+                                </div>
+                                <div class="time">12:06 PM</div>    
                                 {{else}}
                                 <input type="text" class="form-control" name="value" id="value-2" placeholder="" disabled="disabled">
                                 {{/if}}
                             </div>
                             {{#if this.recordingData.[2].comment}}
                             <div class="comment" name="commentBlock" id="commentBlock-2">
-                                <textarea type="text" class="form-control" disabled>{{this.recordingData.[2].comment}}</textarea>
+                                <textarea type="text" class="form-control area" disabled>{{this.recordingData.[2].comment}}</textarea>
                             </div>
                             {{else}}
                             <div class="comment" name="commentBlock" id="commentBlock-2"  style="display: none;">
-                                <textarea type="text" class="form-control" id="comment-2" name="comment" placeholder=""></textarea>
+                                <textarea type="text" class="form-control area" id="comment-2" name="comment" placeholder=""></textarea>
                             </div>
                             {{/if}}
                             <div class="cancel-submit" id="cancel-submit-2" name="cancel-submit" style="display: none;">
@@ -179,7 +191,9 @@
                 <div class="item-down">
                     <div class="value-comment">
                         <div class="value">
-                            <input type="text" class="form-control" name="value" placeholder="-" disabled>
+                            <div class="isValue">
+                                <input type="text" class="form-control" placeholder="-" disabled>
+                            </div>
                             <div class="not-required">Not required</div>   
                         </div>
                     </div>
@@ -198,7 +212,9 @@
                         <div class="value-comment">
                             <div class="value">
                                 {{#if this.recordingData.[3].value}}
-                                <input type="text" class="form-control" value="{{this.recordingData.[3].value}}" disabled>
+                                <div class="isValue">
+                                    <input type="text" class="form-control" value="{{this.recordingData.[0].value}}" disabled>
+                                </div>
                                 <div class="time">12:06 PM</div>      
                                 {{else}}
                                 <input type="text" class="form-control" name="value" id="value-3" placeholder="" disabled="disabled">
@@ -206,11 +222,11 @@
                             </div>
                             {{#if this.recordingData.[3].comment}}
                             <div class="comment" name="commentBlock" id="commentBlock-3">
-                                <textarea type="text" class="form-control" disabled>{{this.recordingData.[3].comment}}</textarea>
+                                <textarea type="text" class="form-control area" disabled>{{this.recordingData.[3].comment}}</textarea>
                             </div>
                             {{else}}
                             <div class="comment" name="commentBlock" id="commentBlock-3"  style="display: none;">
-                                <textarea type="text" class="form-control" id="comment-3" name="comment" placeholder=""></textarea>
+                                <textarea type="text" class="form-control area" id="comment-3" name="comment" placeholder=""></textarea>
                             </div>
                             {{/if}}
                             <div class="cancel-submit" id="cancel-submit-3" name="cancel-submit" style="display: none;">
@@ -234,7 +250,9 @@
                 <div class="item-down">
                     <div class="value-comment">
                         <div class="value">
-                            <input type="text" class="form-control" name="value" placeholder="-" disabled>
+                            <div class="isValue">
+                                <input type="text" class="form-control" placeholder="-" disabled>
+                            </div>
                             <div class="not-required">Not required</div>   
                         </div>
                     </div>
