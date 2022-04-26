@@ -32,10 +32,12 @@ button {
     align-items: center;
 }
 
+.pdb-hidden {
+    display: none !important;
+}
+
 @media screen and (max-width: 1365px) {
-    .pdb-hidden {
-        display: none;
-    }
+
 
     .address {
         display: none;
@@ -232,26 +234,49 @@ button {
         flex-direction: column;
     }
 
-    .record-item .edit-save .edit-btn {
+    .record-item .edit-save {
+        cursor: pointer;
+        background-image: url("/img/Edit.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
         width: 40px;
         height: 40px;
     }
 
-    #edit-btn {
-        width: 40px;
-        height: 40px;
+    .record-item .btn-area {
+        height: 30px;
+        width: 150px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .record-item button {
+        padding: 0 10px;
+        margin: 5px 0;
+        color: #fff;
+        box-sizing: border-box;
+        background-color: #a09d9e;
+        border-radius: 10px;
+        height: 20px;
     }
 
     .record-item .save-btn {
-        padding: 0 30px;
-        margin: 5px 0;
-        border: blue solid 3px;
-        box-sizing: border-box;
-
-        background-color: #eea45a;
-        border-radius: 10px;
-        height: 30px;
+        background-color: #bfa38a;
     }
+
+
+
+    .pdb-invalid .edit-save {
+        background-image: url("/img/Edit-invalid.svg");
+    }
+
+    .pdb-invalid .record-item-invalid {
+        font-weight: 100;
+        color: #5c44355e;
+    }
+
+
 
     .icon-edit-patient:before {
         content: "\e6af";
