@@ -1,0 +1,66 @@
+<head>
+    <link rel="stylesheet" href="/css/clinicianDashboard.css" />
+</head>
+{{#with clinicianData}}
+<div class="banner">
+    <div class="welcome-message">Welcome, Dr. {{this.nameGiven}}!</div>
+</div>
+{{/with}}
+{{#with clinicianDashboardData}}
+<div class="clinician-dashboard">
+    <div class="left-page">
+        <div class="left-title-line">
+            <div class="dashboard-text">
+                <h1>DASHBOARD ·</h1>
+            </div>
+            <div class="current-date">
+                <p id="current_date"></p>
+                    <script>
+                    date = new Date();
+                    year = date.getFullYear();
+                    month = date.getMonth() + 1;
+                    day = date.getDate();
+                    document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
+                    </script>
+            </div>
+        </div>
+        <div class="data-record">
+            <div class="table-title">
+                <table>
+                    <tr class="first-row">
+                        <td class="name">Name</td>
+                        <td class="bgLevel">Blood Glucose Level (mmol/L)</td>
+                        <td class="weight">Weight (kg)</td>
+                        <td class="insulinTaken">Insulin Taken (dose)</td>
+                        <td class="exercise">Exercise(step count)</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="table-data">
+                <table>
+                    {{#each this.patientList}}
+                        <tr class="data-row">
+                            <td class="name">{{this.nameGiven}} {{this.nameFamily}}{{this.value}}</td>
+                            <td class="bgLevel">{{#if (hData this.recordingData.[0].isRequired)}}{{#if this.recordingData.[0].value}}{{this.recordingData.[0].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
+                            <td class="weight">{{#if (hData this.recordingData.[1].isRequired)}}{{#if this.recordingData.[1].value}}{{this.recordingData.[1].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
+                            <td class="insulinTaken">{{#if (hData this.recordingData.[2].isRequired)}}{{#if this.recordingData.[2].value}}{{this.recordingData.[2].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
+                            <td class="exercise">{{#if (hData this.recordingData.[3].isRequired)}}{{#if this.recordingData.[3].value}}{{this.recordingData.[3].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
+                        </tr>
+                    {{/each}}
+
+            </table>
+            </div>
+            
+        </div>
+    </div>
+    <div class="right-page">
+        <div class="comment-text">
+            <h1>COMMENTS FOR TODAY</h1>
+        </div>
+        <div class="comments-for-today">
+
+        </div>
+    </div>
+</div>
+{{/with}}
+
