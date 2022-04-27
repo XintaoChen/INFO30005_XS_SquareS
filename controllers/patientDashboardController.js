@@ -65,7 +65,7 @@ const postTodayDataPatient= (req) => {
     var Record = require("../models/record")
     var tempRecord = new Record({
         "comment": req.comment,
-        "date": "2022-04-24T13:00:00.000+00:00",
+        // "date": "2022-04-24T13:00:00.000+00:00",
         "value": req.value,
         "patientId": req.patientId,
         "healthDataId": req.healthDataId,

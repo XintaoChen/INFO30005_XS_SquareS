@@ -12,7 +12,7 @@
         width: 100%;
         height: 80px;
         text-align: center;
-        background-color: #F4F2F0;
+        background-color: white;
     }
     .support-message{
         line-height: 80px;
@@ -104,6 +104,7 @@
         width: 160px;
     }
     .value-comment .area{
+        resize: none;
         line-height: 16px;
         height: 90%;
         margin: auto;
@@ -155,6 +156,55 @@
         width: 40px;
         height: 40px;
         /* background-color: tomato; */
+    }
+
+
+    .item-down .form-control{
+        width: 95%;
+        height: 90%;
+        background: transparent;
+        border: none;
+        padding-left: 5px;
+    }
+    .item-down .not-required{
+        margin-top: -5px;
+        font-size: 12px;
+        padding-left: 5px;
+        color: #1b141f8f;
+    }    
+    .item-down .time{
+        padding-left: 5px;
+        font-size: 12px;
+        color: #1b141f5d;;
+    }
+    .item-down .enabled{
+        height: 40px;
+        width: 40px;
+        padding: 0;
+        background-color: transparent;
+        background-image: url(../img/pen_enabled.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+    }
+    .item-down .disabled{
+        height: 40px;
+        width: 40px;
+        background-color: transparent;
+        background-image: url(../img/pen_disabled.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+    }
+
+    /* .item-down button:hover{
+        background-color: rgb(251, 136, 116);
+    } */
+    .item-down .enabled:active{
+        background-color: rgba(255,255,255,0.4);
+        border:#5C4435;
+        border-width: 1px;
+        border-radius: 20px;
     }
 
     .record-noitem{
@@ -252,79 +302,35 @@
         margin-right: 10px;
     }
 
-    .item-down .form-control{
-        width: 95%;
-        height: 90%;
-        background: transparent;
-        border: none;
-        padding-left: 5px;
-    }
-    .item-down .not-required{
-        margin-top: -5px;
-        font-size: 12px;
-        padding-left: 5px;
-        color: #1b141f8f;
-    }    
-    .item-down .time{
-        padding-left: 5px;
-        font-size: 12px;
-        color: #1b141f5d;;
-    }
-    .item-down .enabled{
-        height: 40px;
-        width: 40px;
-        padding: 0;
-        background-color: transparent;
-        background-image: url(../img/pen_enabled.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        border: none;
-    }
-    .item-down .disabled{
-        height: 40px;
-        width: 40px;
-        background-color: transparent;
-        background-image: url(../img/pen_disabled.png);
-        background-repeat: no-repeat;
-        background-position: center;
-        border: none;
-    }
-
-    /* .item-down button:hover{
-        background-color: rgb(251, 136, 116);
-    } */
-    .item-down .enabled:active{
-        background-color: rgba(255,255,255,0.4);
-        border:#5C4435;
-        border-width: 1px;
-        border-radius: 20px;
-    }
 }
 
 @media screen and (min-width: 1366px) {
     .content{
-        padding: 0 2vw 30px 2vw;
+        padding: 0 0vw 30px 0vw;
+        background-color: white;
     }
     .banner {
         width: 100%;
         height: 80px;
-        background-color: #F4F2F0;
+        background-color: #F4F2F0;    
     }
     .support-message{
         line-height: 80px;
         font-size: 32px;
+        width: 95%;
+        margin: auto;
     }
     .clinician-icon{
         float: right;
         position: relative;
         top: -80px;
-        right: 5px;
+        right: 50px;        
         line-height: 80px;
         font-size: 44px;
     }
 
     .today-content{
-        width: 100%;
+        width: 95%;
         padding: 10px;
         display: flex;
         justify-content: space-between;
@@ -364,55 +370,157 @@
     .record-item{
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
         align-items: center;
         flex-wrap: wrap;
         margin-top: 30px;
     }
+
     .record-item .item-down{
-        width: 100%;
+        width: 90%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
     }
     .record-item .item{
         width: 480px;
         height: 60px;
         background-color: #5C4435;
-        border-radius: 10px;
+        border-radius: 30px;
         color: white;
         font-size: 28px;
         text-align: center;
         line-height: 60px;
     }
+    .record-item .value-comment{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .record-noitem .value-comment{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .value-comment .area{
+        resize: none;
+        line-height: 16px;
+        height: 90%;
+        margin: auto;
+    }
     .record-item .value{
-        width: 380px;
-        height: 100px;
-        margin-right: 10px;
+        width: 100%;
+        height: 80px;
         background-color: #F4F2F0;
         border-radius: 10px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+        margin-top: 5px;
     }
-    .value .isValue{
-        height: 50%;
+    .value .form-control{
+        font-size: 16px;
+        color: #5C4435;
+    }
+
+    .record-item .comment{
+        width: 100%s;
+        height: 100px;
+        background-color: #F4F2F0;
+        border-radius: 10px;
+        margin-top: 5px;    
+    }
+    .comment .form-control{
+        font-size: 14px;
+        color: #5C4435;
+    }
+    .record-item .cancel-submit{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 3px;
+    }
+    .record-item .cancel-submit .btn{
+        border: none;
+        width: 45%;
+        height: 40px;
+        font-size: 24px;
+        border-radius: 20px;
+        color: white;
+    }
+    .record-item .cancel-submit .cancel{
+        background-color: #A09E9D;
+    }
+    .record-item .cancel-submit .submit{
+        background-color: #BFA38A;
     }
     .record-item .edit{
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 80px;
         /* background-color: tomato; */
         background-image: url(../img/pen.png);
+    }
+
+    .item-down .form-control{
+        width: 98%;        
+        font-size: 24px;
+        background: transparent;
+        border: none;
+        padding-left: 5px;
+        line-height: 24px;
+    }
+    .item-down .not-required{
+        margin-top: -5px;
+        font-size: 18px;
+        padding-left: 5px;
+        color: #1b141f8f;
+    }    
+    .item-down .time{
+        padding-left: 5px;
+        font-size: 18px;
+        color: #1b141f5d;;
+    }
+    .item-down .enabled{
+        height: 80px;
+        width: 80px;
+        padding: 0;
+        background-color: transparent;
+        background-image: url(../img/pen_enabled.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 30px;
+        border: none;
+    }
+    .item-down .disabled{
+        height: 80px;
+        width: 80px;
+        background-color: transparent;
+        background-image: url(../img/pen_disabled.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        border: none;
+        background-size: 30px;
+    }
+
+    /* .item-down button:hover{
+        background-color: rgb(251, 136, 116);
+    } */
+    .item-down .enabled:active{
+        background-color: rgba(255,255,255,0.4);
+        border:#5C4435;
+        border-width: 1px;
+        border-radius: 40px;
     }
 
     .record-noitem{
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: top;
         align-items: center;
         flex-wrap: wrap;
         margin-top: 30px;
     }
     .record-noitem .item-down{
-        width: 100%;
+        width: 90%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -422,27 +530,36 @@
         width: 480px;
         height: 60px;
         background-color: #5c4435a8;
-        border-radius: 10px;
+        border-radius: 30px;
         color: white;
         font-size: 28px;
         text-align: center;
         line-height: 60px;
     }
     .record-noitem .value{
-        width: 380px;
-        height: 100px;
+        width: 100%;
+        height: 80px;
         margin-right: 10px;
         background-color: #F4F2F0;
         border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
     }
     .record-noitem .edit{
-        width: 40px;
-        height: 40px;
-        background-color: rgba(255, 99, 71, 0.67);
+        width: 60px;
+        height: 80px;
+        background-color: transparent;
+        background-image: url(../img/pen_disabled.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 30px;  
     }
 
     .more-data{
+        color: #5C4435;
         text-align: right;
+        font-size: 32px;
         margin-top: 30px;
     }
     .dashboard-middle-line{

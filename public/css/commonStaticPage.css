@@ -631,7 +631,7 @@ table {
   }
 
   header .menuButton .memuIcon {
-    display: none;
+    /* display: none; */
     position: absolute;
     width: 33px;
     height: 32px;
