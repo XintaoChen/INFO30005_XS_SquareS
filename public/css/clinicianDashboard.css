@@ -1,0 +1,145 @@
+@media screen and (min-width: 1366px) {
+    .content{
+        padding: 40px 0 0;
+    }
+    .banner {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 60px;
+        text-align: left;
+        text-indent: 20px;
+        line-height: 60px;
+        font-size: 18px;
+        background-color: #F4F2F0;
+    }
+    .banner .welcome-message{
+        line-height: 60px;
+    }
+
+    .clinician-dashboard{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 750px;
+        padding-top: 20px;
+    }
+
+    .left-page{
+        display: flex;
+        flex-direction: column;
+        width: 58%;
+        background-color: #FFFFFF;
+    }
+    .left-page .left-title-line {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .left-page .left-title-line .dashboard-text h1{
+        width: auto;
+        font-size: 36px;
+        font-weight: bolder;
+        text-indent: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #A09E9D;
+    }
+    .left-page .left-title-line .current-date p{
+        width: auto;
+        font-size: 36px;
+        font-weight: bolder;
+        text-indent: 45px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #A09E9D;
+    }
+    .left-page .data-record{
+        height: 650px;
+    }
+
+    .right-page{
+        display: flex;
+        flex-direction: column;
+        width: 42%;
+        background-color: #FFFFFF;
+    }
+    .right-page .comment-text{
+        font-size: 36px;
+        font-weight: bolder;
+        text-indent: 45px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #A09E9D;
+    }
+    .right-page .comments-for-today{
+        width: 96%;
+        background-color: #F4F2F0;
+        height: 650px;
+    }
+
+
+    .data-record{
+        margin: 0 0 5px 0;
+    }
+    .data-record table{
+        width: 100%;
+    }
+    .table-title{
+        width: 96%;
+        height: 50px;
+        margin: auto;
+        background-color: #867167;
+    }
+    .table-data{
+        width: 96%;
+        height: 600px;
+        margin: auto;
+        background-color: #867167;
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow-y: scroll;
+        margin-bottom: 5px;
+    }
+
+    .first-row{
+        height: 50px;
+        margin: auto;
+        color: #FFFFFF;
+        font-size: 18px;
+        font-weight: bold;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        text-align: center;
+    }
+    .data-row{
+        height: 50px;
+        margin: auto;
+        font-size: 18px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        background-color: #A09E9D;
+    }
+    td.name{
+        width: 130px;
+    }
+    td.bgLevel{
+        width: 270px;
+    }
+    td.weight{
+        width: 135px;
+    }
+    td.insulinTaken{
+        width: 200px;
+    }
+    td.exercise{
+        width: 200px;
+    }
+}
