@@ -15,6 +15,7 @@
     }
     .banner .welcome-message{
         line-height: 60px;
+        font-style: italic;
     }
 
     .clinician-dashboard{
@@ -42,7 +43,7 @@
         width: auto;
         font-size: 36px;
         font-weight: bolder;
-        text-indent: 15px;
+        text-indent: 20px;
         padding-top: 10px;
         padding-bottom: 10px;
         color: #A09E9D;
@@ -51,7 +52,7 @@
         width: auto;
         font-size: 36px;
         font-weight: bolder;
-        text-indent: 45px;
+        text-indent: 5px;
         padding-top: 10px;
         padding-bottom: 10px;
         color: #A09E9D;
@@ -69,7 +70,6 @@
     .right-page .comment-text{
         font-size: 36px;
         font-weight: bolder;
-        text-indent: 45px;
         padding-top: 10px;
         padding-bottom: 10px;
         color: #A09E9D;
@@ -116,6 +116,9 @@
         justify-content: space-around;
         text-align: center;
     }
+    .first-row td.name{
+        background-color: #867167;
+    }
     .data-row{
         height: 50px;
         margin: auto;
@@ -125,7 +128,23 @@
         align-items: center;
         justify-content: space-between;
         text-align: center;
-        background-color: #A09E9D;
+        background-color: #F4F2F0;
+    }
+    .data-row:nth-child(2n){
+        background-color: #D7D2CE;
+    }
+    .data-row:nth-child(2n+1) td.name{
+        color: #FFFFFF;
+        background-color: #A99282;
+    }
+    .data-row:nth-child(2n) td.name{
+        background-color: #D3C0B2;
+    }
+    td{
+        display: block;
+        text-align: center;
+        line-height: 50px;
+        height: 100%;
     }
     td.name{
         width: 130px;
@@ -142,4 +161,19 @@
     td.exercise{
         width: 200px;
     }
+
+    .upper{
+        color: red;
+        position: relative;
+    }
+    .upper::before{
+        content: "";
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        border: blue solid 1px;
+    } 
 }

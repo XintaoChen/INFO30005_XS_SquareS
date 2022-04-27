@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const getTodayDataClinician = async (req, res, next) => {
     try{
+        
         let tempData = {}
         const cData = await Clinician.findById(req.params.id).lean()
         //get all required data form database
