@@ -167,7 +167,7 @@
         position: relative;
     }
     .upper::before{
-        content: "";
+        content: "↑";
         width: 10px;
         height: 10px;
         position: absolute;
@@ -176,4 +176,13 @@
         display: block;
         border: blue solid 1px;
     } 
+
+    .lower{
+        color:red;
+        position: relative;
+    }
+    .lower::before{
+        content: "↓";  
+    }
 }
+
