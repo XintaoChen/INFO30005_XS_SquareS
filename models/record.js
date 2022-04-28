@@ -7,7 +7,6 @@ const recordSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: Patient,
             required: true,
-            unique: true,
         },
         healthDataId: {
             type: mongoose.Schema.Types.ObjectId,
