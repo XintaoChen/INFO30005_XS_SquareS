@@ -1,0 +1,374 @@
+<head>
+    <link rel="stylesheet" href="/css/patientDashboard.css" />
+</head>
+{{#with todayHealthData}}
+<div class="banner">
+    <div class="support-message">{{this.supportMessage}}</div>
+    <div class="clinician-icon">
+        <i>🙋🏽</i>
+        <div class="red-dot"></div>
+    </div>
+</div>
+<div class="today-content">
+    <div class="today-records">
+        <div class="records-title">
+            <div class="text">
+                <div>Today's Records:</div>
+                <div class="current-date">
+                    <p id="current_date"></p >
+                        <script>
+                        date = new Date();
+                        year = date.getFullYear();
+                        month = date.getMonth() + 1;
+                        day = (date.getDate() < 10) ? "0"+date.getDate() : date.getDate();
+                        month = (month < 10) ? "0"+month : month;
+                        document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
+                        </script>
+                </div>
+            </div>
+            {{!-- <div class="completion">
+                <p style="margin: auto;">66%</p>
+            </div> --}}
+        </div>
+        <div class="record-area">
+            {{#if (hData this.recordingData.[0].isRequired)}}
+            <div class="record-item  form-group">
+                <div class="item">Blood Glucose Level</div>
+                <div class="item-down">
+                    <form action="/today/add" method="POST" style="display: contents;">
+                        <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
+                        <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
+                        <input type="text" class="form-control" name="healthDataId" value="625576a5bcd6f0a12a5e5fa6" style="display:none">
+                        <div class="value-comment">
+                            <div class="value">
+                                {{#if this.recordingData.[0].value}}
+                                <div class="isValue">
+                                    <input type="text" class="form-control" value="{{this.recordingData.[0].value}}" disabled>
+                                </div>
+                                <div class="time">{{this.recordingData.[0].time}}</div>      
+                                {{else}}
+                                <div class="noValue">
+                                    <input type="text" class="form-control" name="value" id="value-0" placeholder="" disabled="disabled">
+                                </div>
+                                {{/if}}
+                            </div>
+                            {{#if this.recordingData.[0].comment}}
+                            <div class="comment" name="commentBlock" id="commentBlock-0">
+                                <textarea type="text" class="form-control area" disabled>{{this.recordingData.[0].comment}}</textarea>
+                            </div>
+                            {{else}}
+                            <div class="comment" name="commentBlock" id="commentBlock-0"  style="display: none;">
+                                <textarea type="text" class="form-control area" id="comment-0" name="comment" placeholder=""></textarea>
+                            </div>
+                            {{/if}}
+                            <div class="cancel-submit" id="cancel-submit-0" name="cancel-submit" style="display: none;">
+                                <button type="button" class="btn btn-primary cancel" onclick="changeComment(0)">cancel</button>
+                                <button type="submit" class="btn btn-primary submit">submit</button>
+                            </div>
+                        </div>
+                        <div class="edit">
+                            {{#if this.recordingData.[0].value}}
+                            <button type="button" class="btn btn-primary disabled" disabled="disabled"></button>
+                            {{else}}
+                            <button type="button" class="btn btn-primary enabled" onclick="changeComment(0)"></button>
+                            {{/if}}                       
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {{else}}
+            <div class="record-noitem">
+                <div class="item">Blood Glucose Level</div>
+                <div class="item-down">
+                    <div class="value-comment">
+                        <div class="value">
+                            <div class="isValue">
+                                <input type="text" class="form-control" placeholder="-" disabled>
+                            </div>
+                            <div class="not-required">Not required</div>   
+                        </div>
+                    </div>
+                    <div class="edit">
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{#if (hData this.recordingData.[1].isRequired)}}
+            <div class="record-item  form-group">
+                <div class="item">Weight</div>
+                <div class="item-down">
+                    <form action="/today/add" method="POST" style="display: contents;">
+                        <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
+                        <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
+                        <input type="text" class="form-control" name="healthDataId" value="625576a8bcd6f0a12a5e5fa7" style="display:none">
+                        <div class="value-comment">
+                            <div class="value">
+                                {{#if this.recordingData.[1].value}}
+                                <div class="isValue">
+                                    <input type="text" class="form-control" value="{{this.recordingData.[1].value}}" disabled>
+                                </div>
+                                <div class="time">{{this.recordingData.[1].time}}</div>    
+                                {{else}}
+                                <input type="text" class="form-control" name="value" id="value-1" placeholder="" disabled="disabled">
+                                {{/if}}
+                            </div>
+                            {{#if this.recordingData.[1].comment}}
+                            <div class="comment" name="commentBlock" id="commentBlock-1">
+                                <textarea type="text" class="form-control area" disabled>{{this.recordingData.[1].comment}}</textarea>
+                            </div>
+                                {{else}}
+                            <div class="comment" name="commentBlock" id="commentBlock-1"  style="display: none;">
+                                <textarea type="text" class="form-control area" id="comment-1" name="comment" placeholder=""></textarea>
+                            </div>
+                            {{/if}}
+                            <div class="cancel-submit" id="cancel-submit-1" name="cancel-submit" style="display: none;">
+                                <button type="button" class="btn btn-primary cancel" onclick="changeComment(1)">cancel</button>
+                                <button type="submit" class="btn btn-primary submit">submit</button>
+                            </div>
+                        </div>
+                        <div class="edit">
+                            {{#if this.recordingData.[1].value}}
+                            <button type="button" class="btn btn-primary disabled" disabled="disabled"></button>
+                            {{else}}
+                            <button type="button" class="btn btn-primary enabled" onclick="changeComment(1)"></button>
+                            {{/if}}                       
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {{else}}
+            <div class="record-noitem">
+                <div class="item">Weight</div>
+                <div class="item-down">
+                    <div class="value-comment">
+                        <div class="value">
+                            <div class="isValue">
+                                <input type="text" class="form-control" placeholder="-" disabled>
+                            </div>
+                            <div class="not-required">Not required</div>   
+                        </div>
+                    </div>
+                    <div class="edit"></div>
+                </div>
+            </div>
+            {{/if}}
+            {{#if (hData this.recordingData.[2].isRequired)}}
+            <div class="record-item  form-group">
+                <div class="item">Insulin Doses</div>
+                <div class="item-down">
+                    <form action="/today/add" method="POST" style="display: contents;">
+                        <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
+                        <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
+                        <input type="text" class="form-control" name="healthDataId" value="625576acbcd6f0a12a5e5fa8" style="display:none">
+                        <div class="value-comment">
+                            <div class="value">
+                                {{#if this.recordingData.[2].value}}
+                                <div class="isValue">
+                                    <input type="text" class="form-control" value="{{this.recordingData.[2].value}}" disabled>
+                                </div>
+                                <div class="time">{{this.recordingData.[2].time}}</div>    
+                                {{else}}
+                                <input type="text" class="form-control" name="value" id="value-2" placeholder="" disabled="disabled">
+                                {{/if}}
+                            </div>
+                            {{#if this.recordingData.[2].comment}}
+                            <div class="comment" name="commentBlock" id="commentBlock-2">
+                                <textarea type="text" class="form-control area" disabled>{{this.recordingData.[2].comment}}</textarea>
+                            </div>
+                            {{else}}
+                            <div class="comment" name="commentBlock" id="commentBlock-2"  style="display: none;">
+                                <textarea type="text" class="form-control area" id="comment-2" name="comment" placeholder=""></textarea>
+                            </div>
+                            {{/if}}
+                            <div class="cancel-submit" id="cancel-submit-2" name="cancel-submit" style="display: none;">
+                                <button type="button" class="btn btn-primary cancel" onclick="changeComment(2)">cancel</button>
+                                <button type="submit" class="btn btn-primary submit">submit</button>
+                            </div>
+                        </div>
+                        <div class="edit">
+                            {{#if this.recordingData.[2].value}}
+                            <button type="button" class="btn btn-primary disabled" disabled="disabled"></button>
+                            {{else}}
+                            <button type="button" class="btn btn-primary enabled" onclick="changeComment(2)"></button>
+                            {{/if}}                       
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {{else}}
+            <div class="record-noitem">
+                <div class="item">Insulin Doses</div>
+                <div class="item-down">
+                    <div class="value-comment">
+                        <div class="value">
+                            <div class="isValue">
+                                <input type="text" class="form-control" placeholder="-" disabled>
+                            </div>
+                            <div class="not-required">Not required</div>   
+                        </div>
+                    </div>
+                    <div class="edit"></div>
+                </div>
+            </div>
+            {{/if}}
+            {{#if (hData this.recordingData.[3].isRequired)}}
+            <div class="record-item  form-group">
+                <div class="item">Step Counts</div>
+                <div class="item-down">
+                    <form action="/today/add" method="POST" style="display: contents;">
+                        <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
+                        <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
+                        <input type="text" class="form-control" name="healthDataId" value="625576b0bcd6f0a12a5e5fa9" style="display:none">
+                        <div class="value-comment">
+                            <div class="value">
+                                {{#if this.recordingData.[3].value}}
+                                <div class="isValue">
+                                    <input type="text" class="form-control" value="{{this.recordingData.[3].value}}" disabled>
+                                </div>
+                                <div class="time">{{this.recordingData.[3].time}}</div>      
+                                {{else}}
+                                <input type="text" class="form-control" name="value" id="value-3" placeholder="" disabled="disabled">
+                                {{/if}}
+                            </div>
+                            {{#if this.recordingData.[3].comment}}
+                            <div class="comment" name="commentBlock" id="commentBlock-3">
+                                <textarea type="text" class="form-control area" disabled>{{this.recordingData.[3].comment}}</textarea>
+                            </div>
+                            {{else}}
+                            <div class="comment" name="commentBlock" id="commentBlock-3"  style="display: none;">
+                                <textarea type="text" class="form-control area" id="comment-3" name="comment" placeholder=""></textarea>
+                            </div>
+                            {{/if}}
+                            <div class="cancel-submit" id="cancel-submit-3" name="cancel-submit" style="display: none;">
+                                <button type="button" class="btn btn-primary cancel" onclick="changeComment(3)">cancel</button>
+                                <button type="submit" class="btn btn-primary submit">submit</button>
+                            </div>
+                        </div>
+                        <div class="edit">
+                            {{#if this.recordingData.[3].value}}
+                            <button type="button" class="btn btn-primary disabled" disabled="disabled"></button>
+                            {{else}}
+                            <button type="button" class="btn btn-primary enabled" onclick="changeComment(3)"></button>
+                            {{/if}}                       
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {{else}}
+            <div class="record-noitem">
+                <div class="item">Step Counts</div>
+                <div class="item-down">
+                    <div class="value-comment">
+                        <div class="value">
+                            <div class="isValue">
+                                <input type="text" class="form-control" placeholder="-" disabled>
+                            </div>
+                            <div class="not-required">Not required</div>   
+                        </div>
+                    </div>
+                    <div class="edit"></div>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+         <div class="more-data">
+            View More Data ➡
+        </div>
+    </div>
+    <div class="dashboard-middle-line"></div>
+    <div class="leader-board">
+        <div class="board-title">
+            <div class="text">
+                <div>Leaderboard:</div>
+                <div class="current-date">
+                    <p id="current_date_1"></p >
+                        <script>
+                        date = new Date();
+                        year = date.getFullYear();
+                        month = date.getMonth() + 1;
+                        day = (date.getDate() < 10) ? "0"+date.getDate() : date.getDate();
+                        month = (month < 10) ? "0"+month : month;
+                        document.getElementById("current_date_1").innerHTML = day + "/" + month + "/" + year;
+                        </script>
+                </div>
+            </div>
+            <p>Engagement Rate</p>
+        </div>
+        <div class="board-area">
+            <div class="board-item">
+                <div class="board-item-left">
+                    <div class="item">1</div>
+                    <div class="value">avatar</div>
+                    <div class="edit">Sunny</div>
+                </div>
+                <div class="board-item-right">83%</div>
+            </div>
+            <div class="board-item">
+                <div class="board-item-left">
+                    <div class="item">2</div>
+                    <div class="value">avatar</div>
+                    <div class="edit">Jane</div>
+                </div>
+                <div class="board-item-right">81%</div>
+            </div>
+            <div class="board-item">
+                <div class="board-item-left">
+                    <div class="item">3</div>
+                    <div class="value">avatar</div>
+                    <div class="edit">Daisy</div>
+                </div>
+                <div class="board-item-right">79%</div>
+            </div>
+            <div class="board-item">
+                <div class="board-item-left">
+                    <div class="item">4</div>
+                    <div class="value">avatar</div>
+                    <div class="edit">John</div>
+                </div>
+                <div class="board-item-right">76%</div>
+            </div>
+            <div class="board-item">
+                <div class="board-item-left">
+                    <div class="item">5</div>
+                    <div class="value">avatar</div>
+                    <div class="edit">Aaron</div>
+                </div>
+                <div class="board-item-right">75%</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/with}}
+
+<script>
+    function changeComment(i){
+        if(document.getElementById("commentBlock-".concat(i)).style.display != "none"){
+            document.getElementById("commentBlock-".concat(i)).style.display = "none"
+            document.getElementById("cancel-submit-".concat(i)).style.display = "none" 
+            document.getElementById("value-".concat(i)).placeholder = ""
+            document.getElementById("value-".concat(i)).disabled = "disabled"
+            document.getElementById("comment-".concat(i)).placeholder = ""
+           
+        }else{
+            document.getElementById("commentBlock-".concat(i)).style.display = "block"
+            document.getElementById("cancel-submit-".concat(i)).style.display = "flex"
+            document.getElementById("value-".concat(i)).placeholder = "Enter value"
+            document.getElementById("value-".concat(i)).disabled = ""
+            document.getElementById("comment-".concat(i)).placeholder = "Enter comment"
+        }
+    }
+
+    // display current date and day
+    var today = new Date();
+    var day = today.getDay();
+    var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
+    var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();    
+    document.getElementById("displayDate").innerHTML = date + ', ' + daylist[day];
+
+    // display date from start of the week
+    var diff = today.getDate() - day + (day === 0 ? -6 : 1);
+    var startOfWeek = new Date(today.setDate(diff));
+    var date_startOfWeek = startOfWeek.getDate()+'/'+(startOfWeek.getMonth()+1)+'/'+startOfWeek.getFullYear();
+    document.getElementById("displayStartOfWeek").innerHTML = 'Week of ' + date_startOfWeek;
+</script>
