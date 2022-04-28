@@ -677,6 +677,7 @@ table {
     font-size: 1em;
     line-height: 1.6;
     letter-spacing: 0.01em;
+    background-color: #F4F2F0;
   }
 
   header .menuButton .menu button span {
