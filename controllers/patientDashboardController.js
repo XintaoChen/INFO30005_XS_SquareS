@@ -8,7 +8,9 @@ const recordModel = require("../models/record");
 
 
 const getTodayDataPatient = async (req, res, next) => {
+    var today = new Date()
     try{
+        // const tempDataNoRecords = await patientModel.findById(req.params.id).lean()
         let tempData = {}
         //get all required data from database
         patientModel.aggregate([
@@ -19,8 +21,8 @@ const getTodayDataPatient = async (req, res, next) => {
                         { $match: { 
                             date: {
                                 // change this to current date
-                                $gte: new Date("2022,4,24"),
-                                $lt: new Date("2022,4,25")
+                                $gte: new Date(today.getFullYear(),today.getMonth(),today.getDate()),
+                                $lt: new Date(today.getTime() + 24*60*60*1000)
                             },
                          } }
                      ],
@@ -38,14 +40,17 @@ const getTodayDataPatient = async (req, res, next) => {
                 return console.log(err)
             }
             tempData = docs[0]
-
             if(tempData){
                 //manipulate data to satisfy .hbs page data logic
                 for(i=0; i<tempData.recordInfo.length; i++){
                     for(j=0; j<tempData.recordingData.length; j++){
                         if(tempData.recordInfo[i].healthDataId.toString()== tempData.recordingData[j].healthDataId.toString()){
+                            var tempTime = ""
                             tempData.recordingData[j].comment = tempData.recordInfo[i].comment
-                            tempData.recordingData[j].time = tempData.recordInfo[i].date
+                            tempTime += tempData.recordInfo[i].date.getHours()
+                            tempTime += ":"
+                            tempTime += (tempData.recordInfo[i].date.getMinutes() < 10) ? "0"+tempData.recordInfo[i].date.getMinutes() : tempData.recordInfo[i].date.getMinutes()
+                            tempData.recordingData[j].time = tempTime
                             tempData.recordingData[j].value = tempData.recordInfo[i].value
                         }
                     }
@@ -53,7 +58,11 @@ const getTodayDataPatient = async (req, res, next) => {
                 console.log(JSON.stringify(tempData))
                 res.render('patientDashboard.hbs', { todayHealthData: tempData })
             }else {
-                res.render('noRecords.hbs')
+                // if (tempDataNoRecords) {
+                //     res.render('singlePatient.hbs', { todayHealthData: tempDataNoRecords })
+                // } else {
+                    res.render('noRecords.hbs')
+                // }
             }
         })
     }catch(err){
