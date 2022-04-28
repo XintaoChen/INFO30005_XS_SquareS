@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { version } = require('prettier')
 
 const clinicianSchema = new mongoose.Schema(
     {
