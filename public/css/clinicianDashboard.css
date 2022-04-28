@@ -58,10 +58,10 @@
         color: #A09E9D;
     }
     .left-page .left-title-line .search-bar{
-        text-indent: 360px;
+        width: 592px;
+        text-indent: 350px;
     }
     .left-page .left-title-line .search-bar input[type=text]{
-        text-indent: 5px;
         height: 36px;
         font-size: 18px;
         color: #5C4435;
@@ -69,7 +69,25 @@
         outline-style: none;
         border-radius: 25px;
         border: 1px solid #5C4435;
-        cursor:alias;
+    }
+    .left-page .left-title-line .search-bar ::placeholder{
+        color: #C7C2BF;
+    }
+    .search-icon{
+        padding-left: 40px;
+        background-image: url(../img/search.svg);
+        background-repeat: no-repeat;
+    }
+    .add-button{
+        height: 36px;
+        width: 36px;
+        background-color: #867167;
+        border-radius: 50%;
+        display: inline-block;
+    }
+    .add{
+        font-size: 24px;
+        color:#F4F2F0;
     }
     
     .left-page .data-record{
