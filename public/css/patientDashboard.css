@@ -1,3 +1,13 @@
+#displayDate{
+    font-size: smaller;
+    padding-top: 4%;
+}
+
+#displayStartOfWeek{
+    font-size: smaller;
+    padding-top: 4%;
+}
+
 @media screen and (max-width: 1365px) {
     .form-control:focus-visible{
         outline: auto;
@@ -7,12 +17,13 @@
     }
     .content{
         padding: 60px 0 0;
+        background-color: white;
     }
     .banner {
         width: 100%;
         height: 80px;
         text-align: center;
-        background-color: white;
+        background-color: #F4F2F0;
     }
     .support-message{
         line-height: 80px;
@@ -82,7 +93,7 @@
         width: 140px;
         height: 40px;
         margin-right: 5px;
-        background-color: #5C4435;
+        background-color: #867167;
         border-radius: 10px;
         color: white;
         font-size: 14px;
@@ -224,7 +235,7 @@
         font-size: 14px;
         text-align: center;
         line-height: 40px;
-        background-color: #5c4435b0;
+        background-color: #C7C2BF;
     }
     .record-noitem .item-down{
         display: flex;
@@ -255,7 +266,7 @@
         width: 100%;
         height: 40px;
         /* margin-top: 10px; */
-        background-color: #5C4435;
+        background-color: #867167;
         border-radius: 10px;
         color: white;
         text-align: center;
@@ -275,7 +286,8 @@
     .board-title{
         display: flex;
         height: 80px;
-        align-items: center;
+        align-items:center;
+        justify-content: space-between;
     }
     .board-area{
         display: flex;
@@ -346,12 +358,14 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        height: 80px;
+        font-size: 38px;
+        padding-top: 4%;
     }
     .records-title .text{
         display: flex;
         flex-direction: column;
     }
+
     .records-title .completion{
         display: flex;
         width: 100px;
@@ -384,7 +398,7 @@
     .record-item .item{
         width: 480px;
         height: 60px;
-        background-color: #5C4435;
+        background-color: #867167;
         border-radius: 30px;
         color: white;
         font-size: 28px;
@@ -423,7 +437,7 @@
     }
 
     .record-item .comment{
-        width: 100%s;
+        width: 100%;
         height: 100px;
         background-color: #F4F2F0;
         border-radius: 10px;
@@ -529,7 +543,7 @@
     .record-noitem .item{
         width: 480px;
         height: 60px;
-        background-color: #5c4435a8;
+        background-color: #C7C2BF;
         border-radius: 30px;
         color: white;
         font-size: 28px;
@@ -576,9 +590,11 @@
     }
     .board-title{
         display: flex;
-        height: 80px;
         align-items: center;
+        justify-content: space-between;
+        font-size: 36px;
     }
+
     .board-area{
         display: flex;
         flex-direction: column;
