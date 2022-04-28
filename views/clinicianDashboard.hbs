@@ -1,12 +1,10 @@
 <head>
     <link rel="stylesheet" href="/css/clinicianDashboard.css" />
 </head>
-{{#with clinicianData}}
-<div class="banner">
-    <div class="welcome-message">Welcome, Dr. {{this.nameGiven}}!</div>
-</div>
-{{/with}}
 {{#with clinicianDashboardData}}
+<div class="banner">
+    <div class="welcome-message">Welcome, Dr. {{nameGiven}}!</div>
+</div>
 <div class="clinician-dashboard">
     <div class="left-page">
         <div class="left-title-line">
@@ -23,31 +21,49 @@
                     document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
                     </script>
             </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search..">
+            </div>
         </div>
         <div class="data-record">
             <div class="table-title">
                 <table>
                     <tr class="first-row">
                         <td class="name">Name</td>
-                        <td class="bgLevel">Blood Glucose Level (mmol/L)</td>
-                        <td class="weight">Weight (kg)</td>
-                        <td class="insulinTaken">Insulin Taken (dose)</td>
-                        <td class="exercise">Exercise(step count)</td>
+                        {{#each healthDataList}}
+                            <td>{{healthTitle}}</td>
+                        {{/each}}
                     </tr>
                 </table>
             </div>
             <div class="table-data">
                 <table>
-                    {{#each this.patientList}}
+                    {{#each patientList}}
                         <tr class="data-row">
-                            <td class="name">{{this.nameGiven}} {{this.nameFamily}}{{this.value}}</td>
-                            <td class="bgLevel">{{#if (hData this.recordingData.[0].isRequired)}}{{#if this.recordingData.[0].value}}{{this.recordingData.[0].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
-                            <td class="weight">{{#if (hData this.recordingData.[1].isRequired)}}{{#if this.recordingData.[1].value}}{{this.recordingData.[1].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
-                            <td class="insulinTaken">{{#if (hData this.recordingData.[2].isRequired)}}{{#if this.recordingData.[2].value}}{{this.recordingData.[2].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
-                            <td class="exercise">{{#if (hData this.recordingData.[3].isRequired)}}{{#if this.recordingData.[3].value}}{{this.recordingData.[3].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
+                            <td class="patient-name">{{nameGiven}} {{nameFamily}}{{value}}</td>
+                            {{#each recordingData}}
+                                <td>
+                                    {{#if (hData isRequired)}}
+                                        {{#if value}}
+                                            {{#if (compare value upperBound)}}
+                                            <span class="too-high-value" title="This value is bigger than the upper safety threshold!">{{value}}</span>
+                                            {{else}}
+                                                {{#if (compare lowerBound value)}}
+                                                    <span class="too-low-value" title="This value is smaller than the lower safety threshold!">{{value}}</span>
+                                                {{else}}
+                                                    <span>{{value}}</span>
+                                                {{/if}}
+                                            {{/if}}
+                                        {{else}}
+                                            <span title="Missing required data field!">???</span>
+                                        {{/if}}
+                                    {{else}}
+                                        <span title="This data field is not required!">/</span>
+                                    {{/if}}
+                                </td>
+                            {{/each}}
                         </tr>
                     {{/each}}
-
             </table>
             </div>
             
