@@ -57,6 +57,21 @@
         padding-bottom: 10px;
         color: #A09E9D;
     }
+    .left-page .left-title-line .search-bar{
+        text-indent: 360px;
+    }
+    .left-page .left-title-line .search-bar input[type=text]{
+        text-indent: 5px;
+        height: 36px;
+        font-size: 18px;
+        color: #5C4435;
+        background-color: #F4F2F0;
+        outline-style: none;
+        border-radius: 25px;
+        border: 1px solid #5C4435;
+        cursor:alias;
+    }
+    
     .left-page .data-record{
         height: 650px;
     }
@@ -146,7 +161,7 @@
         line-height: 50px;
         height: 100%;
     }
-    td.name{
+    /* td.name{
         width: 130px;
     }
     td.bgLevel{
@@ -159,6 +174,42 @@
         width: 200px;
     }
     td.exercise{
+        width: 200px;
+    } */
+
+    .too-high-value{
+        color:red;
+    }
+    .too-high-value::after{
+        content:"↑";
+        color:red;
+    }
+
+    .too-low-value{
+        color:blue;
+    }
+    .too-low-value::after{
+        content:"↓";
+        color:blue;
+    }
+
+    td:nth-child(1) {
+        width: 150px;
+    }
+
+    td:nth-child(2) {
+        width: 270px;
+    }
+
+    td:nth-child(3) {
+        width: 135px;
+    }
+
+    td:nth-child(4) {
+        width: 200px;
+    }
+
+    td:nth-child(5) {
         width: 200px;
     }
 
