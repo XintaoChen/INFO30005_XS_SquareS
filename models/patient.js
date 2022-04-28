@@ -12,7 +12,6 @@ const patientSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: clinicianSchema,
         required: true,
-        unique: true,
     },
     phoneNumber: String,
     homeAddress: String,
