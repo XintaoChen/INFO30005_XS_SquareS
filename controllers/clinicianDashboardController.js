@@ -73,7 +73,7 @@ const getTodayDataClinician = async (req, res, next) => {
               nameGiven: patient.nameGiven,
               nameFamily: patient.nameFamily,
               recordingData: dataList,
-              date: tempDate
+              dateLatest: tempDate
             }
           })
         )
