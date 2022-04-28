@@ -17,7 +17,7 @@ app.engine(
             hData2: (x) => x == "625576a8bcd6f0a12a5e5fa7",
             hData3: (x) => x == "625576acbcd6f0a12a5e5fa8",
             hData4: (x) => x == "625576b0bcd6f0a12a5e5fa9",
-            hData: (x) => x == true,
+            hData: (x) => x == true,        
         },
     })
 )
@@ -35,9 +35,6 @@ const { patientDashboardRouter } = require('./routes/patientDashboardRouter')
 const patientRouter = require('./routes/patientRouter')
 //const patientRouter2 = require('./routes/patientRouter2')
 const recordRouter = require('./routes/recordRouter')
-
-const clinicianRouter = require('./routes/clinicianRouter') 
-
 const clinicianDashboardRouter = require('./routes/clinicianDashboardRouter')
 
 // middleware to log a message each time a request arrives at the server - handy for debugging
@@ -55,8 +52,6 @@ app.use('/patient', patientRouter)
 app.use('/today', patientDashboardRouter)
 
 app.use("/record", recordRouter)
-
-// app.use('/clinician', clinicianRouter)
 
 app.use('/clinician', clinicianDashboardRouter)
 
