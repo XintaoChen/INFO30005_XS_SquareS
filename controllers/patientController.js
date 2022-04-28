@@ -12,18 +12,18 @@ const { param } = require('../routes/peopleRouter')
 // }
 
 const getPatientInfo = async (req, res, next) => {
-    try{
+    try {
         const tempData = await Patient.findById(req.params.id).lean()
         if (tempData) {
             res.render('singlePatient.hbs', { singlePatientData: tempData })
         } else {
             res.render('noRecords.hbs')
         }
-    }catch(err){
+    } catch (err) {
         return next(err)
     }
 }
 
 module.exports = {
-    getPatientInfo
+    getPatientInfo,
 }

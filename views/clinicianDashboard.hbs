@@ -1,30 +1,41 @@
 <head>
-    <link rel="stylesheet" href="/css/singlePatient.css" />
+    <link rel="stylesheet" href="/css/clinicianDashboard.css" />
 </head>
-{{#with todayPatientData}}
+{{#with clinicianDashboardData}}
 <div class="banner">
-    <div class="left"> < back </div>
-    <div class="right">
-        <div style="font-weight: 800;">Welcome Message: </div>
-        <div class="message">"{{#if this.welcomeMessage}}{{this.welcomeMessage}}{{else}}default support message{{/if}}"</div>
-    </div>
+    <div class="welcome-message">Welcome, Dr. {{nameGiven}}!</div>
 </div>
-<div class="single-patient">
+<div class="clinician-dashboard">
     <div class="left-page">
-        <h4>Clinician Name: {{this.nameGiven}} {{this.nameFamily}}</h4>
-        <p>Patients Healthdata Today:</p>
+        <div class="left-title-line">
+            <div class="dashboard-text">
+                <h1>DASHBOARD ·</h1>
+            </div>
+            <div class="current-date">
+                <p id="current_date"></p>
+                    <script>
+                    date = new Date();
+                    year = date.getFullYear();
+                    month = ((date.getMonth() + 1) < 10 ) ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+                    day = (date.getDate() < 10 ) ? "0" + date.getDate() : date.getDate();
+                    document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
+                    </script>
+            </div>
+            <div class="search-bar">
+                <input type="text" class="search-icon" placeholder="Search..">
+            </div>
+            <button class="add-button">
+                <div class="add">+</div>
+            </button>
+        </div>
         <div class="data-record">
             <div class="table-title">
                 <table>
                     <tr class="first-row">
-                        <td class="date">Name</td>
+                        <td class="name">Name</td>
                         {{#each healthDataList}}
                             <td>{{healthTitle}}</td>
                         {{/each}}
-                        {{!-- <td class="bgLevel">Blood Glucose Level (mmol/L)</td>
-                        <td class="weight">Weight (kg)</td>
-                        <td class="insulinTaken">Insulin Taken (dose)</td>
-                        <td class="exercise">Exercise(step count)</td> --}}
                     </tr>
                 </table>
             </div>
@@ -32,32 +43,28 @@
                 <table>
                     {{#each patientList}}
                         <tr class="data-row">
-                            <td class="date">{{nameGiven}} {{nameFamily}}{{value}}</td>
+                            <td class="patient-name">{{nameGiven}} {{nameFamily}}{{value}}</td>
                             {{#each recordingData}}
                                 <td>
                                     {{#if (hData isRequired)}}
                                         {{#if value}}
                                             {{#if (compare value upperBound)}}
-                                            <span style="color: red;">{{value}}</span>
+                                            <span class="too-high-value" title="This value is bigger than the upper safety threshold!">{{value}}</span>
                                             {{else}}
                                                 {{#if (compare lowerBound value)}}
-                                                    <span style="color: blue;">{{value}}</span>
+                                                    <span class="too-low-value" title="This value is smaller than the lower safety threshold!">{{value}}</span>
                                                 {{else}}
                                                     <span>{{value}}</span>
                                                 {{/if}}
                                             {{/if}}
                                         {{else}}
-                                            ???
+                                            <span title="Missing required data field!">???</span>
                                         {{/if}}
                                     {{else}}
-                                        /
+                                        <span title="This data field is not required!">/</span>
                                     {{/if}}
                                 </td>
                             {{/each}}
-                            {{!-- <td class="bgLevel">{{#if (hData this.recordingData.[0].isRequired)}}{{#if this.recordingData.[0].value}}{{this.recordingData.[0].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
-                            <td class="weight">{{#if (hData this.recordingData.[1].isRequired)}}{{#if this.recordingData.[1].value}}{{this.recordingData.[1].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
-                            <td class="insulinTaken">{{#if (hData this.recordingData.[2].isRequired)}}{{#if this.recordingData.[2].value}}{{this.recordingData.[2].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td>
-                            <td class="exercise">{{#if (hData this.recordingData.[3].isRequired)}}{{#if this.recordingData.[3].value}}{{this.recordingData.[3].value}}{{else}}???{{/if}}{{else}}/{{/if}}</td> --}}
                         </tr>
                     {{/each}}
             </table>
@@ -66,10 +73,10 @@
         </div>
     </div>
     <div class="right-page">
-        <div class="data-setting">
-
+        <div class="comment-text">
+            COMMENTS FOR TODAY
         </div>
-        <div class="notes">
+        <div class="comments-for-today">
 
         </div>
     </div>

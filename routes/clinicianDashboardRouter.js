@@ -1,9 +1,9 @@
 const express = require('express')
+const clinicianDashboardController = require('../controllers/clinicianDashboardController')
 
-const clinicianController = require('../controllers/clinicianDashboardController')
+const clinicianDashboardRouter = express.Router()
+clinicianDashboardRouter.get('/:id', clinicianDashboardController.getTodayDataClinician)
 
-const clinicianRouter = express.Router()
 
-clinicianRouter.get('/:id', clinicianController.getTodayDataClinician)
 
-module.exports = clinicianRouter
+module.exports = clinicianDashboardRouter
