@@ -14,7 +14,17 @@
         <div class="records-title">
             <div class="text">
                 <div>Today's Records:</div>
-                <div>18/04/2022</div>
+                <div class="current-date">
+                    <p id="current_date"></p >
+                        <script>
+                        date = new Date();
+                        year = date.getFullYear();
+                        month = date.getMonth() + 1;
+                        day = (date.getDate() < 10) ? "0"+date.getDate() : date.getDate();
+                        month = (month < 10) ? "0"+month : month;
+                        document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
+                        </script>
+                </div>
             </div>
             {{!-- <div class="completion">
                 <p style="margin: auto;">66%</p>
@@ -35,7 +45,7 @@
                                 <div class="isValue">
                                     <input type="text" class="form-control" value="{{this.recordingData.[0].value}}" disabled>
                                 </div>
-                                <div class="time">12:06 PM</div>      
+                                <div class="time">{{this.recordingData.[0].time}}</div>      
                                 {{else}}
                                 <div class="noValue">
                                     <input type="text" class="form-control" name="value" id="value-0" placeholder="" disabled="disabled">
@@ -97,7 +107,7 @@
                                 <div class="isValue">
                                     <input type="text" class="form-control" value="{{this.recordingData.[1].value}}" disabled>
                                 </div>
-                                <div class="time">12:06 PM</div>    
+                                <div class="time">{{this.recordingData.[1].time}}</div>    
                                 {{else}}
                                 <input type="text" class="form-control" name="value" id="value-1" placeholder="" disabled="disabled">
                                 {{/if}}
@@ -156,7 +166,7 @@
                                 <div class="isValue">
                                     <input type="text" class="form-control" value="{{this.recordingData.[2].value}}" disabled>
                                 </div>
-                                <div class="time">12:06 PM</div>    
+                                <div class="time">{{this.recordingData.[2].time}}</div>    
                                 {{else}}
                                 <input type="text" class="form-control" name="value" id="value-2" placeholder="" disabled="disabled">
                                 {{/if}}
@@ -215,7 +225,7 @@
                                 <div class="isValue">
                                     <input type="text" class="form-control" value="{{this.recordingData.[3].value}}" disabled>
                                 </div>
-                                <div class="time">12:06 PM</div>      
+                                <div class="time">{{this.recordingData.[3].time}}</div>      
                                 {{else}}
                                 <input type="text" class="form-control" name="value" id="value-3" placeholder="" disabled="disabled">
                                 {{/if}}
@@ -270,7 +280,17 @@
         <div class="board-title">
             <div class="text">
                 <div>Leaderboard:</div>
-                <div>18/04/2022</div>
+                <div class="current-date">
+                    <p id="current_date_1"></p >
+                        <script>
+                        date = new Date();
+                        year = date.getFullYear();
+                        month = date.getMonth() + 1;
+                        day = (date.getDate() < 10) ? "0"+date.getDate() : date.getDate();
+                        month = (month < 10) ? "0"+month : month;
+                        document.getElementById("current_date_1").innerHTML = day + "/" + month + "/" + year;
+                        </script>
+                </div>
             </div>
         </div>
         <div class="board-area">
