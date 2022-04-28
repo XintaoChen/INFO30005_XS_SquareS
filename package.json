@@ -19,5 +19,13 @@
   },
   "devDependencies": {
     "prettier": "^2.6.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XintaoChen/INFO30005_XS_SquareS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/XintaoChen/INFO30005_XS_SquareS/issues"
+  },
+  "homepage": "https://github.com/XintaoChen/INFO30005_XS_SquareS#readme"
 }
