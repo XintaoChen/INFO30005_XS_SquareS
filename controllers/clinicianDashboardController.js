@@ -23,6 +23,7 @@ const getTodayDataClinician = async (req, res, next) => {
         );
         let patientList = await Promise.all(
           untrackedPatientList.map(async (patient) => {
+            let tempDate = new Date(2000,01,01);
             let dataList = await Promise.all(
               untrackedHealthDataList.map(async (dataType) => {
                 let healthDataId = dataType._id
@@ -55,6 +56,7 @@ const getTodayDataClinician = async (req, res, next) => {
                   })
                   if (record) {
                     value = record.value;
+                    tempDate = (record.date>tempDate) ? record.date:tempDate;
                   }
                 }
                 return {
@@ -63,7 +65,7 @@ const getTodayDataClinician = async (req, res, next) => {
                   dataName: dataName,
                   unit: unit,
                   value: value,
-                  isRequired: isRequired,
+                  isRequired: isRequired
                 }
               })
             )
@@ -71,6 +73,7 @@ const getTodayDataClinician = async (req, res, next) => {
               nameGiven: patient.nameGiven,
               nameFamily: patient.nameFamily,
               recordingData: dataList,
+              date: tempDate
             }
           })
         )
@@ -79,13 +82,21 @@ const getTodayDataClinician = async (req, res, next) => {
           patientList: patientList,
           healthDataList: healthDataList,
         };
-        console.log(tempData.patientList[0]);
+        console.log(tempData.patientList);
+        tempData.patientList.sort(compare("date"))
         res.render('clinicianDashboard.hbs', { clinicianDashboardData: tempData})
     } catch (err) {
         return next(err)
     }
 }
 
+function compare(p){
+  return function(m,n){
+      var a = m[p];
+      var b = n[p];
+      return b - a; 
+  }
+}
 
 module.exports = {
     getTodayDataClinician,
