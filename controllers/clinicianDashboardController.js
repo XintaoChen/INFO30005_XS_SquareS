@@ -32,7 +32,7 @@ const getTodayDataClinician = async (req, res, next) => {
             let healthDataMatched = patient.recordingData.find((item) => {
               return (
                 item.healthDataId.toString() == healthDataId.toString() &&
-                item.recordingData != false
+                item.isRequired != false
               );
             });
             let { upperBound, lowerBound } = healthDataMatched || {};
@@ -40,11 +40,13 @@ const getTodayDataClinician = async (req, res, next) => {
             let isRequired = upperBound ? true : false;
             let value = undefined;
             if (isRequired) {
+              let nDate = new Date();
+              let startOfToday = new Date(nDate.getFullYear(), nDate.getMonth(),nDate.getDate())
               let record = await Record.findOne({
                 patientId: patient._id,
                 date: {
-                  $gte: new Date("2022,04,24"),
-                  $lt: new Date("2022,04,25"),
+                  $gte: startOfToday,
+                  $lt: new Date(startOfToday.getTime() + 24*60*60*1000),
                 },
                 healthDataId: healthDataId,
               });
