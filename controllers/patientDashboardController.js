@@ -9,6 +9,8 @@ const recordModel = require("../models/record");
 
 const getTodayDataPatient = async (req, res, next) => {
     var today = new Date()
+    var todayBegin = new Date(today.getFullYear(),today.getMonth(),today.getDate())
+    var tomorrowBegin = new Date(todayBegin.getTime() + 24*60*60*1000)
     try{
         // const tempDataNoRecords = await patientModel.findById(req.params.id).lean()
         let tempData = {}
@@ -21,8 +23,8 @@ const getTodayDataPatient = async (req, res, next) => {
                         { $match: { 
                             date: {
                                 // change this to current date
-                                $gte: new Date(today.getFullYear(),today.getMonth(),today.getDate()),
-                                $lt: new Date(today.getTime() + 24*60*60*1000)
+                                $gte: todayBegin,
+                                $lt: tomorrowBegin
                             },
                          } }
                      ],
