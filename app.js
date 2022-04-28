@@ -2,7 +2,7 @@
 const express = require("express");
 // Set your app up as an express app
 const app = express();
-var bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
