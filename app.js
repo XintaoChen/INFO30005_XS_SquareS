@@ -33,11 +33,12 @@ app.set('view engine', 'hbs')
 const peopleRouter = require('./routes/peopleRouter')
 const demoRouter = require('./routes/demoRouter')
 
-const patientRouter = require('./routes/patientRouter')
-const recordRouter = require('./routes/recordRouter')
-const clinicianRouter = require('./routes/clinicianDashboardRouter')
-
 const { patientDashboardRouter } = require('./routes/patientDashboardRouter')
+
+const patientRouter = require('./routes/patientRouter')
+//const patientRouter2 = require('./routes/patientRouter2')
+const recordRouter = require('./routes/recordRouter')
+const clinicianDashboardRouter = require('./routes/clinicianDashboardRouter')
 
 // middleware to log a message each time a request arrives at the server - handy for debugging
 app.use((req, res, next) => {
@@ -50,11 +51,11 @@ app.use('/people', peopleRouter)
 
 app.use('/patient', patientRouter)
 
-app.use('/clinician', clinicianRouter)
-
 app.use('/today', patientDashboardRouter)
 
 app.use('/record', recordRouter)
+
+app.use('/clinician', clinicianDashboardRouter)
 
 // Tells the app to send the string: "Our demo app is working!" when you
 // hit the '/' endpoint.
