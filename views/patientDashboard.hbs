@@ -14,17 +14,7 @@
         <div class="records-title">
             <div class="text">
                 <div>Today's records</div>
-                <div class="current-date">
-                    <p id="current_date"></p >
-                        <script>
-                        date = new Date();
-                        year = date.getFullYear();
-                        month = date.getMonth() + 1;
-                        day = (date.getDate() < 10) ? "0"+date.getDate() : date.getDate();
-                        month = (month < 10) ? "0"+month : month;
-                        document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
-                        </script>
-                </div>
+                <div id="displayDate"></div>
             </div>
             {{!-- <div class="completion">
                 <p style="margin: auto;">66%</p>
@@ -279,18 +269,8 @@
     <div class="leader-board">
         <div class="board-title">
             <div class="text">
-                <div>Leaderboard:</div>
-                <div class="current-date">
-                    <p id="current_date_1"></p >
-                        <script>
-                        date = new Date();
-                        year = date.getFullYear();
-                        month = date.getMonth() + 1;
-                        day = (date.getDate() < 10) ? "0"+date.getDate() : date.getDate();
-                        month = (month < 10) ? "0"+month : month;
-                        document.getElementById("current_date_1").innerHTML = day + "/" + month + "/" + year;
-                        </script>
-                </div>
+                <div>Leaderboard</div>
+                <div id="displayStartOfWeek"></div>
             </div>
             <p>Engagement Rate</p>
         </div>
