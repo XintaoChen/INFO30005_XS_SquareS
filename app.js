@@ -30,7 +30,7 @@ require('./models/db')
 app.set('view engine', 'hbs')
 
 // link to our router
-const peopleRouter = require('./routes/peopleRouter')
+//const peopleRouter = require('./routes/peopleRouter')
 const demoRouter = require('./routes/demoRouter')
 
 const { patientDashboardRouter } = require('./routes/patientDashboardRouter')
