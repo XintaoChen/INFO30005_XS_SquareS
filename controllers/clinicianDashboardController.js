@@ -83,7 +83,7 @@ const getTodayDataClinician = async (req, res, next) => {
           healthDataList: healthDataList,
         };
         console.log(tempData.patientList);
-        tempData.patientList.sort(compare("date"))
+        tempData.patientList.sort(compare("dateLatest"))
         res.render('clinicianDashboard.hbs', { clinicianDashboardData: tempData})
     } catch (err) {
         return next(err)
