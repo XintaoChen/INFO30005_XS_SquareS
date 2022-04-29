@@ -44,8 +44,7 @@
         font-size: 36px;
         font-weight: bolder;
         text-indent: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding: 5% 0;
         color: #A09E9D;
     }
     .left-page .left-title-line .current-date p{
@@ -53,9 +52,9 @@
         font-size: 36px;
         font-weight: bolder;
         text-indent: 5px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding: 5% 0;
         color: #A09E9D;
+        margin-bottom: 0%;
     }
     .left-page .left-title-line .search-bar{
         width: 592px;
