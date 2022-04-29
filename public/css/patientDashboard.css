@@ -4,6 +4,11 @@
     padding: 4% 0;
 }
 
+.form-control::placeholder {
+    font-size: smaller;
+    font-style: italic;
+}
+
 @media screen and (max-width: 1365px) {
     .form-control:focus-visible{
         outline: auto;
