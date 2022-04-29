@@ -1,8 +1,8 @@
 const express = require('express')
 
-const patientController = require('../controllers/patientController')
-
 const patientRouter = express.Router()
+
+const patientController = require('../controllers/patientController')
 
 patientRouter.get('/:id', patientController.getPatientInfo)
 

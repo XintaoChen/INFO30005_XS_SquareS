@@ -40,7 +40,7 @@
         align-items: center;
     }
     .left-page .left-title-line .dashboard-text h1{
-        width: auto;
+        width: max-content;
         font-size: 36px;
         font-weight: bolder;
         text-indent: 20px;
