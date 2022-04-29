@@ -33,7 +33,7 @@
                             <div class="value">
                                 {{#if this.recordingData.[0].value}}
                                 <div class="isValue">
-                                    <input type="text" class="form-control" value="{{this.recordingData.[0].value}}" disabled>
+                                    <input type="text" class="form-control" value="{{this.recordingData.[0].value}} mmol/L" disabled>
                                 </div>
                                 <div class="time">{{this.recordingData.[0].time}}</div>      
                                 {{else}}
@@ -95,7 +95,7 @@
                             <div class="value">
                                 {{#if this.recordingData.[1].value}}
                                 <div class="isValue">
-                                    <input type="text" class="form-control" value="{{this.recordingData.[1].value}}" disabled>
+                                    <input type="text" class="form-control" value="{{this.recordingData.[1].value}} kg" disabled>
                                 </div>
                                 <div class="time">{{this.recordingData.[1].time}}</div>    
                                 {{else}}
