@@ -30,7 +30,7 @@ require('./models/db')
 app.set('view engine', 'hbs')
 
 // link to our router
-//const peopleRouter = require('./routes/peopleRouter')
+const peopleRouter = require('./routes/peopleRouter')
 const demoRouter = require('./routes/demoRouter')
 
 const { patientDashboardRouter } = require('./routes/patientDashboardRouter')
@@ -47,7 +47,7 @@ app.use((req, res, next) => {
 })
 
 // the demo routes are added to the end of the '/demo-management' path
-// app.use('/people', peopleRouter)
+app.use('/people', peopleRouter)
 
 app.use('/patient', patientRouter)
 
