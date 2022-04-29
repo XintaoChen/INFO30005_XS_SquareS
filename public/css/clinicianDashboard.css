@@ -169,11 +169,11 @@
     .data-row:nth-child(2n){
         background-color: #D7D2CE;
     }
-    .data-row:nth-child(2n+1) td.name{
+    .data-row:nth-child(2n+1) td.patient-name{
         color: #FFFFFF;
-        background-color: #A99282;
+        background-color: #9f897a;
     }
-    .data-row:nth-child(2n) td.name{
+    .data-row:nth-child(2n) td.patient-name{
         background-color: #D3C0B2;
     }
     td{
