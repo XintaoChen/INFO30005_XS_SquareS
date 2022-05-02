@@ -1,0 +1,44 @@
+<div id="pda-calendar-container"></div>
+<div class="pda-data-area">
+  <div class="pda-data-nav">
+    <div class="pda-data-tag">Daily</div>
+    <div class="pda-data-tag">Weekly</div>
+    <div class="pda-data-tag">Monthly</div>
+  </div>
+  <div class="pda-title-area">
+
+  </div>
+  <div class="pda-data-area-daily">
+    
+    <div class="pda-daily-record">
+      <div class="pda-record-title">
+        <span>Test data</span>
+      </div>
+      <div class="pda-record-info">
+        <div class="pda-record-left">
+          <div class="pda-record-value">
+            <span class="pda-value-value">10.5</span>
+            <span class="pda-value-unit"></span>
+          </div>
+          <div class="pda-record-time">12.34PM</div>
+        </div>
+        <div class="pda-record-right">
+          <button>C</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pda-data-Weekly"></div>
+  <div class="pda-data-Monthly"></div>
+</div>
+
+
+
+<link rel="stylesheet" href="/css/calenderPlugin.css" />
+<script type="module" src="/js/plugins/test.js"></script>
+<script type="text/javascript">
+  window.onload = function () {
+    CalenderPlugin("pda-calendar-container");
+  };
+</script>

@@ -1,0 +1,85 @@
+#cp-data {
+  width: 17.5rem;
+  margin: 1.25rem auto;
+}
+
+#cp-data>.cp-header {
+  display: flex;
+  justify-content: space-between;
+  height: 2rem;
+  align-items: center;
+}
+
+#cp-data>.cp-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.5rem;
+  cursor: pointer;
+}
+
+#cp-year,
+#cp-month {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #5c4435;
+  margin-right: 0.25rem;
+}
+
+#cp-title {
+  font-size: 0.75rem;
+  line-height: 0.8rem;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+}
+
+#cp-weeks {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  list-style: none;
+  align-items: center;
+  height: 2.5rem;
+}
+
+#cp-weeks>li {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.75rem;
+  line-height: 1.2rem;
+}
+
+#cp-date {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-flow: row wrap;
+}
+
+#cp-date>li {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid #dfdfdf;
+  line-height: 2rem;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+#cp-date>.cp-hover:hover {
+  border: 1px solid red;
+}
+
+#cp-date>.cp-notCurMonth {
+  color: #dfdfdf;
+}
+
+.cp-active {
+  font-weight: bold;
+}

@@ -1,9 +1,7 @@
 // const todayHealthData = require('../models/patientHealthDataTodayModel')
-const todayHealthData = require('../models/patient')
 
 const mongoose = require('mongoose')
 const patientModel = require('../models/patient')
-const recordModel = require('../models/record')
 
 const getTodayDataPatient = async (req, res, next) => {
     var today = new Date()
