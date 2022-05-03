@@ -118,7 +118,7 @@
         var li = document.createElement("li");
         li.innerText = j++;
         li.className = "cp-notCurMonth cp-hover";
-        document.getElementById("date").appendChild(li);
+        document.getElementById("cp-date").appendChild(li);
       }
     },
     bind: function (that) {
