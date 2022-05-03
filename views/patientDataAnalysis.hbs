@@ -1,10 +1,12 @@
 <div id="pda-calendar-container"></div>
 <div class="pda-data-area">
+
   <div class="pda-data-nav">
     <div class="pda-data-tag pda-selected">Daily</div>
     <div class="pda-data-tag">Weekly</div>
     <div class="pda-data-tag">Monthly</div>
   </div>
+  
   <div class="pda-title-area">
     <div class="pda-title-time">
       <span>Thursday</span>
@@ -19,11 +21,11 @@
           Completion
         </span>
       </div>
-      <div class="pda-completion-container"></div>
+      <div id="pda-completion-container">50</div>
     </div>
   </div>
-  <div class="pda-data-area-daily">
-    
+
+  <div class="pda-daily-area">  
     <div class="pda-daily-record">
       <div class="pda-record-title">
         <span>Test data</span>
@@ -32,18 +34,63 @@
         <div class="pda-record-left">
           <div class="pda-record-value">
             <span class="pda-value-value">10.5</span>
-            <span class="pda-value-unit"></span>
+            <span class="pda-value-unit">kg</span>
           </div>
           <div class="pda-record-time">12.34PM</div>
         </div>
         <div class="pda-record-right">
-          <button>C</button>
+        </div>
+      </div>
+    </div>
+    <div class="pda-daily-record pda-not-required">
+      <div class="pda-record-title">
+        <span>Test data</span>
+      </div>
+      <div class="pda-record-info">
+        <div class="pda-record-left">
+          <div class="pda-record-value">
+            <span class="pda-value-value">-</span>
+            <span class="pda-value-unit"></span>
+          </div>
+          <div class="pda-record-time">Not required</div>
+        </div>
+        <div class="pda-record-right">
         </div>
       </div>
     </div>
   </div>
 
-  <div class="pda-data-Weekly"></div>
+  <div class="pda-weekly-area">
+    <div class="pda-week-nav">
+      <div class="pda-week-tag">Graph</div>
+      <div class="pda-week-tag pda-selected">Table</div>
+    </div>
+    <table class="pda-week-table">
+      <tr class="pda-table-head">
+        <th>Date</th>
+        <th>Blood Glucose Level (mmol/L)</th>
+        <th>Weight (kg)</th>
+        <th>Insulin Taken (dose)</th>
+        <th>Exercise (step count)</th>
+      </tr>
+      <tr class="pda-table-item">
+        <td>2022/04/18</td>
+        <td>?</td>
+        <td class="pda-over-value">100.7</td>
+        <td>3</td>
+        <td>-</td>
+      </tr>
+      <tr class="pda-table-item">
+        <td>2022/04/18</td>
+        <td>?</td>
+        <td>56.7</td>
+        <td class="pda-under-value">3</td>
+        <td>-</td>
+      </tr>
+    </table>
+  </div>
+
+
   <div class="pda-data-Monthly"></div>
 </div>
 
@@ -51,9 +98,12 @@
 
 <link rel="stylesheet" href="/css/calenderPlugin.css" />
 <link rel="stylesheet" href="/css/patientDataAnalysis.css">
+<link rel="stylesheet" href="/css/completionRateChartPlugin.css">
 <script type="module" src="/js/plugins/test.js"></script>
+<script type="module" src="/js/plugins/completionRateChartPlugin.js"></script>
 <script type="text/javascript">
   window.onload = function () {
     CalenderPlugin("pda-calendar-container");
+    CompletionRateChartPlugin("pda-completion-container", 60);
   };
 </script>
