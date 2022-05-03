@@ -1,0 +1,66 @@
+.pda-data-area {
+  width: 100vw;
+}
+
+/* nav */
+
+.pda-data-nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.pda-data-nav .pda-data-tag {
+  width: 33.3%;
+  text-align: center;
+  background-color: #c7c2bf;
+  padding: 5px 0;
+}
+
+.pda-data-nav .pda-data-tag.pda-selected {
+  background-color: #867167;
+}
+
+/* title */
+
+.pda-title-area {
+  padding: 3%;
+  width: 94%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pda-title-area .pda-title-time {
+  color: #5c4435;
+  display: flex;
+  flex-direction: column;
+}
+
+.pda-title-area .pda-title-time span {
+  font-size: 1.25rem;
+  display: block;
+}
+
+.pda-title-area .pda-title-completion {
+  display: flex;
+  align-items: center;
+}
+
+.pda-title-area .pda-title-completion .pda-completion-title {
+  display: flex;
+  color: #8b8da0;
+  flex-direction: column;
+}
+
+.pda-title-area .pda-title-completion .pda-completion-title span {
+  font-size: 0.75rem;
+  display: block;
+}
+
+.pda-title-area .pda-title-completion .pda-completion-container {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
