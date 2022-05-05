@@ -6,12 +6,12 @@ const encrypt = (password) => {
   return bcPassword;
 };
 
-const decrypt = (password, bcPassword) => {
-  let compare = bcrypt.compareSync(password, bcPassword);
-  return compare;
+const compare = (password, bcPassword) => {
+  let result = bcrypt.compareSync(password, bcPassword);
+  return result;
 };
 
 module.exports = {
   encrypt,
-  decrypt,
+  compare,
 };
