@@ -7,6 +7,11 @@ patientDashboardRouter.get(
     patientDashboardController.getTodayDataPatient
 )
 
+patientDashboardRouter.get(
+    '/pda/:id',
+    patientDashboardController.getDataAnalysis
+)
+
 patientDashboardRouter.post('/add', function (req, res) {
     patientDashboardController.postTodayDataPatient(req.body)
     console.log(req.body)

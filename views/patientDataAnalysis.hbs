@@ -60,7 +60,7 @@
     </div>
   </div>
 
-  <div class="pda-weekly-area">
+  <div class="pda-weekly-area pda-hidden">
     <div class="pda-week-nav">
       <div class="pda-week-tag">Graph</div>
       <div class="pda-week-tag pda-selected">Table</div>
@@ -68,30 +68,45 @@
     <table class="pda-week-table">
       <tr class="pda-table-head">
         <th>Date</th>
-        <th>Blood Glucose Level (mmol/L)</th>
-        <th>Weight (kg)</th>
-        <th>Insulin Taken (dose)</th>
-        <th>Exercise (step count)</th>
+        {{#each healthDataList}}
+          <th>{{dataName}} ({{unit}})</th>
+        {{/each}}
       </tr>
-      <tr class="pda-table-item">
-        <td>2022/04/18</td>
-        <td>?</td>
-        <td class="pda-over-value">100.7</td>
-        <td>3</td>
-        <td>-</td>
-      </tr>
-      <tr class="pda-table-item">
-        <td>2022/04/18</td>
-        <td>?</td>
-        <td>56.7</td>
-        <td class="pda-under-value">3</td>
-        <td>-</td>
-      </tr>
+      {{#each weeklyData}}
+        <tr class="pda-table-item">
+          <td>{{date}}</td>
+          {{#each records}}
+            <td>
+            {{#if value}}
+              {{#if (compare value upperBound)}}
+                <span class="pda-over-value" title="This value is bigger than the upper safety threshold!">{{value}}</span>
+              {{else}}
+                {{#if (compare lowerBound value)}}
+                  <span class="pda-under-value" title="This value is smaller than the lower safety threshold!">{{value}}</span>
+                {{else}}
+                  <span>{{value}}</span>
+                {{/if}}
+              {{/if}} 
+            {{else}}
+              {{#if (hData isRequired)}}
+                ?
+              {{else}}
+                -
+              {{/if}}
+            {{/if}}
+            </td>
+          {{/each}}
+        </tr>
+      {{/each}}
     </table>
   </div>
 
 
-  <div class="pda-data-Monthly"></div>
+  <div class="pda-monthly-area pda-hidden"></div>
+
+  {{#with code}}
+    <div id="test">{{this}}</div>
+  {{/with}}
 </div>
 
 
@@ -101,6 +116,7 @@
 <link rel="stylesheet" href="/css/completionRateChartPlugin.css">
 <script type="module" src="/js/plugins/test.js"></script>
 <script type="module" src="/js/plugins/completionRateChartPlugin.js"></script>
+<script type="module" src="/js/patientDataAnalysis.js"></script>
 <script type="text/javascript">
   window.onload = function () {
     CalenderPlugin("pda-calendar-container");
