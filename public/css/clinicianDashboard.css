@@ -29,7 +29,7 @@
     .left-page{
         display: flex;
         flex-direction: column;
-        width: 58%;
+        width: 57%;
         background-color: #FFFFFF;
     }
     .left-page .left-title-line {
@@ -83,10 +83,17 @@
         background-color: #867167;
         border-radius: 50%;
         display: inline-block;
-    }
-    .add{
         font-size: 24px;
         color:#F4F2F0;
+        transition: transform 300ms ease-in-out;
+    }
+    .add-button Text{
+        font-size: 24px;
+        color:#F4F2F0;
+    }
+    .add-button:hover{
+        background-color: #9f897a;
+        transform: scale(1.15)
     }
     
     .left-page .data-record{
@@ -96,18 +103,17 @@
     .right-page{
         display: flex;
         flex-direction: column;
-        width: 42%;
+        width: 43%;
         background-color: #FFFFFF;
     }
     .right-page .comment-text{
         font-size: 36px;
         font-weight: bolder;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding-top: 6px;  
         color: #A09E9D;
     }
     .right-page .comments-for-today{
-        width: 96%;
+        width: 97%;
         background-color: #F4F2F0;
         height: 650px;
     }
