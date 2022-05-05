@@ -21,6 +21,7 @@ app.engine(
       hData4: (x) => x == "625576b0bcd6f0a12a5e5fa9",
       hData: (x) => x == true,
       compare: (x, y) => x > y,
+      formmatDate: (date) => `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`
     },
   })
 );
@@ -39,7 +40,6 @@ const patientRouter = require("./routes/patientRouter");
 //const patientRouter2 = require('./routes/patientRouter2')
 const recordRouter = require("./routes/recordRouter");
 const clinicianDashboardRouter = require("./routes/clinicianDashboardRouter");
-
 // middleware to log a message each time a request arrives at the server - handy for debugging
 app.use((req, res, next) => {
   console.log("message arrived: " + req.method + " " + req.path);
@@ -56,6 +56,7 @@ app.use("/today", patientDashboardRouter);
 app.use("/record", recordRouter);
 
 app.use("/clinician", clinicianDashboardRouter);
+
 
 // Tells the app to send the string: "Our demo app is working!" when you
 // hit the '/' endpoint.
@@ -79,9 +80,9 @@ app.get("/aboutUs", (req, res) => {
   res.render("aboutUs.hbs");
 });
 
-app.get("/pda", (req, res) => {
-  res.render("patientDataAnalysis.hbs", { data: { a: 1, b: 2 } });
-});
+// app.get("/pda", (req, res) => {
+//   res.render("patientDataAnalysis.hbs", { data: { a: 1, b: 2 } });
+// });
 
 // link to our router
 // const demoRouter = require('./routes/demoRouter')
