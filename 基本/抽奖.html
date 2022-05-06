@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container"><button id="btn">click</button></div>
+  </body>
+  <script>
+    function rand(m, n) {
+      return Math.ceil(Math.random() * (n + m - 1) + m - 1);
+    }
+
+    const btn = document.querySelector("#btn");
+    btn.addEventListener("click", function () {
+      // 普通形式
+      // setTimeout(() => {
+      //   let n = rand(1, 100);
+      //   if (n <= 30) {
+      //     alert("yes" + n);
+      //   } else {
+      //     alert("no" + n);
+      //   }
+      // }, 1000);
+
+      // Promise形式实现
+      const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          let n = rand(1, 100);
+          if (n <= 30) {
+            resolve(n);
+          } else {
+            reject(n);
+          }
+        }, 1000);
+      }).then(
+        (value) => {
+          // 成功时的回调
+          alert("yes " + value);
+        },
+        (reason) => {
+          // 失败时的回调
+          alert("no " + reason);
+        }
+      );
+    });
+  </script>
+</html>
