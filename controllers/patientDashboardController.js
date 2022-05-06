@@ -138,8 +138,12 @@ const getDataAnalysis = async (req, res) => {
             item.isRequired != false
           );
         });
-
-        const { upperBound, lowerBound } = healthDataMatched;
+        let upperBound = undefined, lowerBound = undefined;
+        if(healthDataMatched){
+           upperBound = healthDataMatched.upperBound;
+           lowerBound = healthDataMatched.lowerBound;
+        }
+        
 
         return {
           dataName: dataName,
