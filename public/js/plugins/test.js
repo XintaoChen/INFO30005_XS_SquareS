@@ -10,6 +10,9 @@
     curYear: new Date().getFullYear(),
     curMonth: new Date().getMonth(),
     curDay: new Date().getDate(),
+    getDate:function(){
+      return `${this.curYear}/${this.curMonth}/${this.curDay}`
+    },
     init: function (element_id) {
       this.build(element_id);
       this.update();

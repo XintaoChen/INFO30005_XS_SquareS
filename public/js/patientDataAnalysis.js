@@ -3,7 +3,7 @@ function patientDataAnalysis() {
   const data = JSON.parse(test.innerHTML);
   test.innerHTML = "";
   console.log(data);
-
+  console.log(CalenderPlugin.prototype.getDate())
   let tags = document.getElementsByClassName("pda-data-tag");
   let currentSelected = document.getElementsByClassName(
     "pda-data-tag pda-selected"
