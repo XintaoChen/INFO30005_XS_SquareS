@@ -53,10 +53,24 @@
               <i class="iconfont">&#xe8e7;</i>
               <span>About this website</span>
             </a>
+            {{#if user}}
+            <form method="POST" action="/logout" style="margin-bottom: 20px;">
+              <button>Log out</button> 
+            </form>
+            {{else if todayHealthData}}
+            <form method="POST" action="/logout" style="margin-bottom: 20px;">
+              <button>Log out</button> 
+            </form>
+            {{else if clinicianDashboardData}}
+            <form method="POST" action="/logout" style="margin-bottom: 20px;">
+              <button>Log out</button> 
+            </form>
+            {{else}}
             <a href="">
               <i class="iconfont">&#xe608;</i>
               <span>Login</span>
             </a>
+            {{/if}}
           </div>
         </div>
       </div>
