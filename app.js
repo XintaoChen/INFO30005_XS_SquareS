@@ -5,6 +5,34 @@ const app = express()
 const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: true }))
 
+
+const flash = require('express-flash')
+const session = require('express-session')
+app.use(flash())
+app.use(
+    session({
+        // The secret used to sign session cookies (ADD ENV VAR)
+        secret: process.env.SESSION_SECRET || 'keyboard cat', name: 'demo', // The cookie name (CHANGE THIS) saveUninitialized: false,
+        resave: false,
+        cookie: {
+            sameSite: 'strict',
+            httpOnly: true,
+            secure: app.get('env') === 'production'
+        },
+    })
+)
+if (app.get('env') === 'production') {
+    app.set('trust proxy', 1); // Trust first proxy
+}
+// Initialise Passport.js
+const passport = require('./passport')
+app.use(passport.authenticate('session'))
+// Load authentication router
+const authRouter = require('./routes/auth')
+app.use(authRouter)
+
+
+
 app.use(express.static('public'))
 // set up handlebars view engine
 const exphbs = require('express-handlebars')
@@ -72,11 +100,16 @@ app.get('/home', (req, res) => {
 })
 app.get('/aboutDiabetes', (req, res) => {
     // res.send('Our demo app is working!')
-    res.render('aboutDiabetes.hbs')
+    res.render('aboutDiabetes.hbs', { loggedin: req.isAuthenticated() })
 })
 app.get('/aboutUs', (req, res) => {
     // res.send('Our demo app is working!')
     res.render('aboutUs.hbs')
+})
+
+app.get('/login', (req, res) => {
+    // res.send('Our demo app is working!')
+    res.render('login.hbs')
 })
 
 // link to our router
