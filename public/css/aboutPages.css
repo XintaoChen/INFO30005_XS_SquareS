@@ -263,7 +263,12 @@ table {
   header .naviBar {
     display: none;
   }
-
+  #menuButtonMobile{
+    display: block;
+  }
+  #menuButtonDesktop{
+    display: none;
+  }
 
   header .menuButton .memuIcon {
     position: absolute;
@@ -590,6 +595,12 @@ table {
     position: relative;
     height: 100%;
     margin-right: 10px;
+  }
+  #menuButtonMobile{
+    display: none;
+  }
+  #menuButtonDesktop{
+    display: block;
   }
   
   header .naviBar a {
