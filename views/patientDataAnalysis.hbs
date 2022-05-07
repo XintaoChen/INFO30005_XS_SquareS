@@ -1,6 +1,9 @@
 <div id="pda-calendar-container"></div>
-<div class="pda-data-area">
 
+<div class="pda-data-area">
+  <div class="pda-update-btn">
+    <button id="pda-update-btn">select date</button>
+  </div>
   <div class="pda-data-nav">
     <div class="pda-data-tag pda-selected">Daily</div>
     <div class="pda-data-tag">Weekly</div>
@@ -65,6 +68,7 @@
       <div class="pda-week-tag">Graph</div>
       <div class="pda-week-tag pda-selected">Table</div>
     </div>
+    <div id="pda-chart-container" class="pda-hidden"></div>
     <table class="pda-week-table">
       <tr class="pda-table-head">
         <th>Date</th>
@@ -99,6 +103,7 @@
         </tr>
       {{/each}}
     </table>
+    
   </div>
 
 
@@ -114,12 +119,13 @@
 <link rel="stylesheet" href="/css/calenderPlugin.css" />
 <link rel="stylesheet" href="/css/patientDataAnalysis.css">
 <link rel="stylesheet" href="/css/completionRateChartPlugin.css">
+<script src="https://code.highcharts.com/highcharts.js"></script>
 <script type="module" src="/js/plugins/test.js"></script>
 <script type="module" src="/js/plugins/completionRateChartPlugin.js"></script>
 <script type="module" src="/js/patientDataAnalysis.js"></script>
 <script type="text/javascript">
   window.onload = function () {
-    CalenderPlugin("pda-calendar-container");
-    CompletionRateChartPlugin("pda-completion-container", 60);
+    window.calenderPlugin = CalenderPlugin("pda-calendar-container");
+    window.completionRateChartPlugin = CompletionRateChartPlugin("pda-completion-container", 60);
   };
 </script>

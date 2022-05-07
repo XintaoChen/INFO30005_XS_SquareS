@@ -107,8 +107,19 @@ const getDataAnalysis = async (req, res) => {
   try {
     const patientId = req.params.id;
     // 62554eb9bcd6f0a12a5e5f52
+    const date = new Date();
+    const time = date.getTime();
+    const day = date.getDay();
+    const oneDayTime = 24 * 60 * 60 * 1000;
+    let startOfThisWeek = time - day * oneDayTime;
     const untrackedRecordList = await Record.find(
-      { patientId: patientId },
+      {
+        patientId: patientId,
+        date: {
+          $gte: startOfThisWeek,
+          $lt: startOfThisWeek + 7 * oneDayTime,
+        },
+      },
       "healthDataId value comment date"
     );
 
@@ -124,7 +135,7 @@ const getDataAnalysis = async (req, res) => {
         healthDataId: item._id,
         dataName: item.dataName,
         unit: item.unit,
-        isRequired: dataMatched !== null ? true : false,
+        isRequired: dataMatched !== undefined ? true : false,
       };
     });
     const recordList = await Promise.all(
@@ -138,12 +149,12 @@ const getDataAnalysis = async (req, res) => {
             item.isRequired != false
           );
         });
-        let upperBound = undefined, lowerBound = undefined;
-        if(healthDataMatched){
-           upperBound = healthDataMatched.upperBound;
-           lowerBound = healthDataMatched.lowerBound;
+        let upperBound = undefined,
+          lowerBound = undefined;
+        if (healthDataMatched) {
+          upperBound = healthDataMatched.upperBound;
+          lowerBound = healthDataMatched.lowerBound;
         }
-        
 
         return {
           dataName: dataName,
@@ -158,16 +169,16 @@ const getDataAnalysis = async (req, res) => {
     );
 
     const formmatDate = (date) =>
-      `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`;
+      `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`;
 
     let hashMap = {};
     let healthDataNameList = healthDataList.map((item) => {
       return item.dataName;
     });
-    console.log(healthDataNameList);
+
     for (let record of recordList) {
       let index = healthDataNameList.indexOf(record.dataName);
-      console.log(index);
+
       let fDate = formmatDate(record.date);
       if (hashMap[fDate]) {
         hashMap[fDate].records[index] = { ...record };
@@ -180,8 +191,11 @@ const getDataAnalysis = async (req, res) => {
       }
     }
     console.log(hashMap);
-    const data = JSON.stringify(hashMap);
-    console.log(healthDataList);
+    const data = JSON.stringify({
+      weeklyData: hashMap,
+      healthDataList: healthDataList,
+    });
+
     res.render("patientDataAnalysis.hbs", {
       code: data,
       weeklyData: hashMap,
