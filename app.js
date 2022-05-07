@@ -87,20 +87,21 @@ app.use('/clinician', clinicianDashboardRouter)
 
 // Tells the app to send the string: "Our demo app is working!" when you
 // hit the '/' endpoint.
-app.get('/', (req, res) => {
-    // res.send('Our demo app is working!')
-    res.render('home.hbs')
-})
+
+// app.get('/', (req, res) => {
+//     // res.send('Our demo app is working!')
+//     res.render('home.hbs', { loggedin: req.isAuthenticated() })
+// })
 app.get('/ajax', (req, res) => {
     res.render('test.hbs')
 })
-app.get('/home', (req, res) => {
-    // res.send('Our demo app is working!')
-    res.render('home.hbs')
-})
+// app.get('/home', (req, res) => {
+//     // res.send('Our demo app is working!')
+//     res.render('home.hbs', { loggedin: req.isAuthenticated() })
+// })
 app.get('/aboutDiabetes', (req, res) => {
     // res.send('Our demo app is working!')
-    res.render('aboutDiabetes.hbs', { loggedin: req.isAuthenticated() })
+    res.render('aboutDiabetes.hbs')
 })
 app.get('/aboutUs', (req, res) => {
     // res.send('Our demo app is working!')
