@@ -87,6 +87,7 @@ const getTodayDataPatient = async (req, res, next) => {
                     console.log(JSON.stringify(tempData))
                     res.render('patientDashboard.hbs', {
                         todayHealthData: tempData,
+                        loggedin: req.isAuthenticated()
                     })
                 } else {
                     // if (tempDataNoRecords) {

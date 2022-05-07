@@ -88,30 +88,28 @@ app.use('/clinician', clinicianDashboardRouter)
 // Tells the app to send the string: "Our demo app is working!" when you
 // hit the '/' endpoint.
 
-// app.get('/', (req, res) => {
-//     // res.send('Our demo app is working!')
-//     res.render('home.hbs', { loggedin: req.isAuthenticated() })
-// })
+app.get('/', (req, res) => {
+    res.render('home.hbs', { loggedin: req.isAuthenticated() })
+})
 app.get('/ajax', (req, res) => {
     res.render('test.hbs')
 })
-// app.get('/home', (req, res) => {
-//     // res.send('Our demo app is working!')
-//     res.render('home.hbs', { loggedin: req.isAuthenticated() })
-// })
+app.get('/home', (req, res) => {
+    res.render('home.hbs', { loggedin: req.isAuthenticated() })
+})
 app.get('/aboutDiabetes', (req, res) => {
     // res.send('Our demo app is working!')
-    res.render('aboutDiabetes.hbs')
+    res.render('aboutDiabetes.hbs', { loggedin: req.isAuthenticated() })
 })
 app.get('/aboutUs', (req, res) => {
     // res.send('Our demo app is working!')
-    res.render('aboutUs.hbs')
+    res.render('aboutUs.hbs', { loggedin: req.isAuthenticated() })
 })
 
-app.get('/login', (req, res) => {
-    // res.send('Our demo app is working!')
-    res.render('login.hbs')
-})
+// app.get('/login', (req, res) => {
+//     // res.send('Our demo app is working!')
+//     res.render('login.hbs')
+// })
 
 // link to our router
 // const demoRouter = require('./routes/demoRouter')
