@@ -6,6 +6,13 @@
   display: none !important;
 }
 
+
+.pda-update-btn {
+  width: 99%;
+  margin-bottom: 2%;
+  margin-left: 1%;
+}
+
 /* nav */
 
 .pda-data-nav {
@@ -20,10 +27,12 @@
   text-align: center;
   background-color: #c7c2bf;
   padding: 0.35em 0;
+  cursor: pointer;
 }
 
 .pda-data-nav .pda-data-tag.pda-selected {
   background-color: #867167;
+  cursor: default;
 }
 
 /* title */
@@ -160,10 +169,12 @@
   width: 50%;
   text-align: center;
   background-color: #C7C2BF;
+  cursor: pointer;
 }
 
 .pda-weekly-area .pda-week-nav .pda-week-tag.pda-selected {
   background-color: #5c4435;
+  cursor: default;
 }
 
 .pda-weekly-area .pda-week-table {

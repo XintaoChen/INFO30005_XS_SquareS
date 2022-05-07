@@ -21,6 +21,7 @@ const getTodayDataClinician = async (req, res, next) => {
       { clinicianId: clinicianId },
       "nameGiven nameFamily recordingData"
     );
+
     let patientList = await Promise.all(
       untrackedPatientList.map(async (patient) => {
         let tempDate = new Date(2000, 01, 01);
