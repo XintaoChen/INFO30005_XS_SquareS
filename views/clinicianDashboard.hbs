@@ -25,7 +25,7 @@
                 <input type="text" class="search-icon" placeholder="Search..">
             </div>
             <button class="add-button">
-                <div class="add">+</div>
+                <Text class="add">+</Text>
             </button>
         </div>
         <div class="data-record">
@@ -42,8 +42,7 @@
             <div class="table-data">
                 <table>
                     {{#each patientList}}
-                    
-                        <tr class="data-row">
+                        <tr class="data-row" data-href="/patient/{{_id}}">
                             <td class="patient-name">{{nameGiven}} {{nameFamily}}{{value}}</td>
                             {{#each recordingData}}
                                 <td>
@@ -68,7 +67,18 @@
                             {{/each}}
                         </tr>
                     {{/each}}
-            </table>
+                </table>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const rows = document.querySelectorAll("tr[data-href]");
+                        rows.forEach(row => {
+                            row.addEventListener('click', () => {
+                                window.location.href = row.dataset.href;
+                            })
+                        })
+                    })
+                </script>
             </div>
             
         </div>
