@@ -41,7 +41,7 @@ const getTodayDataPatient = async (req, res, next) => {
                 },
                 {
                     $match: {
-                        _id: mongoose.Types.ObjectId(req.params.id),
+                        _id: mongoose.Types.ObjectId(req.user._id),
                     },
                 },
             ],
@@ -87,13 +87,15 @@ const getTodayDataPatient = async (req, res, next) => {
                     console.log(JSON.stringify(tempData))
                     res.render('patientDashboard.hbs', {
                         todayHealthData: tempData,
-                        loggedin: req.isAuthenticated()
+                        loggedin: req.isAuthenticated(),
+                        isPatient: true
                     })
                 } else {
                     // if (tempDataNoRecords) {
                     //     res.render('singlePatient.hbs', { todayHealthData: tempDataNoRecords })
                     // } else {
-                    res.render('noRecords.hbs')
+                    // res.render('noRecords.hbs')
+                    res.redirect('/login')
                     // }
                 }
             }

@@ -269,6 +269,9 @@ table {
   #menuButtonDesktop{
     display: none;
   }
+  .dashboard{
+    margin-bottom: 50px !important;
+  }
 
   header .menuButton .memuIcon {
     position: absolute;
@@ -656,6 +659,9 @@ table {
     display: none;
   }
 
+  .dashboard{
+    margin-bottom: 80px !important;
+  }
   header .menuButton .memuIcon {
     /* display: none; */
     position: absolute;

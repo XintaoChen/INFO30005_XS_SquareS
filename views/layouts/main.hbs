@@ -21,6 +21,17 @@
         <div class="menu" id="menu-m">
           <button onclick="doMenu('menu-m');"><span>Back</span> <i class="iconfont">&#xe840;</i></button>
           <div class="container">
+            {{#if (true isPatient)}}
+            <a href="/today"  class="dashboard">
+              <i class="iconfont">&#xe7c6;</i>
+              <span>Dashboard</span>
+            </a>
+            {{else}}
+            <a href="/clinician"  class="dashboard">
+              <i class="iconfont">&#xe7c6;</i>
+              <span>Dashboard</span>
+            </a>
+            {{/if}}
             <a href="/home">
               <i class="iconfont">&#xe7c6;</i>
               <span>Home</span>
@@ -53,6 +64,17 @@
         <div class="menu" id="menu-d">
           <button onclick="doMenu('menu-d');"><span>Back</span> <i class="iconfont">&#xe840;</i></button>
           <div class="container">
+            {{#if (true isPatient)}}
+            <a href="/today" class="dashboard">
+              <i class="iconfont">&#xe7c6;</i>
+              <span>Dashboard</span>
+            </a>
+            {{else}}
+            <a href="/clinician" class="dashboard">
+              <i class="iconfont">&#xe7c6;</i>
+              <span>Dashboard</span>
+            </a>
+            {{/if}}
             <a href="/home">
               <i class="iconfont">&#xe7c6;</i>
               <span>Home</span>
