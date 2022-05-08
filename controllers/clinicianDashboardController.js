@@ -5,7 +5,7 @@ const Record = require("../models/record");
 
 const getTodayDataClinician = async (req, res, next) => {
     try {
-        const clinicianId = req.params.id;
+        const clinicianId = req.user._id;
         const untrackedHealthDataList = await HealthData.find({}, "dataName unit");
         let healthDataList = untrackedHealthDataList.map((healthData) => {
           return {
@@ -14,7 +14,8 @@ const getTodayDataClinician = async (req, res, next) => {
         })
         const clinicianInfo = await Clinician.findById(clinicianId)
         if (!clinicianInfo) {
-          res.render("noRecords.hbs")
+          // res.render("noRecords.hbs")
+          res.redirect('/login')
         }
     
         const untrackedPatientList = await Patient.find(
@@ -89,7 +90,7 @@ const getTodayDataClinician = async (req, res, next) => {
         
         console.log(tempData.patientList);
         tempData.patientList.sort(compare("dateLatest"))
-        res.render('clinicianDashboard.hbs', { clinicianDashboardData: tempData, loggedin: req.isAuthenticated()})
+        res.render('clinicianDashboard.hbs', { clinicianDashboardData: tempData, loggedin: req.isAuthenticated(), isPatient: false})
     } catch (err) {
         return next(err)
     }

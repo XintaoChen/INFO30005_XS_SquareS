@@ -30,7 +30,8 @@ router.post('/login-patient',
     failureFlash: true
   })
   , (req, res) => {
-    res.redirect('/today/' + req.user._id);
+    // res.redirect('/today/' + req.user._id);
+    res.redirect('/today');
   }
 )
 router.post('/login-clinician',
@@ -39,7 +40,8 @@ router.post('/login-clinician',
     failureFlash: true
   })
   , (req, res) => {
-    res.redirect('/clinician/' + req.user._id);
+    // res.redirect('/clinician/' + req.user._id);
+    res.redirect('/clinician');
   }
 )
 // Handle logout
