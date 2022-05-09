@@ -43,7 +43,7 @@
                 <table>
                     {{#each patientList}}
                         <tr class="data-row" data-href="/patient/{{_id}}">
-                            <td class="patient-name">{{nameGiven}} {{nameFamily}}{{value}}</td>
+                            <td class="patient-name">{{nameGiven}} {{nameFamily}}</td>
                             {{#each recordingData}}
                                 <td>
                                     {{#if (hData isRequired)}}
@@ -88,7 +88,32 @@
             COMMENTS FOR TODAY
         </div>
         <div class="comments-for-today">
-
+            <div class="comments-for-today-list">
+                <table id="comments-table">
+                    {{#each patientList}}
+                        {{#each recordingData}}
+                            {{#if comment}}
+                                <tr class="today-comments-padding-row">
+                                    <td></td>
+                                </tr>
+                                <tr class="today-comments-row1">
+                                    <td class="today-comments-patient-name">{{../nameGiven}} {{../nameFamily}}</td>
+                                </tr>
+                                <tr class="today-comments-row2">
+                                    <td class="today-comments-description">Commented on {{dataName}} ({{value}} {{unit}}), {{date}}.</td>
+                                </tr>
+                                <tr class="today-comments-row3">
+                                    <td class="today-comments-content">
+                                        <p>
+                                            <br>"{{comment}}"<br><br>
+                                        </p>
+                                    </td>
+                                </tr>
+                            {{/if}}
+                        {{/each}}
+                    {{/each}}
+                </table>
+            </div>
         </div>
     </div>
 </div>

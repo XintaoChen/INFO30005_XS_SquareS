@@ -117,6 +117,9 @@
         background-color: #F4F2F0;
         height: 650px;
     }
+    /* .right-page .comments-for-today table{
+        border-radius: 25px;
+    } */
 
 
     .data-record{
@@ -182,27 +185,15 @@
     .data-row:nth-child(2n) td.patient-name{
         background-color: #D3C0B2;
     }
-    td{
+    .data-row .patient-name{
+        cursor: pointer;
+    }
+    .data-record td{
         display: block;
         text-align: center;
         line-height: 50px;
         height: 100%;
     }
-    /* td.name{
-        width: 130px;
-    }
-    td.bgLevel{
-        width: 270px;
-    }
-    td.weight{
-        width: 135px;
-    }
-    td.insulinTaken{
-        width: 200px;
-    }
-    td.exercise{
-        width: 200px;
-    } */
 
     .too-high-value{
         color:red;
@@ -220,23 +211,23 @@
         color:blue;
     }
 
-    td:nth-child(1) {
+    .data-record td:nth-child(1) {
         width: 150px;
     }
 
-    td:nth-child(2) {
+    .data-record td:nth-child(2) {
         width: 270px;
     }
 
-    td:nth-child(3) {
+    .data-record td:nth-child(3) {
         width: 135px;
     }
 
-    td:nth-child(4) {
+    .data-record td:nth-child(4) {
         width: 200px;
     }
 
-    td:nth-child(5) {
+    .data-record td:nth-child(5) {
         width: 200px;
     }
 
@@ -262,5 +253,65 @@
     .lower::before{
         content: "↓";  
     }
+
+    .comments-for-today-list{
+        width: 79%;
+        height: 650px;
+        margin: auto;
+        overflow-y: scroll;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .today-comments-padding-row{
+        width: 100%;
+        height: 20px;
+        background-color: #F4F2F0;
+    }
+    .today-comments-row1{
+        width: 100%;
+        height: 20px;
+        margin: auto;
+        font-size: 16px;
+        line-height: 20px;
+        text-align: left;
+        font-weight: bold;
+        background-color: #F4F2F0;
+    }
+    .today-comments-row1 .today-comments-patient-name{
+        color: #A09E9D;
+    }
+    .today-comments-row2{
+        width: 100%;
+        height: 15px;
+        margin: auto;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: left;
+        background-color: #F4F2F0;
+    }
+    .today-comments-row2 .today-comments-description{
+        color: #A09E9D;
+    }
+    .today-comments-row3{
+        width: 100%;
+        height: auto;
+        margin: auto;
+        font-size: 20px;
+        line-height: auto;
+        text-align: center;
+        background-color: #F4F2F0;
+    }
+    .today-comments-row3 .today-comments-content{
+        color: #5C4435;
+    }
+    #comments-table tr:nth-child(8n-4) td{
+        background-color: #A09E9D;
+        border-radius: 25px;
+    }
+    #comments-table tr:nth-child(8n) td{
+        background-color: #E3D1BD;
+        border-radius: 25px;
+    }
+
 }
 
