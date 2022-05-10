@@ -1,19 +1,19 @@
 const mongoose = require('mongoose')
+const Clinician = require('./clinician')
+const Patient = require('./patient')
 
 const noteSchema = new mongoose.Schema({
     clinicianId: {
-        type: mongoose.Schema.Type.ObjectId,
-        ref: clinicianSchema,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Clinician,
         required: true,
-        unique: true,
     },
     patientId: {
-        type: mongoose.Schema.Type.ObjectId,
-        ref: patientSchema,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: Patient,
         required: true,
-        unique: true,
     },
-    content: { type: String, required: true },
+    note: { type: String, required: true },
     date: { type: Date, default: Date.now },
 })
 

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Patient = require('./patient')
 const HealthData = require('./healthData')
+
 const recordSchema = new mongoose.Schema(
     {
         patientId: {
