@@ -353,10 +353,12 @@ table {
 
 
   .content .title {
-    /* position: absolute; */
-    /* top: 0;
-    left: 0; */
     width: 100vw;
+    background-image: url('/img/home-mobile.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 420px;
   }
 
   .content .title img {
@@ -598,6 +600,7 @@ table {
     position: relative;
     height: 100%;
     margin-right: 10px;
+    align-items: center;
   }
   #menuButtonMobile{
     display: none;
@@ -739,6 +742,7 @@ table {
     background-color: rgba(243, 240, 238);
     line-height: 1.5; 
     color:#5c4435;
+    min-height: 830px;
   }
 
   .content .title {
@@ -746,6 +750,11 @@ table {
     display: flex;
     justify-content: center;
     background-color: #2c1f18;
+    background-image: url('/img/home.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 830px;
   }
 
   .content .title img {
