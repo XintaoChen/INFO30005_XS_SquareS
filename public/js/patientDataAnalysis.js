@@ -36,10 +36,8 @@ function patientDataAnalysis() {
       <span>${dateMonthFormat(selectDate)}</span>
     </div>
     `;
-
     let enterred = 0;
     let thisData = hashMap[dateFormat(selectDate)];
-
     if (thisData !== undefined) {
       for (let i = 0; i < thisData.records.length; i++) {
         let recordNode = document.createElement("div");
@@ -76,7 +74,7 @@ function patientDataAnalysis() {
       (100 * enterred) / (thisData ? thisData.records.length : Infinity);
     window.completionRateChartPlugin.setCompletion(completionRate);
   }
-
+  updateDate()
   function generateRecord(dataName, dataValue, dataUnit, dataTime) {
     return `
       <div class="pda-record-title">
@@ -140,8 +138,38 @@ function patientDataAnalysis() {
       tableArea.classList.remove("pda-hidden");
     }
   });
-
+  const dateList = listOfWeek(new Date());
+  const hdll = healthDataList.length;
+  let seriesData = [];
+  for (let date of dateList) {
+    if (hashMap[date]) {
+      for (let i = 0; i < hdll; i++) {
+        if (!seriesData[i]) {
+          seriesData[i] = [hashMap[date].records[i].value];
+        } else {
+          seriesData[i].push(hashMap[date].records[i].value);
+        }
+      }
+    } else {
+      for (let i = 0; i < hdll; i++) {
+        if (!seriesData[i]) {
+          seriesData[i] = [null];
+        } else {
+          seriesData[i].push(null);
+        }
+      }
+    }
+  }
   if (screen.width < 1000) {
+    let series = seriesData.map((item, index) => {
+      return {
+        name: healthDataList[index].dataName,
+        data: item.map((i) => (i ? i : null)),
+        tooltip: {
+          valueSuffix: healthDataList[index].unit,
+        },
+      };
+    });
     let chartContainer = document.getElementById("pda-chart-container");
     chartContainer.innerHTML = `
       <div id="pda-chart-container0"></div>
@@ -179,41 +207,10 @@ function patientDataAnalysis() {
           },
         },
         colors: [Highcharts.getOptions().colors[i]],
-        series: [
-          {
-            name: healthDataList[i].dataName,
-            data: [434, 525, 571, 696, 971, 1031, 373],
-            tooltip: {
-              valueSuffix: healthDataList[i].unit,
-            },
-          },
-        ],
+        series: [series[i]]
       });
     }
   } else {
-    const dateList = listOfWeek(new Date());
-    const hdll = healthDataList.length;
-    let seriesData = [];
-    for (let date of dateList) {
-      if (hashMap[date]) {
-        for (let i = 0; i < hdll; i++) {
-          if (!seriesData[i]) {
-            seriesData[i] = [hashMap[date].records[i].value];
-          } else {
-            seriesData[i].push(hashMap[date].records[i].value);
-          }
-        }
-      } else {
-        for (let i = 0; i < hdll; i++) {
-          if (!seriesData[i]) {
-            seriesData[i] = [null];
-          } else {
-            seriesData[i].push(null);
-          }
-        }
-      }
-    }
-
     let series = seriesData.map((item, index) => {
       return {
         name: healthDataList[index].dataName,
@@ -306,4 +303,9 @@ function patientDataAnalysis() {
   }
 }
 
-patientDataAnalysis();
+
+window.onload = function () {
+  window.calenderPlugin = CalenderPlugin("pda-calendar-container");
+  window.completionRateChartPlugin = CompletionRateChartPlugin("pda-completion-container", 60);
+  patientDataAnalysis();
+};
