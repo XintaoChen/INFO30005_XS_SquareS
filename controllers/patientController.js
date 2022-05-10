@@ -1,4 +1,5 @@
 // const patientData = require('../models/patientModel')
+const { redirect } = require("express/lib/response");
 const Patient = require("../models/patient");
 
 // const getPatientInfo = (req, res) => {
@@ -27,7 +28,7 @@ const postNewPatient = async (req, res, next) => {
   try {
     const { nameGiven, nameFamily, emailAddress, dateOfBirth } = req.body;
     const password = Math.random().toString(36).substr(2);
-    const clinicianId = req.user.id;
+    const clinicianId = req.user._id;
 
     const newPatient = new Patient({
       nameGiven:nameGiven,
@@ -37,6 +38,14 @@ const postNewPatient = async (req, res, next) => {
       password:password,
       clinicianId:clinicianId,
     })
+
+    newPatient.save(err => {
+      if(err){
+        console.log(err)
+      } else {
+        redirect("/clinician")
+      }
+    });
   } catch (err) {
     return next(err);
   }
