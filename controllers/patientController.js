@@ -23,6 +23,26 @@ const getPatientInfo = async (req, res, next) => {
   }
 };
 
+const postNewPatient = async (req, res, next) => {
+  try {
+    const { nameGiven, nameFamily, emailAddress, dateOfBirth } = req.body;
+    const password = Math.random().toString(36).substr(2);
+    const clinicianId = req.user.id;
+
+    const newPatient = new Patient({
+      nameGiven:nameGiven,
+      nameFamily:nameFamily,
+      emailAddress:emailAddress,
+      dateOfBirth:dateOfBirth,
+      password:password,
+      clinicianId:clinicianId,
+    })
+  } catch (err) {
+    return next(err);
+  }
+};
+
 module.exports = {
   getPatientInfo,
+  postNewPatient,
 };
