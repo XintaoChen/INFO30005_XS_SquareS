@@ -69,7 +69,10 @@
     </div>
     <div class="sp-right-page">
         <section id="sp-data-setting">
-            <h2>DATA SETTING</h2>
+            <div class="sp-data-setting-header-edit">
+                <div class="sp-data-setting-header">DATA SETTING</div>
+                <span><button class="sp-data-edit-btn">Edit</button></span>
+            </div>
             <div class="sp-wrapper">
                 {{#each dataSetting}}
                     <div>
@@ -77,6 +80,9 @@
                         {{#if isRequired}}
                             <div>Upperbound: {{upperBound}}</div>
                             <div>Lowerbound: {{lowerBound}}</div>
+                        {{else}}
+                            <div>Upperbound: -</div>
+                            <div>Lowerbound: -</div>
                         {{/if}}
                     </div>
                 {{/each}}
@@ -88,13 +94,13 @@
                 <input type="submit" value="➕" id="sp-addNote-btn">
                 <input type="text" name="note" placeholder="Type new note here" id="sp-addNote-textbox">
             </form> --}}
-            <table id="notes-add">
-                {{!-- {{#each patientNotes}}
+            {{!-- <table id="notes-add">
+                {{#each patientNotes}}
                     <tr class="data-row">
                         <td>{{this.date}}</td>
                         <td>{{this.content}}</td>
                     </tr>
-                {{/each}} --}}
+                {{/each}}
                 <tr>
                     <td id="sp-addNote-btn">➕</td>
                     <td id="sp-addNote-textbox">Type new note here</td>
@@ -107,7 +113,7 @@
                     <td class="notes-edit">✏</td>
                     <td class="notes-bin">🚮</td>
                 </tr>
-            </table>
+            </table> --}}
         </section>
     </div>
 </div>
