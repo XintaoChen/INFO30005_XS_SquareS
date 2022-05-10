@@ -13,8 +13,8 @@ const noteSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    date: { type: Date, required: true },
     content: { type: String, required: true },
+    date: { type: Date, default: Date.now },
 })
 
 const Note = mongoose.model('Note', noteSchema, 'Note')
