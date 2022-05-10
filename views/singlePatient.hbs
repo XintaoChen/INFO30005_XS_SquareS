@@ -2,70 +2,113 @@
     <link rel="stylesheet" href="/css/singlePatient.css" />
 </head>
 {{#with singlePatientData}}
-<div class="banner">
-    <div class="left"> < back </div>
-    <div class="right">
+<div class="sp-banner">
+    <div class="sp-banner-left"> < back </div>
+    <div class="sp-banner-right">
         <div style="font-weight: 800;">Support Message: </div>
-        <div class="message">"{{#if this.supportMessage}}{{this.supportMessage}}{{else}}default support message{{/if}}"</div>
+        <div class="sp-message">"{{#if this.supportMessage}}{{this.supportMessage}}{{else}}default support message{{/if}}"</div>
     </div>
 </div>
-<div class="single-patient">
-    <div class="left-page">
-        <div class="info">
-            <div class="avatar"></div>
-            <div class="info-text">
-                <h1>{{this.nameGiven}} {{this.nameFamily}}</h1>
-                <p>Age: {{this.dateOfBirth}}</p>
-                <p>Phone: {{this.phoneNumber}}</p>
-                <p>Email: {{this.emailAddress}}</p>
-                <p>Address: {{this.homeAddress}}</p>
-                <p>Bio: {{this.briefTextBio}}</p>
+<div class="sp-content">
+    <div class="sp-left-page">
+        <div class="sp-info">
+            <div class="sp-avatar"></div>
+            <div class="sp-info-text">
+                <h1>{{patientData.nameGiven}} {{patientData.nameFamily}}</h1>
+                <p>Age: {{patientData.dateOfBirth}}</p>
+                <p>Phone: {{patientData.phoneNumber}}</p>
+                <p>Email: {{patientData.emailAddress}}</p>
+                <p>Address: {{patientData.homeAddress}}</p>
+                <p>Bio: {{patientData.briefTextBio}}</p>
             </div>
             <div class="compeletion"></div>            
         </div>
-        <div class="data-record">
-            <div class="table-title">
+        <div class="sp-data-record">
+            <div class="sp-table-title">
                 <table>
                     <tr class="first-row">
                         <td class="date">Date</td>
-                        <td class="bgLevel">Blood Glucose Level (mmol/L)</td>
-                        <td class="weight">Weight (kg)</td>
-                        <td class="insulinTaken">Insulin Taken (dose)</td>
-                        <td class="exercise">Exercise(step count)</td>
+                        {{#each healthDataList}}
+                            <td>{{healthTitle}}</td>
+                        {{/each}}
                     </tr>
                 </table>
             </div>
-            <div class="table-data">
+            <div class="sp-table-data">
                 <table>
-                {{!-- <tr class="first-row">
-                    <td class="date">Date</td>
-                    <td class="bgLevel">Blood Glucose Level (mmol/L)</td>
-                    <td class="weight">Weight (kg)</td>
-                    <td class="insulinTaken">Insulin Taken (dose)</td>
-                    <td class="exercise">Exercise(step count)</td>
-                </tr> --}}
-                {{#each this.healthData}}
-                <tr class="data-row">
-                    <td class="date">{{this.date}}</td>
-                    {{!-- <td class="bgLevel">{{#if this.bgLevel}}{{#if this.bgLevel eq ''}}need record{{/if}}{{else}}{{this.bgLevel}}{{else}}-{{/if}}</td> --}}
-                    <td class="bgLevel">{{#if this.bgLevel}}{{#if (bgLevelLow this.bgLevel)}}⬇️{{else}}{{this.bgLevel}}{{/if}}{{else}}-{{/if}}</td>
-                    <td class="weight">{{#if this.weight}}{{this.weight}}{{else}}-{{/if}}</td>
-                    <td class="insulinTaken">{{#if this.insulinTaken}}{{this.insulinTaken}}{{else}}-{{/if}}</td>
-                    <td class="exercise">{{#if this.exercise}}{{this.exercise}}{{else}}-{{/if}}</td>
-                </tr>
-                {{/each}}
-            </table>
+                    {{#each recordList}}
+                        <tr class="data-row">
+                            <td class="date">{{date}}</td>
+                            {{#each recordingData}}
+                                <td>
+                                    {{#if (hData isRequired)}}
+                                        {{#if value}}
+                                            {{#if (compare value upperBound)}}
+                                            <span class="too-high-value" title="This value is bigger than the upper safety threshold!">{{value}}</span>
+                                            {{else}}
+                                                {{#if (compare lowerBound value)}}
+                                                    <span class="too-low-value" title="This value is smaller than the lower safety threshold!">{{value}}</span>
+                                                {{else}}
+                                                    <span>{{value}}</span>
+                                                {{/if}}
+                                            {{/if}}
+                                        {{else}}
+                                            <span title="Missing required data field!">???</span>
+                                        {{/if}}
+                                    {{else}}
+                                        <span title="This data field is not required!">/</span>
+                                    {{/if}}
+                                </td>
+                            {{/each}}
+                        </tr>
+                    {{/each}}
+                </table>
             </div>
             
         </div>
     </div>
-    <div class="right-page">
-        <div class="data-setting">
-
-        </div>
-        <div class="notes">
-
-        </div>
+    <div class="sp-right-page">
+        <section id="sp-data-setting">
+            <h2>DATA SETTING</h2>
+            <div class="sp-wrapper">
+                {{#each dataSetting}}
+                    <div>
+                        <div class="sp-hdata-title">{{healthDataTitle}}</div>
+                        {{#if isRequired}}
+                            <div>Upperbound: {{upperBound}}</div>
+                            <div>Lowerbound: {{lowerBound}}</div>
+                        {{/if}}
+                    </div>
+                {{/each}}
+            </div>
+        </section>
+        <section id="notes">
+            <h2>NOTES</h2>
+            {{!-- <form action="/patient/add" method="post">
+                <input type="submit" value="➕" id="sp-addNote-btn">
+                <input type="text" name="note" placeholder="Type new note here" id="sp-addNote-textbox">
+            </form> --}}
+            <table id="notes-add">
+                {{!-- {{#each patientNotes}}
+                    <tr class="data-row">
+                        <td>{{this.date}}</td>
+                        <td>{{this.content}}</td>
+                    </tr>
+                {{/each}} --}}
+                <tr>
+                    <td id="sp-addNote-btn">➕</td>
+                    <td id="sp-addNote-textbox">Type new note here</td>
+                </tr>
+            </table>
+            <table id="clinician-notes">
+                <tr  class="note">
+                    <td class="notes-date">date</td>
+                    <td class="notes-text">example note</td>
+                    <td class="notes-edit">✏</td>
+                    <td class="notes-bin">🚮</td>
+                </tr>
+            </table>
+        </section>
     </div>
 </div>
 
