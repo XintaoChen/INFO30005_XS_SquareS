@@ -1,20 +1,9 @@
-const express = require("express");
-const patientRouter = express.Router();
-const patientController = require("../controllers/patientController");
+const express = require('express')
 
-// get required datas of single patient
-patientRouter.get("/getDataTypes", (req, res) => {
-  patientController.getDataTypesByPatientId(req, res);
-});
+const patientRouter = express.Router()
 
-// get list of patient
-patientRouter.get("/getlist", (req, res) => {
-  patientController.getPatientList(req, res);
-});
+const patientController = require('../controllers/patientController')
 
-// get patient information
-patientRouter.get("/getPatientInfo", (req, res) => {
-  patientController.getPatientInfo(req, res);
-});
+patientRouter.get('/:id', patientController.getPatientInfo)
 
-module.exports = patientRouter;
+module.exports = patientRouter

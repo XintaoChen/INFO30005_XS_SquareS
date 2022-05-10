@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Example App</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Diabetes</title>
+    <link rel="stylesheet" href="/css/aboutPages.css" />
+    <script type="text/javascript" src="/js/main.js"></script>
+</head>
+<body>
+    <header class="header">
+      <div class="logo">
+        <div class="logoIcon"></div>
+        <!-- <span class="homeTitle">Diabetes@Home</span> -->
+      </div>
+      <nav class="naviBar" style="display: none;">
+        <a href="/home">
+          <div class="naviBarItem">       
+            <div class="itemName">Home</div>
+            <div class="highLight"></div>
+          </div>
+        </a> 
+        <a href="/aboutDiabetes">
+          <div class="naviBarItem">
+            <div class="itemName" >About Diabetes</div>
+            <div class="highLight" style="display: block"></div>
+          </div>
+        </a>
+        <a href="/aboutUs">
+          <div class="naviBarItem">
+            <div class="itemName">About Us</div>
+            <div class="highLight"></div>
+          </div>
+        </a>
+        <div class="naviBarItem login">Log in</div>
+      </nav>
+      <div class="menuButton" style="display: block;">
+        <i class="iconfont memuIcon" onclick="doMenu('menu');">&#xe615;</i>
+        <div class="menu" id="menu">
+          <button onclick="doMenu('menu');"><span>Back</span> <i class="iconfont">&#xe840;</i></button>
+          <div class="container">
+            <a href="/home">
+              <i class="iconfont">&#xe7c6;</i>
+              <span>Home</span>
+            </a>
+            <a href="/aboutDiabetes">
+              <i class="iconfont">&#xe682;</i>
+              <span>About diabetes</span>
+            </a>
+            <a href="/aboutUs">
+              <i class="iconfont">&#xe8e7;</i>
+              <span>About this website</span>
+            </a>
+            <a href="">
+              <i class="iconfont">&#xe608;</i>
+              <span>Login</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="address">
+        <span> Home > About diabetes</span>
+      </div>
+    </header>
+    <containt class="content">
+
+        {{{body}}}
+
+    </containt>
+    <footer class="footer whiteText">
+      <div class="rightFlex">
+        <div class="logo">
+          <div class="logoIcon"></div>
+        </div>
+        <h4>Contact us</h4>
+        <br />
+        <div class="socialMedias">
+          <a href="https://www.facebook.com/"
+            ><i class="iconfont">&#xe601;</i></a
+          >
+          <a href="https://twitter.com/"><i class="iconfont">&#xe628;</i></a>
+          <a href="https://au.linkedin.com/"
+            ><i class="iconfont">&#xe60b;</i></a
+          >
+        </div>
+      </div>
+      <div class="leftFlex">
+        <div class="info">
+          <span>Terms and Conditions</span>
+          <span>Privacy Policy</span>
+        </div>
+        <div class="copyright">
+          <h4>@Copyright 2022</h4>
+          <span>
+            Diabetes@Home is a startup specialising in developing and delivering
+            innovative digital health solutions.
+          </span>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
