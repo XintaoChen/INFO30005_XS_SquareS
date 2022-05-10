@@ -40,8 +40,8 @@
                 <input class="edit-input" type="text" name="briefTextBio" value="{{this.briefTextBio}}" disabled>
 
             </div>
-            <input id="submit-btn" class="submit-btn" type="image" src="/img/check.png" alt="submitButton" style="visibility:hidden">
-            <input class="button" id="reset-btn" type="reset" onclick="cancelChanges()"style="visibility:hidden">
+            <input class="button" id="submit-btn" class="submit-btn" type="submit" value=" Save" style="visibility:hidden">
+            <input class="button" id="reset-btn" type="reset" value=" Cancel" onclick="cancelChanges()"style="visibility:hidden">
         </form>
     </div>
 </div>
@@ -51,6 +51,7 @@
 
     var non_editable_label = document.getElementById("non-editable").querySelectorAll("label");
     var non_editable_input = document.getElementById("non-editable").querySelectorAll("input");
+    var edit_btn = document.getElementById("edit-btn");
     var submitBtn = document.getElementById("submit-btn");
     var resetBtn = document.getElementById("reset-btn");
     var inputs = document.getElementsByClassName("edit-input");
