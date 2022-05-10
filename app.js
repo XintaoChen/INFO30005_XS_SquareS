@@ -1,9 +1,9 @@
 // Import express
-const express = require('express')
+const express = require("express");
 // Set your app up as an express app
-const app = express()
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: true }))
+const app = express();
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const flash = require('express-flash')
@@ -35,7 +35,7 @@ app.use(authRouter)
 
 app.use(express.static('public'))
 // set up handlebars view engine
-const exphbs = require('express-handlebars')
+const exphbs = require("express-handlebars");
 app.engine(
     'hbs',
     exphbs.engine({
@@ -49,42 +49,43 @@ app.engine(
             hData4: (x) => x == '625576b0bcd6f0a12a5e5fa9',
             hData: (x) => x == true,
             compare: (x, y) => x > y,
-            true: (x) => x == true
+            true: (x) => x == true,
+            formmatDate: (date) => `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`
         },
     })
 )
 
-require('./models/db')
+require("./models/db");
 
-app.set('view engine', 'hbs')
+app.set("view engine", "hbs");
 
 // link to our router
-const peopleRouter = require('./routes/peopleRouter')
-const demoRouter = require('./routes/demoRouter')
+const peopleRouter = require("./routes/peopleRouter");
+const demoRouter = require("./routes/demoRouter");
 
-const { patientDashboardRouter } = require('./routes/patientDashboardRouter')
+const { patientDashboardRouter } = require("./routes/patientDashboardRouter");
 
-const patientRouter = require('./routes/patientRouter')
+const patientRouter = require("./routes/patientRouter");
 //const patientRouter2 = require('./routes/patientRouter2')
-const recordRouter = require('./routes/recordRouter')
-const clinicianDashboardRouter = require('./routes/clinicianDashboardRouter')
-
+const recordRouter = require("./routes/recordRouter");
+const clinicianDashboardRouter = require("./routes/clinicianDashboardRouter");
 // middleware to log a message each time a request arrives at the server - handy for debugging
 app.use((req, res, next) => {
-    console.log('message arrived: ' + req.method + ' ' + req.path)
-    next()
-})
+  console.log("message arrived: " + req.method + " " + req.path);
+  next();
+});
 
 // the demo routes are added to the end of the '/demo-management' path
-app.use('/people', peopleRouter)
+app.use("/people", peopleRouter);
 
-app.use('/patient', patientRouter)
+app.use("/patient", patientRouter);
 
-app.use('/today', patientDashboardRouter)
+app.use("/today", patientDashboardRouter);
 
-app.use('/record', recordRouter)
+app.use("/record", recordRouter);
 
-app.use('/clinician', clinicianDashboardRouter)
+app.use("/clinician", clinicianDashboardRouter);
+
 
 // Tells the app to send the string: "Our demo app is working!" when you
 // hit the '/' endpoint.
@@ -134,5 +135,5 @@ app.get('/aboutUs', (req, res) => {
 // Tells the app to listen on port 3000 and logs that information to the
 // console.
 app.listen(process.env.PORT || 3001, () => {
-    console.log('Demo app is running!')
-})
+  console.log("Demo app is running!");
+});

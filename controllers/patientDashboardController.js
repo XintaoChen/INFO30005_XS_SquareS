@@ -3,9 +3,8 @@ const todayHealthData = require("../models/patient");
 
 const mongoose = require("mongoose");
 const patientModel = require("../models/patient");
-const recordModel = require("../models/record");
-
-const bcrypt = require("bcryptjs");
+const Record = require("../models/record");
+const HealthData = require("../models/healthData");
 
 const getTodayDataPatient = async (req, res, next) => {
   var today = new Date();
@@ -114,11 +113,114 @@ const postChangePW = async (req, res) => {
     doc.password = req.body.password;
     doc.save();
     res.redirect("/login");
-  });
+  })
+};
+const getDataAnalysis = async (req, res) => {
+  try {
+    const patientId = req.params.id;
+    // 62554eb9bcd6f0a12a5e5f52
+    const date = new Date();
+    const time = date.getTime();
+    const day = date.getDay();
+    const oneDayTime = 24 * 60 * 60 * 1000;
+    let startOfThisWeek = time - day * oneDayTime;
+    const untrackedRecordList = await Record.find(
+      {
+        patientId: patientId,
+        date: {
+          $gte: startOfThisWeek,
+          $lt: startOfThisWeek + 7 * oneDayTime,
+        },
+      },
+      "healthDataId value comment date"
+    );
+
+    const patient = await patientModel.findById(patientId, "recordingData");
+    const healthDataList = (await HealthData.find()).map((item) => {
+      let dataMatched = patient.recordingData.find((data) => {
+        return (
+          data.healthDataId.toString() === item._id.toString() &&
+          data.isRequired !== false
+        );
+      });
+      return {
+        healthDataId: item._id,
+        dataName: item.dataName,
+        unit: item.unit,
+        isRequired: dataMatched !== undefined ? true : false,
+      };
+    });
+    const recordList = await Promise.all(
+      untrackedRecordList.map(async (record) => {
+        const { unit, dataName } = await HealthData.findById(
+          record.healthDataId
+        );
+        let healthDataMatched = patient.recordingData.find((item) => {
+          return (
+            item.healthDataId.toString() == record.healthDataId.toString() &&
+            item.isRequired != false
+          );
+        });
+        let upperBound = undefined,
+          lowerBound = undefined;
+        if (healthDataMatched) {
+          upperBound = healthDataMatched.upperBound;
+          lowerBound = healthDataMatched.lowerBound;
+        }
+
+        return {
+          dataName: dataName,
+          unit: unit,
+          value: record.value,
+          comment: record.comment,
+          date: record.date,
+          upperBound: upperBound,
+          lowerBound: lowerBound,
+        };
+      })
+    );
+
+    const formmatDate = (date) =>
+      `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`;
+
+    let hashMap = {};
+    let healthDataNameList = healthDataList.map((item) => {
+      return item.dataName;
+    });
+
+    for (let record of recordList) {
+      let index = healthDataNameList.indexOf(record.dataName);
+
+      let fDate = formmatDate(record.date);
+      if (hashMap[fDate]) {
+        hashMap[fDate].records[index] = { ...record };
+      } else {
+        hashMap[fDate] = {
+          date: fDate,
+          records: [...healthDataList],
+        };
+        hashMap[fDate].records[index] = { ...record };
+      }
+    }
+    console.log(hashMap);
+    const data = JSON.stringify({
+      weeklyData: hashMap,
+      healthDataList: healthDataList,
+    });
+
+    res.render("patientDataAnalysis.hbs", {
+      code: data,
+      weeklyData: hashMap,
+      healthDataList: healthDataList,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 module.exports = {
   getTodayDataPatient,
   postTodayDataPatient,
   postChangePW,
-};
+  getDataAnalysis,
+}
