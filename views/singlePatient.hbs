@@ -6,7 +6,7 @@
     <div class="sp-banner-left"> < back </div>
     <div class="sp-banner-right">
         <div style="font-weight: 800;">Support Message: </div>
-        <div class="sp-message">"{{#if this.supportMessage}}{{this.supportMessage}}{{else}}default support message{{/if}}"</div>
+        <div class="sp-message">"{{#if patientData.supportMessage}}{{patientData.supportMessage}}{{else}}default support message{{/if}}"</div>
     </div>
 </div>
 <div class="sp-content">
@@ -78,8 +78,8 @@
                     <div>
                         <div class="sp-hdata-title">{{healthDataTitle}}</div>
                         {{#if isRequired}}
-                            <div>Upperbound: {{upperBound}}</div>
-                            <div>Lowerbound: {{lowerBound}}</div>
+                            <div><span class="status-dot sp-upperbound"></span> Upperbound: {{upperBound}}</div>
+                            <div><span class="status-dot sp-lowerbound"></span> Lowerbound: {{lowerBound}}</div>
                         {{else}}
                             <div>Upperbound: -</div>
                             <div>Lowerbound: -</div>
@@ -90,6 +90,11 @@
         </section>
         <section id="notes">
             <h2>NOTES</h2>
+            <div>
+                {{#each noteList}}
+                    <div>{{date}}, {{time}}, {{note}}</div>
+                {{/each}}
+            </div>
             {{!-- <form action="/patient/add" method="post">
                 <input type="submit" value="➕" id="sp-addNote-btn">
                 <input type="text" name="note" placeholder="Type new note here" id="sp-addNote-textbox">

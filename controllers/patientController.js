@@ -1,9 +1,8 @@
 const Patient = require('../models/patient')
 const HealthData = require("../models/healthData");
 const Record = require('../models/record');
-
-//const Record = require("../models/record")
-//const Note = require("../models/note")
+const Note = require("../models/note")
+const moment = require('moment');
 
 const getPatientInfo = async (req, res, next) => {
     try {
@@ -18,6 +17,22 @@ const getPatientInfo = async (req, res, next) => {
             healthTitle: healthData.dataName + " (" + healthData.unit + ")",
             }
         })
+
+        // to retrieve list of clinician notes, sorted in descending order
+        const untrackedNoteList = await Note.find({patientId}, "note date");
+        let noteList = untrackedNoteList.map((singleNote) => {
+            var formattedDate = moment(singleNote.date).format('DD/MM/YYYY')
+            var formattedTime = moment(singleNote.date).format("HH:mm")
+
+            return {
+                note: singleNote.note,
+                dateTime: singleNote.date,
+                date: formattedDate,
+                time: formattedTime
+            }
+        })
+        const sortedNoteList = noteList.sort(
+            (objA,objB) => objB.dateTime - objA.dateTime)
 
         // to retrieve patient's data threshold and isRequired state
         let dataList = await Promise.all(
@@ -79,10 +94,11 @@ const getPatientInfo = async (req, res, next) => {
                 patientData: patientData,
                 recordList: recordList,
                 dataSetting: dataList,
+                noteList: sortedNoteList,
                 healthDataList: healthDataList,
             };
           
-        console.log(tempData.dataSetting);
+        console.log(tempData.noteList);
 
 
         if (patientData) {
@@ -125,5 +141,5 @@ function compare(p){
 
 module.exports = {
     getPatientInfo,
-    //getPatientNote
+
 }

@@ -96,11 +96,13 @@
         display: flex;
         flex-direction: column;
         width: 40%;
+        padding: 0 1.5em;
     }
 
     #sp-data-setting {
-        height: 44%;
-        width: 97%;
+        min-height: max-content;
+        width: 100%;
+        padding-bottom: 0.5em;
     }
 
     .sp-data-setting-header-edit {
@@ -116,9 +118,26 @@
         font-weight: bold;
     }
 
+    .status-dot {
+        height: 0.5em;
+        width: 0.5em;
+        border-radius: 50%;
+        display: inline-block;
+        background-color: black;
+        align-items: center;
+    }
+
+    .sp-upperbound {
+        background-color: red;
+    }
+
+    .sp-lowerbound {
+        background-color: blue;
+    }
+
     #notes {
         max-height: 56%;
-        width: 97%;
+        width: 100%;
     }
 
     #notes-add{
