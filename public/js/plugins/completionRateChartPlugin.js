@@ -17,6 +17,11 @@
       this.update();
     },
 
+    setCompletion: function (newCompletion) {
+      this.completionRate = newCompletion;
+      this.update();
+    },
+
     build: function (element_id) {
       var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
       svg.classList.add("crcp-svg");

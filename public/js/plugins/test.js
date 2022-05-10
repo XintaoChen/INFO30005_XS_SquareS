@@ -10,6 +10,12 @@
     curYear: new Date().getFullYear(),
     curMonth: new Date().getMonth(),
     curDay: new Date().getDate(),
+    selectDate: `${new Date().getFullYear()}/${
+      new Date().getMonth() + 1
+    }/${new Date().getDate()}`,
+    getDate: function () {
+      return this.selectDate;
+    },
     init: function (element_id) {
       this.build(element_id);
       this.update();
@@ -85,22 +91,28 @@
       document.getElementById("cp-year").innerText = year;
       document.getElementById("cp-month").innerText = arr[month];
 
-      var lastDay = new Date(year, month + 1, 1 - 1);
-      var dateOfLastDay = lastDay.getDate();
-      var weekOfFirstDay = new Date(year, month, 1).getDay();
-      var weekOfLastDay = lastDay.getDay();
-      var dateOfEndOfLastMonth = new Date(year, month, 1 - 1).getDate();
-      var diff = dateOfEndOfLastMonth - weekOfFirstDay;
+      let lastDay = new Date(year, month + 1, 1 - 1);
+      let dateOfLastDay = lastDay.getDate();
+      let weekOfFirstDay = new Date(year, month, 1).getDay();
+      let weekOfLastDay = lastDay.getDay();
+      let dateOfEndOfLastMonth = new Date(year, month, 1 - 1).getDate();
 
-      for (var i = 0; i < weekOfFirstDay; i++) {
-        var li = document.createElement("li");
-        li.innerText = diff++;
-        li.className = "notCurMonth hover";
+      for (
+        let i = 0, diff = dateOfEndOfLastMonth - weekOfFirstDay;
+        i < weekOfFirstDay;
+        i++, diff++
+      ) {
+        let li = document.createElement("li");
+        li.innerText = diff;
+        li.className = "cp-notCurMonth hover";
+        li.addEventListener("click", (e) => {
+          this.selectDate = `${year}/${month}/${diff}`;
+        });
         document.getElementById("cp-date").appendChild(li);
       }
 
-      for (var i = 1; i <= dateOfLastDay; i++) {
-        var li = document.createElement("li");
+      for (let i = 1; i <= dateOfLastDay; i++) {
+        let li = document.createElement("li");
         li.innerText = i;
         if (
           year == this.curYear &&
@@ -111,13 +123,19 @@
         } else {
           li.className = "cp-hover";
         }
+        li.addEventListener("click", (e) => {
+          this.selectDate = `${year}/${month + 1}/${i}`;
+        });
         document.getElementById("cp-date").appendChild(li);
       }
-      var j = 1;
-      for (let i = weekOfLastDay; i < 6; i++) {
-        var li = document.createElement("li");
-        li.innerText = j++;
+
+      for (let i = weekOfLastDay, j = 1; i < 6; i++, j++) {
+        let li = document.createElement("li");
+        li.innerText = j;
         li.className = "cp-notCurMonth cp-hover";
+        li.addEventListener("click", (e) => {
+          this.selectDate = `${year}/${month + 1}/${j}`;
+        });
         document.getElementById("cp-date").appendChild(li);
       }
     },

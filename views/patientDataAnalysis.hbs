@@ -1,0 +1,128 @@
+<div id="pda-calendar-container"></div>
+
+<div class="pda-data-area">
+  <div class="pda-update-btn">
+    <button id="pda-update-btn">select date</button>
+  </div>
+  <div class="pda-data-nav">
+    <div class="pda-data-tag pda-selected">Daily</div>
+    <div class="pda-data-tag">Weekly</div>
+    <div class="pda-data-tag">Monthly</div>
+  </div>
+  
+  <div class="pda-title-area">
+    <div class="pda-title-time">
+      <span>Thursday</span>
+      <span>18 April</span>
+    </div>
+    <div class="pda-title-completion">
+      <div class="pda-completion-title">
+        <span>
+          Today's
+        </span>
+        <span>
+          Completion
+        </span>
+      </div>
+      <div id="pda-completion-container">50</div>
+    </div>
+  </div>
+
+  <div class="pda-daily-area">  
+    <div class="pda-daily-record">
+      <div class="pda-record-title">
+        <span>Test data</span>
+      </div>
+      <div class="pda-record-info">
+        <div class="pda-record-left">
+          <div class="pda-record-value">
+            <span class="pda-value-value">10.5</span>
+            <span class="pda-value-unit">kg</span>
+          </div>
+          <div class="pda-record-time">12.34PM</div>
+        </div>
+        <div class="pda-record-right">
+        </div>
+      </div>
+    </div>
+    <div class="pda-daily-record pda-not-required">
+      <div class="pda-record-title">
+        <span>Test data</span>
+      </div>
+      <div class="pda-record-info">
+        <div class="pda-record-left">
+          <div class="pda-record-value">
+            <span class="pda-value-value">-</span>
+            <span class="pda-value-unit"></span>
+          </div>
+          <div class="pda-record-time">Not required</div>
+        </div>
+        <div class="pda-record-right">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pda-weekly-area pda-hidden">
+    <div class="pda-week-nav">
+      <div class="pda-week-tag">Graph</div>
+      <div class="pda-week-tag pda-selected">Table</div>
+    </div>
+    <div id="pda-chart-container" class="pda-hidden"></div>
+    <table class="pda-week-table">
+      <tr class="pda-table-head">
+        <th>Date</th>
+        {{#each healthDataList}}
+          <th>{{dataName}} ({{unit}})</th>
+        {{/each}}
+      </tr>
+      {{#each weeklyData}}
+        <tr class="pda-table-item">
+          <td>{{date}}</td>
+          {{#each records}}
+            <td>
+            {{#if value}}
+              {{#if (compare value upperBound)}}
+                <span class="pda-over-value" title="This value is bigger than the upper safety threshold!">{{value}}</span>
+              {{else}}
+                {{#if (compare lowerBound value)}}
+                  <span class="pda-under-value" title="This value is smaller than the lower safety threshold!">{{value}}</span>
+                {{else}}
+                  <span>{{value}}</span>
+                {{/if}}
+              {{/if}} 
+            {{else}}
+              {{#if (hData isRequired)}}
+                ?
+              {{else}}
+                -
+              {{/if}}
+            {{/if}}
+            </td>
+          {{/each}}
+        </tr>
+      {{/each}}
+    </table>
+    
+  </div>
+
+
+  <div class="pda-monthly-area pda-hidden"></div>
+
+  {{#with code}}
+    <div id="test">{{this}}</div>
+  {{/with}}
+</div>
+
+
+
+<link rel="stylesheet" href="/css/calenderPlugin.css" />
+<link rel="stylesheet" href="/css/patientDataAnalysis.css">
+<link rel="stylesheet" href="/css/completionRateChartPlugin.css">
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script type="module" src="/js/plugins/test.js"></script>
+<script type="module" src="/js/plugins/completionRateChartPlugin.js"></script>
+<script type="module" src="/js/patientDataAnalysis.js"></script>
+<script type="text/javascript">
+
+</script>
