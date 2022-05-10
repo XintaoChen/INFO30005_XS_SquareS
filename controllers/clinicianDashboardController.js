@@ -4,136 +4,48 @@ const HealthData = require("../models/healthData");
 const Record = require("../models/record");
 
 const getTodayDataClinician = async (req, res, next) => {
-    try {
-        const clinicianId = req.user._id;
-        const untrackedHealthDataList = await HealthData.find({}, "dataName unit");
-        let healthDataList = untrackedHealthDataList.map((healthData) => {
-          return {
-            healthTitle: healthData.dataName + " (" + healthData.unit + ")",
-          }
-        })
-        const clinicianInfo = await Clinician.findById(clinicianId)
-        if (!clinicianInfo) {
-          // res.render("noRecords.hbs")
-          res.redirect('/login')
-        }
-    
-        const untrackedPatientList = await Patient.find(
-          { clinicianId: clinicianId },
-          "nameGiven nameFamily recordingData"
-        );
-        let patientList = await Promise.all(
-          untrackedPatientList.map(async (patient) => {
-            let tempDate = new Date(2000,01,01);
-            let dataList = await Promise.all(
-              untrackedHealthDataList.map(async (dataType) => {
-                let healthDataId = dataType._id
-                let healthDataMatched = patient.recordingData.find((item) => {
-                  return (
-                    item.healthDataId.toString() == healthDataId.toString() &&
-                    item.isRequired != false
-                  )
-                })
-                let { upperBound, lowerBound } = healthDataMatched || {};
-                let { dataName, unit } = dataType;
-                let isRequired = healthDataMatched ? true : false
-                let value = undefined;
-                let comment = undefined;
-                if (isRequired) {
-                  let nDate = new Date();
-                  let startOfToday = new Date(
-                    nDate.getFullYear(),
-                    nDate.getMonth(),
-                    nDate.getDate()
-                  )
-                  let record = await Record.findOne({
-                    patientId: patient._id,
-                    date: {
-                      $gte: startOfToday,
-                      $lt: new Date(
-                        startOfToday.getTime() + 24 * 60 * 60 * 1000
-                      )
-                    },
-                    healthDataId: healthDataId,
-                  })
-                  if (record) {
-                    value = record.value;
-                    comment = record.comment;
-                    tempDate = (record.date>tempDate) ? record.date:tempDate;
-                  }
-                }
-                return {
-                  upperBound: upperBound,
-                  lowerBound: lowerBound,
-                  dataName: dataName,
-                  unit: unit,
-                  value: value,
-                  comment: comment,
-                  isRequired: isRequired
-                }
-              })
-            )
-            return {
-              _id: patient._id,
-              nameGiven: patient.nameGiven,
-              nameFamily: patient.nameFamily,
-              recordingData: dataList,
-              dateLatest: tempDate
-            }
-          })
-        )
-        let tempData = {
-          nameGiven: clinicianInfo.nameGiven,
-          patientList: patientList,
-          healthDataList: healthDataList,
-        };
-        
-        console.log(tempData.patientList);
-        tempData.patientList.sort(compare("dateLatest"))
-        res.render('clinicianDashboard.hbs', { clinicianDashboardData: tempData, loggedin: req.isAuthenticated(), isPatient: false})
-    } catch (err) {
-        return next(err)
+  try {
+    const clinicianId = req.params.id;
+    const untrackedHealthDataList = await HealthData.find({}, "dataName unit");
+    let healthDataList = untrackedHealthDataList.map((healthData) => {
+      return {
+        healthTitle: healthData.dataName + " (" + healthData.unit + ")",
+      };
+    });
+    const clinicianInfo = await clinicianToday.findById(clinicianId);
+    if (!clinicianInfo) {
+      res.render("noRecords.hbs");
     }
-
     const untrackedPatientList = await Patient.find(
       { clinicianId: clinicianId },
       "nameGiven nameFamily recordingData"
     );
-
     let patientList = await Promise.all(
       untrackedPatientList.map(async (patient) => {
-        let tempDate = new Date(2000, 01, 01);
         let dataList = await Promise.all(
           untrackedHealthDataList.map(async (dataType) => {
             let healthDataId = dataType._id;
             let healthDataMatched = patient.recordingData.find((item) => {
               return (
                 item.healthDataId.toString() == healthDataId.toString() &&
-                item.isRequired != false
+                item.recordingData != false
               );
             });
             let { upperBound, lowerBound } = healthDataMatched || {};
             let { dataName, unit } = dataType;
-            let isRequired = healthDataMatched ? true : false;
+            let isRequired = upperBound ? true : false;
             let value = undefined;
             if (isRequired) {
-              let nDate = new Date();
-              let startOfToday = new Date(
-                nDate.getFullYear(),
-                nDate.getMonth(),
-                nDate.getDate()
-              );
               let record = await Record.findOne({
                 patientId: patient._id,
                 date: {
-                  $gte: startOfToday,
-                  $lt: new Date(startOfToday.getTime() + 24 * 60 * 60 * 1000),
+                  $gte: new Date("2022,04,24"),
+                  $lt: new Date("2022,04,25"),
                 },
                 healthDataId: healthDataId,
               });
               if (record) {
                 value = record.value;
-                tempDate = record.date > tempDate ? record.date : tempDate;
               }
             }
             return {
@@ -150,22 +62,23 @@ const getTodayDataClinician = async (req, res, next) => {
           nameGiven: patient.nameGiven,
           nameFamily: patient.nameFamily,
           recordingData: dataList,
-          dateLatest: tempDate,
         };
       })
     );
-    let tempData = {
+    let testData = {
       nameGiven: clinicianInfo.nameGiven,
+      nameFamily: clinicianInfo.nameFamily,
+      welcomeMessage: clinicianInfo.welcomeMessage,
       patientList: patientList,
       healthDataList: healthDataList,
     };
-    console.log(tempData.patientList);
-    tempData.patientList.sort(compare("dateLatest"));
-    res.render("clinicianDashboard.hbs", { clinicianDashboardData: tempData });
+    console.log(testData);
+    res.render("clinicianDashboard.hbs", { todayPatientData: testData });
   } catch (err) {
     return next(err);
   }
 };
+
 
 function compare(p) {
   return function (m, n) {
