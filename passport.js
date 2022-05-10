@@ -28,6 +28,7 @@ passport.deserializeUser((userId, done) => {
     }
 })
 // Updated LocalStrategy function
+
 //for patient
 passport.use(
     'patient-local',

@@ -19,9 +19,10 @@ patientDashboardRouter.get(
 patientDashboardRouter.post('/add', isAuthenticated, function (req, res) {
     patientDashboardController.postTodayDataPatient(req.body)
     console.log(req.body)
-    // res.redirect('/today/' + req.body.patientId.toString())
     res.redirect('/today/')
 })
+patientDashboardRouter.post('/changePW', isAuthenticated, patientDashboardController.postChangePW)
+
 module.exports = {
     patientDashboardRouter,
 }
