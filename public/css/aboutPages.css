@@ -538,7 +538,7 @@ table {
     text-decoration-line: underline;
     font-weight: 500;
     line-height: 19px;
-    font-family: "playfairDisplay";
+    font-family: 'lato';
   }
 
   .whiteText {
@@ -580,7 +580,7 @@ table {
     position: absolute;
     width: 428px;
     height: 76px;
-    top: 15px;
+    top: 12px;
   }
 
   .logo .homeTitle {
@@ -615,7 +615,7 @@ table {
     color: #867167;
     font-family: "playfairDisplay";
     font-size: 38px;
-    font-weight: 400;
+    /* font-weight: 400; */
     text-align: center;
     cursor: pointer;
   }
@@ -627,7 +627,7 @@ table {
 
   header .naviBarItem .itemName {
     /* display: flex; */
-    line-height: 80px;
+    line-height: 100px;
   }
 
   header .naviBarItem .highLight {
@@ -640,7 +640,7 @@ table {
   }
 
   header .login {
-    line-height: 80px;
+    line-height: 100px;
     margin: 0;
     padding: 0px 20px;
     background-color: #867167;
