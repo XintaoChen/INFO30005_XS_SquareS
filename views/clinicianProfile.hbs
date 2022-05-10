@@ -1,0 +1,23 @@
+<head>
+    <link rel="stylesheet" href="/css/profilePage.css" />
+</head>
+
+{{#with clinicianData}}
+<div class ="upper-box"></div>
+<div class="profile"> 
+    <img class="profile-photo" src="/img/defaultProfile.png", alt="default_profile_picture">
+    <p class="profile-name"> {{this.nameGiven}} {{this.nameFamily}}</p>
+</div>
+<div class = "information-box">
+    <div class="info-text">
+        <p class="data-field">Email Address</p>
+        <p class="value"> {{this.emailAddress}} <hr class="line"> </p>
+
+        <p class="data-field">Clinic Phone Number</p>
+        <p class="value"> {{this.clinicNumber}} <hr class="line"> </p>
+
+        <p class="data-field">Clinic Address</p>
+        <p class="value"> {{this.clinicAddress}} <hr class="line"> </p>
+    </div>
+</div>
+{{/with}}

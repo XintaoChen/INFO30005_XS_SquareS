@@ -1,0 +1,85 @@
+<head>
+    <link rel="stylesheet" href="/css/clinicianDashboard.css" />
+</head>
+{{#with clinicianDashboardData}}
+<div class="banner">
+    <div class="welcome-message">Welcome, Dr. {{nameGiven}}!</div>
+</div>
+<div class="clinician-dashboard">
+    <div class="left-page">
+        <div class="left-title-line">
+            <div class="dashboard-text">
+                <h1>DASHBOARD ·</h1>
+            </div>
+            <div class="current-date">
+                <p id="current_date"></p>
+                    <script>
+                    date = new Date();
+                    year = date.getFullYear();
+                    month = ((date.getMonth() + 1) < 10 ) ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+                    day = (date.getDate() < 10 ) ? "0" + date.getDate() : date.getDate();
+                    document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
+                    </script>
+            </div>
+            <div class="search-bar">
+                <input type="text" class="search-icon" placeholder="Search..">
+            </div>
+            <button class="add-button">
+                <div class="add">+</div>
+            </button>
+        </div>
+        <div class="data-record">
+            <div class="table-title">
+                <table>
+                    <tr class="first-row">
+                        <td class="name">Name</td>
+                        {{#each healthDataList}}
+                            <td>{{healthTitle}}</td>
+                        {{/each}}
+                    </tr>
+                </table>
+            </div>
+            <div class="table-data">
+                <table>
+                    {{#each patientList}}
+                        <tr class="data-row">
+                            <td class="patient-name">{{nameGiven}} {{nameFamily}}{{value}}</td>
+                            {{#each recordingData}}
+                                <td>
+                                    {{#if (hData isRequired)}}
+                                        {{#if value}}
+                                            {{#if (compare value upperBound)}}
+                                            <span class="too-high-value" title="This value is bigger than the upper safety threshold!">{{value}}</span>
+                                            {{else}}
+                                                {{#if (compare lowerBound value)}}
+                                                    <span class="too-low-value" title="This value is smaller than the lower safety threshold!">{{value}}</span>
+                                                {{else}}
+                                                    <span>{{value}}</span>
+                                                {{/if}}
+                                            {{/if}}
+                                        {{else}}
+                                            <span title="Missing required data field!">???</span>
+                                        {{/if}}
+                                    {{else}}
+                                        <span title="This data field is not required!">/</span>
+                                    {{/if}}
+                                </td>
+                            {{/each}}
+                        </tr>
+                    {{/each}}
+            </table>
+            </div>
+            
+        </div>
+    </div>
+    <div class="right-page">
+        <div class="comment-text">
+            COMMENTS FOR TODAY
+        </div>
+        <div class="comments-for-today">
+
+        </div>
+    </div>
+</div>
+
+{{/with}}
