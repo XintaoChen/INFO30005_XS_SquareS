@@ -103,6 +103,19 @@
         width: 97%;
     }
 
+    .sp-data-setting-header-edit {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .sp-data-setting-header {
+        font-size: 1.75em;
+        color: #A09E9D;
+        font-weight: bold;
+    }
+
     #notes {
         max-height: 56%;
         width: 97%;
@@ -303,4 +316,56 @@
         font-size: 1.05em;
         font-weight: bold;
     }
+}
+
+
+/* edit button */
+.sp-data-edit-btn {
+  appearance: none;
+  background-color: #867167;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.5em;
+  padding: 0 0.7em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 1.3em;
+  font-family: inherit;
+}
+
+.sp-data-edit-btn:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.sp-data-edit-btn:hover {
+  background-color: #8a746a;
+}
+
+.sp-data-edit-btn:focus {
+  box-shadow: #50433e 0 0 0 3px;
+  outline: none;
+}
+
+.sp-data-edit-btn:disabled {
+  background-color: #ce9d87;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.sp-data-edit-btn:active {
+  background-color: #5c311d;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
