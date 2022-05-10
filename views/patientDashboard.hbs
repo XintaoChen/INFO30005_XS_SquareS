@@ -318,7 +318,13 @@
         </div>
     </div>
 </div>
-
+<div class="changePWtest">
+    <label>change password:</label>
+    <form action="/today/changePW" method="POST">
+        <input type="text" class="form-control" name="password">
+        <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
+    <button>submit</button>
+</div>
 {{/with}}
 
 <script>

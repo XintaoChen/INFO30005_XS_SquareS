@@ -471,7 +471,7 @@
         width: 60px;
         height: 80px;
         /* background-color: tomato; */
-        background-image: url(../img/pen.png);
+        /* background-image: url(../img/pen.png); */
     }
 
     .item-down .form-control{
