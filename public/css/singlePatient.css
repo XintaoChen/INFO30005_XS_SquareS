@@ -32,7 +32,7 @@
         text-align: left;
         padding-left: 15px;
         line-height: 60px;
-        color: #A09E9D;
+        color: #828282;
         display: flex;
         flex-direction: row;
     }
@@ -82,7 +82,7 @@
     .sp-left-page .sp-info .sp-info-text h1 {
         font-size: 36px;
         font-weight: bolder;
-        color: #A09E9D;
+        color: #8a8a8a;
         padding-bottom: 10px;
     }
 
@@ -115,7 +115,7 @@
 
     .sp-data-setting-header {
         font-size: 1.5em;
-        color: #A09E9D;
+        color: #8a8a8a;
         font-weight: bold;
     }
 
@@ -155,14 +155,14 @@
 
     .sp-notes-table {
         background-color: #D7D2CE;
-        border-collapse: collapse;
-        border-spacing: 0;
+        /* border-collapse: collapse; */
+        border-spacing: 1em;
         overflow-y: scroll;
         border-radius: 0.5em;
         /* border-bottom-left-radius: 0.5em;
         border-bottom-right-radius: 0.5em; */
         border: 1px solid #5c4435;
-        height: 345px;
+        height: 300px;
     }
     .sp-notes-table table {
         width: 100%;
@@ -191,7 +191,7 @@
         padding: 1% 2%;
     }
     .note-date {
-        font-size: 1.1em;
+        font-size: 1em;
     }
     .note-time {
         font-size: 0.9em;
@@ -208,28 +208,37 @@
         width: 8%;
     }
 
-    #sp-addNote-btn {
-        width: 22%;
-        background-color: #C7C2BF;
-        height: 64px;
-        border: 0;
-        border-radius: 0.25em 0 0;
-        font-family:inherit;
-        font-size: inherit;
-        text-align: center;
-        vertical-align: middle;
+    .add-note-container {
+        padding-bottom: 2.5%;
     }
 
-    #sp-addNote-textbox {
-        width: 72%;
-        height: 64px;
-        background-color: #C7C2BF;
+    #sp-addNote-btn {
+        width: 14%;
+        background-color: #ffffffd4;
+        border: 0;
+        font-size: 2.4em;
+        vertical-align: middle;
+        color: #867167;
+    }
+    #sp-addNote-btn:hover {
+        color: #5c4435;
+    }
+
+    #sp-addNote-field {
+        width: 80%;
+        height: 1.5em;
+        background-color: #FaFaFa;
         padding: 2%;
-        border-radius: 0 0.25em 0 0;
-        border: 3px solid #676666;
+        border-radius: 0.5em;
+        box-shadow: 1px 1px 4px #EBEBEB;
+        border: 1px solid #676666;
         font-family:inherit;
         font-size: inherit;
+        color: inherit;
         vertical-align: middle;
+    }
+    #sp-addNote-field:hover {
+        background-color: #F4F2F0;
     }
 
     #notes-add{
@@ -242,7 +251,7 @@
 
     .sp-right-page h2 {
         font-size: 1.5em;
-        color: #A09E9D;
+        color: #8a8a8a;
         font-weight: bold;
         padding-bottom: 1.25%;
     }
@@ -280,8 +289,8 @@
         height: 50px;
         margin: auto;
         color: #FFFFFF;
-        font-size: 18px;
-        font-weight: bold;
+        font-size: 0.75em;
+        /* font-weight: bold; */
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -396,6 +405,7 @@
     .sp-hdata-bound {
         /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
         font-family: monospace;
+        font-size: 0.95em;
     }
 }
 

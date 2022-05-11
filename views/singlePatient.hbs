@@ -91,10 +91,11 @@
         <section id="notes">
             <h2>NOTES</h2>
             <div class="sp-notes">
-                <div class="add-note">
+                <div class="add-note-container">
                     <form action="/patient/addNote" method="post" id="add-note">
-                        <input type="submit" id="add-note-btn" value="add">
-                        <input type="text" name="note" placeholder="Type new note here">
+                        <input type="text" class="form-control" name="patientId" value="{{patientData._id}}" style="display:none">
+                        <input type="submit" id="sp-addNote-btn" value="&#xe845;" class="iconfont">
+                        <input type="text" id="sp-addNote-field" name="note" placeholder="Type new note here">
                     </form>
                 </div>
                 <div class="sp-notes-table">

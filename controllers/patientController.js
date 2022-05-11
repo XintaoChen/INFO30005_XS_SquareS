@@ -3,6 +3,7 @@ const HealthData = require("../models/healthData");
 const Record = require('../models/record');
 const Note = require("../models/note")
 const moment = require('moment');
+const mongoose = require('mongoose')
 
 const getPatientInfo = async (req, res, next) => {
     try {
@@ -102,7 +103,7 @@ const getPatientInfo = async (req, res, next) => {
                 healthDataList: healthDataList,
             };
           
-        console.log(tempData.noteList);
+        console.log(tempData.patientData._id);
 
 
         if (patientData) {
@@ -123,13 +124,18 @@ const getPatientInfo = async (req, res, next) => {
     }
 }
 
-// const addNote = async (req, res) => {
-//     try {
-//         const ps
-//     } catch (err) {
-//         return next(err)
-//     }
-// }
+const addNote = async (req, res) => {
+    console.log("from addNote:" + req.note)
+
+    var newNote = new Note({
+        patientId: req.patientId,
+        note: req.note,
+    })
+
+    newNote.save(function (err, res) {
+        if (err) return console.error(err);
+    })
+}
 // const getPatientNote = async (req, res) => {
 //     try {
 //         const patientID = req.params.id
@@ -152,5 +158,5 @@ function compare(p){
 
 module.exports = {
     getPatientInfo,
-
+    addNote
 }
