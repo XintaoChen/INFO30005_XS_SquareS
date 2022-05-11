@@ -9,5 +9,10 @@ const patientController = require('../controllers/patientController')
 patientRouter.get('/:id', patientController.getPatientInfo)
 //patientRouter.get('/:id', (req, res) => patientController.getPatientNote(req,res))
 
+patientRouter.post('/addNote', function (req, res) {
+    patientController.addNote(req)
+    res.redirect('/patient/' + req.body.patientID.toString())
+})
+
 // export router
 module.exports = patientRouter
