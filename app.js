@@ -69,6 +69,8 @@ const patientRouter = require("./routes/patientRouter");
 //const patientRouter2 = require('./routes/patientRouter2')
 const recordRouter = require("./routes/recordRouter");
 const clinicianDashboardRouter = require("./routes/clinicianDashboardRouter");
+const clinicianProfileRouter = require('./routes/clinicianProfileRouter')
+const patientProfileRouter = require('./routes/patientProfileRouter')
 // middleware to log a message each time a request arrives at the server - handy for debugging
 app.use((req, res, next) => {
   console.log("message arrived: " + req.method + " " + req.path);
@@ -86,6 +88,9 @@ app.use("/record", recordRouter);
 
 app.use("/clinician", clinicianDashboardRouter);
 
+app.use('/patient/clinician', clinicianProfileRouter)
+
+app.use('/patient/profile', patientProfileRouter)
 
 // Tells the app to send the string: "Our demo app is working!" when you
 // hit the '/' endpoint.
@@ -135,5 +140,5 @@ app.get('/aboutUs', (req, res) => {
 // Tells the app to listen on port 3000 and logs that information to the
 // console.
 app.listen(process.env.PORT || 3001, () => {
-  console.log("Demo app is running!");
-});
+    console.log('Demo app is running!')
+})

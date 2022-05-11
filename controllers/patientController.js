@@ -1,6 +1,7 @@
 // const patientData = require('../models/patientModel')
 const { redirect } = require("express/lib/response");
 const Patient = require("../models/patient");
+const { param } = require('../routes/peopleRouter')
 
 // const getPatientInfo = (req, res) => {
 //     const tempData = patientData.find((data) => data.id === req.params.id)
