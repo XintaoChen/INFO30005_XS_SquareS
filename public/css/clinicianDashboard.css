@@ -95,6 +95,10 @@
         background-color: #9f897a;
         transform: scale(1.15)
     }
+    .add{
+        font-size: 24px;
+        color:#F4F2F0;
+    }
     
     .left-page .data-record{
         height: 650px;
