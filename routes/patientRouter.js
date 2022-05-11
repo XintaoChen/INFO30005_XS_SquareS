@@ -10,8 +10,9 @@ patientRouter.get('/:id', patientController.getPatientInfo)
 //patientRouter.get('/:id', (req, res) => patientController.getPatientNote(req,res))
 
 patientRouter.post('/addNote', function (req, res) {
-    patientController.addNote(req)
-    res.redirect('/patient/' + req.body.patientID.toString())
+    patientController.addNote(req.body)
+    console.log(req.body)
+    res.redirect('/patient/' + req.body.patientId.toString())
 })
 
 // export router
