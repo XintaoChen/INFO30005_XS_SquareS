@@ -132,21 +132,17 @@
         width: 96%;
         height: 50px;
         margin: auto;
-        background-color: #867167;
-    	border-top-left-radius: 10px;
-    	border-top-right-radius: 10px;
+        background-color: #857B74;
     }
     .table-data{
         width: 96%;
         height: 600px;
         margin: auto;
-        background-color: #867167;
+        background-color: #857B74;
         border-collapse: separate;
         border-spacing: 0;
         overflow-y: scroll;
         margin-bottom: 5px;
-    	border-bottom-left-radius: 10px;
-    	border-bottom-right-radius: 10px;
     }
 
     .first-row{
@@ -160,9 +156,6 @@
         align-items: center;
         justify-content: space-around;
         text-align: center;
-    }
-    .first-row td.name{
-        background-color: #867167;
     }
     .data-row{
         height: 50px;
@@ -256,11 +249,11 @@
 
     .comments-for-today-list{
         width: 79%;
-        height: 650px;
+        height: 630px;
         margin: auto;
         overflow-y: scroll;
-        margin-top: 5px;
-        margin-bottom: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
     .today-comments-padding-row{
         width: 100%;
@@ -300,12 +293,13 @@
         line-height: auto;
         text-align: center;
         background-color: #F4F2F0;
+        cursor: pointer;
     }
     .today-comments-row3 .today-comments-content{
         color: #5C4435;
     }
     #comments-table tr:nth-child(8n-4) td{
-        background-color: #A09E9D;
+        background-color: #C7C2BF;
         border-radius: 25px;
     }
     #comments-table tr:nth-child(8n) td{
