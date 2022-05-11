@@ -60,17 +60,13 @@ require("./models/db");
 app.set("view engine", "hbs");
 
 // link to our router
-const peopleRouter = require("./routes/peopleRouter");
-const demoRouter = require("./routes/demoRouter");
 
 const { patientDashboardRouter } = require("./routes/patientDashboardRouter");
-
 const patientRouter = require("./routes/patientRouter");
-//const patientRouter2 = require('./routes/patientRouter2')
 const recordRouter = require("./routes/recordRouter");
 const clinicianDashboardRouter = require("./routes/clinicianDashboardRouter");
 const clinicianProfileRouter = require('./routes/clinicianProfileRouter')
-const patientProfileRouter = require('./routes/patientProfileRouter')
+
 // middleware to log a message each time a request arrives at the server - handy for debugging
 app.use((req, res, next) => {
   console.log("message arrived: " + req.method + " " + req.path);
@@ -78,7 +74,7 @@ app.use((req, res, next) => {
 });
 
 // the demo routes are added to the end of the '/demo-management' path
-app.use("/people", peopleRouter);
+
 
 app.use("/patient", patientRouter);
 
@@ -88,9 +84,9 @@ app.use("/record", recordRouter);
 
 app.use("/clinician", clinicianDashboardRouter);
 
-app.use('/patient/clinician', clinicianProfileRouter)
+// app.use('/patient/clinician', clinicianProfileRouter)
 
-app.use('/patient/profile', patientProfileRouter)
+// app.use('/patient/profile', patientProfileRouter)
 
 // Tells the app to send the string: "Our demo app is working!" when you
 // hit the '/' endpoint.

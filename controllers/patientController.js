@@ -1,7 +1,6 @@
 // const patientData = require('../models/patientModel')
 const { redirect } = require("express/lib/response");
 const Patient = require("../models/patient");
-const { param } = require('../routes/peopleRouter')
 
 // const getPatientInfo = (req, res) => {
 //     const tempData = patientData.find((data) => data.id === req.params.id)
@@ -14,9 +13,13 @@ const { param } = require('../routes/peopleRouter')
 
 const getPatientInfo = async (req, res, next) => {
   try {
-    const tempData = await Patient.findById(req.params.id).lean();
+    const tempData = await Patient.findById(req.user._id).lean();
     if (tempData) {
-      res.render("singlePatient.hbs", { singlePatientData: tempData });
+      res.render("singlePatient.hbs",
+       { singlePatientData: tempData,
+        loggedin: req.isAuthenticated(),
+        isPatient: true,
+      });
     } else {
       res.render("noRecords.hbs");
     }

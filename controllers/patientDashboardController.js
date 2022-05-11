@@ -77,12 +77,7 @@ const getTodayDataPatient = async (req, res, next) => {
             isPatient: true,
           });
         } else {
-          // if (tempDataNoRecords) {
-          //     res.render('singlePatient.hbs', { todayHealthData: tempDataNoRecords })
-          // } else {
-          // res.render('noRecords.hbs')
           res.redirect("/login");
-          // }
         }
       }
     );
@@ -107,14 +102,7 @@ const postTodayDataPatient = (req) => {
   });
 };
 
-const postChangePW = async (req, res) => {
-  const filter = { _id: req.user._id };
-  patientModel.findOne(filter).then(async (doc) => {
-    doc.password = req.body.password;
-    doc.save();
-    res.redirect("/login");
-  })
-};
+
 const getDataAnalysis = async (req, res) => {
   try {
     const patientId = req.params.id;
@@ -221,6 +209,5 @@ const getDataAnalysis = async (req, res) => {
 module.exports = {
   getTodayDataPatient,
   postTodayDataPatient,
-  postChangePW,
   getDataAnalysis,
 }

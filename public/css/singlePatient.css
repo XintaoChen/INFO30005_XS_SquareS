@@ -87,7 +87,7 @@
 
     .left-page .info .info-text p {
         font-size: 18px;
-        line-height: 2;
+        /* line-height: 2; */
     }
 
     .left-page .data-record {
