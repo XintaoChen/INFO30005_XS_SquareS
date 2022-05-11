@@ -9,6 +9,9 @@ const getPatientInfo = async (req, res, next) => {
         // to retrieve patient's data
         const patientId = req.params.id;
         const patientData = await Patient.findById(patientId).lean()
+        var patientDoB = moment(patientData.dateOfBirth)
+        var timeNow = moment(new Date)
+        const patientAge = timeNow.diff(patientDoB, 'years')
 
         // to retrieve list of health data with their units
         const untrackedHealthDataList = await HealthData.find({}, "dataName unit");
@@ -22,7 +25,7 @@ const getPatientInfo = async (req, res, next) => {
         const untrackedNoteList = await Note.find({patientId}, "note date");
         let noteList = untrackedNoteList.map((singleNote) => {
             var formattedDate = moment(singleNote.date).format('DD/MM/YYYY')
-            var formattedTime = moment(singleNote.date).format("HH:mm")
+            var formattedTime = moment(singleNote.date).format("HH:mm:ss")
 
             return {
                 note: singleNote.note,
@@ -92,6 +95,7 @@ const getPatientInfo = async (req, res, next) => {
         )
             let tempData = {
                 patientData: patientData,
+                patientAge: patientAge,
                 recordList: recordList,
                 dataSetting: dataList,
                 noteList: sortedNoteList,
@@ -119,6 +123,13 @@ const getPatientInfo = async (req, res, next) => {
     }
 }
 
+// const addNote = async (req, res) => {
+//     try {
+//         const ps
+//     } catch (err) {
+//         return next(err)
+//     }
+// }
 // const getPatientNote = async (req, res) => {
 //     try {
 //         const patientID = req.params.id

@@ -15,7 +15,7 @@
             <div class="sp-avatar"></div>
             <div class="sp-info-text">
                 <h1>{{patientData.nameGiven}} {{patientData.nameFamily}}</h1>
-                <p>Age: {{patientData.dateOfBirth}}</p>
+                <p>Age: {{patientAge}} years old</p>
                 <p>Phone: {{patientData.phoneNumber}}</p>
                 <p>Email: {{patientData.emailAddress}}</p>
                 <p>Address: {{patientData.homeAddress}}</p>
@@ -24,7 +24,7 @@
             <div class="compeletion"></div>            
         </div>
         <div class="sp-data-record">
-            <div class="sp-table-title">
+            <div class="sp-table-header">
                 <table>
                     <tr class="first-row">
                         <td class="date">Date</td>
@@ -78,11 +78,11 @@
                     <div>
                         <div class="sp-hdata-title">{{healthDataTitle}}</div>
                         {{#if isRequired}}
-                            <div><span class="status-dot sp-upperbound"></span> Upperbound: {{upperBound}}</div>
-                            <div><span class="status-dot sp-lowerbound"></span> Lowerbound: {{lowerBound}}</div>
+                            <div class="sp-hdata-bound"><span class="status-dot sp-upperbound"></span> Upperbound: {{upperBound}}</div>
+                            <div class="sp-hdata-bound"><span class="status-dot sp-lowerbound"></span> Lowerbound: {{lowerBound}}</div>
                         {{else}}
-                            <div>Upperbound: -</div>
-                            <div>Lowerbound: -</div>
+                            <div class="sp-hdata-bound">Upperbound: -</div>
+                            <div class="sp-hdata-bound">Lowerbound: -</div>
                         {{/if}}
                     </div>
                 {{/each}}
@@ -90,10 +90,32 @@
         </section>
         <section id="notes">
             <h2>NOTES</h2>
-            <div>
-                {{#each noteList}}
+            <div class="sp-notes">
+                <div class="add-note">
+                    <form action="/patient/addNote" method="post" id="add-note">
+                        <input type="submit" id="add-note-btn" value="add">
+                        <input type="text" name="note" placeholder="Type new note here">
+                    </form>
+                </div>
+                <div class="sp-notes-table">
+                    <table>
+                        {{#each noteList}}
+                            <tr class="note-row">
+                                <td class="note-datetime">
+                                    <div class="note-date">{{date}}</div>
+                                    <div class="note-time">{{time}}</div>
+                                </td>
+                                <td class="note-text">
+                                    {{note}}
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </table>
+                </div>
+                
+                {{!-- {{#each noteList}}
                     <div>{{date}}, {{time}}, {{note}}</div>
-                {{/each}}
+                {{/each}} --}}
             </div>
             {{!-- <form action="/patient/add" method="post">
                 <input type="submit" value="➕" id="sp-addNote-btn">
