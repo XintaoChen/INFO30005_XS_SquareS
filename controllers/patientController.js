@@ -136,6 +136,19 @@ const addNote = async (req, res) => {
         if (err) return console.error(err);
     })
 }
+
+const updateSupportMessage = async (req, res, next) => {
+    try {
+        const patientId = req.patientId;
+
+        // console.log(update);
+        await Patient.findByIdAndUpdate(patientId, {supportMessage: req.supportMessage}, { new : true }).lean();
+
+    } catch (error) {
+        console.log("err");
+    }
+}
+
 // const getPatientNote = async (req, res) => {
 //     try {
 //         const patientID = req.params.id
@@ -158,5 +171,6 @@ function compare(p){
 
 module.exports = {
     getPatientInfo,
-    addNote
+    addNote,
+    updateSupportMessage
 }

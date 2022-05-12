@@ -5,9 +5,28 @@
 <div class="sp-banner">
     <div class="sp-banner-left"> < back </div>
     <div class="sp-banner-right">
-        <div style="font-weight: 800;">Support Message: </div>
-        <div class="sp-message">"{{#if patientData.supportMessage}}{{patientData.supportMessage}}{{else}}default support message{{/if}}"</div>
+        <form action="/patient/updateSupportMessage" method="post" id="update" style="width: 100%;">
+            <input type="text" class="form-control" name="patientId" value="{{patientData._id}}" style="display:none">
+            
+            <label style="font-weight: 800;" for="supportMessage">Support Message: </label>
+            <input type="text" id="sp-message" name="supportMessage" 
+                placeholder="Type new note here" 
+                value="{{#if patientData.supportMessage}}{{patientData.supportMessage}}{{else}}default support message{{/if}}"
+                disabled>
+
+            <input type="submit" id="sp-confirm-btn" value="&#xe63b;" class="iconfont display-none sp-msg-btns">
+            <input type="reset" id="sp-cancel-btn" value="&#xe65f" class="iconfont display-none sp-msg-btns" onclick="cancelSupportMessage()">
+            {{!-- <input class="button" id="reset-btn" type="reset" value=" Cancel" onclick="cancelChanges()"style="visibility:hidden"> --}}
+        </form>
+        <div>
+            <button class="sp-msg-btns" id="sp-edit-msg-btn" onclick="editSupportMessage()">
+                <i class="iconfont icon-edit-clinician"></i>
+            </button>
+        </div>
+        {{!-- <div style="font-weight: 800;">Support Message: </div>
+        <div class="sp-message">"{{#if patientData.supportMessage}}{{patientData.supportMessage}}{{else}}default support message{{/if}}"</div> --}}
     </div>
+    
 </div>
 <div class="sp-content">
     <div class="sp-left-page">
@@ -68,7 +87,7 @@
         </div>
     </div>
     <div class="sp-right-page">
-        <section id="sp-data-setting">
+        <form action="" method="post" id="sp-data-setting">
             <div class="sp-data-setting-header-edit">
                 <div class="sp-data-setting-header">DATA SETTING</div>
                 <span><button class="sp-data-edit-btn">Edit</button></span>
@@ -87,7 +106,7 @@
                     </div>
                 {{/each}}
             </div>
-        </section>
+        </form>
         <section id="notes">
             <h2>NOTES</h2>
             <div class="sp-notes">
@@ -147,3 +166,28 @@
 </div>
 
 {{/with}}
+
+<script>
+    var edit_msg_btn = document.getElementById("sp-edit-msg-btn");
+    var confirm_btn = document.getElementById("sp-confirm-btn");
+    var cancel_btn = document.getElementById('sp-cancel-btn');
+
+    var sp_msg_field = document.getElementById("sp-message");
+
+    function editSupportMessage() {
+        sp_msg_field.disabled = false;
+        edit_msg_btn.classList.add("display-none")
+        sp_msg_field.style.width = "77%"
+
+        confirm_btn.classList.remove("display-none")
+        cancel_btn.classList.remove("display-none")
+    }
+    function cancelSupportMessage() {    
+        sp_msg_field.disabled = true;
+        edit_msg_btn.classList.remove("display-none")
+        sp_msg_field.style.width = "83%"
+
+        confirm_btn.classList.add("display-none")
+        cancel_btn.classList.add("display-none")
+    }
+</script>
