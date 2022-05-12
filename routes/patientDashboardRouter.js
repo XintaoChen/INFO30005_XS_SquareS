@@ -17,15 +17,14 @@ patientDashboardRouter.get(
 )
 
 patientDashboardRouter.get(
-    '/pda/:id',
+    '/pda', isAuthenticated,
     patientDashboardController.getDataAnalysis
 )
 
-patientDashboardRouter.post('/add', function (req, res) {
-    patientDashboardController.postTodayDataPatient(req.body)
-    console.log(req.body)
-    res.redirect('/today/')
-})
+patientDashboardRouter.post(
+    '/add', isAuthenticated,
+    patientDashboardController.postTodayDataPatient
+)
 
 module.exports = {
     patientDashboardRouter,

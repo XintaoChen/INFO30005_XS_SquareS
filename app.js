@@ -78,7 +78,7 @@ app.use((req, res, next) => {
 
 app.use("/patient", patientRouter);
 
-app.use("/today", patientDashboardRouter);
+app.use("/patient/today", patientDashboardRouter);
 
 app.use("/record", recordRouter);
 
@@ -122,10 +122,6 @@ app.get('/aboutUs', (req, res) => {
     }
 })
 
-// app.get('/login', (req, res) => {
-//     // res.send('Our demo app is working!')
-//     res.render('login.hbs')
-// })
 
 // link to our router
 // const demoRouter = require('./routes/demoRouter')

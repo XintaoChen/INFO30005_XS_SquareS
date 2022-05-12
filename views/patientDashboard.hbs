@@ -25,7 +25,7 @@
             <div class="record-item  form-group">
                 <div class="item">Blood Glucose Level</div>
                 <div class="item-down">
-                    <form action="/today/add" method="POST" style="display: contents;">
+                    <form action="/patient/today/add" method="POST" style="display: contents;">
                         <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
                         <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
                         <input type="text" class="form-control" name="healthDataId" value="625576a5bcd6f0a12a5e5fa6" style="display:none">
@@ -87,7 +87,7 @@
             <div class="record-item  form-group">
                 <div class="item">Weight</div>
                 <div class="item-down">
-                    <form action="/today/add" method="POST" style="display: contents;">
+                    <form action="/patient/today/add" method="POST" style="display: contents;">
                         <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
                         <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
                         <input type="text" class="form-control" name="healthDataId" value="625576a8bcd6f0a12a5e5fa7" style="display:none">
@@ -146,7 +146,7 @@
             <div class="record-item  form-group">
                 <div class="item">Insulin Doses</div>
                 <div class="item-down">
-                    <form action="/today/add" method="POST" style="display: contents;">
+                    <form action="/patient/today/add" method="POST" style="display: contents;">
                         <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
                         <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
                         <input type="text" class="form-control" name="healthDataId" value="625576acbcd6f0a12a5e5fa8" style="display:none">
@@ -205,7 +205,7 @@
             <div class="record-item  form-group">
                 <div class="item">Step Counts</div>
                 <div class="item-down">
-                    <form action="/today/add" method="POST" style="display: contents;">
+                    <form action="/patient/today/add" method="POST" style="display: contents;">
                         <input type="text" class="form-control" name="clinicianId" value="{{this.clinicianId}}" style="display:none">
                         <input type="text" class="form-control" name="patientId" value="{{this._id}}" style="display:none">
                         <input type="text" class="form-control" name="healthDataId" value="625576b0bcd6f0a12a5e5fa9" style="display:none">
@@ -261,9 +261,9 @@
             </div>
             {{/if}}
         </div>
-         <div class="more-data">
+        <a href="/patient/today/pda" class="more-data">
             View More Data ➡
-        </div>
+        </a>
     </div>
     <div class="dashboard-middle-line"></div>
     <div class="leader-board">
@@ -282,6 +282,7 @@
                     <div class="edit">Sunny</div>
                 </div>
                 <div class="board-item-right">83%</div>
+                <div class="board-complete-color"></div>
             </div>
             <div class="board-item">
                 <div class="board-item-left">
