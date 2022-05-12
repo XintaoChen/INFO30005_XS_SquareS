@@ -31,7 +31,7 @@ router.post('/login-patient',
   })
   , (req, res) => {
     // res.redirect('/today/' + req.user._id);
-    res.redirect('/today');
+    res.redirect('/patient/today');
   }
 )
 router.post('/login-clinician',

@@ -25,6 +25,7 @@ patientRouter.get("/profile", isAuthenticated, patientProfileController.getPatie
 
 patientRouter.post('/profile/edit', function (req, res) {
     patientProfileController.updatePatientProfile(req)
+    res.redirect("/login")
 })
 
 module.exports = patientRouter;

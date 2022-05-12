@@ -86,26 +86,28 @@ const getTodayDataPatient = async (req, res, next) => {
   }
 };
 
-const postTodayDataPatient = (req) => {
+const postTodayDataPatient = (req, res) => {
+  const {comment, value, healthDataId, clinicianId} = req.body;
+  const {_id} = req.user
   var Record = require("../models/record");
   var tempRecord = new Record({
-    comment: req.comment,
-    // "date": "2022-04-24T13:00:00.000+00:00",
-    value: req.value,
-    patientId: req.patientId,
-    healthDataId: req.healthDataId,
-    clinicianId: req.clinicianId,
+    comment: comment,
+    value: value,
+    patientId: _id,
+    healthDataId: healthDataId,
+    clinicianId: clinicianId,
   });
   tempRecord.save(function (err, res) {
     if (err) return console.error(err);
     console.log(res.value + " saved to db.");
   });
+  res.redirect('/patient/today/')
 };
 
 
 const getDataAnalysis = async (req, res) => {
   try {
-    const patientId = req.params.id;
+    const patientId = req.user._id;
     // 62554eb9bcd6f0a12a5e5f52
     const date = new Date();
     const time = date.getTime();
