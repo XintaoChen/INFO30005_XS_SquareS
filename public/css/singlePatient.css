@@ -1,3 +1,7 @@
+.display-none {
+    display: none;
+}
+
 @media screen and (min-width: 1366px) {
     .content {
         padding: 40px 0 0;
@@ -29,17 +33,50 @@
     .sp-banner .sp-banner-right {
         width: 94%;
         background-color: #E3D1BD;
-        text-align: left;
+        /* text-align: left; */
         padding-left: 15px;
         line-height: 60px;
         color: #828282;
         display: flex;
-        flex-direction: row;
+        justify-content: space-between;
     }
 
     .sp-banner .sp-banner-right .sp-message {
         color: #867167;
         padding-left: 15px;
+    }
+
+    #sp-message {
+        font-size: 1em;
+        font-family: inherit;
+        width: 83%;
+    }
+
+    .sp-msg-btns {
+        margin-right: 1.5em;
+        /* padding: 0 1.5em; */
+        font-size: 1.2em;
+        background-color: #E3D1BD;
+        border: none;
+        color: #867167;
+    }
+    .sp-msg-btns:hover {
+        color: #5c4435;
+        cursor: pointer;
+    }
+
+    #sp-confirm-btn {
+        font-size: 2em;
+        /* margin-left: auto; */
+        margin-right: 0;
+    }
+    #sp-cancel-btn {
+        font-size: 2em;
+        margin-right: 0;
+    }
+
+    .icon-edit-clinician{
+        font-size: 1.75em;
     }
 
     /* main content of single-patient page*/
@@ -222,6 +259,7 @@
     }
     #sp-addNote-btn:hover {
         color: #5c4435;
+        cursor: pointer;
     }
 
     #sp-addNote-field {

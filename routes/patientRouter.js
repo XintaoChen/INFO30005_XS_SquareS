@@ -15,5 +15,14 @@ patientRouter.post('/addNote', function (req, res) {
     res.redirect('/patient/' + req.body.patientId.toString())
 })
 
+patientRouter.post('/updateSupportMessage', function (req, res) {
+    console.log(req.body)
+
+    
+    patientController.updateSupportMessage(req.body)
+    console.log(req.body)
+    res.redirect('/patient/' + req.body.patientId.toString())
+})
+
 // export router
 module.exports = patientRouter
