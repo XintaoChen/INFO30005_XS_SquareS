@@ -22,6 +22,7 @@
     "handlebars": "^4.7.7",
     "install": "^0.13.0",
     "mime": "^3.0.0",
+    "moment": "^2.29.3",
     "mongoose": "^6.3.0",
     "npm": "^8.9.0",
     "passport": "^0.5.2",
