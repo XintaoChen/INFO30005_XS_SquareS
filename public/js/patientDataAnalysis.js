@@ -12,7 +12,6 @@ function patientDataAnalysis() {
   test.innerHTML = "";
   console.log(data);
   let selectDate = new Date(CalenderPlugin.prototype.getDate());
-  let tags = document.getElementsByClassName("pda-data-tag");
   let currentSelected = document.getElementsByClassName(
     "pda-data-tag pda-selected"
   )[0];
@@ -38,43 +37,43 @@ function patientDataAnalysis() {
     `;
     let enterred = 0;
     let thisData = hashMap[dateFormat(selectDate)];
-    if (thisData !== undefined) {
-      for (let i = 0; i < thisData.records.length; i++) {
-        let recordNode = document.createElement("div");
-        recordNode.classList.add("pda-daily-record");
-        if (thisData.records[i].value !== undefined) {
-          recordNode.innerHTML = generateRecord(
-            healthDataList[i].dataName,
-            thisData.records[i].value,
-            thisData.records[i].unit,
-            dateFormat(thisData.records[i].date)
-          );
-          enterred++;
-        } else if (thisData.records[i].isRequired === false) {
-          recordNode.innerHTML = generateRecord(
-            healthDataList[i].dataName,
-            "-",
-            "",
-            "Not required"
-          );
-          recordNode.classList.add("pda-not-required");
-        } else {
-          recordNode.innerHTML = generateRecord(
-            healthDataList[i].dataName,
-            "?",
-            "",
-            "No record"
-          );
-        }
-        dailyArea.appendChild(recordNode);
+    for (let i = 0; i < healthDataList.length; i++) {
+      let recordNode = document.createElement("div");
+      recordNode.classList.add("pda-daily-record");
+      if (thisData && thisData.records[i].value !== undefined) {
+        recordNode.innerHTML = generateRecord(
+          healthDataList[i].dataName,
+          thisData.records[i].value,
+          thisData.records[i].unit,
+          dateFormat(thisData.records[i].date)
+        );
+        enterred++;
+      } else if (thisData && thisData.records[i].isRequired === false) {
+        recordNode.innerHTML = generateRecord(
+          healthDataList[i].dataName,
+          "-",
+          "",
+          "Not required"
+        );
+        recordNode.classList.add("pda-not-required");
+      } else {
+        recordNode.innerHTML = generateRecord(
+          healthDataList[i].dataName,
+          "?",
+          "",
+          "No record"
+        );
       }
+      dailyArea.appendChild(recordNode);
     }
+
     console.log(enterred);
-    const completionRate =
-      (100 * enterred) / (thisData ? thisData.records.length : Infinity);
+    const completionRate = (100 * enterred) / healthDataList.length;
     window.completionRateChartPlugin.setCompletion(completionRate);
   }
-  updateDate()
+
+  updateDate();
+
   function generateRecord(dataName, dataValue, dataUnit, dataTime) {
     return `
       <div class="pda-record-title">
@@ -99,6 +98,7 @@ function patientDataAnalysis() {
     updateDate();
   });
 
+  let tags = document.getElementsByClassName("pda-data-tag");
   let dailyArea = document.getElementsByClassName("pda-daily-area")[0];
   let weeklyArea = document.getElementsByClassName("pda-weekly-area")[0];
   let monthlyArea = document.getElementsByClassName("pda-monthly-area")[0];
@@ -117,10 +117,54 @@ function patientDataAnalysis() {
     });
   }
 
+  // switch completion rate
+  let crcpTitle = document.getElementsByClassName("pda-completion-title")[0];
+  tags[0].addEventListener("click", () => {
+    let dailyRate = 0,
+      dailyTotal = healthDataList.length;
+    for (let i = 0; i < healthDataList.length; i++) {
+      if (
+        hashMap[dateFormat(selectDate)] &&
+        hashMap[dateFormat(selectDate)].records[i].value !== undefined
+      ) {
+        dailyRate++;
+      }
+    }
+    crcpTitle.innerHTML = `
+    <span>Today's</span>
+    <span>Completion</span>
+    `;
+    window.completionRateChartPlugin.setCompletion(
+      (dailyRate / dailyTotal) * 100
+    );
+  });
+  tags[1].addEventListener("click", () => {
+    let weeklyRate = 0,
+      weeklyTotal = 0;
+    for (let i = 0; i < healthDataList.length; i++) {
+      for (let dateRecord in hashMap) {
+        if (hashMap[dateRecord].records[i].value) {
+          weeklyRate++;
+        }
+        weeklyTotal++;
+      }
+    }
+    crcpTitle.innerHTML = `
+    <span>This week's</span>
+    <span>Completion</span>
+    `;
+    window.completionRateChartPlugin.setCompletion(
+      (weeklyRate / weeklyTotal) * 100
+    );
+  });
+
+  // weekly data table & chart
   let chartTag = document.getElementsByClassName("pda-week-tag")[0];
   let tableTag = document.getElementsByClassName("pda-week-tag")[1];
   let chartArea = document.getElementById("pda-chart-container");
   let tableArea = document.getElementsByClassName("pda-week-table")[0];
+
+  // switch between table and chart
   chartTag.addEventListener("click", () => {
     if (!chartTag.classList.contains("pda-selected")) {
       chartTag.classList.add("pda-selected");
@@ -138,6 +182,8 @@ function patientDataAnalysis() {
       tableArea.classList.remove("pda-hidden");
     }
   });
+
+  // chart
   const dateList = listOfWeek(new Date());
   const hdll = healthDataList.length;
   let seriesData = [];
@@ -160,6 +206,7 @@ function patientDataAnalysis() {
       }
     }
   }
+
   if (screen.width < 1000) {
     let series = seriesData.map((item, index) => {
       return {
@@ -177,12 +224,47 @@ function patientDataAnalysis() {
       <div id="pda-chart-container2"></div>
       <div id="pda-chart-container3"></div>
     `;
+    let addAveLine = function (axis) {
+      let points = axis.series[0].points,
+        point = {},
+        total = 0,
+        avgLength = 0,
+        avg = 0;
+
+      for (let i = 0; i < points.length; i++) {
+        point = points[i];
+        if (point.isInside) {
+          total += point.y;
+          avgLength++;
+        }
+      }
+
+      avg = (total / avgLength).toFixed(2);
+
+      axis.chart.get("yA").removePlotLine(avg);
+      axis.chart.get("yA").addPlotLine({
+        id: "avg",
+        value: avg,
+        color: Highcharts.getOptions().colors[-1],
+        dashStyle: "dash",
+        width: 1,
+        label: {
+          text: avg,
+        },
+        zIndex: 4,
+      });
+    };
     for (let i = 0; i < healthDataList.length; i++) {
       Highcharts.chart(`pda-chart-container${i}`, {
         chart: {
           type: "line",
           borderRadius: 10,
           borderWidth: 1,
+          events: {
+            load: function () {
+              addAveLine(this.get("xA"));
+            },
+          },
         },
         title: {
           text: `${healthDataList[i].dataName}`,
@@ -190,12 +272,19 @@ function patientDataAnalysis() {
           floating: true,
         },
         yAxis: {
+          id: "yA",
           title: {
             text: healthDataList[i].unit,
           },
         },
         xAxis: {
+          id: "xA",
           categories: listOfWeek(new Date()),
+          events: {
+            afterSetExtremes: function () {
+              addAveLine(this);
+            },
+          },
         },
 
         plotOptions: {
@@ -207,7 +296,7 @@ function patientDataAnalysis() {
           },
         },
         colors: [Highcharts.getOptions().colors[i]],
-        series: [series[i]]
+        series: [series[i]],
       });
     }
   } else {
@@ -221,10 +310,49 @@ function patientDataAnalysis() {
         },
       };
     });
+    let addAveLine = function (axis) {
+      for (let j = 0; j < axis.series.length; j++) {
+        let points = axis.series[j].points,
+          point = {},
+          total = 0,
+          avgLength = 0,
+          avg = 0;
+
+        for (let i = 0; i < points.length; i++) {
+          point = points[i];
+          if (point.isInside) {
+            total += point.y;
+            avgLength++;
+          }
+        }
+
+        avg = (total / avgLength).toFixed(2);
+        axis.chart.get(`yA${j}`).removePlotLine(avg);
+        axis.chart.get(`yA${j}`).addPlotLine({
+          id: "avg",
+          value: avg,
+          color: Highcharts.getOptions().colors[j],
+          dashStyle: "dash",
+          width: 1,
+          label: {
+            text: avg,
+          },
+          zIndex: 4,
+        });
+      }
+    };
     Highcharts.chart("pda-chart-container", {
+      chart: {
+        events: {
+          load: function () {
+            addAveLine(this.get("xA"));
+          },
+        },
+      },
       title: { text: "time-seires over one week" },
       yAxis: [
         {
+          id: "yA0",
           title: {
             text: healthDataList[0].dataName,
             style: {
@@ -236,11 +364,10 @@ function patientDataAnalysis() {
             style: {
               color: Highcharts.getOptions().colors[0],
             },
-            padding: 0,
           },
-          width: 10,
         },
         {
+          id: "yA1",
           title: {
             text: healthDataList[1].dataName,
             style: {
@@ -255,6 +382,7 @@ function patientDataAnalysis() {
           },
         },
         {
+          id: "yA2",
           title: {
             text: healthDataList[2].dataName,
             style: {
@@ -270,6 +398,7 @@ function patientDataAnalysis() {
           opposite: true,
         },
         {
+          id: "yA3",
           title: {
             text: healthDataList[3].dataName,
             style: {
@@ -287,7 +416,13 @@ function patientDataAnalysis() {
       ],
 
       xAxis: {
+        id: "xA",
         categories: listOfWeek(new Date()),
+        // events: {
+        //   afterSetExtremes: function () {
+        //     addAveLine(this);
+        //   },
+        // },
       },
 
       plotOptions: {
@@ -303,9 +438,11 @@ function patientDataAnalysis() {
   }
 }
 
-
 window.onload = function () {
   window.calenderPlugin = CalenderPlugin("pda-calendar-container");
-  window.completionRateChartPlugin = CompletionRateChartPlugin("pda-completion-container", 60);
+  window.completionRateChartPlugin = CompletionRateChartPlugin(
+    "pda-completion-container",
+    60
+  );
   patientDataAnalysis();
 };

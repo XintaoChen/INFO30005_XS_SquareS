@@ -87,8 +87,8 @@ const getTodayDataPatient = async (req, res, next) => {
 };
 
 const postTodayDataPatient = (req, res) => {
-  const {comment, value, healthDataId, clinicianId} = req.body;
-  const {_id} = req.user
+  const { comment, value, healthDataId, clinicianId } = req.body;
+  const { _id } = req.user;
   var Record = require("../models/record");
   var tempRecord = new Record({
     comment: comment,
@@ -101,19 +101,24 @@ const postTodayDataPatient = (req, res) => {
     if (err) return console.error(err);
     console.log(res.value + " saved to db.");
   });
-  res.redirect('/patient/today/')
+  res.redirect("/patient/today/");
 };
-
 
 const getDataAnalysis = async (req, res) => {
   try {
     const patientId = req.user._id;
     // 62554eb9bcd6f0a12a5e5f52
-    const date = new Date();
+    const date = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth(),
+      new Date().getDate()
+    );
     const time = date.getTime();
     const day = date.getDay();
+    const numOfDate = date.getDate();
     const oneDayTime = 24 * 60 * 60 * 1000;
     let startOfThisWeek = time - day * oneDayTime;
+    let startOfThisMonth = time - numOfDate * oneDayTime;
     const untrackedRecordList = await Record.find(
       {
         patientId: patientId,
@@ -171,7 +176,7 @@ const getDataAnalysis = async (req, res) => {
     );
 
     const formmatDate = (date) =>
-      `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}`;
+      `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 
     let hashMap = {};
     let healthDataNameList = healthDataList.map((item) => {
@@ -212,4 +217,4 @@ module.exports = {
   getTodayDataPatient,
   postTodayDataPatient,
   getDataAnalysis,
-}
+};
