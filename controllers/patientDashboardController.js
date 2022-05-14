@@ -123,8 +123,8 @@ const getDataAnalysis = async (req, res) => {
       {
         patientId: patientId,
         date: {
-          $gte: startOfThisWeek,
-          $lt: startOfThisWeek + 7 * oneDayTime,
+          $gte: startOfThisMonth,
+          $lt: new Date(),
         },
       },
       "healthDataId value comment date"
