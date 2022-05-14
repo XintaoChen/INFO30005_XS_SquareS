@@ -22,10 +22,11 @@ const moment = require('moment');
 
     const updatePatientProfile = async (req, res, next) => {
         try {
-            const patientId = req.body.patientId;
 
-            console.log(req.body);
+            const patientId = req.body.patientId;
+            
             const updates = {
+                profileName: req.body.profileName,
                 phoneNumber: req.body.phoneNumber,
                 homeAddress: req.body.homeAddress,
                 password: req.body.password,

@@ -16,32 +16,29 @@
         line-height: 0vh;
     }
 
-    .profile-name{
-        color: #000000;
-        text-align: center;
-    }
-
     .information-box{
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 15vh;
-        height: 90vh;
         padding-bottom: 5vh;
         margin-inline: 10vw;
     }
 
-    .profile{
-        text-align: justify;
-        width: 152px;
-        margin: -110px auto;
-        display: block; 
+
+    #profile-name{
+        color: #000000;
+        text-align: center;
+        width: -webkit-fill-available;
+        border-bottom: none;
+        margin-block-start: 120px;
     }
 
     .profile-photo{
         width: 152px;
         height: 152px;
         border-radius: 50%;
+        margin: -110px auto;
+        display: block; 
     }
 
     .line{
@@ -75,13 +72,15 @@
         margin-bottom: 5vh;
     }
 
-    .upper-box .btn{
-        width: 98.5vw;
-        height: 55vh;
+    .btn{
+        position: relative;
+        width: 30px;
+        height: 30px;
+        margin-left: 95vw;
+        margin-block-start: -35px;
         background-color: transparent;
         background-image: url(../img/pen_enabled.png);
         background-repeat: no-repeat;
-        background-position: right;
         border: none;
         display: flex;
         align-items: flex-end;
@@ -130,28 +129,27 @@
         line-height: 0vh;
     }
 
-    .profile-name{
-        color: #000000;
-        text-align: center;
-    }
-
     .information-box{
        text-align: justify;
-       padding-top: 10vh;
-       padding-bottom: 25vh;
+       padding-top: 5vh;
+       padding-bottom: 15vh;
+       display: flex;
     }
 
-    .profile{
-        text-align: justify;
-        width: 152px;
-        margin: -110px auto;
-        display: block; 
+    #profile-name{
+        color: #000000;
+        text-align: center;
+        width: -webkit-fill-available;
+        border-bottom: none;
+        margin-block-start: 120px;
     }
 
     .profile-photo{
         width: 152px;
         height: 152px;
         border-radius: 50%;
+        margin: -110px auto;
+        display: block; 
     }
 
     .line{
@@ -186,13 +184,15 @@
         text-align: left;
     }
 
-    .upper-box .btn{
-        width: 99vw;
-        height: 55vh;
+    .btn{
+        position: relative;
+        width: 30px;
+        height: 30px;
+        margin-left: 95vw;
+        margin-block-start: -35px;
         background-color: transparent;
         background-image: url(../img/pen_enabled.png);
         background-repeat: no-repeat;
-        background-position: right;
         border: none;
         display: flex;
         align-items: flex-end;
