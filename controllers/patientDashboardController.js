@@ -147,7 +147,6 @@ async function updateLeaderBoard() {
             {$match: {patientId : id, date : {$lte: new Date(lastSunday)} }},
             {$group: { _id: {$dateToString: { format: "%Y-%m-%d", date: "$date" }}, count: {$sum: 1}}}
         ])
-        console.log(records);
 
         //Calculate the number of days this patient recorded data
         const recordDays = records.length;
