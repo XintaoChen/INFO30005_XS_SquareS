@@ -148,7 +148,7 @@
 
 /* weekly */
 
-.pda-weekly-area {
+.pda-analysis-area {
   padding: 3%;
   width: 94%;
   display: flex;
@@ -156,14 +156,14 @@
   color: #5c4435;
 }
 
-.pda-weekly-area .pda-week-nav {
+.pda-analysis-area .pda-analysis-nav {
   width: 100%;
   display: flex;
   justify-content: space-between;
   color: #fff;
 }
 
-.pda-weekly-area .pda-week-nav .pda-week-tag {
+.pda-analysis-area .pda-analysis-nav .pda-analysis-tag {
   height: 1.5em;
   line-height: 1.5em;
   width: 50%;
@@ -172,48 +172,48 @@
   cursor: pointer;
 }
 
-.pda-weekly-area .pda-week-nav .pda-week-tag.pda-selected {
+.pda-analysis-area .pda-analysis-nav .pda-analysis-tag.pda-selected {
   background-color: #5c4435;
   cursor: default;
 }
 
-.pda-weekly-area .pda-week-table {
+.pda-analysis-area .pda-analysis-table {
   width: 100%;
   text-align: center;
 }
 
-.pda-weekly-area .pda-week-table .pda-table-head {
+.pda-analysis-area .pda-analysis-table .pda-table-head {
   color: #fff;
   background-color: #5c4435;
 }
 
-.pda-weekly-area .pda-week-table .pda-table-head th,
-.pda-weekly-area .pda-week-table .pda-table-item td {
+.pda-analysis-area .pda-analysis-table .pda-table-head th,
+.pda-analysis-area .pda-analysis-table .pda-table-item td {
   vertical-align: middle;
   text-align: center;
   padding: 1px 5px;
 }
 
-.pda-weekly-area .pda-week-table .pda-table-item {
+.pda-analysis-area .pda-analysis-table .pda-table-item {
   background-color: #f4f2f0;
 }
 
-.pda-weekly-area .pda-week-table .pda-table-item td {
+.pda-analysis-area .pda-analysis-table .pda-table-item td {
   font-weight: bold;
   height: 2rem;
 }
 
-.pda-weekly-area .pda-week-table .pda-table-item td:nth-child(1) {
+.pda-analysis-area .pda-analysis-table .pda-table-item td:nth-child(1) {
   font-weight: normal;
   color: #fff;
   background-color: #a99282;
 }
 
-.pda-weekly-area .pda-week-table .pda-table-item:nth-child(2n+1) {
+.pda-analysis-area .pda-analysis-table .pda-table-item:nth-child(2n+1) {
   background-color: #d7d2ce;
 }
 
-.pda-weekly-area .pda-week-table .pda-table-item:nth-child(2n+1) td:nth-child(1) {
+.pda-analysis-area .pda-analysis-table .pda-table-item:nth-child(2n+1) td:nth-child(1) {
   background-color: #D3C0B2;
 }
 

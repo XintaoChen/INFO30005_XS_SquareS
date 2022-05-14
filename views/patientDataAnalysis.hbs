@@ -63,45 +63,19 @@
     </div>
   </div>
 
-  <div class="pda-weekly-area pda-hidden">
-    <div class="pda-week-nav">
-      <div class="pda-week-tag">Graph</div>
-      <div class="pda-week-tag pda-selected">Table</div>
+  <div class="pda-analysis-area pda-hidden">
+    <div class="pda-analysis-nav">
+      <div class="pda-analysis-tag">Graph</div>
+      <div class="pda-analysis-tag pda-selected">Table</div>
     </div>
     <div id="pda-chart-container" class="pda-hidden"></div>
-    <table class="pda-week-table">
+    <table class="pda-analysis-table">
       <tr class="pda-table-head">
         <th>Date</th>
         {{#each healthDataList}}
           <th>{{dataName}} ({{unit}})</th>
         {{/each}}
       </tr>
-      {{#each weeklyData}}
-        <tr class="pda-table-item">
-          <td>{{date}}</td>
-          {{#each records}}
-            <td>
-            {{#if value}}
-              {{#if (compare value upperBound)}}
-                <span class="pda-over-value" title="This value is bigger than the upper safety threshold!">{{value}}</span>
-              {{else}}
-                {{#if (compare lowerBound value)}}
-                  <span class="pda-under-value" title="This value is smaller than the lower safety threshold!">{{value}}</span>
-                {{else}}
-                  <span>{{value}}</span>
-                {{/if}}
-              {{/if}} 
-            {{else}}
-              {{#if (hData isRequired)}}
-                ?
-              {{else}}
-                -
-              {{/if}}
-            {{/if}}
-            </td>
-          {{/each}}
-        </tr>
-      {{/each}}
     </table>
     
   </div>
