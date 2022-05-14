@@ -279,9 +279,8 @@
         <div class="board-area">
             <div class="board-item">
                 <div class="board-item-left">
-                    <span class="item-index">{{@index}}</span>
-                    <div class="value">avatar</div>
-                    <div class="edit">{{this.profileName}}</div>
+                    <div class="item-index">{{@index}}</div>
+                    <div class="lb-edit">{{this.profileName}}</div>
                 </div>
                 <div class="board-item-right">{{this.engagementRate}}</div>
             </div>
@@ -313,6 +312,7 @@
     for (var i = 0; i < index.length; ++i) {
         index[i].innerHTML = i + 1;
     }
+    
 
     // display current date and day
     var today = new Date();
