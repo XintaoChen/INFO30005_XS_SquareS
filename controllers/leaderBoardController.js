@@ -1,50 +1,45 @@
 const mongoose = require('mongoose')
 const moment = require('moment');
-const patientModel = require('../models/patient')
-const recordModel = require('../models/record')
+const Patient = require('../models/patient')
+const Record = require('../models/record')
 
-const updateLeaderBoard = async (req, res, next) => {
 
+const updateLeaderBoard = async () => {
     const lastMonday = moment().subtract(1, 'weeks').startOf('isoWeek');
-    const thisMonday = moment().startOf('isoweek');
     const lastSunday = moment().subtract(1, 'weeks').endOf('isoWeek');
-    const totalDaysInWeek = 7;
+    const thisMonday = moment().startOf('isoWeek');
 
-    console.log(lastMonday);
-    console.log(lastSunday);
-    console.log(thisMonday);
 
-    const patientIds = await patientModel.find().distinct('_id')
-
-    console.log(patientIds);
+    const patientIds = await Patient.find().distinct('_id')
+    const engRate = []
 
 
     for (const id of patientIds) {
-        var patientId = id;
-        var numRecordDays = 0;
 
 
-        async.forEach(function(err, patientId) {
+        const profileName = await Patient.findById(id).distinct('profileName')
+        const timeStamp = id.getTimestamp();
+       // const formatted = moment(timeStamp).format('L');
+        const numDays = thisMonday.diff(moment(timeStamp), 'days') + 1;
+        
+        const records = await Record.aggregate([
+            {$match: {patientId : id, date : {$lte: new Date(lastSunday)} }},
+            {$group: { _id: {$dateToString: { format: "%Y-%m-%d", date: "$date" }}, count: {$sum: 1}}}
+        ])
 
-            for (var thisDate = lastMonday; thisDate.isBefore(thisMonday); thisDate.add(1, 'days')) {
+        const recordDays = records.length;
+        const engagementRate = recordDays/numDays * 100;
+        const engRateSinglePatient = {patientId : id, profileName : profileName, engagementRate : engagementRate}
 
-                const check =  await recordModel.find( {patientId: patientId, date: {$gte: thisDate, $lte: thisDate.endOf('day')}}).count().exec();
-                console.log(thisDate);
-                console.log(patientId);
-                console.log(check);
-    
-            }
-
-        }
+        engRate.push(engRateSinglePatient);
 
     }
 
+    console.log(engRate);
 
+    return engRate;
 
-
- 
 }
-    
 
 module.exports = {
     updateLeaderBoard
