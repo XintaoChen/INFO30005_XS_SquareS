@@ -1,4 +1,4 @@
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 1365px) {
     .upper-box{
         width: 100%;
         height: 30vh;
@@ -22,9 +22,13 @@
     }
 
     .information-box{
-       text-align: justify;
-       padding-top: 15vh;
-       padding-bottom: 15vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 15vh;
+        height: 90vh;
+        padding-bottom: 5vh;
+        margin-inline: 10vw;
     }
 
     .profile{
@@ -68,11 +72,12 @@
 
     .edit-info{
         text-align: left;
+        margin-bottom: 5vh;
     }
 
     .upper-box .btn{
-        width: 97%;
-        height: 170%;
+        width: 98.5vw;
+        height: 55vh;
         background-color: transparent;
         background-image: url(../img/pen_enabled.png);
         background-repeat: no-repeat;
@@ -84,26 +89,138 @@
 
     .button{
         margin-top: 40px;
-        width: 60px;
-        height: 25px;
-        border: solid;
-        border-radius: 15px;
         text-align: center;
-        font-size: smaller;
-        display: inline;
-        
     }
 
-    #submit-btn.button{
+    #submit-btn{
         background-color: #5C4435;
         color: #FFFFFF;
         border-width: 0px;
-        margin-left: 35%;
+        width: 60px;
+        height: 25px;
+        border-radius: 10px;
+        display: inline;
     }
 
-    #reset-btn.button{
+    #reset-btn{
+        border: solid;
         border-width: thin;
+        width: 60px;
+        height: 25px;
+        border-radius: 10px;
+        display: inline;
+    }
+}
+
+@media screen and (min-width: 1366px) {
+    .upper-box{
+        width: 100%;
+        height: 30vh;
+        display: flex;
+        align-items: stretch;
+        background-color: #A99282;
     }
 
+    .data-field{
+        line-height: 5vh;
+    }
+
+    .value{
+        width: 80vw;
+        line-height: 0vh;
+    }
+
+    .profile-name{
+        color: #000000;
+        text-align: center;
+    }
+
+    .information-box{
+       text-align: justify;
+       padding-top: 10vh;
+       padding-bottom: 25vh;
+    }
+
+    .profile{
+        text-align: justify;
+        width: 152px;
+        margin: -110px auto;
+        display: block; 
+    }
+
+    .profile-photo{
+        width: 152px;
+        height: 152px;
+        border-radius: 50%;
+    }
+
+    .line{
+        width: 80vw;
+        height: 1px;
+        border: none;
+        background-color: #000000;
+    }
+
+    label{
+        display:inline-block;
+        width: 80vw;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        color: #000000;
+    }
+
+    input{
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #000000;
+        display: block;
+        width: 80vw;
+        height: 55px;
+        padding-left: 0;
+        color: #5C4435;
+        font-size: 1em;
+        font-family: 'Lato-Regular'
+    }
+
+    .edit-info{
+        text-align: left;
+    }
+
+    .upper-box .btn{
+        width: 99vw;
+        height: 55vh;
+        background-color: transparent;
+        background-image: url(../img/pen_enabled.png);
+        background-repeat: no-repeat;
+        background-position: right;
+        border: none;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .button{
+        margin-top: 40px;
+        text-align: center;
+        
+    }
+
+    #submit-btn{
+        background-color: #5C4435;
+        color: #FFFFFF;
+        border-width: 0px;
+        width: 100px;
+        height: 40px;
+        border-radius: 10px;
+        display: inline;
+    }
+
+    #reset-btn{
+        border: solid;
+        border-width: thin;
+        width: 100px;
+        height: 40px;
+        border-radius: 10px;
+        display: inline;
+    }
 
 }
