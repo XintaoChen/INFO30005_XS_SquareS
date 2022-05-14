@@ -1,28 +1,5 @@
 const Patient = require('../models/patient')
 const moment = require('moment');
-//const res = require('express/lib/response');
-//const e = require('express');
-
-/*
-const getPatientProfile = async (req, res, next) => {
-    try {
-        const patientId = req.params.id;
-        const patient = await Patient.findById(patientId).lean();
-        if (!patient) {
-            console.log("err");
-        }
-        var formattedDate = moment(patient.dateOfBirth).format('DD/MM/YYYY');
-        patient.dateOfBirth = formattedDate;
-
-        res.render('patientProfile.hbs', {
-            patientData : patient
-        });
-    
-    } catch (err) {
-        console.log(err);
-    }
-  };
-  */
 
   const getPatientProfile = async (req, res, next) => {
     try {

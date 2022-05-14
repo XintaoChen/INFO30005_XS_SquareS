@@ -274,51 +274,21 @@
             </div>
             <p>Engagement Rate</p>
         </div>
+
+        {{#each this.leaderBoard}}
         <div class="board-area">
             <div class="board-item">
                 <div class="board-item-left">
-                    <div class="item">1</div>
+                    <span class="item-index">{{@index}}</span>
                     <div class="value">avatar</div>
-                    <div class="edit">Sunny</div>
+                    <div class="edit">{{this.profileName}}</div>
                 </div>
-                <div class="board-item-right">83%</div>
-            </div>
-            <div class="board-item">
-                <div class="board-item-left">
-                    <div class="item">2</div>
-                    <div class="value">avatar</div>
-                    <div class="edit">Jane</div>
-                </div>
-                <div class="board-item-right">81%</div>
-            </div>
-            <div class="board-item">
-                <div class="board-item-left">
-                    <div class="item">3</div>
-                    <div class="value">avatar</div>
-                    <div class="edit">Daisy</div>
-                </div>
-                <div class="board-item-right">79%</div>
-            </div>
-            <div class="board-item">
-                <div class="board-item-left">
-                    <div class="item">4</div>
-                    <div class="value">avatar</div>
-                    <div class="edit">John</div>
-                </div>
-                <div class="board-item-right">76%</div>
-            </div>
-            <div class="board-item">
-                <div class="board-item-left">
-                    <div class="item">5</div>
-                    <div class="value">avatar</div>
-                    <div class="edit">Aaron</div>
-                </div>
-                <div class="board-item-right">75%</div>
+                <div class="board-item-right">{{this.engagementRate}}</div>
             </div>
         </div>
+        {{/each}}
     </div>
 </div>
-
 {{/with}}
 
 <script>
@@ -337,6 +307,11 @@
             document.getElementById("value-".concat(i)).disabled = ""
             document.getElementById("comment-".concat(i)).placeholder = "Enter comment"
         }
+    }
+
+    var index = document.querySelectorAll('.item-index');
+    for (var i = 0; i < index.length; ++i) {
+        index[i].innerHTML = i + 1;
     }
 
     // display current date and day
