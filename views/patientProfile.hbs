@@ -8,6 +8,7 @@
 <form action="/patient/profile/edit" method="post" id="edit-profile">
     <img class="profile-photo" src="/img/defaultProfile.png", alt="default_profile_picture">
     <input class="edit-input" id="profile-name" name="profileName" type="text" value="{{this.profileName}}" disabled>
+    <input class="badge" type="image" src="/img/badge.png" alt="badge" disabled>
     <div class = "information-box">
         <div class="info-text">
             <div id="non-editable">
@@ -53,7 +54,6 @@
     var submitBtn = document.getElementById("submit-btn");
     var resetBtn = document.getElementById("reset-btn");
     var inputs = document.getElementsByClassName("edit-input");
-    var i;
 
     function makeEditable() {
 
@@ -72,6 +72,7 @@
 
         submitBtn.style.visibility = "visible";
         resetBtn.style.visibility = "visible";
+        //edit_btn.style.backgroundImage = "url(../img/pen_disabled.png)";
 
     }
 
@@ -85,14 +86,12 @@
             non_editable_input[i].style.color = "#5C4435"
             non_editable_input[i].style.borderBottomColor = "#000000"
         }
-
-
-        var inputs = document.getElementsByClassName("edit-input");
         
         for (i=0; i<inputs.length; i++) {
             inputs[i].disabled = true;
         }
 
+        //edit_btn.style.backgroundImage = "url(../img/pen_enabled.png)";
         submitBtn.style.visibility = "hidden";
         resetBtn.style.visibility = "hidden";
 

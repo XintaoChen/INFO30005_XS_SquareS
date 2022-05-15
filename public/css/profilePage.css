@@ -10,6 +10,12 @@
     .data-field{
         line-height: 5vh;
     }
+    .badge{
+        height: 32px;
+        width: 32px;
+        border: none;
+        display: inline;
+    }
 
     .value{
         width: 80vw;
