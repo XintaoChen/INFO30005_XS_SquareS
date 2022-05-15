@@ -4,13 +4,13 @@ const mongoose = require("mongoose");
 const patientModel = require("../models/patient");
 const Record = require("../models/record");
 const HealthData = require("../models/healthData");
+const moment = require("moment")
 
 const getTodayDataPatient = async (req, res, next) => {
   var today = new Date();
   try {
     // const tempDataNoRecords = await patientModel.findById(req.params.id).lean()
     const leaderBoard = await updateLeaderBoard();
-    let tempData = {leaderBoard : leaderBoard};
     //get all required data from database
     patientModel.aggregate(
       [
@@ -47,7 +47,10 @@ const getTodayDataPatient = async (req, res, next) => {
         if (err) {
           return console.log(err);
         }
-        tempData = docs[0];
+
+        let tempData = docs[0];
+        tempData.leaderBoard = leaderBoard
+
         if (tempData) {
           //manipulate data to satisfy .hbs page data logic
           for (i = 0; i < tempData.recordInfo.length; i++) {
@@ -126,7 +129,7 @@ async function updateLeaderBoard() {
       //Calculate the number of days this patient recorded data
       //Get all of this patient's records that were recorded before thisMonday
       //Group the retrieved records by date
-      const records = await recordModel.aggregate([
+      const records = await Record.aggregate([
           {$match: {patientId : id, date : {$lte: new Date(lastSunday)} }},
           {$group: { _id: {$dateToString: { format: "%Y-%m-%d", date: "$date" }}, count: {$sum: 1}}}
       ])

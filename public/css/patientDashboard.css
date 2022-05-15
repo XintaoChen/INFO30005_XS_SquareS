@@ -282,6 +282,7 @@
         margin-top: 10px;
         display: flex;
         flex-direction: column;
+        z-index: 0;
     }
     .board-title{
         display: flex;
@@ -304,6 +305,7 @@
         align-items: center;
         background-color: #F4F2F0;
         border-radius: 10px;
+        color: #5C4435;
     }    
 
     .board-item-left{
@@ -311,9 +313,17 @@
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
+        z-index: 1;
     }
     .board-item-right{
         margin-right: 5vw;
+        z-index: 1;
+    }
+    .board-item-progress{
+        height: 40px;
+        background-color: #867167;
+        position: absolute;
+        border-radius: 10px;
     }
 
     .item-index{
