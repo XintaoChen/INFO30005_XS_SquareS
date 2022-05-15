@@ -297,6 +297,7 @@ table {
     font-size: 22px;
     line-height: 140%;
     letter-spacing: 0.01em;
+    z-index: 999;
   }
 
   header .menuButton .menu button {
