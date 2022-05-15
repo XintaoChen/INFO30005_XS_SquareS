@@ -1,5 +1,7 @@
 const express = require('express')
 const patientDashboardController = require('../controllers/patientDashboardController')
+const leaderBoardController = require('../controllers/leaderBoardController')
+
 const patientDashboardRouter = express.Router()
 
 const isAuthenticated = (req, res, next) => {
@@ -25,6 +27,8 @@ patientDashboardRouter.post(
     '/add', isAuthenticated,
     patientDashboardController.postTodayDataPatient
 )
+
+patientDashboardRouter.get('/:d/leaderBoard', leaderBoardController.updateLeaderBoard)
 
 module.exports = {
     patientDashboardRouter,
