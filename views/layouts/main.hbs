@@ -35,10 +35,13 @@
               <span>My Clinician</span>
             </a>
             {{else}}
-            <a href="/clinician"  class="dashboard">
-              <i class="iconfont">&#xe7c6;</i>
-              <span>Dashboard</span>
-            </a>
+              {{#if (false isPatient)}}
+              <a href="/clinician"  class="dashboard">
+                <i class="iconfont">&#xe7c6;</i>
+                <span>Dashboard</span>
+              </a>
+              {{else}}
+              {{/if}}
             {{/if}}
             <a href="/home">
               <i class="iconfont">&#xe7c6;</i>

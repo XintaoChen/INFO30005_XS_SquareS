@@ -50,6 +50,7 @@ app.engine(
             hData: (x) => x == true,
             compare: (x, y) => x > y,
             true: (x) => x == true,
+            false: (x) => x == false,
             formmatDate: (date) => `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}`
         },
     })
