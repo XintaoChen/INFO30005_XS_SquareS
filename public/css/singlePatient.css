@@ -69,6 +69,7 @@
         font-size: 2em;
         /* margin-left: auto; */
         margin-right: 0;
+        color: green;
     }
     #sp-cancel-btn {
         font-size: 2em;
@@ -171,6 +172,21 @@
 
     .sp-lowerbound {
         background-color: blue;
+    }
+
+    .sp-nobound {
+        background-color: grey;
+    }
+
+    .data-setting-upperbound,
+    .data-setting-lowerbound {
+        font: inherit; 
+        width: 4em;
+    }
+
+    .disabled-edit-field {
+        border: none; 
+        background-color: #ffffffd4;
     }
 
     #notes {
@@ -438,9 +454,39 @@
     .sp-hdata-title {
         font-size: 1.05em;
         font-weight: bold;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    /* Style the collapsible content. Note: hidden by default
+    .edit-field {
+        display: none;
+        overflow: hidden;
     }
 
-    .sp-hdata-bound {
+    .display-field {
+        display: block;
+    } */
+
+    .square-btn {
+        height: 25px;
+        width: 25px;
+        border-radius: 5px;
+        border: 0px;
+        margin-right: 3px;
+    }
+
+    .checked-btn, .active {
+        background-color: green;
+    }
+
+    .unchecked-btn {
+        background-color: grey;
+    }
+
+    .sp-hdata-upperbound,
+    .sp-hdata-lowerbound {
         /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
         font-family: monospace;
         font-size: 0.95em;

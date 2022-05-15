@@ -87,21 +87,74 @@
         </div>
     </div>
     <div class="sp-right-page">
-        <form action="" method="post" id="sp-data-setting">
-            <div class="sp-data-setting-header-edit">
-                <div class="sp-data-setting-header">DATA SETTING</div>
-                <span><button class="sp-data-edit-btn">Edit</button></span>
-            </div>
+        <div class="sp-data-setting-header-edit">
+            <div class="sp-data-setting-header">DATA SETTING</div>
+            <span><button id="sp-edit-data-setting-btn" class="sp-data-edit-btn" onclick="editDataSetting()">Edit</button></span>
+        </div>
+        <form id="sp-data-setting">
+            {{!-- adding patient's id for update method --}}
+            <input type="text" name="patientId" value="{{patientData._id}}" style="display:none">
+            
             <div class="sp-wrapper">
                 {{#each dataSetting}}
+                    <input type="text" name="healthDataId" value="{{healthDataId}}" style="display:none">
+
                     <div>
-                        <div class="sp-hdata-title">{{healthDataTitle}}</div>
                         {{#if isRequired}}
-                            <div class="sp-hdata-bound"><span class="status-dot sp-upperbound"></span> Upperbound: {{upperBound}}</div>
-                            <div class="sp-hdata-bound"><span class="status-dot sp-lowerbound"></span> Lowerbound: {{lowerBound}}</div>
+                            <div class="sp-hdata-title">
+                                <div><button class="square-btn checked-btn display-none"></button></div>
+                                <div>{{healthDataTitle}}</div>
+                            </div>
+                            <div class="display-field">
+                                <div class="sp-hdata-upperbound">
+                                    <span class="status-dot sp-upperbound"></span> Upperbound: {{upperBound}}
+                                </div>
+                                <div class="sp-hdata-lowerbound">
+                                    <span class="status-dot sp-lowerbound"></span> Lowerbound: {{lowerBound}}
+                                </div>
+                            </div>
+                            <div class="edit-field display-none">
+                                <div class="sp-hdata-upperbound">
+                                    <span class="status-dot sp-upperbound"></span>                                
+                                    <label style="font: inherit;" for="upperbound"> Upperbound: </label>
+                                    <input type="number" id="hdata-upperbound" class="data-setting-upperbound" name="upperbound" 
+                                        value="{{upperBound}}">
+                                </div>
+                                <div class="sp-hdata-lowerbound">
+                                    <span class="status-dot sp-lowerbound"></span>
+                                    <label style="font: inherit;" for="lowerbound"> Lowerbound: </label>
+                                    <input type="number" id="hdata-lowerbound" class="data-setting-lowerbound" name="lowerbound" 
+                                        value="{{lowerBound}}">
+                                </div>
+                            </div>
                         {{else}}
-                            <div class="sp-hdata-bound">Upperbound: -</div>
-                            <div class="sp-hdata-bound">Lowerbound: -</div>
+                            <div class="sp-hdata-title">
+                                <span><button class="square-btn unchecked-btn display-none"></button></span>
+                                <div>{{healthDataTitle}}</div>
+                            </div>
+                            {{!-- <div class="{{#if isRequired}}"></div> --}}
+                            <div class="display-field">
+                                <div class="sp-hdata-upperbound">
+                                    <span class="status-dot sp-nobound"></span> Upperbound: -
+                                </div>
+                                <div class="sp-hdata-lowerbound">
+                                    <span class="status-dot sp-nobound"></span> Lowerbound: -
+                                </div>
+                            </div>
+                            <div class="edit-field display-none">
+                                <div class="sp-hdata-upperbound">
+                                    <span class="status-dot sp-nobound"></span>                                
+                                    <label style="font: inherit;" for="upperbound"> Upperbound: </label>
+                                    <input type="number" id="hdata-upperbound" class="data-setting-upperbound disabled-edit-field" name="upperbound" 
+                                        value="" disabled>
+                                </div>
+                                <div class="sp-hdata-lowerbound">
+                                    <span class="status-dot sp-nobound"></span>
+                                    <label style="font: inherit;" for="lowerbound"> Lowerbound: </label>
+                                    <input type="number" id="hdata-lowerbound" class="data-setting-lowerbound disabled-edit-field" name="lowerbound" 
+                                        value="" disabled>
+                                </div>
+                            </div>
                         {{/if}}
                     </div>
                 {{/each}}
@@ -132,35 +185,7 @@
                         {{/each}}
                     </table>
                 </div>
-                
-                {{!-- {{#each noteList}}
-                    <div>{{date}}, {{time}}, {{note}}</div>
-                {{/each}} --}}
             </div>
-            {{!-- <form action="/patient/add" method="post">
-                <input type="submit" value="➕" id="sp-addNote-btn">
-                <input type="text" name="note" placeholder="Type new note here" id="sp-addNote-textbox">
-            </form> --}}
-            {{!-- <table id="notes-add">
-                {{#each patientNotes}}
-                    <tr class="data-row">
-                        <td>{{this.date}}</td>
-                        <td>{{this.content}}</td>
-                    </tr>
-                {{/each}}
-                <tr>
-                    <td id="sp-addNote-btn">➕</td>
-                    <td id="sp-addNote-textbox">Type new note here</td>
-                </tr>
-            </table>
-            <table id="clinician-notes">
-                <tr  class="note">
-                    <td class="notes-date">date</td>
-                    <td class="notes-text">example note</td>
-                    <td class="notes-edit">✏</td>
-                    <td class="notes-bin">🚮</td>
-                </tr>
-            </table> --}}
         </section>
     </div>
 </div>
@@ -168,11 +193,13 @@
 {{/with}}
 
 <script>
-    var edit_msg_btn = document.getElementById("sp-edit-msg-btn");
-    var confirm_btn = document.getElementById("sp-confirm-btn");
-    var cancel_btn = document.getElementById('sp-cancel-btn');
 
-    var sp_msg_field = document.getElementById("sp-message");
+    /* buttons related to edit/update support message */
+    var edit_msg_btn = document.getElementById("sp-edit-msg-btn")
+    var confirm_btn = document.getElementById("sp-confirm-btn")
+    var cancel_btn = document.getElementById('sp-cancel-btn')
+
+    var sp_msg_field = document.getElementById("sp-message")
 
     function editSupportMessage() {
         sp_msg_field.disabled = false;
@@ -190,4 +217,56 @@
         confirm_btn.classList.add("display-none")
         cancel_btn.classList.add("display-none")
     }
+
+    /* button to enter edit mode of data setting */
+    var edit_data_setting_btn = document.getElementById("sp-edit-data-setting-btn")
+    var display_fields = document.getElementsByClassName("display-field")
+    var edit_fields = document.getElementsByClassName("edit-field")
+    var square_btns = document.getElementsByClassName("square-btn")
+
+    function editDataSetting() {
+        for (var i=0; i<display_fields.length; i++) {
+            display_fields[i].classList.add("display-none");
+        }
+
+        for (var i=0; i<edit_fields.length; i++) {
+            edit_fields[i].classList.remove("display-none");
+        }
+
+        for (var i=0; i<square_btns.length; i++) {
+            square_btns[i].classList.remove("display-none");
+        }
+    }
+
+    /* button to toggle the state of isRequired for each health data */
+    var square_btns = document.getElementsByClassName("square-btn")
+    console.log(square_btns)
+    var upperbound_edit_fields = document.querySelectorAll('input[name="upperbound"]')
+    var lowerbound_edit_fields = document.querySelectorAll('input[name="lowerbound"]')
+
+    for (var i=0; i<square_btns.length; i++) {
+        square_btns[i].addEventListener("click", function() {
+            if (square_btns[i].classList.contains("checked-btn")) {
+                upperbound_edit_fields[i].value = "";
+                upperbound_edit_fields[i].classList.add("disabled-edit-field");
+                lowerbound_edit_fields[i].value = "";
+                lowerbound_edit_fields[i].classList.add("disabled-edit-field");
+
+                /* changing the state */
+                checked_btns[i].classList.add("unchecked-btn");
+                checked_btns[i].classlist.remove("checked-btn");
+
+            } else if (square_btns[i].classList.contains("unchecked-btn")) {
+                upperbound_edit_fields[i].classList.remove("disabled-edit-field");
+                upperbound_edit_fields[i].disabled = false;
+                lowerbound_edit_fields[i].classList.remove("disabled-edit-field");
+                upperbound_edit_fields[i].disabled = false;
+                
+                /* changing the state */
+                checked_btns[i].classList.remove("unchecked-btn");
+                checked_btns[i].classlist.add("checked-btn");
+            }
+        })
+    }
+
 </script>
