@@ -255,6 +255,8 @@ const getDataAnalysis = async (req, res) => {
       code: data,
       weeklyData: hashMap,
       healthDataList: healthDataList,
+      loggedin: req.isAuthenticated(),
+      isPatient: true,
     });
   } catch (err) {
     console.log(err);
