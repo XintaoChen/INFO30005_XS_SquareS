@@ -248,7 +248,6 @@ const getDataAnalysis = async (req, res) => {
       weeklyData: hashMap,
       healthDataList: healthDataList,
     });
-
     res.render("patientDataAnalysis.hbs", {
       code: data,
       weeklyData: hashMap,

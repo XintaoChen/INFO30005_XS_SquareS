@@ -3,27 +3,24 @@
 </head>
 
 {{#with patientData}}
-<div class ="upper-box">
-    <button type="button" class="btn" id="edit-btn" onclick="makeEditable()"> </button>
-</div>
-<div class="profile"> 
+<div class ="upper-box"></div>
+<button type="button" class="btn" id="edit-btn" onclick="makeEditable()"></button>
+<form action="/patient/profile/edit" method="post" id="edit-profile">
     <img class="profile-photo" src="/img/defaultProfile.png", alt="default_profile_picture">
-    <p class="profile-name"> {{this.profileName}}</p>
-</div>
-<div class = "information-box">
-    <div class="info-text">
-        <div id="non-editable">
-            <label class="data-field">Full name</label>
-            <input class="non-edit-input" type="text" value="{{this.nameGiven}} {{this.nameFamily}}" disabled>
+    <input class="edit-input" id="profile-name" name="profileName" type="text" value="{{this.profileName}}" disabled>
+    <div class = "information-box">
+        <div class="info-text">
+            <div id="non-editable">
+                <label class="data-field">Full name</label>
+                <input class="non-edit-input" type="text" value="{{this.nameGiven}} {{this.nameFamily}}" disabled>
             
-            <label class="data-field">Date of Birth</label>
-            <input class="non-edit-input" type="text" value="{{this.dateOfBirth}}" disabled>
+                <label class="data-field">Date of Birth</label>
+                <input class="non-edit-input" type="text" value="{{this.dateOfBirth}}" disabled>
             
-            <label class="data-field">Email Address</label>
-            <input class="non-edit-input" type="email" value="{{this.emailAddress}}" disabled>
-        </div>
+                <label class="data-field">Email Address</label>
+                <input class="non-edit-input" type="email" value="{{this.emailAddress}}" disabled>
+            </div>
 
-        <form action="/patient/profile/edit" method="post" id="edit-profile">
             <div class="edit-info">
                 <input  type="text" name="patientId" value="{{this._id}}" style="display:none">
 
@@ -38,13 +35,14 @@
                 
                 <label class="data-field" for="briefTextBio">Brief Text Bio</label>
                 <input class="edit-input" type="text" name="briefTextBio" value="{{this.briefTextBio}}" disabled>
-
             </div>
-            <input class="button" id="submit-btn" class="submit-btn" type="submit" value=" Save" style="visibility:hidden">
-            <input class="button" id="reset-btn" type="reset" value=" Cancel" onclick="cancelChanges()"style="visibility:hidden">
-        </form>
+            <div class = "button">
+                <input id="submit-btn" type="submit" value=" Save" style="visibility:hidden">
+                <input id="reset-btn" type="reset" value=" Cancel" onclick="cancelChanges()"style="visibility:hidden">
+            </div>
+        </div>
     </div>
-</div>
+</form>
 {{/with}}
 
 <script>
