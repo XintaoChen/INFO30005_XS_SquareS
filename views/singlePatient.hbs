@@ -105,14 +105,7 @@
                                 <div><button class="square-btn checked-btn display-none"></button></div>
                                 <div>{{healthDataTitle}}</div>
                             </div>
-                            <div class="display-field">
-                                <div class="sp-hdata-upperbound">
-                                    <span class="status-dot sp-upperbound"></span> Upperbound: {{upperBound}}
-                                </div>
-                                <div class="sp-hdata-lowerbound">
-                                    <span class="status-dot sp-lowerbound"></span> Lowerbound: {{lowerBound}}
-                                </div>
-                            </div>
+
                             <div class="edit-field display-none">
                                 <div class="sp-hdata-upperbound">
                                     <span class="status-dot sp-upperbound"></span>                                
@@ -127,34 +120,46 @@
                                         value="{{lowerBound}}">
                                 </div>
                             </div>
+
+                            <div class="display-field">
+                                <div class="sp-hdata-upperbound">
+                                    <span class="status-dot sp-upperbound"></span> Upperbound: {{upperBound}}
+                                </div>
+                                <div class="sp-hdata-lowerbound">
+                                    <span class="status-dot sp-lowerbound"></span> Lowerbound: {{lowerBound}}
+                                </div>
+                            </div>
+                            
                         {{else}}
                             <div class="sp-hdata-title">
-                                <span><button class="square-btn unchecked-btn display-none"></button></span>
+                                <span><button class="square-btn display-none"></button></span>
                                 <div>{{healthDataTitle}}</div>
                             </div>
                             {{!-- <div class="{{#if isRequired}}"></div> --}}
-                            <div class="display-field">
-                                <div class="sp-hdata-upperbound">
-                                    <span class="status-dot sp-nobound"></span> Upperbound: -
-                                </div>
-                                <div class="sp-hdata-lowerbound">
-                                    <span class="status-dot sp-nobound"></span> Lowerbound: -
-                                </div>
-                            </div>
                             <div class="edit-field display-none">
                                 <div class="sp-hdata-upperbound">
-                                    <span class="status-dot sp-nobound"></span>                                
+                                    <span class="status-dot"></span>                                
                                     <label style="font: inherit;" for="upperbound"> Upperbound: </label>
                                     <input type="number" id="hdata-upperbound" class="data-setting-upperbound disabled-edit-field" name="upperbound" 
                                         value="" disabled>
                                 </div>
                                 <div class="sp-hdata-lowerbound">
-                                    <span class="status-dot sp-nobound"></span>
+                                    <span class="status-dot"></span>
                                     <label style="font: inherit;" for="lowerbound"> Lowerbound: </label>
                                     <input type="number" id="hdata-lowerbound" class="data-setting-lowerbound disabled-edit-field" name="lowerbound" 
                                         value="" disabled>
                                 </div>
                             </div>
+
+                            <div class="display-field">
+                                <div class="sp-hdata-upperbound">
+                                    <span class="status-dot"></span> Upperbound: -
+                                </div>
+                                <div class="sp-hdata-lowerbound">
+                                    <span class="status-dot"></span> Lowerbound: -
+                                </div>
+                            </div>
+
                         {{/if}}
                     </div>
                 {{/each}}
@@ -240,33 +245,48 @@
 
     /* button to toggle the state of isRequired for each health data */
     var square_btns = document.getElementsByClassName("square-btn")
-    console.log(square_btns)
+
+    /* var checked_btns = document.getElementsByClassName("checked-btn")
+    var unchecked_btns = document.getElementsByClassName("unchecked-btn")
+
     var upperbound_edit_fields = document.querySelectorAll('input[name="upperbound"]')
-    var lowerbound_edit_fields = document.querySelectorAll('input[name="lowerbound"]')
+    var lowerbound_edit_fields = document.querySelectorAll('input[name="lowerbound"]') */
 
-    for (var i=0; i<square_btns.length; i++) {
+    for (i = 0; i < square_btns.length; i++) {
         square_btns[i].addEventListener("click", function() {
-            if (square_btns[i].classList.contains("checked-btn")) {
-                upperbound_edit_fields[i].value = "";
-                upperbound_edit_fields[i].classList.add("disabled-edit-field");
-                lowerbound_edit_fields[i].value = "";
-                lowerbound_edit_fields[i].classList.add("disabled-edit-field");
+            /* 
+            parentElement.parentElement -> sp-hdata-title
+            .nextElementSibling -> edit-field
+            .firstElementChild -> sp-hdata-upperbound
+            .lastElementChild -> sp-hdata-lowerbound
+            */
+            var upperbound_status = this.parentElement.parentElement.nextElementSibling.firstElementChild.children[0];
+            var lowerbound_status = this.parentElement.parentElement.nextElementSibling.lastElementChild.children[0];
+            
+            var upperbound_edit_field = this.parentElement.parentElement.nextElementSibling.firstElementChild.children[2];
+            var lowerbound_edit_field = this.parentElement.parentElement.nextElementSibling.lastElementChild.children[2];
 
-                /* changing the state */
-                checked_btns[i].classList.add("unchecked-btn");
-                checked_btns[i].classlist.remove("checked-btn");
+            if (this.classList.contains("checked-btn")) {
+                upperbound_status.classList.remove("sp-upperbound");
+                upperbound_edit_field.value = "";
+                upperbound_edit_field.classList.add("disabled-edit-field");
 
-            } else if (square_btns[i].classList.contains("unchecked-btn")) {
-                upperbound_edit_fields[i].classList.remove("disabled-edit-field");
-                upperbound_edit_fields[i].disabled = false;
-                lowerbound_edit_fields[i].classList.remove("disabled-edit-field");
-                upperbound_edit_fields[i].disabled = false;
+                lowerbound_status.classList.remove("sp-lowerbound");
+                lowerbound_edit_field.value = "";
+                lowerbound_edit_field.classList.add("disabled-edit-field");
                 
-                /* changing the state */
-                checked_btns[i].classList.remove("unchecked-btn");
-                checked_btns[i].classlist.add("checked-btn");
+                this.classList.remove("checked-btn");
+            } else {
+                /* doesn't contain "checked-btn" - means unchecked */
+                upperbound_status.classList.add("sp-upperbound");
+                upperbound_edit_field.classList.remove("disabled-edit-field");
+
+                lowerbound_status.classList.add("sp-lowerbound");
+                lowerbound_edit_field.classList.remove("disabled-edit-field");
+                
+                this.classList.add("checked-btn");
             }
-        })
+        });
     }
 
 </script>
