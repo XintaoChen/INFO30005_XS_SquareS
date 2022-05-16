@@ -87,13 +87,18 @@
         </div>
     </div>
     <div class="sp-right-page">
-        <div class="sp-data-setting-header-edit">
-            <div class="sp-data-setting-header">DATA SETTING</div>
-            <span><button id="sp-edit-data-setting-btn" class="sp-data-edit-btn" onclick="editDataSetting()">Edit</button></span>
-        </div>
-        <form id="sp-data-setting">
+        <form id="sp-data-setting" action="/patient/editDataSetting" method="post">
             {{!-- adding patient's id for update method --}}
             <input type="text" name="patientId" value="{{patientData._id}}" style="display:none">
+
+            <div class="sp-data-setting-header-edit">
+                <div class="sp-data-setting-header">DATA SETTING</div>
+                <span><button type="button" id="sp-edit-data-setting-btn" class="sp-data-setting-btn" onclick="editDataSetting()">Edit</button></span>
+
+                <button type="submit" id="sp-data-save-btn" class="sp-data-setting-btn display-none">Save</button>
+                <button id="sp-data-cancel-btn" class="sp-data-setting-btn display-none" onclick="cancelDataSetting()">Cancel</button>
+
+            </div>
             
             <div class="sp-wrapper">
                 {{#each dataSetting}}
@@ -102,7 +107,7 @@
                     <div>
                         {{#if isRequired}}
                             <div class="sp-hdata-title">
-                                <div><button class="square-btn checked-btn display-none"></button></div>
+                                <div><button type="button" class="square-btn checked-btn display-none"></button></div>
                                 <div>{{healthDataTitle}}</div>
                             </div>
 
@@ -132,7 +137,7 @@
                             
                         {{else}}
                             <div class="sp-hdata-title">
-                                <span><button class="square-btn display-none"></button></span>
+                                <span><button type="button" class="square-btn display-none"></button></span>
                                 <div>{{healthDataTitle}}</div>
                             </div>
                             {{!-- <div class="{{#if isRequired}}"></div> --}}
@@ -141,13 +146,13 @@
                                     <span class="status-dot"></span>                                
                                     <label style="font: inherit;" for="upperbound"> Upperbound: </label>
                                     <input type="number" id="hdata-upperbound" class="data-setting-upperbound disabled-edit-field" name="upperbound" 
-                                        value="" disabled>
+                                        value="-" disabled>
                                 </div>
                                 <div class="sp-hdata-lowerbound">
                                     <span class="status-dot"></span>
                                     <label style="font: inherit;" for="lowerbound"> Lowerbound: </label>
                                     <input type="number" id="hdata-lowerbound" class="data-setting-lowerbound disabled-edit-field" name="lowerbound" 
-                                        value="" disabled>
+                                        value="-" disabled>
                                 </div>
                             </div>
 
@@ -225,11 +230,18 @@
 
     /* button to enter edit mode of data setting */
     var edit_data_setting_btn = document.getElementById("sp-edit-data-setting-btn")
+    var save_data_setting_btn = document.getElementById("sp-data-save-btn")
+    var cancel_data_setting_btn = document.getElementById("sp-data-cancel-btn")
+
     var display_fields = document.getElementsByClassName("display-field")
     var edit_fields = document.getElementsByClassName("edit-field")
     var square_btns = document.getElementsByClassName("square-btn")
 
     function editDataSetting() {
+        save_data_setting_btn.classList.remove("display-none")
+        cancel_data_setting_btn.classList.remove("display-none")
+        edit_data_setting_btn.classList.add("display-none")
+
         for (var i=0; i<display_fields.length; i++) {
             display_fields[i].classList.add("display-none");
         }
@@ -240,6 +252,24 @@
 
         for (var i=0; i<square_btns.length; i++) {
             square_btns[i].classList.remove("display-none");
+        }
+    }
+
+    function cancelDataSetting() {
+        save_data_setting_btn.classList.add("display-none")
+        cancel_data_setting_btn.classList.add("display-none")
+        edit_data_setting_btn.classList.remove("display-none")
+
+        for (var i=0; i<display_fields.length; i++) {
+            display_fields[i].classList.remove("display-none");
+        }
+
+        for (var i=0; i<edit_fields.length; i++) {
+            edit_fields[i].classList.add("display-none");
+        }
+
+        for (var i=0; i<square_btns.length; i++) {
+            square_btns[i].classList.add("display-none");
         }
     }
 
@@ -264,25 +294,31 @@
             var lowerbound_status = this.parentElement.parentElement.nextElementSibling.lastElementChild.children[0];
             
             var upperbound_edit_field = this.parentElement.parentElement.nextElementSibling.firstElementChild.children[2];
+            /*var initial_upperbound_value = upperbound_edit_field.value;*/
             var lowerbound_edit_field = this.parentElement.parentElement.nextElementSibling.lastElementChild.children[2];
+            /*var initial_lowerbound_value = lowerbound_edit_field.value;*/
 
             if (this.classList.contains("checked-btn")) {
                 upperbound_status.classList.remove("sp-upperbound");
-                upperbound_edit_field.value = "";
+                upperbound_edit_field.value = "-";
                 upperbound_edit_field.classList.add("disabled-edit-field");
 
                 lowerbound_status.classList.remove("sp-lowerbound");
-                lowerbound_edit_field.value = "";
+                lowerbound_edit_field.value = "-";
                 lowerbound_edit_field.classList.add("disabled-edit-field");
                 
                 this.classList.remove("checked-btn");
             } else {
                 /* doesn't contain "checked-btn" - means unchecked */
                 upperbound_status.classList.add("sp-upperbound");
+                /*upperbound_edit_field.value = initial_upperbound_value;*/
                 upperbound_edit_field.classList.remove("disabled-edit-field");
+                upperbound_edit_field.disabled = false;
 
                 lowerbound_status.classList.add("sp-lowerbound");
+                /*lowerbound_edit_field.value = initial_lowerbound_value;*/
                 lowerbound_edit_field.classList.remove("disabled-edit-field");
+                lowerbound_edit_field.disabled = false;
                 
                 this.classList.add("checked-btn");
             }
