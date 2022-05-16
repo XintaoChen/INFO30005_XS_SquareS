@@ -162,7 +162,7 @@
         width: 0.5em;
         border-radius: 50%;
         display: inline-block;
-        background-color: black;
+        background-color: grey;
         align-items: center;
     }
 
@@ -172,10 +172,6 @@
 
     .sp-lowerbound {
         background-color: blue;
-    }
-
-    .sp-nobound {
-        background-color: grey;
     }
 
     .data-setting-upperbound,
@@ -475,15 +471,16 @@
         border-radius: 5px;
         border: 0px;
         margin-right: 3px;
+        background-color: gray;
     }
 
-    .checked-btn, .active {
+    .checked-btn {
         background-color: green;
     }
 
-    .unchecked-btn {
+    /* .unchecked-btn {
         background-color: grey;
-    }
+    } */
 
     .sp-hdata-upperbound,
     .sp-hdata-lowerbound {
