@@ -67,9 +67,10 @@ const getPatientInfo = async (req, res, next) => {
                     }
                 }
                 return {
+                    healthDataId: healthDataId,                    
+                    healthDataTitle: dataName + " (" + unit + ")",
                     upperBound: upperBound,
                     lowerBound: lowerBound,
-                    healthDataTitle: dataName + " (" + unit + ")",
                     // dataName: dataName,
                     // unit: unit,
                     // value: value,
@@ -145,21 +146,47 @@ const updateSupportMessage = async (req, res, next) => {
         await Patient.findByIdAndUpdate(patientId, {supportMessage: req.supportMessage}, { new : true }).lean();
 
     } catch (error) {
-        console.log("err");
+        console.log(error);
     }
 }
 
-// const getPatientNote = async (req, res) => {
-//     try {
-//         const patientID = req.params.id
-//         console.log(patientID)
-//         const patientNotes = await Note.find({patientID: patientID},{}).lean()
-//         console.log(patientNotes)
-//         res.render('singlePatient.hbs', {"notes": patientNotes})
-//     } catch (err) {
-//         return next(err)
-//     }
-// }
+const editDataSetting = async (req, res, next) => {
+    try {
+        const patientId = req.patientId;
+
+        var recordingDataArray = []
+        const healthDataIdList = req.healthDataId;
+        // console.log(healthDataIdList)
+        console.log(req.upperbound);
+
+        for (var i=0; i<healthDataIdList.length; i++) {
+            var upperbound = req.upperbound[i];
+            var lowerbound = req.lowerbound[i];
+
+            if (upperbound) {
+                var isRequired = true;
+            } else {
+                isRequired = false;
+            }
+
+            var recordingData = {
+                healthDataId: healthDataIdList[i],
+                upperBound: upperbound,
+                lowerBound: lowerbound,
+                isRequired: isRequired,
+            }
+            recordingDataArray.push(recordingData);
+        }
+
+        console.log(recordingDataArray)
+
+        await Patient.findByIdAndUpdate(patientId, 
+            {$set: {recordingData: recordingDataArray}}, { new : true }).lean();
+
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 function compare(p){
     return function(m,n){
@@ -172,5 +199,6 @@ function compare(p){
 module.exports = {
     getPatientInfo,
     addNote,
-    updateSupportMessage
+    updateSupportMessage,
+    editDataSetting
 }
