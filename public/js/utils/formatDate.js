@@ -74,3 +74,15 @@ export const listOfWeek = (date) => {
   }
   return result;
 };
+
+export const listOfMonth = (date) => {
+  const time = date.getTime();
+  const day = date.getDate();
+  const oneDayTime = 24 * 60 * 60 * 1000;
+  let startOfThisWeek = time - day * oneDayTime;
+  let result = [];
+  for (let i = 0; i < day; i++) {
+    result[i] = dateFormat(startOfThisWeek + (i + 1) * oneDayTime);
+  }
+  return result;
+};
