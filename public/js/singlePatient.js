@@ -3,6 +3,80 @@ function singlePatient() {
   console.log(data);
   let { healthDataList, recordList } = data;
   document.getElementById("sp-parse-js").innerHTML = "";
+
+  const dateFormat = (date) => {
+    let unFormatDate = new Date(date);
+    var formatedDate =
+      unFormatDate.getFullYear() +
+      "/" +
+      (unFormatDate.getMonth() + 1) +
+      "/" +
+      unFormatDate.getDate();
+    return formatedDate;
+  };
+  const last30Days = (date) => {
+    const time = date.getTime();
+    const oneDayTime = 24 * 60 * 60 * 1000;
+    let startOfThisWeek = time - 30 * oneDayTime;
+    let result = [];
+    for (let i = 0; i < 30; i++) {
+      result[i] = dateFormat(startOfThisWeek + (i + 1) * oneDayTime);
+    }
+    return result;
+  };
+  let dateList = last30Days(new Date());
+  if (dateList.indexOf(Object.keys(recordList)[0]) >= 0) {
+    let n = dateList.indexOf(Object.keys(recordList)[0]);
+    dateList.splice(0, n);
+  }
+  function generateTable(dateList) {
+    let tbody =
+      document.getElementsByClassName("sp-table-data")[0].children[0]
+        .children[0];
+    tbody.innerHTML = "";
+    for (let date of dateList) {
+      let tr = document.createElement("tr");
+      tr.classList.add("data-row");
+      let dateTitle = document.createElement("td");
+      dateTitle.innerHTML = date;
+      tr.appendChild(dateTitle);
+
+      for (let i = 0; i < healthDataList.length; i++) {
+        let td = document.createElement("td");
+        let record = recordList[date]
+          ? recordList[date].records[i]
+          : { isRequired: healthDataList[i].isRequired };
+        switch (record.isRequired) {
+          case undefined:
+            if (record.value > record.upperBound) {
+              td.innerHTML = `
+                <span class="too-high-value" title="This value is bigger than the upper safety threshold!">${record.value}</span>
+                `;
+            } else if (record.value < record.lowerBound) {
+              td.innerHTML = `
+                <span class="too-low-value" title="This value is smaller than the lower safety threshold!">${record.value}</span>
+                `;
+            } else {
+              td.innerHTML = `
+                  <span>${record.value}</span>
+                `;
+            }
+            break;
+          case true:
+            td.innerHTML = " ? ";
+            break;
+          case false:
+            td.innerHTML = " - ";
+            break;
+        }
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+  }
+
+  generateTable(dateList);
+
   let addAveLine = function (axis) {
     for (let j = 0; j < axis.series.length; j++) {
       let points = axis.series[j].points,
@@ -50,12 +124,12 @@ function singlePatient() {
           color: Highcharts.getOptions().colors[index],
         },
       },
-      oposite: index % 2 == 0,
+      opposite: index % 2 == 0,
     };
   });
 
   let seriesData = [];
-  for (let date of Object.keys(recordList)) {
+  for (let date of dateList) {
     if (recordList[date]) {
       for (let i = 0; i < healthDataList.length; i++) {
         if (!seriesData[i]) {
@@ -97,6 +171,7 @@ function singlePatient() {
 
     xAxis: {
       id: "xA",
+      categories: dateList,
     },
 
     plotOptions: {
