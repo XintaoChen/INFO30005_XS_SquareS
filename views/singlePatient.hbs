@@ -256,9 +256,9 @@
             square_btns[i].classList.remove("display-none");
         }
 
-        for (var i=0; i<temp_fields.length; i++) {
+        /* for (var i=0; i<temp_fields.length; i++) {
             temp_fields[i].style = "display: initial;"
-        }
+        } */
     }
 
     function cancelDataSetting() {
@@ -319,11 +319,13 @@
                 upperbound_status.classList.add("sp-upperbound");
                 /*upperbound_edit_field.value = initial_upperbound_value;*/
                 upperbound_edit_field.classList.remove("disabled-edit-field");
+                upperbound_edit_field.style = "display: initial;"
                 upperbound_edit_field.disabled = false;
 
                 lowerbound_status.classList.add("sp-lowerbound");
                 /*lowerbound_edit_field.value = initial_lowerbound_value;*/
                 lowerbound_edit_field.classList.remove("disabled-edit-field");
+                lowerbound_edit_field.style = "display: initial;"  
                 lowerbound_edit_field.disabled = false;
                 
                 this.classList.add("checked-btn");
