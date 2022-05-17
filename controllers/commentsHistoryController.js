@@ -3,8 +3,12 @@ const Patient = require('../models/patient')
 const HealthData = require("../models/healthData");
 const Record = require("../models/record");
 
+
+
 const getCommentsHistory = async (req, res, next) => {
     try {
+      let recordList = [];
+
         const clinicianId = req.params.id;
         const untrackedHealthDataList = await HealthData.find({}, "dataName unit");
         const clinicianInfo = await Clinician.findById(clinicianId)
@@ -33,16 +37,29 @@ const getCommentsHistory = async (req, res, next) => {
                 let value = undefined;
                 let comment = undefined;
                 let date = undefined;
+
                 if (isRequired) {
-                  let record = await Record.findOne({
+                  //change from findOne() to find()
+                  let record = await Record.find({
                     patientId: patient._id,
                     healthDataId: healthDataId,
                   })   
                   if (record) {
-                    value = record.value;
-                    comment = record.comment;
-                    date = record.date;
-                    tempDate = (record.date>tempDate) ? record.date:tempDate;
+                    // recordList = record
+                    record.forEach((element,index) => {
+                      var tempRecord = new Object();
+                      // value = element.value;
+                      // comment = element.comment;
+                      // date = element.date;
+                      // tempDate = (element.date>tempDate) ? element.date:tempDate;
+                      
+                      if(element.comment != ""){
+                        tempRecord.comment = element.comment;
+                        tempRecord.value = element.value;
+                        tempRecord.date = element.date;
+                        recordList.push(tempRecord);
+                      }
+                    });
                   }
                 }
                 return {
@@ -50,10 +67,13 @@ const getCommentsHistory = async (req, res, next) => {
                   lowerBound: lowerBound,
                   dataName: dataName,
                   unit: unit,
-                  value: value,
-                  comment: comment,
-                  date: date,
+                  // value: value,
+                  // comment: comment,
+                  // date: date,
                   isRequired: isRequired,
+
+                  //each oneRecordList have all history data of one data type and one patient
+                  oneRecordList: recordList
                 }
               })
             )
@@ -61,7 +81,9 @@ const getCommentsHistory = async (req, res, next) => {
               _id: patient._id,
               nameGiven: patient.nameGiven,
               nameFamily: patient.nameFamily,
-              recordingData: dataList,
+              //store all history data
+              allHistoryData: dataList,
+
               dateLatest: tempDate
             }
           })
