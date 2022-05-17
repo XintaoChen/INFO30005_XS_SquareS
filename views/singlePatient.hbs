@@ -146,13 +146,13 @@
                                     <span class="status-dot"></span>                                
                                     <label style="font: inherit;" for="upperbound"> Upperbound: </label>
                                     <input type="number" id="hdata-upperbound" class="data-setting-upperbound disabled-edit-field" name="upperbound" 
-                                        value="-" disabled>
+                                        value="" style="display: none;">
                                 </div>
                                 <div class="sp-hdata-lowerbound">
                                     <span class="status-dot"></span>
                                     <label style="font: inherit;" for="lowerbound"> Lowerbound: </label>
                                     <input type="number" id="hdata-lowerbound" class="data-setting-lowerbound disabled-edit-field" name="lowerbound" 
-                                        value="-" disabled>
+                                        value="" style="display: none;">
                                 </div>
                             </div>
 
@@ -237,6 +237,8 @@
     var edit_fields = document.getElementsByClassName("edit-field")
     var square_btns = document.getElementsByClassName("square-btn")
 
+    var temp_fields = document.getElementsByClassName("disabled-edit-field")
+
     function editDataSetting() {
         save_data_setting_btn.classList.remove("display-none")
         cancel_data_setting_btn.classList.remove("display-none")
@@ -252,6 +254,10 @@
 
         for (var i=0; i<square_btns.length; i++) {
             square_btns[i].classList.remove("display-none");
+        }
+
+        for (var i=0; i<temp_fields.length; i++) {
+            temp_fields[i].style = "display: initial;"
         }
     }
 

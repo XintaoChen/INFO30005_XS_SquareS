@@ -545,6 +545,10 @@
         margin-left: auto;
         margin-right: 0.5em;
     }
+
+    #sp-data-cancel-btn {
+        background-color: #A09E9D;
+    }
 }
 
 
