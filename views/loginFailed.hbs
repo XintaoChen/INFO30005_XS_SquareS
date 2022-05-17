@@ -1,0 +1,23 @@
+<head>
+    <link rel="stylesheet" href="/css/loginTable.css" />
+</head>
+<div class="lgt-container-failed">
+    <div>Wrong username or password!</div>
+    <div>Please check and try again.</div>
+    <p></p>
+    <p></p>
+    <a href="/login"><span id="jumpTo">5</span> seconds to jump</a>
+    <script type="text/javascript">
+        countDown(5,'/login');
+        function countDown(secs, surl) {
+        var jumpTo = document.getElementById('jumpTo');
+        jumpTo.innerHTML = secs;
+        if (--secs > 0) {
+            setTimeout("countDown(" + secs + ",'" + surl + "')", 1000);
+        }
+        else {
+            location.href = surl;
+        }
+    }  
+    </script> 
+</div>

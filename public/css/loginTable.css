@@ -22,7 +22,20 @@ body {
   position: relative;
   margin: 148px;
 }
-
+.lgt-container-failed{
+  background-color: #fff;
+  width: 650px;
+  height: 415px;
+  color: #5c4435;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin: 148px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
 .lgt-container b {
   font-weight: 600;
 }
