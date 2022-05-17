@@ -38,7 +38,7 @@
                                 <div class="time">{{this.recordingData.[0].time}}</div>      
                                 {{else}}
                                 <div class="noValue">
-                                    <input type="text" class="form-control" name="value" id="value-0" placeholder="Click pencil icon to edit" disabled="disabled">
+                                    <input type="text" class="form-control" name="value" id="value-0" placeholder="Click pencil icon to edit" onkeyup="value=value.replace(/[^\d.]/g,'')" onchange="value=value.replace(/[*\d.]/g,'')" disabled="disabled">
                                 </div>
                                 {{/if}}
                             </div>
@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="time">{{this.recordingData.[1].time}}</div>    
                                 {{else}}
-                                <input type="text" class="form-control" name="value" id="value-1" placeholder="Click pencil icon to edit" disabled="disabled">
+                                <input type="text" class="form-control" name="value" id="value-1" placeholder="Click pencil icon to edit" onkeyup="value=value.replace(/[^\d.]/g,'')" onchange="value=value.replace(/[*\d.]/g,'')" disabled="disabled">
                                 {{/if}}
                             </div>
                             {{#if this.recordingData.[1].comment}}
@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="time">{{this.recordingData.[2].time}}</div>    
                                 {{else}}
-                                <input type="text" class="form-control" name="value" id="value-2" placeholder="Click pencil icon to edit" disabled="disabled">
+                                <input type="text" class="form-control" name="value" id="value-2" placeholder="Click pencil icon to edit" onkeyup="value=value.replace(/[^\d.]/g,'')" onchange="value=value.replace(/[*\d.]/g,'')" disabled="disabled">
                                 {{/if}}
                             </div>
                             {{#if this.recordingData.[2].comment}}
@@ -217,7 +217,7 @@
                                 </div>
                                 <div class="time">{{this.recordingData.[3].time}}</div>      
                                 {{else}}
-                                <input type="text" class="form-control" name="value" id="value-3" placeholder="Click pencil icon to edit" disabled="disabled">
+                                <input type="text" class="form-control" name="value" id="value-3" placeholder="Click pencil icon to edit" onkeyup="value=value.replace(/[^\d.]/g,'')" onchange="value=value.replace(/[*\d.]/g,'')" disabled="disabled">
                                 {{/if}}
                             </div>
                             {{#if this.recordingData.[3].comment}}
