@@ -15,8 +15,8 @@ const getPatientInfo = async (req, res, next) => {
   try {
     const tempData = await Patient.findById(req.user._id).lean();
     if (tempData) {
-      res.render("singlePatient.hbs",
-       { singlePatientData: tempData,
+      res.render("singlePatient.hbs", {
+        singlePatientData: tempData,
         loggedin: req.isAuthenticated(),
         isPatient: true,
       });
@@ -32,22 +32,24 @@ const postNewPatient = async (req, res, next) => {
   try {
     const { nameGiven, nameFamily, emailAddress, dateOfBirth } = req.body;
     const password = Math.random().toString(36).substr(2);
+    const profileName = "Patient" + Math.random().toString(10).substr(2, 8);
     const clinicianId = req.user._id;
 
     const newPatient = new Patient({
-      nameGiven:nameGiven,
-      nameFamily:nameFamily,
-      emailAddress:emailAddress,
-      dateOfBirth:dateOfBirth,
-      password:password,
-      clinicianId:clinicianId,
-    })
+      nameGiven: nameGiven,
+      nameFamily: nameFamily,
+      emailAddress: emailAddress,
+      dateOfBirth: dateOfBirth,
+      password: password,
+      clinicianId: clinicianId,
+      profileName: profileName,
+    });
 
-    newPatient.save(err => {
-      if(err){
-        console.log(err)
+    newPatient.save((err) => {
+      if (err) {
+        console.log(err);
       } else {
-        redirect("/clinician")
+        redirect("/clinician");
       }
     });
   } catch (err) {
