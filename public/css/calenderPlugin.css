@@ -1,33 +1,33 @@
 #cp-data {
-  width: 17.5rem;
-  margin: 1.25rem auto;
+  width: 17.5em;
+  margin: 1.25em auto;
 }
 
 #cp-data>.cp-header {
   display: flex;
   justify-content: space-between;
-  height: 2rem;
+  height: 2em;
   align-items: center;
 }
 
 #cp-data>.cp-footer {
   display: flex;
   justify-content: space-between;
-  font-size: 0.5rem;
+  font-size: 0.5em;
   cursor: pointer;
 }
 
 #cp-year,
 #cp-month {
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 1em;
+  line-height: 1.5em;
   color: #5c4435;
-  margin-right: 0.25rem;
+  margin-right: 0.25em;
 }
 
 #cp-title {
-  font-size: 0.75rem;
-  line-height: 0.8rem;
+  font-size: 0.75em;
+  line-height: 0.8em;
   text-align: right;
   display: flex;
   flex-direction: column;
@@ -35,26 +35,29 @@
 }
 
 #cp-weeks {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   overflow: hidden;
   list-style: none;
   align-items: center;
-  height: 2.5rem;
+  height: 2.5em;
 }
 
 #cp-weeks>li {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.5em;
+  height: 2.5em;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 0.75rem;
-  line-height: 1.2rem;
+  font-size: 0.75em;
+  line-height: 1.2em;
 }
 
 #cp-date {
+  width: 100%;
   list-style: none;
   display: flex;
   flex-direction: row;
@@ -63,10 +66,10 @@
 }
 
 #cp-date>li {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.5em;
+  height: 2.5em;
   border: 1px solid #dfdfdf;
-  line-height: 2rem;
+  line-height: 2em;
   text-align: center;
   cursor: pointer;
   box-sizing: border-box;
