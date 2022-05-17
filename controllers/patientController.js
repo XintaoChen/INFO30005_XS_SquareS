@@ -16,9 +16,22 @@ const getPatientInfo = async (req, res, next) => {
 
     // to retrieve list of health data with their units
     const untrackedHealthDataList = await HealthData.find({}, "dataName unit");
-    let healthDataList = untrackedHealthDataList.map((healthData) => {
+    const healthDataList = (await HealthData.find()).map((item) => {
+      let dataMatched = patientData.recordingData.find((data) => {
+        return (
+          data.healthDataId.toString() === item._id.toString() &&
+          data.isRequired !== false
+        );
+      });
       return {
-        healthTitle: healthData.dataName + " (" + healthData.unit + ")",
+        healthDataId: item._id,
+        dataName: item.dataName,
+        unit: item.unit,
+        upperBound:
+          dataMatched !== undefined ? dataMatched.upperBound : undefined,
+        lowerBound:
+          dataMatched !== undefined ? dataMatched.lowerBound : undefined,
+        isRequired: dataMatched !== undefined ? true : false,
       };
     });
 
@@ -87,19 +100,61 @@ const getPatientInfo = async (req, res, next) => {
       { patientId: patientId },
       "healthDataId value date"
     );
+
     let recordList = await Promise.all(
       untrackedRecordList.map(async (record) => {
-        dataList;
+        const { unit, dataName } = await HealthData.findById(
+          record.healthDataId
+        );
+        let healthDataMatched = patientData.recordingData.find((item) => {
+          return (
+            item.healthDataId.toString() == record.healthDataId.toString() &&
+            item.isRequired != false
+          );
+        });
+        let upperBound = undefined,
+          lowerBound = undefined;
+        if (healthDataMatched) {
+          upperBound = healthDataMatched.upperBound;
+          lowerBound = healthDataMatched.lowerBound;
+        }
+
         return {
-          //date: date,
-          recordingData: dataList,
+          dataName: dataName,
+          unit: unit,
+          value: record.value,
+          comment: record.comment,
+          date: record.date,
+          upperBound: upperBound,
+          lowerBound: lowerBound,
         };
       })
     );
+
+    let dailyRecordList = {};
+    let healthDataNameList = healthDataList.map((item) => {
+      return item.dataName;
+    });
+    const formmatDate = (date) =>
+      `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+    for (let record of recordList) {
+      let index = healthDataNameList.indexOf(record.dataName);
+
+      let fDate = formmatDate(record.date);
+      if (dailyRecordList[fDate]) {
+        dailyRecordList[fDate].records[index] = { ...record };
+      } else {
+        dailyRecordList[fDate] = {
+          date: fDate,
+          records: [...healthDataList],
+        };
+        dailyRecordList[fDate].records[index] = { ...record };
+      }
+    }
     let tempData = {
       patientData: patientData,
       patientAge: patientAge,
-      recordList: recordList,
+      recordList: dailyRecordList,
       dataSetting: dataList,
       noteList: sortedNoteList,
       healthDataList: healthDataList,
