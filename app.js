@@ -20,6 +20,7 @@ app.engine(
             hData3: (x) => x == '625576acbcd6f0a12a5e5fa8',
             hData4: (x) => x == '625576b0bcd6f0a12a5e5fa9',
             hData: (x) => x == true,
+            true: (x) => x == true,
             compare: (x, y) => x > y,
         },
     })

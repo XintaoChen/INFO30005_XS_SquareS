@@ -72,15 +72,17 @@
             <div class="ch-comments-data">
                 <table id="comments-history-table">
                     {{#each patientList}}
-                        {{#each recordingData}}
-                            {{#if comment}}
-                                <tr class="ch-comment-row" data-href="/patient/{{../_id}}">
-                                    <td class="ch-patient-name">{{../nameGiven}} {{../nameFamily}}</td>
-                                    <td class="ch-comment">{{comment}}</td>
-                                    <td class="ch-time">{{date}}</td>
-                                    <td class="ch-padding"></td>
-                                    <td class="ch-health-data">{{dataName}} - {{value}}</td>
-                                </tr>
+                        {{#each allHistoryData}}
+                            {{#if (true isRequired)}}
+                                {{#each oneRecordList}}
+                                    <tr class="ch-comment-row" data-href="/patient/{{../../_id}}">
+                                        <td class="ch-patient-name">{{../../nameGiven}} {{../../nameFamily}}</td>
+                                        <td class="ch-comment">{{comment}}</td>
+                                        <td class="ch-time">{{date}}</td>
+                                        <td class="ch-padding"></td>
+                                        <td class="ch-health-data">{{../dataName}} - {{value}}</td>
+                                    </tr>
+                                {{/each}}
                             {{/if}}
                         {{/each}}    
                     {{/each}}
