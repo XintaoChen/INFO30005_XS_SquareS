@@ -27,6 +27,14 @@
             <button class="add-button">
                 <div class="add">+</div>
             </button>
+            <form action="postNewPatient" method="POST" class="cdb-register-area">
+                <input type="text" name="emailAddress" placeholder="emailAddress"/>
+                <input type="text" name="dateOfBirth" placeholder="dateOfBirth: YYYYMMDD"/>
+                <input type="text" name="nameGiven" placeholder="nameGiven"/>
+                <input type="text" name="nameFamily" placeholder="nameFamily"/>
+                
+                <button>Add New Patient</button>
+            </form>
         </div>
         <div class="data-record">
             <div class="table-title">
@@ -94,3 +102,23 @@
 </div>
 
 {{/with}}
+
+<script>
+    let registerArea = document.getElementsByClassName("cdb-register-area")[0];
+    let dateInput = registerArea.children[1]
+    dateInput.addEventListener('keyup', (e)=>{
+        if(window.isNaN(Number(e.key))){
+            dateInput.value = dateInput.value.substr(0, dateInput.value.length - 1);
+        }
+        const regExp = new RegExp(/[\d]/g);
+        if(dateInput.value.length == 4){
+            dateInput.value += "/"
+        }
+        else if(dateInput.value.length == 7){
+            dateInput.value += "/"
+        }
+        else if(dateInput.value.length > 10){
+            dateInput.value = dateInput.value.substr(0, dateInput.value.length - 1);
+        }
+    })
+</script>
