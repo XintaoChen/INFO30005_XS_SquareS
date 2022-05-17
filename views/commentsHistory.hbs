@@ -15,7 +15,7 @@
         </div>
         <div class="ch-patient-list">
             <div class="ch-search-patient">
-                <input type="text" class="ch-search-icon" placeholder="Search..">
+                <input type="text" id="ch-input-name" class="ch-search-icon" onkeyup="patientSearch()" placeholder="Search..">
             </div>
             <div class="ch-up-padding-line"></div>
             <div class="ch-patient-list-data">
@@ -31,6 +31,26 @@
             </div> 
             <div class="ch-down-padding-line"></div> 
         </div>
+        <script>
+            function patientSearch(){
+                let input = document.getElementById('ch-input-name');
+                let filter = input.value;
+                let table = document.getElementById('patient-list-table');
+                let tr = table.getElementsByTagName('tr');
+
+                for (let i = 0; i < tr.length; i++){
+                    let td = tr[i].getElementsByTagName('td')[0];
+                    if(td){
+                        let txtValue = td.textContent || td.innerText;
+                        if (txtValue.indexOf(filter) > -1){
+                            tr[i].style.display = '';
+                        } else {
+                            tr[i].style.display = 'none';
+                        }
+                    }
+                }
+            }
+        </script>
     </div>
     <div class="ch-right-page">
         <div class="ch-comment-text">
@@ -79,6 +99,7 @@
             <div class="ch-down-padding-line"></div>    
         </div>
     </div>
+    
 </div>
 
 {{/with}}
