@@ -34,12 +34,6 @@ const getCommentsHistory = async (req, res, next) => {
                 let comment = undefined;
                 let date = undefined;
                 if (isRequired) {
-                  // let nDate = new Date();
-                  // let startOfToday = new Date(
-                  //   nDate.getFullYear(),
-                  //   nDate.getMonth(),
-                  //   nDate.getDate()
-                  // )
                   let record = await Record.findOne({
                     patientId: patient._id,
                     healthDataId: healthDataId,
@@ -59,7 +53,7 @@ const getCommentsHistory = async (req, res, next) => {
                   value: value,
                   comment: comment,
                   date: date,
-                  isRequired: isRequired
+                  isRequired: isRequired,
                 }
               })
             )
