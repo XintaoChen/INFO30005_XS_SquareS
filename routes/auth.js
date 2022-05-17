@@ -23,24 +23,25 @@ const isAuthenticated = (req, res, next) => {
 router.get('/login', (req, res) => {
   res.render('login', { flash: req.flash('error'), title: 'Login' })
 })
+router.get('/login/failed', (req, res) => {
+  res.render('loginFailed', { flash: req.flash('error'), title: 'Login' })
+})
 // Handle login
 router.post('/login-patient',
   passport.authenticate('patient-local', {
-    failureRedirect: '/login', 
+    failureRedirect: '/login/failed', 
     failureFlash: true
   })
   , (req, res) => {
-    // res.redirect('/today/' + req.user._id);
     res.redirect('/patient/today');
   }
 )
 router.post('/login-clinician',
   passport.authenticate('clinician-local', {
-    failureRedirect: '/login',
+    failureRedirect: '/login/failed',
     failureFlash: true
   })
   , (req, res) => {
-    // res.redirect('/clinician/' + req.user._id);
     res.redirect('/clinician');
   }
 )
