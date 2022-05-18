@@ -166,7 +166,7 @@ function singlePatient() {
         },
       },
     },
-    title: { text: "time-seires history" },
+    title: { text: "Historical Data of Time-series" },
     yAxis: yAxis,
 
     xAxis: {
