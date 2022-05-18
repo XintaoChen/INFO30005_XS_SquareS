@@ -27,13 +27,13 @@
             <button class="add-button">
                 <div class="add">+</div>
             </button>
-            <form action="postNewPatient" method="POST" class="cdb-register-area">
+            <form action="/patient/add" method="POST" class="cdb-register-area">
                 <input type="text" name="emailAddress" placeholder="emailAddress"/>
                 <input type="text" name="dateOfBirth" placeholder="dateOfBirth: YYYYMMDD"/>
                 <input type="text" name="nameGiven" placeholder="nameGiven"/>
                 <input type="text" name="nameFamily" placeholder="nameFamily"/>
                 
-                <button>Add New Patient</button>
+                <button disabled="disabled">Add New Patient</button>
             </form>
         </div>
         <div class="data-record">
@@ -105,8 +105,44 @@
 
 <script>
     let registerArea = document.getElementsByClassName("cdb-register-area")[0];
+
+    class Btn {
+        constructor(btnNode){
+            this.btn = btnNode;
+            this.locks = [false,false,false,false];
+        }
+
+        lock(index) {
+            this.locks[index] = false;
+            this.btn.disabled = true;
+        }
+
+        unlock(index) {
+            this.locks[index] = true;
+            if(this.locks.every(item => item)) {
+                this.btn.disabled = false;
+            }
+        }
+    }
+    
+    let submitBtn = new Btn(registerArea.children[4]);
+
+    // email
+    let emailInput = registerArea.children[0];
+    emailInput.addEventListener('blur', function() {
+        var reg = /^[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}$/;
+        if (reg.test(this.value)) {
+            this.style.borderColor = "green";
+            submitBtn.unlock(0);
+        } else {
+            this.style.borderColor = "red";
+            submitBtn.lock(0);
+        }
+    })
+
+    // date of birth
     let dateInput = registerArea.children[1]
-    dateInput.addEventListener('keyup', (e)=>{
+    dateInput.addEventListener('keyup', (e) => {
         if(window.isNaN(Number(e.key))){
             dateInput.value = dateInput.value.substr(0, dateInput.value.length - 1);
         }
@@ -121,4 +157,29 @@
             dateInput.value = dateInput.value.substr(0, dateInput.value.length - 1);
         }
     })
+
+    dateInput.addEventListener('blur',function () {
+        if(dateInput.value.length === 10){
+            this.style.borderColor = "green";
+            submitBtn.unlock(1);
+        } else {
+            this.style.borderColor = "red";
+            submitBtn.lock(1);
+        }
+    })
+
+    // name 
+    for(let i = 2; i < 4; i++){
+        registerArea.children[i].addEventListener('keyup', function() {
+            let regExp = /^(?!(\s+$))/;
+            if(this.value.length !== 0 && regExp.test(this.value)){
+                this.style.borderColor = "green";
+                submitBtn.unlock(i);
+            } else {
+                this.style.borderColor = "red";
+                submitBtn.lock(i);
+            }
+        })
+    }
+    
 </script>
