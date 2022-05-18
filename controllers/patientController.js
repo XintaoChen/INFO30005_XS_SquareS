@@ -1,5 +1,6 @@
 // const patientData = require('../models/patientModel')
 const { redirect } = require("express/lib/response");
+const HealthData = require("../models/healthData");
 const Patient = require("../models/patient");
 
 // const getPatientInfo = (req, res) => {
@@ -19,7 +20,7 @@ const getPatientInfo = async (req, res, next) => {
         singlePatientData: tempData,
         loggedin: req.isAuthenticated(),
         isPatient: true,
-        pageName: "My Health Data Record"
+        pageName: "My Health Data Record",
       });
     } else {
       res.render("noRecords.hbs");
@@ -36,12 +37,23 @@ const postNewPatient = async (req, res, next) => {
     const profileName = "Patient" + Math.random().toString(10).substr(2, 8);
     const clinicianId = req.user._id;
 
+    let healthDataList = await HealthData.find({}, "");
+    const recordingData = healthDataList.map((item) => {
+      return {
+        healthDataId: item._id,
+        upperBound: NaN,
+        lowerBound: NaN,
+        isRequired: false,
+      };
+    });
+
     const newPatient = new Patient({
-      nameGiven: nameGiven,
-      nameFamily: nameFamily,
+      nameGiven: nameGiven.trim(),
+      nameFamily: nameFamily.trim(),
       emailAddress: emailAddress,
-      dateOfBirth: dateOfBirth,
+      dateOfBirth: new Date(dateOfBirth),
       password: password,
+      recordingData: recordingData,
       clinicianId: clinicianId,
       profileName: profileName,
     });
@@ -50,7 +62,7 @@ const postNewPatient = async (req, res, next) => {
       if (err) {
         console.log(err);
       } else {
-        redirect("/clinician");
+        res.redirect("/clinician");
       }
     });
   } catch (err) {
