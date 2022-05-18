@@ -21,6 +21,7 @@ body {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
   position: relative;
   margin: 148px;
+  z-index: 0;
 }
 .lgt-container-failed{
   background-color: #fff;
