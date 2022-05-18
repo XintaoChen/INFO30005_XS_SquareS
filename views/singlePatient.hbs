@@ -16,15 +16,12 @@
 
             <input type="submit" id="sp-confirm-btn" value="&#xe63b;" class="iconfont display-none sp-msg-btns">
             <input type="reset" id="sp-cancel-btn" value="&#xe65f" class="iconfont display-none sp-msg-btns" onclick="cancelSupportMessage()">
-            {{!-- <input class="button" id="reset-btn" type="reset" value=" Cancel" onclick="cancelChanges()"style="visibility:hidden"> --}}
         </form>
         <div>
             <button class="sp-msg-btns" id="sp-edit-msg-btn" onclick="editSupportMessage()">
                 <i class="iconfont icon-edit-clinician"></i>
             </button>
         </div>
-        {{!-- <div style="font-weight: 800;">Support Message: </div>
-        <div class="sp-message">"{{#if patientData.supportMessage}}{{patientData.supportMessage}}{{else}}default support message{{/if}}"</div> --}}
     </div>
     
 </div>
@@ -346,12 +343,6 @@
     /* button to toggle the state of isRequired for each health data */
     var square_btns = document.getElementsByClassName("square-btn")
 
-    /* var checked_btns = document.getElementsByClassName("checked-btn")
-    var unchecked_btns = document.getElementsByClassName("unchecked-btn")
-
-    var upperbound_edit_fields = document.querySelectorAll('input[name="upperbound"]')
-    var lowerbound_edit_fields = document.querySelectorAll('input[name="lowerbound"]') */
-
     for (i = 0; i < square_btns.length; i++) {
         square_btns[i].addEventListener("click", function() {
             /* 
@@ -364,9 +355,7 @@
             var lowerbound_status = this.parentElement.parentElement.nextElementSibling.lastElementChild.children[0];
             
             var upperbound_edit_field = this.parentElement.parentElement.nextElementSibling.firstElementChild.children[2];
-            /*var initial_upperbound_value = upperbound_edit_field.value;*/
             var lowerbound_edit_field = this.parentElement.parentElement.nextElementSibling.lastElementChild.children[2];
-            /*var initial_lowerbound_value = lowerbound_edit_field.value;*/
 
             if (this.classList.contains("checked-btn")) {
                 upperbound_status.classList.remove("sp-upperbound");
@@ -381,13 +370,11 @@
             } else {
                 /* doesn't contain "checked-btn" - means unchecked */
                 upperbound_status.classList.add("sp-upperbound");
-                /*upperbound_edit_field.value = initial_upperbound_value;*/
                 upperbound_edit_field.classList.remove("disabled-edit-field");
                 upperbound_edit_field.style = "display: initial;"
                 upperbound_edit_field.disabled = false;
 
                 lowerbound_status.classList.add("sp-lowerbound");
-                /*lowerbound_edit_field.value = initial_lowerbound_value;*/
                 lowerbound_edit_field.classList.remove("disabled-edit-field");
                 lowerbound_edit_field.style = "display: initial;"  
                 lowerbound_edit_field.disabled = false;
