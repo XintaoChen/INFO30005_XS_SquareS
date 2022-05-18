@@ -55,7 +55,7 @@
     .sp-msg-btns {
         margin-right: 1.5em;
         /* padding: 0 1.5em; */
-        font-size: 1.2em;
+        font-size: 1em;
         background-color: #E3D1BD;
         border: none;
         color: #867167;
@@ -66,13 +66,13 @@
     }
 
     #sp-confirm-btn {
-        font-size: 2em;
+        font-size: 1em;
         /* margin-left: auto; */
         margin-right: 0;
         color: green;
     }
     #sp-cancel-btn {
-        font-size: 2em;
+        font-size: 1em;
         margin-right: 0;
     }
 

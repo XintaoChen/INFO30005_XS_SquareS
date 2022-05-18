@@ -20,6 +20,8 @@ const isAuthenticated = (req, res, next) => {
 patientRouter.get('/:id', isAuthenticated, patientController.getPatientInfo)
 //patientRouter.get('/:id', (req, res) => patientController.getPatientNote(req,res))
 
+patientRouter.post("/add", isAuthenticated, patientController.postNewPatient)
+
 patientRouter.post('/addNote', isAuthenticated, function (req, res) {
     patientController.addNote(req.body)
     console.log(req.body)
