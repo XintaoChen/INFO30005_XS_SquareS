@@ -270,7 +270,7 @@ table {
     display: none;
   }
   .dashboard{
-    margin-bottom: 50px !important;
+    /* margin-bottom: 50px !important; */
   }
 
 
@@ -669,7 +669,7 @@ table {
   }
 
   .dashboard{
-    margin-bottom: 80px !important;
+    /* margin-bottom: 80px !important; */
   }
   header .menuButton .memuIcon {
     /* display: none; */
@@ -679,6 +679,7 @@ table {
     right: 2%;
     top: calc(50% - 16px);
     font-size: 44px;
+    cursor: pointer;
   }
 
   header .menuButton .menu {
