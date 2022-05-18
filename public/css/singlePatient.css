@@ -34,7 +34,7 @@
         width: 94%;
         background-color: #E3D1BD;
         /* text-align: left; */
-        padding-left: 15px;
+        padding-left: 1%;
         line-height: 60px;
         color: #828282;
         display: flex;
@@ -101,6 +101,9 @@
         flex-direction: row;
         align-items: center;
         padding: 0 2% 2%;
+        background-color: #ffffffd4;
+        margin: 1.5% 0 2% 2%;
+        border-radius: 0.5em;
     }
 
     .sp-left-page .sp-info .sp-avatar {
@@ -311,12 +314,47 @@
         margin: 0 0 5px 0;
         height: 70%;
     }
+    .sp-table-graph-switch-bar {
+        width: 35%;
+        display: flex;
+        justify-content: space-between;
+        color: #fff;
+        margin-left: 2%;
+    }
+    .sp-switch {
+        width: 50%;
+        text-align: center;
+        background-color: #cacaca;
+        cursor: pointer;
+        color: #fff;
+        border: 0px;
+        font: inherit;
+        padding: 5px 0;
+    }
+    .sp-switch.sp-selected {
+        background-color: #BFA38A;
+        cursor: default;
+    }
+
+    #sp-table-switch {
+        border-top-left-radius: 10px;
+    }
+    #sp-graph-switch {
+        border-top-right-radius: 10px;
+    }
+
     .sp-data-record table{
         width: 100%;
     }
 
+    .sp-data-area {
+        margin-left: 2%;
+        padding: 1% 0;
+        background-color: #BFA38A;
+        border-radius: 0 10px 10px 10px;
+    }
     .sp-table-header {
-        width: 96%;
+        width: 98%;
         height: 50px;
         margin: auto;
         background-color: #867167;
@@ -324,8 +362,8 @@
     	border-top-right-radius: 10px;
     }
     .sp-table-data{
-        width: 96%;
-        height: 580px;
+        width: 98%;
+        height: 467px;
         margin: auto;
         background-color: #867167;
         border-collapse: separate;
@@ -354,7 +392,7 @@
     .data-row{
         height: 50px;
         margin: auto;
-        font-size: 18px;
+        font-size: 0.85em;
         display: flex;
         flex-direction: row;
         align-items: center;
