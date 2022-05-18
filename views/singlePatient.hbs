@@ -5,7 +5,7 @@
 <div class="sp-banner">
     <div class="sp-banner-left"><a href="/clinician" style="text-decoration: none;"> < Back </a></div>
     <div class="sp-banner-right">
-        <form action="/patient/updateSupportMessage" method="post" id="update" style="width: 100%;">
+        <form action="/clinician/patient/updateSupportMessage" method="post" id="update" style="width: 100%;">
             <input type="text" class="form-control" name="patientId" value="{{patientData._id}}" style="display:none">
             
             <label style="font-weight: 800;" for="supportMessage">Support Message: </label>
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div class="sp-right-page">
-        <form id="sp-data-setting" action="/patient/editDataSetting" method="post">
+        <form id="sp-data-setting" action="/clinician/patient/editDataSetting" method="post">
             {{!-- adding patient's id for update method --}}
             <input type="text" name="patientId" value="{{patientData._id}}" style="display:none">
 
@@ -157,7 +157,7 @@
             <h2>NOTES</h2>
             <div class="sp-notes">
                 <div class="add-note-container">
-                    <form action="/patient/addNote" method="post" id="add-note">
+                    <form action="/clinician/patient/addNote" method="post" id="add-note">
                         <input type="text" class="form-control" name="patientId" value="{{patientData._id}}" style="display:none">
                         <input type="submit" id="sp-addNote-btn" value="&#xe845;" class="iconfont">
                         <input type="text" id="sp-addNote-field" name="note" placeholder="Type new note here">

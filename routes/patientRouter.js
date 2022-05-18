@@ -25,19 +25,19 @@ patientRouter.post("/add", isAuthenticated, patientController.postNewPatient)
 patientRouter.post('/addNote', isAuthenticated, function (req, res) {
     patientController.addNote(req.body)
     console.log(req.body)
-    res.redirect('/patient/' + req.body.patientId.toString())
+    res.redirect('/clinician/patient/' + req.body.patientId.toString())
 })
 
 patientRouter.post('/updateSupportMessage', isAuthenticated, function (req, res) {
     console.log(req.body)
     patientController.updateSupportMessage(req.body)
     console.log(req.body)
-    res.redirect('/patient/' + req.body.patientId.toString())
+    res.redirect('/clinician/patient/' + req.body.patientId.toString())
 })
 
 patientRouter.post('/editDataSetting', isAuthenticated,function (req, res) {
     patientController.editDataSetting(req.body)
-    res.redirect('/patient/' + req.body.patientId.toString())
+    res.redirect('/clinician/patient/' + req.body.patientId.toString())
 })
 
 // export router
