@@ -3,10 +3,11 @@
 </head>
 {{#with todayHealthData}}
 <div class="banner" id="banner">
-    <div class="support-message" id="sptMsg" style="display: none;">{{this.supportMessage}}</div>
+    <div class="support-message" id="sptMsg" style="display: none;">Message from your clinician:<p id="sptMsgMobile"></p> {{this.supportMessage}}</div>
     <div class="support-message" id="greeting">Welcome, {{this.profileName}}!</div>
     <div class="clinician-icon" onclick="showSptMsg();">
-        <i>🙋🏽</i>
+        <i id="sptMsgClosed">🙋🏽</i>
+        <i id="sptMsgOpened" style="display: none;">🙅🏽</i>
         <div class="red-dot" id="red-dot"></div>
     </div>
 </div>
@@ -334,11 +335,15 @@
             document.getElementById("greeting").style.display = "initial";
             document.getElementById("banner").style = "background-color: white";
             document.getElementById("red-dot").style.display = "none";
+            document.getElementById("sptMsgClosed").style.display = "initial"
+            document.getElementById("sptMsgOpened").style.display = "none"
         }else{
             document.getElementById("sptMsg").style.display = "initial";
             document.getElementById("greeting").style.display = "none";
             document.getElementById("banner").style = "background-color: #F4F2F0";
             document.getElementById("red-dot").style.display = "none";
+            document.getElementById("sptMsgClosed").style.display = "none"
+            document.getElementById("sptMsgOpened").style.display = "initial"
         }
     }
 </script>
