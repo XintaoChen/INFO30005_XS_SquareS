@@ -5,6 +5,7 @@
 <div class="ch-banner">
     <div class="ch-welcome-message">Welcome, Dr. {{nameGiven}}!</div>
 </div>
+
 <div class="comments-page">
     <div class="ch-left-page">
         <div class="ch-back">
@@ -71,21 +72,17 @@
             </div>
             <div class="ch-comments-data">
                 <table id="comments-history-table">
-                    {{#each patientList}}
                         {{#each allHistoryData}}
                             {{#if (true isRequired)}}
-                                {{#each oneRecordList}}
-                                    <tr class="ch-comment-row" data-href="/patient/{{../../_id}}">
-                                        <td class="ch-patient-name">{{../../nameGiven}} {{../../nameFamily}}</td>
+                                    <tr class="ch-comment-row" data-href="/patient/{{patientId}}">
+                                        <td class="ch-patient-name">{{nameGiven}} {{nameFamily}}</td>
                                         <td class="ch-comment">{{comment}}</td>
                                         <td class="ch-time">{{date}}</td>
                                         <td class="ch-padding"></td>
-                                        <td class="ch-health-data">{{../dataName}} - {{value}}</td>
+                                        <td class="ch-health-data">{{dataName}} - {{value}}</td>
                                     </tr>
-                                {{/each}}
                             {{/if}}
                         {{/each}}    
-                    {{/each}}
                 </table>
                 <script>
                     document.addEventListener("DOMContentLoaded", () => {
@@ -101,7 +98,6 @@
             <div class="ch-down-padding-line"></div>    
         </div>
     </div>
-    
 </div>
-
 {{/with}}
+
