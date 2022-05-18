@@ -358,13 +358,16 @@
             var lowerbound_edit_field = this.parentElement.parentElement.nextElementSibling.lastElementChild.children[2];
 
             if (this.classList.contains("checked-btn")) {
+                /* button is checked -> clicking on it turns it into unchecked */
                 upperbound_status.classList.remove("sp-upperbound");
                 upperbound_edit_field.style = "display: none;"
                 upperbound_edit_field.classList.add("disabled-edit-field");
+                upperbound_edit_field.value = "";
 
                 lowerbound_status.classList.remove("sp-lowerbound");
-                lowerbound_edit_field.style = "display: none;"  
+                lowerbound_edit_field.style = "display: none;"
                 lowerbound_edit_field.classList.add("disabled-edit-field");
+                lowerbound_edit_field.value = "";
                 
                 this.classList.remove("checked-btn");
             } else {
