@@ -2,16 +2,17 @@ const Clinician = require('../models/clinician')
 const Patient = require('../models/patient')
 const HealthData = require("../models/healthData");
 const Record = require("../models/record");
-
+var mongoose = require('mongoose');
 
 
 const getCommentsHistory = async (req, res, next) => {
     try {
       let recordList = [];
+        const filterId = req.query.filterId;
 
         const clinicianId = req.params.id;
         const untrackedHealthDataList = await HealthData.find({}, "dataName unit");
-        const clinicianInfo = await Clinician.findById(clinicianId)
+        const clinicianInfo = await Clinician.findById(mongoose.Types.ObjectId(clinicianId))
         if (!clinicianInfo) {
           res.render("noRecords.hbs")
         }
@@ -78,7 +79,7 @@ const getCommentsHistory = async (req, res, next) => {
               })
             )
             return {
-              _id: patient._id,
+              _id: patient._id.toString(),
               nameGiven: patient.nameGiven,
               nameFamily: patient.nameFamily,
               dateLatest: tempDate
@@ -91,7 +92,7 @@ const getCommentsHistory = async (req, res, next) => {
         };
         tempData.patientList.sort(compare("dateLatest"))
         //store all history data
-        tempData.allHistoryData = recordList
+        tempData.allHistoryData = filterByPId(filterId, recordList)
         console.log(tempData)
         res.render('commentsHistory.hbs', {
           commentsHistoryData: tempData,              
@@ -107,6 +108,20 @@ function compare(p){
       var a = m[p];
       var b = n[p];
       return b - a; 
+  }
+}
+
+function filterByPId(id, list){
+  var tempList = []
+  if(id == "" || id == undefined){
+    return list;
+  }else{
+    list.forEach((Element)=>{
+      if(Element.patientId.toString() == id){
+        tempList.push(Element);
+      }
+    })
+    return tempList;
   }
 }
 
