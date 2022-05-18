@@ -41,8 +41,8 @@ const postNewPatient = async (req, res, next) => {
     const recordingData = healthDataList.map((item) => {
       return {
         healthDataId: item._id,
-        upperBound: NaN,
-        lowerBound: NaN,
+        upperBound: "",
+        lowerBound: "",
         isRequired: false,
       };
     });
