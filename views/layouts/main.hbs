@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0，minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>About Diabetes</title>
     <link rel="stylesheet" href="/css/aboutPages.css" />
+    <link rel="stylesheet" href="/css/iconfont.css"/>
     <script type="text/javascript" src="/js/main.js"></script>
 </head>
 <body>
@@ -17,25 +18,25 @@
       </div>
       {{!-- Mobile Version --}}
       <div class="menuButton" id="menuButtonMobile">
-        <i class="iconfont memuIcon" onclick="doMenu('menu-m');">&#xe615;</i>
+        <i class="iconfont icon-menu" onclick="doMenu('menu-m');"></i>
         <div class="menu" id="menu-m">
           <button onclick="doMenu('menu-m');"><span>Back</span> <i class="iconfont">&#xe840;</i></button>
           <div class="container">
             <a href="/home">
-              <i class="iconfont">&#xe7c6;</i>
+              <i class="iconfont icon-home"></i>
               <span>Home</span>
             </a>
             <a href="/aboutDiabetes">
-              <i class="iconfont">&#xe682;</i>
+              <i class="iconfont icon-about-diabetes"></i>
               <span>About diabetes</span>
             </a>
             <a href="/aboutUs">
-              <i class="iconfont">&#xe8e7;</i>
+              <i class="iconfont icon-about-us"></i>
               <span>About this website</span>
             </a>
             {{#if (true isPatient)}}
             <a href="/patient/today"  class="dashboard">
-              <i class="iconfont">&#xe7c6;</i>
+              <i class="iconfont icon-dashboard"></i>
               <span>Dashboard</span>
             </a>
             <a href="/patient/profile" class="dashboard">
@@ -43,17 +44,17 @@
               <span>My Information</span>
             </a>
             <a href="/patient/clinician" class="dashboard">
-              <i class="iconfont">&#xe7c6;</i>
+              <i class="iconfont icon-clinician-info"></i>
               <span>My Clinician</span>
             </a>
             {{else}}
               {{#if (false isPatient)}}
               <a href="/clinician"  class="dashboard">
-                <i class="iconfont">&#xe7c6;</i>
+                <i class="iconfont icon-dashboard"></i>
                 <span>Dashboard</span>
               </a>
               <a href="/comment"  class="dashboard">
-                <i class="iconfont">&#xe7c6;</i>
+                <i class="iconfont icon-comment"></i>
                 <span>Comment</span>
               </a>
               {{else}}
@@ -67,7 +68,7 @@
             </form>
             {{else}}
             <a href="/login" style="margin-bottom: 120px;">
-              <i class="iconfont">&#xe608;</i>
+              <i class="iconfont icon-user"></i>
               <span>Login</span>
             </a>
             {{/if}}
@@ -77,7 +78,7 @@
       {{!-- Desktop Version --}}
       {{#if loggedin}}
       <div class="menuButton" id="menuButtonDesktop">
-        <i class="iconfont memuIcon" onclick="doMenu('menu-d');">&#xe615;</i>
+        <i class="iconfont icon-menu" onclick="doMenu('menu-d');"></i>
         <div class="menu" id="menu-d">
           <button onclick="doMenu('menu-d');"><span>Back</span> <i class="iconfont">&#xe840;</i></button>
           <div class="container">
@@ -108,10 +109,10 @@
             </a>
             {{else}}
             <a href="/clinician" class="dashboard">
-              <i class="iconfont">&#xe7c6;</i>
+              <i class="iconfont icon-dashboard"></i>
               <span>Dashboard</span>
               <a href="/comment"  class="dashboard">
-                <i class="iconfont">&#xe7c6;</i>
+                <i class="iconfont icon-comment"></i>
                 <span>Comment</span>
               </a>
             </a>
@@ -183,8 +184,7 @@
         <div class="copyright">
           <h4>@Copyright 2022</h4>
           <span>
-            Diabetes@Home is a startup specialising in developing and delivering
-            innovative digital health solutions.
+            Diabetes@Home - supporting you for a better lifestyle.
           </span>
         </div>
       </div>

@@ -71,6 +71,7 @@ const getTodayDataClinician = async (req, res, next) => {
               })
             )
             return {
+              patientId: patient._id,
               nameGiven: patient.nameGiven,
               nameFamily: patient.nameFamily,
               recordingData: dataList,

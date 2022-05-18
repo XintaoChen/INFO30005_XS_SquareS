@@ -2,71 +2,390 @@
     <link rel="stylesheet" href="/css/singlePatient.css" />
 </head>
 {{#with singlePatientData}}
-<div class="banner">
-    <div class="left"> < back </div>
-    <div class="right">
-        <div style="font-weight: 800;">Support Message: </div>
-        <div class="message">"{{#if this.supportMessage}}{{this.supportMessage}}{{else}}default support message{{/if}}"</div>
+<div class="sp-banner">
+    <div class="sp-banner-left"><a href="/clinician" style="text-decoration: none;"> < Back </a></div>
+    <div class="sp-banner-right">
+        <form action="/clinician/patient/updateSupportMessage" method="post" id="update" style="width: 100%;">
+            <input type="text" class="form-control" name="patientId" value="{{patientData._id}}" style="display:none">
+            
+            <label style="font-weight: 800;" for="supportMessage">Support Message: </label>
+            <input type="text" id="sp-message" name="supportMessage" 
+                placeholder="Type new note here" 
+                value="{{#if patientData.supportMessage}}{{patientData.supportMessage}}{{else}}default support message{{/if}}"
+                disabled>
+
+            <input type="submit" id="sp-confirm-btn" value="&#xe63b;" class="iconfont display-none sp-msg-btns">
+            <input type="reset" id="sp-cancel-btn" value="&#xe65f" class="iconfont display-none sp-msg-btns" onclick="cancelSupportMessage()">
+        </form>
+        <div>
+            <button class="sp-msg-btns" id="sp-edit-msg-btn" onclick="editSupportMessage()">
+                <i class="iconfont icon-edit-clinician"></i>
+            </button>
+        </div>
     </div>
+    
 </div>
-<div class="single-patient">
-    <div class="left-page">
-        <div class="info">
-            <div class="avatar"></div>
-            <div class="info-text">
-                <h1>{{this.nameGiven}} {{this.nameFamily}}</h1>
-                <p>Age: {{this.dateOfBirth}}</p>
-                <p>Phone: {{this.phoneNumber}}</p>
-                <p>Email: {{this.emailAddress}}</p>
-                <p>Address: {{this.homeAddress}}</p>
-                <p>Bio: {{this.briefTextBio}}</p>
+<div class="sp-content">
+    <div class="sp-left-page">
+        <div class="sp-info">
+            <div class="sp-avatar"></div>
+            <div class="sp-info-text">
+                <h1>{{patientData.nameGiven}} {{patientData.nameFamily}}</h1>
+                <p>Age: {{patientAge}} years old</p>
+                <p>Phone: {{patientData.phoneNumber}}</p>
+                <p>Email: {{patientData.emailAddress}}</p>
+                <p>Address: {{patientData.homeAddress}}</p>
+                <p>Bio: {{patientData.briefTextBio}}</p>
             </div>
             <div class="compeletion"></div>            
         </div>
-        <div class="data-record">
-            <div class="table-title">
-                <table>
-                    <tr class="first-row">
-                        <td class="date">Date</td>
-                        <td class="bgLevel">Blood Glucose Level (mmol/L)</td>
-                        <td class="weight">Weight (kg)</td>
-                        <td class="insulinTaken">Insulin Taken (dose)</td>
-                        <td class="exercise">Exercise(step count)</td>
-                    </tr>
-                </table>
+
+        <div class="sp-data-record">
+            <div class="sp-table-graph-switch-bar">
+                <button type="button" class="sp-switch sp-selected" id="sp-table-switch" onclick="tableSwitch()">Table</button>
+                <button type="button" class="sp-switch" id="sp-graph-switch" onclick="graphSwitch()">Graph</button>
             </div>
-            <div class="table-data">
-                <table>
-                {{!-- <tr class="first-row">
-                    <td class="date">Date</td>
-                    <td class="bgLevel">Blood Glucose Level (mmol/L)</td>
-                    <td class="weight">Weight (kg)</td>
-                    <td class="insulinTaken">Insulin Taken (dose)</td>
-                    <td class="exercise">Exercise(step count)</td>
-                </tr> --}}
-                {{#each this.healthData}}
-                <tr class="data-row">
-                    <td class="date">{{this.date}}</td>
-                    {{!-- <td class="bgLevel">{{#if this.bgLevel}}{{#if this.bgLevel eq ''}}need record{{/if}}{{else}}{{this.bgLevel}}{{else}}-{{/if}}</td> --}}
-                    <td class="bgLevel">{{#if this.bgLevel}}{{#if (bgLevelLow this.bgLevel)}}⬇️{{else}}{{this.bgLevel}}{{/if}}{{else}}-{{/if}}</td>
-                    <td class="weight">{{#if this.weight}}{{this.weight}}{{else}}-{{/if}}</td>
-                    <td class="insulinTaken">{{#if this.insulinTaken}}{{this.insulinTaken}}{{else}}-{{/if}}</td>
-                    <td class="exercise">{{#if this.exercise}}{{this.exercise}}{{else}}-{{/if}}</td>
-                </tr>
-                {{/each}}
-            </table>
+            <div class="sp-data-area">
+                <div id="sp-data-table-area">
+                    <div class="sp-table-header">
+                        <table>
+                            <tr class="first-row">
+                                <td class="date">Date</td>
+                                {{#each dataSetting}}
+                                    <td>{{healthDataTitle}}</td>
+                                {{/each}}
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="sp-table-data">
+                        <table>
+                            {{#each recordList}}
+                                <tr class="data-row"></tr>
+                            {{/each}}
+                        </table>
+                    </div>
+                </div>
+                <div id="sp-data-chart-area" class="display-none"></div>
             </div>
-            
         </div>
     </div>
-    <div class="right-page">
-        <div class="data-setting">
+    <div class="sp-right-page">
+        <form id="sp-data-setting" action="/clinician/patient/editDataSetting" method="post">
+            {{!-- adding patient's id for update method --}}
+            <input type="text" name="patientId" value="{{patientData._id}}" style="display:none">
 
-        </div>
-        <div class="notes">
+            <div class="sp-data-setting-header-edit">
+                <div class="sp-data-setting-header">DATA SETTING</div>
+                <span><button type="button" id="sp-edit-data-setting-btn" class="sp-data-setting-btn" onclick="editDataSetting()">Edit</button></span>
 
-        </div>
+                <button type="submit" id="sp-data-save-btn" class="sp-data-setting-btn display-none">Save</button>
+                <button id="sp-data-cancel-btn" class="sp-data-setting-btn display-none" onclick="cancelDataSetting()">Cancel</button>
+
+            </div>
+            
+            <div class="sp-wrapper">
+                {{#each dataSetting}}
+                    <input type="text" name="healthDataId" value="{{healthDataId}}" style="display:none">
+
+                    <div>
+                        {{#if isRequired}}
+                            <div class="sp-hdata-title">
+                                <div><button type="button" class="square-btn checked-btn display-none"></button></div>
+                                <div>{{healthDataTitle}}</div>
+                            </div>
+
+                            <div class="edit-field display-none">
+                                <div class="sp-hdata-upperbound">
+                                    <span class="status-dot sp-upperbound"></span>                                
+                                    <label style="font: inherit;" for="upperbound"> Upperbound: </label>
+                                    <input type="number" id="hdata-upperbound" class="data-setting-upperbound" name="upperbound" 
+                                        value="{{upperBound}}">
+                                </div>
+                                <div class="sp-hdata-lowerbound">
+                                    <span class="status-dot sp-lowerbound"></span>
+                                    <label style="font: inherit;" for="lowerbound"> Lowerbound: </label>
+                                    <input type="number" id="hdata-lowerbound" class="data-setting-lowerbound" name="lowerbound" 
+                                        value="{{lowerBound}}">
+                                </div>
+                            </div>
+
+                            <div class="display-field">
+                                <div class="sp-hdata-upperbound">
+                                    <span class="status-dot sp-upperbound"></span> Upperbound: {{upperBound}}
+                                </div>
+                                <div class="sp-hdata-lowerbound">
+                                    <span class="status-dot sp-lowerbound"></span> Lowerbound: {{lowerBound}}
+                                </div>
+                            </div>
+                            
+                        {{else}}
+                            <div class="sp-hdata-title">
+                                <span><button type="button" class="square-btn display-none"></button></span>
+                                <div>{{healthDataTitle}}</div>
+                            </div>
+                            {{!-- <div class="{{#if isRequired}}"></div> --}}
+                            <div class="edit-field display-none">
+                                <div class="sp-hdata-upperbound">
+                                    <span class="status-dot"></span>                                
+                                    <label style="font: inherit;" for="upperbound"> Upperbound: </label>
+                                    <input type="number" id="hdata-upperbound" class="data-setting-upperbound disabled-edit-field" name="upperbound" 
+                                        value="" style="display: none;">
+                                </div>
+                                <div class="sp-hdata-lowerbound">
+                                    <span class="status-dot"></span>
+                                    <label style="font: inherit;" for="lowerbound"> Lowerbound: </label>
+                                    <input type="number" id="hdata-lowerbound" class="data-setting-lowerbound disabled-edit-field" name="lowerbound" 
+                                        value="" style="display: none;">
+                                </div>
+                            </div>
+
+                            <div class="display-field">
+                                <div class="sp-hdata-upperbound">
+                                    <span class="status-dot"></span> Upperbound: -
+                                </div>
+                                <div class="sp-hdata-lowerbound">
+                                    <span class="status-dot"></span> Lowerbound: -
+                                </div>
+                            </div>
+
+                        {{/if}}
+                    </div>
+                {{/each}}
+            </div>
+        </form>
+        <section id="notes">
+            <h2>NOTES</h2>
+            <div class="sp-notes">
+                <div class="add-note-container">
+                    <form action="/clinician/patient/addNote" method="post" id="add-note">
+                        <input type="text" class="form-control" name="patientId" value="{{patientData._id}}" style="display:none">
+                        <input type="submit" id="sp-addNote-btn" value="&#xe845;" class="iconfont">
+                        <input type="text" id="sp-addNote-field" name="note" placeholder="Type new note here">
+                    </form>
+                </div>
+                <div class="sp-notes-table">
+                    <table>
+                        {{#each noteList}}
+                            <tr class="note-row">
+                                <td class="note-datetime">
+                                    <div class="note-date">{{date}}</div>
+                                    <div class="note-time">{{time}}</div>
+                                </td>
+                                <td class="note-text">
+                                    {{note}}
+                                </td>
+                            </tr>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 
 {{/with}}
+{{#with code}}
+<div id="sp-parse-js">{{this}}</div>
+{{/with}}
+<script>
+    /* buttons related to edit/update support message */
+    var edit_msg_btn = document.getElementById("sp-edit-msg-btn");
+    var confirm_btn = document.getElementById("sp-confirm-btn");
+    var cancel_btn = document.getElementById("sp-cancel-btn");
+
+    var sp_msg_field = document.getElementById("sp-message");
+
+    function editSupportMessage() {
+    sp_msg_field.disabled = false;
+    edit_msg_btn.classList.add("display-none");
+    sp_msg_field.style.width = "77%";
+
+    confirm_btn.classList.remove("display-none");
+    cancel_btn.classList.remove("display-none");
+    }
+    function cancelSupportMessage() {
+    sp_msg_field.disabled = true;
+    edit_msg_btn.classList.remove("display-none");
+    sp_msg_field.style.width = "83%";
+
+    confirm_btn.classList.add("display-none");
+    cancel_btn.classList.add("display-none");
+    }
+
+    /* button to enter edit mode of data setting */
+    var edit_data_setting_btn = document.getElementById("sp-edit-data-setting-btn");
+    var save_data_setting_btn = document.getElementById("sp-data-save-btn");
+    var cancel_data_setting_btn = document.getElementById("sp-data-cancel-btn");
+
+    var display_fields = document.getElementsByClassName("display-field");
+    var edit_fields = document.getElementsByClassName("edit-field");
+    var square_btns = document.getElementsByClassName("square-btn");
+
+    var temp_fields = document.getElementsByClassName("disabled-edit-field");
+
+    function editDataSetting() {
+        save_data_setting_btn.classList.remove("display-none");
+        cancel_data_setting_btn.classList.remove("display-none");
+        edit_data_setting_btn.classList.add("display-none");
+
+        for (var i = 0; i < display_fields.length; i++) {
+            display_fields[i].classList.add("display-none");
+        }
+
+        for (var i = 0; i < edit_fields.length; i++) {
+            edit_fields[i].classList.remove("display-none");
+        }
+
+        for (var i = 0; i < square_btns.length; i++) {
+            square_btns[i].classList.remove("display-none");
+        }
+    }
+
+    function cancelDataSetting() {
+        save_data_setting_btn.classList.add("display-none");
+        cancel_data_setting_btn.classList.add("display-none");
+        edit_data_setting_btn.classList.remove("display-none");
+
+        for (var i = 0; i < display_fields.length; i++) {
+            display_fields[i].classList.remove("display-none");
+        }
+
+        for (var i = 0; i < edit_fields.length; i++) {
+            edit_fields[i].classList.add("display-none");
+        }
+
+        for (var i = 0; i < square_btns.length; i++) {
+            square_btns[i].classList.add("display-none");
+        }
+    }
+
+    /* button to cancel editing support message */
+    function cancelSupportMessage() {    
+        sp_msg_field.disabled = true;
+        edit_msg_btn.classList.remove("display-none")
+        sp_msg_field.style.width = "83%"
+
+        confirm_btn.classList.add("display-none")
+        cancel_btn.classList.add("display-none")
+    }
+
+    /* button to switch between table and chart view */
+    var table_switch_btn = document.getElementById("sp-table-switch")
+    var graph_switch_btn = document.getElementById("sp-graph-switch")
+    var table_area = document.getElementById("sp-data-table-area")
+    var graph_area = document.getElementById("sp-data-chart-area")
+
+    table_switch_btn.addEventListener("click", function() {
+        if (!table_switch_btn.classList.contains("sp-selected")) {
+            graph_switch_btn.classList.remove("sp-selected");
+            table_switch_btn.classList.add("sp-selected");
+            graph_area.classList.add("display-none");
+            table_area.classList.remove("display-none");
+        }
+    })
+
+    graph_switch_btn.addEventListener("click", function() {
+        if (!graph_switch_btn.classList.contains("sp-selected")) {
+            graph_switch_btn.classList.add("sp-selected");
+            table_switch_btn.classList.remove("sp-selected");
+            graph_area.classList.remove("display-none");
+            table_area.classList.add("display-none");
+        }
+    })   
+
+    /* button to enter edit mode of data setting */
+    var edit_data_setting_btn = document.getElementById("sp-edit-data-setting-btn")
+    var save_data_setting_btn = document.getElementById("sp-data-save-btn")
+    var cancel_data_setting_btn = document.getElementById("sp-data-cancel-btn")
+
+    var display_fields = document.getElementsByClassName("display-field")
+    var edit_fields = document.getElementsByClassName("edit-field")
+    var square_btns = document.getElementsByClassName("square-btn")
+
+    var temp_fields = document.getElementsByClassName("disabled-edit-field")
+
+    function editDataSetting() {
+        save_data_setting_btn.classList.remove("display-none")
+        cancel_data_setting_btn.classList.remove("display-none")
+        edit_data_setting_btn.classList.add("display-none")
+
+        for (var i=0; i<display_fields.length; i++) {
+            display_fields[i].classList.add("display-none");
+        }
+
+        for (var i=0; i<edit_fields.length; i++) {
+            edit_fields[i].classList.remove("display-none");
+        }
+
+        for (var i=0; i<square_btns.length; i++) {
+            square_btns[i].classList.remove("display-none");
+        }
+    }
+
+    function cancelDataSetting() {
+        save_data_setting_btn.classList.add("display-none")
+        cancel_data_setting_btn.classList.add("display-none")
+        edit_data_setting_btn.classList.remove("display-none")
+
+        for (var i=0; i<display_fields.length; i++) {
+            display_fields[i].classList.remove("display-none");
+        }
+
+        for (var i=0; i<edit_fields.length; i++) {
+            edit_fields[i].classList.add("display-none");
+        }
+
+        for (var i=0; i<square_btns.length; i++) {
+            square_btns[i].classList.add("display-none");
+        }
+    }
+
+    /* button to toggle the state of isRequired for each health data */
+    var square_btns = document.getElementsByClassName("square-btn")
+
+    for (i = 0; i < square_btns.length; i++) {
+        square_btns[i].addEventListener("click", function() {
+            /* 
+            parentElement.parentElement -> sp-hdata-title
+            .nextElementSibling -> edit-field
+            .firstElementChild -> sp-hdata-upperbound
+            .lastElementChild -> sp-hdata-lowerbound
+            */
+            var upperbound_status = this.parentElement.parentElement.nextElementSibling.firstElementChild.children[0];
+            var lowerbound_status = this.parentElement.parentElement.nextElementSibling.lastElementChild.children[0];
+            
+            var upperbound_edit_field = this.parentElement.parentElement.nextElementSibling.firstElementChild.children[2];
+            var lowerbound_edit_field = this.parentElement.parentElement.nextElementSibling.lastElementChild.children[2];
+
+            if (this.classList.contains("checked-btn")) {
+                /* button is checked -> clicking on it turns it into unchecked */
+                upperbound_status.classList.remove("sp-upperbound");
+                upperbound_edit_field.style = "display: none;"
+                upperbound_edit_field.classList.add("disabled-edit-field");
+                upperbound_edit_field.value = "";
+
+                lowerbound_status.classList.remove("sp-lowerbound");
+                lowerbound_edit_field.style = "display: none;"
+                lowerbound_edit_field.classList.add("disabled-edit-field");
+                lowerbound_edit_field.value = "";
+                
+                this.classList.remove("checked-btn");
+            } else {
+                /* doesn't contain "checked-btn" - means unchecked */
+                upperbound_status.classList.add("sp-upperbound");
+                upperbound_edit_field.classList.remove("disabled-edit-field");
+                upperbound_edit_field.style = "display: initial;"
+                upperbound_edit_field.disabled = false;
+
+                lowerbound_status.classList.add("sp-lowerbound");
+                lowerbound_edit_field.classList.remove("disabled-edit-field");
+                lowerbound_edit_field.style = "display: initial;"  
+                lowerbound_edit_field.disabled = false;
+                
+                this.classList.add("checked-btn");
+            }
+        });
+    }
+</script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="/js/singlePatient.js" type="module"></script>
