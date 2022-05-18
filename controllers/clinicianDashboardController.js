@@ -89,6 +89,7 @@ const getTodayDataClinician = async (req, res, next) => {
         { clinicianDashboardData: tempData,
           loggedin: req.isAuthenticated(),
           isPatient: false,
+          pageName: "Clinician Dashboard"
         })
     } catch (err) {
         return next(err)

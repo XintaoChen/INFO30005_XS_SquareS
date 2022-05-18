@@ -2,11 +2,12 @@
     <link rel="stylesheet" href="/css/patientDashboard.css" />
 </head>
 {{#with todayHealthData}}
-<div class="banner">
-    <div class="support-message">{{this.supportMessage}}</div>
-    <div class="clinician-icon">
+<div class="banner" id="banner">
+    <div class="support-message" id="sptMsg" style="display: none;">{{this.supportMessage}}</div>
+    <div class="support-message" id="greeting">Welcome, {{this.profileName}}!</div>
+    <div class="clinician-icon" onclick="showSptMsg();">
         <i>🙋🏽</i>
-        <div class="red-dot"></div>
+        <div class="red-dot" id="red-dot"></div>
     </div>
 </div>
 <div class="today-content">
@@ -326,4 +327,18 @@
     var startOfWeek = new Date(today.setDate(diff));
     var date_startOfWeek = startOfWeek.getDate()+'/'+(startOfWeek.getMonth()+1)+'/'+startOfWeek.getFullYear();
     document.getElementById("displayStartOfWeek").innerHTML = 'Week of ' + date_startOfWeek;
+
+    function showSptMsg(){
+        if(document.getElementById("greeting").style.display == "none"){
+            document.getElementById("sptMsg").style.display = "none";
+            document.getElementById("greeting").style.display = "initial";
+            document.getElementById("banner").style = "background-color: white";
+            document.getElementById("red-dot").style.display = "none";
+        }else{
+            document.getElementById("sptMsg").style.display = "initial";
+            document.getElementById("greeting").style.display = "none";
+            document.getElementById("banner").style = "background-color: #F4F2F0";
+            document.getElementById("red-dot").style.display = "none";
+        }
+    }
 </script>

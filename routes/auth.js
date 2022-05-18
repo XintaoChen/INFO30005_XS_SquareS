@@ -21,10 +21,10 @@ const isAuthenticated = (req, res, next) => {
 // })
 // Login page (with failure message displayed upon login failure)
 router.get('/login', (req, res) => {
-  res.render('login', { flash: req.flash('error'), title: 'Login' })
+  res.render('login', { flash: req.flash('error'), title: 'Login', pageName: "Log In"})
 })
 router.get('/login/failed', (req, res) => {
-  res.render('loginFailed', { flash: req.flash('error'), title: 'Login' })
+  res.render('loginFailed', { flash: req.flash('error'), title: 'Login', pageName: "Log In" })
 })
 // Handle login
 router.post('/login-patient',

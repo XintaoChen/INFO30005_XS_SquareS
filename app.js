@@ -95,31 +95,26 @@ app.get('/ajax', (req, res) => {
     res.render('test.hbs')
 })
 
-app.get('/', (req, res) => {
-    if(req.isAuthenticated()){
-        res.render('home.hbs', { loggedin: req.isAuthenticated(), isPatient: (typeof(req.user.supportMessage)  != 'undefined') ? true:false})
-    }else{
-        res.render('home.hbs', { loggedin: req.isAuthenticated()})
-    }})
+app.get('/', (req, res) => {res.redirect('/home')})
 app.get('/home', (req, res) => {
     if(req.isAuthenticated()){
-        res.render('home.hbs', { loggedin: req.isAuthenticated(), isPatient: (typeof(req.user.supportMessage)  != 'undefined') ? true:false})
+        res.render('home.hbs', { loggedin: req.isAuthenticated(), isPatient: (typeof(req.user.supportMessage)  != 'undefined') ? true:false, pageName: "Home"})
     }else{
-        res.render('home.hbs', { loggedin: req.isAuthenticated()})
+        res.render('home.hbs', { loggedin: req.isAuthenticated(), pageName: "Home"})
     }
 })
 app.get('/aboutDiabetes', (req, res) => {
     if(req.isAuthenticated()){
-        res.render('aboutDiabetes.hbs', { loggedin: req.isAuthenticated(), isPatient: (typeof(req.user.supportMessage)  != 'undefined') ? true:false})
+        res.render('aboutDiabetes.hbs', { loggedin: req.isAuthenticated(), isPatient: (typeof(req.user.supportMessage)  != 'undefined') ? true:false, pageName: "About Diabetes"})
     }else{
-        res.render('aboutDiabetes.hbs', { loggedin: req.isAuthenticated()})
+        res.render('aboutDiabetes.hbs', { loggedin: req.isAuthenticated(), pageName: "About Diabetes"})
     }
 })
 app.get('/aboutUs', (req, res) => {
     if(req.isAuthenticated()){
-        res.render('aboutUs.hbs', { loggedin: req.isAuthenticated(), isPatient: (typeof(req.user.supportMessage)  != 'undefined') ? true:false})
+        res.render('aboutUs.hbs', { loggedin: req.isAuthenticated(), isPatient: (typeof(req.user.supportMessage)  != 'undefined') ? true:false, pageName: "About This Website"})
     }else{
-        res.render('aboutUs.hbs', { loggedin: req.isAuthenticated()})
+        res.render('aboutUs.hbs', { loggedin: req.isAuthenticated(), pageName: "About This Website"})
     }
 })
 
