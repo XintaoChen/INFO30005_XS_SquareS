@@ -38,7 +38,7 @@ const getPatientInfo = async (req, res, next) => {
     // to retrieve list of clinician notes, sorted in descending order
     const untrackedNoteList = await Note.find({ patientId }, "note date");
     let noteList = untrackedNoteList.map((singleNote) => {
-      var formattedDate = moment(singleNote.date).format("DD/MM/YYYY");
+      var formattedDate = moment(singleNote.date).format("YYYY/MM/DD");
       var formattedTime = moment(singleNote.date).format("HH:mm:ss");
 
       return {
