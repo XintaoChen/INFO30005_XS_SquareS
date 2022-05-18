@@ -78,6 +78,7 @@ const getTodayDataPatient = async (req, res, next) => {
             todayHealthData: tempData,
             loggedin: req.isAuthenticated(),
             isPatient: true,
+            pageName: "My Dashboard"
           });
         } else {
           res.redirect("/login");
@@ -257,6 +258,7 @@ const getDataAnalysis = async (req, res) => {
       healthDataList: healthDataList,
       loggedin: req.isAuthenticated(),
       isPatient: true,
+      pageName: "My Health Data Record"
     });
   } catch (err) {
     console.log(err);
