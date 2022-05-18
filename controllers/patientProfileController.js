@@ -15,6 +15,7 @@ try {
         patientData : patient,
         loggedin: req.isAuthenticated(),
         isPatient: true,
+        pageName: "My Profile"
     });
 
 } catch (err) {

@@ -19,6 +19,7 @@ const getPatientInfo = async (req, res, next) => {
         singlePatientData: tempData,
         loggedin: req.isAuthenticated(),
         isPatient: true,
+        pageName: "My Health Data Record"
       });
     } else {
       res.render("noRecords.hbs");

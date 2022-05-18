@@ -11,6 +11,7 @@ const getClinicianInfo = async (req, res, next) => {
             clinicianData : clinician,
             loggedin: req.isAuthenticated(),
             isPatient: true,
+            pageName: "My Clinician Profile"
         });
         
     } catch (err) {
