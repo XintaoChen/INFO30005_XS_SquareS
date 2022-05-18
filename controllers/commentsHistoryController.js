@@ -48,12 +48,15 @@ const getCommentsHistory = async (req, res, next) => {
                     // recordList = record
                     record.forEach((element,index) => {
                       var tempRecord = new Object();
-                      // value = element.value;
-                      // comment = element.comment;
-                      // date = element.date;
-                      // tempDate = (element.date>tempDate) ? element.date:tempDate;
-                      
                       if(element.comment != ""){
+                        tempRecord.patientId = patient._id;
+                        tempRecord.nameGiven = patient.nameGiven,
+                        tempRecord.nameFamily = patient.nameFamily,
+                        tempRecord.upperBound = upperBound,
+                        tempRecord.lowerBound = lowerBound,
+                        tempRecord.dataName = dataName,
+                        tempRecord.unit = unit,
+                        tempRecord.isRequired = isRequired,
                         tempRecord.comment = element.comment;
                         tempRecord.value = element.value;
                         tempRecord.date = element.date;
@@ -63,17 +66,14 @@ const getCommentsHistory = async (req, res, next) => {
                   }
                 }
                 return {
-                  upperBound: upperBound,
-                  lowerBound: lowerBound,
-                  dataName: dataName,
-                  unit: unit,
+                  // upperBound: upperBound,
+                  // lowerBound: lowerBound,
+                  // dataName: dataName,
+                  // unit: unit,
                   // value: value,
                   // comment: comment,
                   // date: date,
-                  isRequired: isRequired,
-
-                  //each oneRecordList have all history data of one data type and one patient
-                  oneRecordList: recordList
+                  // isRequired: isRequired,
                 }
               })
             )
@@ -81,9 +81,6 @@ const getCommentsHistory = async (req, res, next) => {
               _id: patient._id,
               nameGiven: patient.nameGiven,
               nameFamily: patient.nameFamily,
-              //store all history data
-              allHistoryData: dataList,
-
               dateLatest: tempDate
             }
           })
@@ -92,9 +89,14 @@ const getCommentsHistory = async (req, res, next) => {
           nameGiven: clinicianInfo.nameGiven,
           patientList: patientList,
         };
-        console.log(tempData.patientList);
         tempData.patientList.sort(compare("dateLatest"))
-        res.render('commentsHistory.hbs', {commentsHistoryData: tempData})
+        //store all history data
+        tempData.allHistoryData = recordList
+        console.log(tempData)
+        res.render('commentsHistory.hbs', {
+          commentsHistoryData: tempData,              
+          allHistoryData: recordList,        
+        })
     } catch (err) {
         return next(err)
     }
