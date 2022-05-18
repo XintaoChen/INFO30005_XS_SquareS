@@ -77,7 +77,7 @@ app.use((req, res, next) => {
 // the demo routes are added to the end of the '/demo-management' path
 
 
-app.use("/patient", patientRouter);
+app.use("/clinician/patient", patientRouter);
 
 app.use("/patient/today", patientDashboardRouter);
 
