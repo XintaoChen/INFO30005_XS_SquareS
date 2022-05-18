@@ -3,7 +3,7 @@
 </head>
 {{#with singlePatientData}}
 <div class="sp-banner">
-    <div class="sp-banner-left"> < Back </div>
+    <div class="sp-banner-left"><a href="javascript:history.back()" style="text-decoration: none;"> < Back </a></div>
     <div class="sp-banner-right">
         <form action="/patient/updateSupportMessage" method="post" id="update" style="width: 100%;">
             <input type="text" class="form-control" name="patientId" value="{{patientData._id}}" style="display:none">
