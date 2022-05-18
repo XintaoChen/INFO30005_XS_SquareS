@@ -27,7 +27,7 @@ function patientDataAnalysis() {
 
   function updateDate() {
     let dailyArea = document.getElementsByClassName("pda-daily-area")[0];
-    dailyArea.innerHTML = "";
+    dailyArea.innerHTML = "<div></div>";
     let selectDate = new Date(window.calenderPlugin.getDate());
     let titleArea = document.getElementsByClassName("pda-title-area")[0];
     titleArea.children[0].innerHTML = `
@@ -68,7 +68,7 @@ function patientDataAnalysis() {
           "No record"
         );
       }
-      dailyArea.appendChild(recordNode);
+      dailyArea.insertBefore(recordNode, dailyArea.children[0]);
     }
 
     console.log(enterred);
@@ -224,7 +224,7 @@ function patientDataAnalysis() {
   function generateTable(dateList) {
     let tbody =
       document.getElementsByClassName("pda-analysis-table")[0].children[0];
-    tbody.innerHTML = "";
+    tbody.innerHTML = "<div></div>";
     for (let date of dateList) {
       let tr = document.createElement("tr");
       tr.classList.add("pda-table-item");
@@ -262,7 +262,7 @@ function patientDataAnalysis() {
         }
         tr.appendChild(td);
       }
-      tbody.appendChild(tr);
+      tbody.insertBefore(tr, tbody.children[0]);
     }
   }
 
