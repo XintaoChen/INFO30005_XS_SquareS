@@ -259,12 +259,12 @@ table {
   #menuButtonDesktop{
     display: none;
   }
-  .dashboard{
-    /* margin-bottom: 50px !important; */
-  }
+  /* .dashboard{
+    margin-bottom: 50px !important;
+  } */
 
 
-  header .menuButton .memuIcon {
+  header .menuButton .icon-menu {
     position: absolute;
     width: 33px;
     height: 32px;
@@ -329,7 +329,7 @@ table {
     padding-left: 10px;
     height: 32px;
     line-height: 32px;
-    font-size: 12px;
+    font-size: 18px;
     background-color: #f4f2f0;
   }
 
@@ -665,10 +665,10 @@ table {
     display: none;
   }
 
-  .dashboard{
-    /* margin-bottom: 80px !important; */
-  }
-  header .menuButton .memuIcon {
+  /* .dashboard{
+    margin-bottom: 80px !important;
+  } */
+  header .menuButton .icon-menu {
     /* display: none; */
     position: absolute;
     width: 44px;
