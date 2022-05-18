@@ -23,7 +23,7 @@
                     </script>
             </div>
             <div class="search-bar">
-                <input type="text" class="search-icon" placeholder="Search..">
+                <input type="text" id="input-name" class="search-icon" onkeyup="patientSearch()" placeholder="Search..">
             </div>
             <button class="add-button">
                 <div class="add">+</div>
@@ -49,7 +49,7 @@
                 </table>
             </div>
             <div class="table-data">
-                <table>
+                <table id="today-record-table">
                     {{#each patientList}}
                         <tr class="data-row" data-href="/clinician/patient/{{patientId}}">
                             <td class="patient-name">{{nameGiven}} {{nameFamily}}{{value}}</td>
@@ -88,16 +88,60 @@
                         })
                     })
                 </script>
-            </div>
-            
+            </div>  
         </div>
+        <script>
+            function patientSearch(){
+                let input = document.getElementById('input-name');
+                let filter = input.value;
+                let table = document.getElementById('today-record-table');
+                let tr = table.getElementsByTagName('tr');
+
+                for (let i = 0; i < tr.length; i++){
+                    let td = tr[i].getElementsByTagName('td')[0];
+                    if(td){
+                        let txtValue = td.textContent || td.innerText;
+                        if (txtValue.indexOf(filter) > -1){
+                            tr[i].style.display = '';
+                        } else {
+                            tr[i].style.display = 'none';
+                        }
+                    }
+                }
+            }
+        </script>
     </div>
     <div class="right-page">
         <div class="comment-text">
             COMMENTS FOR TODAY
         </div>
         <div class="comments-for-today">
-
+            <div class="comments-for-today-list">
+                <table id="comments-table">
+                    {{#each patientList}}
+                        {{#each recordingData}}
+                            {{#if comment}}
+                                <tr class="today-comments-padding-row">
+                                    <td></td>
+                                </tr>
+                                <tr class="today-comments-row1">
+                                    <td class="today-comments-patient-name">{{../nameGiven}} {{../nameFamily}}</td>
+                                </tr>
+                                <tr class="today-comments-row2">
+                                    <td class="today-comments-description">Commented on {{dataName}} ({{value}} {{unit}}), {{date}}.</td>
+                                </tr>
+                                <tr class="today-comments-row3" data-href="/patient/{{../_id}}">
+                                    <td class="today-comments-content">
+                                        <p>
+                                            <br>"{{comment}}"<br><br>
+                                        </p>
+                                    </td>
+                                </tr>
+                            {{/if}}
+                        {{/each}}
+                    {{/each}}
+                </table>
+            </div>
         </div>
     </div>
 </div>

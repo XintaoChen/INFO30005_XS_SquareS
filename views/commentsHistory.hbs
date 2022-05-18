@@ -1,0 +1,103 @@
+<head>
+    <link rel="stylesheet" href="/css/commentsHistory.css" />
+</head>
+{{#with commentsHistoryData}}
+<div class="ch-banner">
+    <div class="ch-welcome-message">Welcome, Dr. {{nameGiven}}!</div>
+</div>
+
+<div class="comments-page">
+    <div class="ch-left-page">
+        <div class="ch-back">
+            <button type="button" class="ch-back-button"></button>
+            <div class="ch-back-text">
+                <h2>Dashboard</h2>
+            </div>
+        </div>
+        <div class="ch-patient-list">
+            <div class="ch-search-patient">
+                <input type="text" id="ch-input-name" class="ch-search-icon" onkeyup="patientSearch()" placeholder="Search..">
+            </div>
+            <div class="ch-up-padding-line"></div>
+            <div class="ch-patient-list-data">
+                <div class="ch-patient-list-table">
+                    <table id="patient-list-table">
+                        {{#each patientList}}
+                            <tr class="ch-patient-list-row">
+                                <td class="ch-patient-name"><a href="/comment/6254e9b4bcd6f0a12a5e5eda/?filterId={{_id}}">{{nameGiven}} {{nameFamily}}</a></td>
+                            </tr>
+                        
+                        {{/each}}
+                    </table>
+                </div>
+            </div> 
+            <div class="ch-down-padding-line"></div> 
+        </div>
+        <script>
+            function patientSearch(){
+                let input = document.getElementById('ch-input-name');
+                let filter = input.value;
+                let table = document.getElementById('patient-list-table');
+                let tr = table.getElementsByTagName('tr');
+
+                for (let i = 0; i < tr.length; i++){
+                    let td = tr[i].getElementsByTagName('td')[0];
+                    if(td){
+                        let txtValue = td.textContent || td.innerText;
+                        if (txtValue.indexOf(filter) > -1){
+                            tr[i].style.display = '';
+                        } else {
+                            tr[i].style.display = 'none';
+                        }
+                    }
+                }
+            }
+        </script>
+    </div>
+    <div class="ch-right-page">
+        <div class="ch-comment-text">
+            <h1>COMMENTS HISTORY</h1>
+        </div>
+        <div class="ch-comments-history">
+            <div class="ch-up-padding-line"></div>
+            <div class="ch-comments-title">
+                <table id="comments-history-table-title">
+                    <tr class="ch-first-row">
+                        <td class="ch-name">Name</td>
+                        <td class="ch-comment">Comment</td>
+                        <td class="ch-time">Time</td>
+                        <td class="ch-padding"></td>
+                        <td class="ch-health-data">Health Data</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="ch-comments-data">
+                <table id="comments-history-table">
+                        {{#each allHistoryData}}
+                            {{#if (true isRequired)}}
+                                    <tr class="ch-comment-row" data-href="/patient/{{patientId}}">
+                                        <td class="ch-patient-name">{{nameGiven}} {{nameFamily}}</td>
+                                        <td class="ch-comment">{{comment}}</td>
+                                        <td class="ch-time">{{date}}</td>
+                                        <td class="ch-padding"></td>
+                                        <td class="ch-health-data">{{dataName}} - {{value}}</td>
+                                    </tr>
+                            {{/if}}
+                        {{/each}}    
+                </table>
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const rows = document.querySelectorAll("tr[data-href]");
+                        rows.forEach(row => {
+                            row.addEventListener('click', () => {
+                                window.location.href = row.dataset.href;
+                            })
+                        })
+                    })
+                </script>
+            </div>
+            <div class="ch-down-padding-line"></div>    
+        </div>
+    </div>
+</div>
+{{/with}}

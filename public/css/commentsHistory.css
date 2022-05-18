@@ -1,0 +1,251 @@
+@media screen and (min-width: 1366px) {
+    .content{
+        padding: 40px 0 0;
+    }
+    .ch-banner {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 60px;
+        text-align: left;
+        text-indent: 20px;
+        line-height: 60px;
+        font-size: 18px;
+        background-color: #F4F2F0;
+    }
+    .ch-banner .ch-welcome-message{
+        line-height: 60px;
+        font-style: italic;
+    }
+
+    .comments-page{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 750px;
+        padding-top: 20px;
+    }
+
+    .ch-left-page{
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        padding-left: 30px;
+        background-color: #FFFFFF;
+    }
+    .ch-left-page .ch-back {
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .ch-left-page .ch-back .ch-back-button{
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        background-image: url(/img/arrow_left.png);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .ch-left-page .ch-back .ch-back-text h2{
+        width: max-content;
+        text-indent: 10px;
+    }
+    
+    .ch-left-page .ch-patient-list{
+        width: 91%;
+        height: 650px;
+    }
+
+    .ch-right-page{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        background-color: #FFFFFF;
+    }
+    .ch-right-page .ch-comment-text{
+        font-size: 36px;
+        font-weight: bolder;
+        padding-top: 6px;  
+        color: #A09E9D;
+    }
+    .ch-right-page .ch-comments-history{
+        width: 98%;
+        background-color: #F4F2F0;
+        height: 650px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ch-patient-list{
+        margin: 0 0 5px 0;
+        width: 96%;
+        height: 650px;
+        background-color: #F4F2F0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .ch-patient-list-data{
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow-y: scroll;
+        margin-bottom: 5px;
+    }
+    .ch-patient-list .ch-search-patient{
+        padding-top: 30px;
+    }
+    .ch-patient-list .ch-search-patient input[type=text]{
+        height: 36px;
+        font-size: 18px;
+        color: #5C4435;
+        background-color: #F4F2F0;
+        outline-style: none;
+        border-radius: 25px;
+        border: 1px solid #5C4435;
+    }
+    .ch-patient-list .ch-search-patient ::placeholder{
+        color: #C7C2BF;
+    }
+    .ch-search-icon{
+        padding-left: 40px;
+        background-image: url(../img/search.svg);
+        background-repeat: no-repeat;
+    }
+    .ch-patient-list .ch-up-padding-line{
+        width: 100%;
+        height: 20px;
+    }
+    .ch-patient-list .ch-down-padding-line{
+        width: 100%;
+        height: 20px;
+    }
+    #patient-list-table{
+        width: 100%;
+    }
+    .ch-patient-list-row{
+        height: 50px;
+        font-size: 18px;
+        background-color: #F4F2F0;
+    }
+    .ch-patient-list-row .ch-patient-name{
+        cursor: pointer;
+    }
+    .ch-patient-list td{
+        display: block;
+        text-align: center;
+        line-height: 50px;
+        height: 100%;
+    }
+
+    .ch-right-page .ch-up-padding-line{
+        width: 100%;
+        height: 20px;
+    }
+    .ch-right-page .ch-down-padding-line{
+        width: 100%;
+        height: 20px;
+    }
+    .ch-comments-history{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .ch-comments-history table{
+        width: 100%;
+    }
+    #comments-history-table td{
+        border-radius: 10px;
+    }
+    .ch-comments-title{
+        width: 96%;
+        height: 50px;
+        margin: auto;
+    }
+    .ch-comments-data{
+        width: 96%;
+        height: 600px;
+        margin: auto;
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow-y: scroll;
+        margin-bottom: 5px;
+    }
+
+    .ch-first-row{
+        height: 50px;
+        margin: auto;
+        color: #5C4435;
+        font-size: 18px;
+        font-weight: bold;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        text-align: center;
+    }
+    .ch-comment-row{
+        height: 50px;
+        margin: auto;
+        font-size: 18px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        background-color: #F4F2F0;
+    }
+    .ch-comment-record td{
+        display: block;
+        text-align: center;
+        line-height: auto;
+        height: auto;
+    }
+    .ch-comments-history td:nth-child(1) {
+        /* width: 150px; */
+        width: 10%;
+    }
+    .ch-comments-history td:nth-child(2) {
+        /* width: 400px; */
+        width: 25%;
+    }
+    .ch-comments-history td:nth-child(3) {
+        /* width: 580px; */
+        width: 45%;
+    }
+    .ch-comments-history td:nth-child(4) {
+        /* width: 40px; */
+        width: 5%;
+    }
+    .ch-comments-history td:nth-child(5) {
+        /* width: 250px; */
+        width: 15%;
+    }
+
+    .ch-comment-row td:nth-child(1) {
+        background-color: #48434B;
+        color: #FFFFFF;
+    }
+    .ch-comment-row td:nth-child(2) {
+        cursor: pointer;
+        background-color: #E3D1BD;
+        color: #5C4435;
+    }
+    .ch-comment-row td:nth-child(3) {
+        background-color: #48434B;
+        color: #FFFFFF;
+    }
+    .ch-comment-row td:nth-child(5) {
+        background-color: #48434B;
+        color: #FFFFFF;
+    }
+
+}
