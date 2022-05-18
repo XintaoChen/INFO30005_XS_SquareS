@@ -218,7 +218,7 @@
                                 </div>
                                 <div class="time">{{this.recordingData.[3].time}}</div>      
                                 {{else}}
-                                <input type="text" class="form-control" name="value" id="value-3" placeholder="Click pencil icon to edit" onkeyup="value=value.replace(/[^\d.]/g,'')" onchange="value=value.replace(/[*\d.]/g,'')" disabled="disabled">
+                                <input type="text" class="form-control" name="value" id="value-3" placeholder="Click pencil icon to edit" onkeyup="value=value.replace(/[^\d.]/g,'')" onchange="value=value.replace(/[^\d.]/g,'')" disabled="disabled">
                                 {{/if}}
                             </div>
                             {{#if this.recordingData.[3].comment}}

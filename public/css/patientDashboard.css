@@ -350,23 +350,38 @@
     .banner {
         width: 100%;
         height: 80px;
-        background-color: #F4F2F0;    
+        background-color: white;    
     }
     .support-message{
         line-height: 80px;
         font-size: 32px;
         width: 95%;
         margin: auto;
+        margin-left: 50px;
     }
     .clinician-icon{
         float: right;
-        position: relative;
-        top: -80px;
-        right: 50px;        
+        /* position: relative; */
+        /* top: -80px;
+        right: 50px;         */
+        margin-right: 40px;
         line-height: 80px;
         font-size: 44px;
+        float: right;
+        position: absolute;
+        top: 66px;
+        right: 5px;
+        cursor: pointer;
     }
-
+    .red-dot{
+        width: 16px;
+        height: 16px;
+        background-color: #ca0e0e;
+        border-radius: 8px;
+        position: relative;
+        top: -66px;
+        left: 30px;
+    }
     .today-content{
         width: 95%;
         padding: 10px;
