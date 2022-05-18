@@ -229,3 +229,16 @@ body {
     opacity: 0;
   }
 }
+
+/* Mobile Version (iphone 375*812) */
+@media screen and (max-width: 1365px) {
+  .lgt-con-box.lgt-right,
+  #lgt-clinician-btn {
+    display: none;
+  }
+
+  .lgt-container {
+    box-shadow: none;
+    width: 354px;
+  }
+}
