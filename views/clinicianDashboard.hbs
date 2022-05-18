@@ -28,7 +28,7 @@
             <button class="add-button">
                 <div class="add">+</div>
             </button>
-            <form action="/patient/add" method="POST" class="cdb-register-area cdb-hidden">
+            <form action="clinician/patient/add" method="POST" class="cdb-register-area cdb-hidden">
                 <input type="text" name="emailAddress" placeholder="emailAddress"/>
                 <input type="text" name="dateOfBirth" placeholder="dateOfBirth: YYYYMMDD"/>
                 <input type="text" name="nameGiven" placeholder="nameGiven"/>
@@ -51,7 +51,7 @@
             <div class="table-data">
                 <table>
                     {{#each patientList}}
-                        <tr class="data-row" data-href="/patient/{{_id}}">
+                        <tr class="data-row" data-href="/clinician/patient/{{patientId}}">
                             <td class="patient-name">{{nameGiven}} {{nameFamily}}{{value}}</td>
                             {{#each recordingData}}
                                 <td>

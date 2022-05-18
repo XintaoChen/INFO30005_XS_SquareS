@@ -92,7 +92,7 @@ const getTodayDataPatient = async (req, res, next) => {
 
 const postTodayDataPatient = (req, res) => {
   const { comment, value, healthDataId, clinicianId } = req.body;
-  const { _id } = req.user;
+  const { _id } = req.user._id;
   var Record = require("../models/record");
   var tempRecord = new Record({
     comment: comment,
