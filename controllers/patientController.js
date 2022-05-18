@@ -38,7 +38,7 @@ const getPatientInfo = async (req, res, next) => {
     // to retrieve list of clinician notes, sorted in descending order
     const untrackedNoteList = await Note.find({ patientId }, "note date");
     let noteList = untrackedNoteList.map((singleNote) => {
-      var formattedDate = moment(singleNote.date).format("DD/MM/YYYY");
+      var formattedDate = moment(singleNote.date).format("YYYY/MM/DD");
       var formattedTime = moment(singleNote.date).format("HH:mm:ss");
 
       return {
@@ -185,6 +185,46 @@ const getPatientInfo = async (req, res, next) => {
   }
 };
 
+const postNewPatient = async (req, res, next) => {
+  try {
+    const { nameGiven, nameFamily, emailAddress, dateOfBirth } = req.body;
+    const password = Math.random().toString(36).substr(2);
+    const profileName = "Patient" + Math.random().toString(10).substr(2, 8);
+    const clinicianId = req.user._id;
+
+    let healthDataList = await HealthData.find({}, "");
+    const recordingData = healthDataList.map((item) => {
+      return {
+        healthDataId: item._id,
+        upperBound: NaN,
+        lowerBound: NaN,
+        isRequired: false,
+      };
+    });
+
+    const newPatient = new Patient({
+      nameGiven: nameGiven.trim(),
+      nameFamily: nameFamily.trim(),
+      emailAddress: emailAddress,
+      dateOfBirth: new Date(dateOfBirth),
+      password: password,
+      recordingData: recordingData,
+      clinicianId: clinicianId,
+      profileName: profileName,
+    });
+
+    newPatient.save((err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.redirect("/clinician");
+      }
+    });
+  } catch (err) {
+    return next(err);
+  }
+};
+
 const addNote = async (req, res) => {
   console.log("from addNote:" + req.note);
 
@@ -263,6 +303,7 @@ function compare(p) {
 
 module.exports = {
   getPatientInfo,
+  postNewPatient,
   addNote,
   updateSupportMessage,
   editDataSetting,
