@@ -25,10 +25,15 @@
         height: 80px;
         text-align: center;
         background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .support-message{
-        line-height: 80px;
         font-size: 18px;
+    }
+    #sptMsgMobile{
+        display: block;
     }
     .clinician-icon{
         float: right;
@@ -292,10 +297,10 @@
         justify-content: space-between;
     }
     .board-area{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 45px;
+        height: 40px;
+        margin-top: 8px;
+        border-radius: 10px;
+        overflow: hidden;
     }
 
     .board-item{
@@ -305,7 +310,6 @@
         height: 40px;
         align-items: center;
         background-color: #F4F2F0;
-        border-radius: 10px;
         color: #5C4435;
     }    
 
@@ -321,9 +325,10 @@
         z-index: 1;
     }
     .board-item-progress{
-        height: 40px;
+        height: 6px;
         background-color: #867167;
-        position: absolute;
+        position: relative;
+        top: -6px;
         border-radius: 10px;
     }
 
@@ -362,6 +367,9 @@
         width: 95%;
         margin: auto;
         margin-left: 50px;
+    }
+    #sptMsgMobile{
+        display: none;
     }
     .clinician-icon{
         margin-right: 40px;
@@ -632,9 +640,10 @@
     }
 
     .board-area{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        height: 70px;
+        overflow: hidden;
+        border-radius: 35px;
+        margin-top: 10px;
     }
     .board-item{
         display: flex;
@@ -643,17 +652,26 @@
         height: 70px;
         align-items: center;
         background-color: #F4F2F0;
-        border-radius: 10px;
-        margin-top: 10px;
+        border-radius: 35px;
     }    
     .board-item-left{
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        z-index: 1;
     }
 
     .board-item-right{
         margin-right: 2vw;
+        z-index: 1;
+    }
+
+    .board-item-progress {
+        height: 10px;
+        background-color: #867167;
+        position: relative;
+        border-radius: 35px;
+        top: -10px;
     }
 
     .item-index{
