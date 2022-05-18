@@ -59,17 +59,19 @@
               {{else}}
               {{/if}}
             {{/if}}
+          </div>
+            <div class="container">
             {{#if loggedin}}
-            <form method="POST" action="/logout" style="margin-bottom: 20px;">
+            <form method="POST" action="/logout" style="margin-bottom: 60px;">
               <button>Log out</button> 
             </form>
             {{else}}
-            <a href="/login">
+            <a href="/login" style="margin-bottom: 120px;">
               <i class="iconfont">&#xe608;</i>
               <span>Login</span>
             </a>
             {{/if}}
-          </div>
+            </div>
         </div>
       </div>
       {{!-- Desktop Version --}}
