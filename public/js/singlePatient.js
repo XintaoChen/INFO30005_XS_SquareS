@@ -33,7 +33,7 @@ function singlePatient() {
     let tbody =
       document.getElementsByClassName("sp-table-data")[0].children[0]
         .children[0];
-    tbody.innerHTML = "";
+    tbody.innerHTML = "<div></div>";
     for (let date of dateList) {
       let tr = document.createElement("tr");
       tr.classList.add("data-row");
@@ -71,7 +71,7 @@ function singlePatient() {
         }
         tr.appendChild(td);
       }
-      tbody.appendChild(tr);
+      tbody.insertBefore(tr, tbody.children[0]);
     }
   }
 
