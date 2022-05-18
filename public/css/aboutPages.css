@@ -298,7 +298,10 @@ table {
     line-height: 140%;
     letter-spacing: 0.01em;
     z-index: 999;
+    flex-direction: column;
+    justify-content: space-between;
   }
+
 
   header .menuButton .menu button {
     border: none;
@@ -308,6 +311,7 @@ table {
     line-height: 140%;
     letter-spacing: 0.01em;
     background-color: #F4F2F0;
+    text-align: left;
   }
 
   header .menuButton .menu button span {
@@ -315,7 +319,7 @@ table {
   }
 
   header .menuButton .menu .container {
-    padding: 134px 34px;
+    padding: 0px 34px;
   }
 
   header .menuButton .menu .container a {
@@ -610,7 +614,6 @@ table {
   #menuButtonDesktop{
     display: block;
   }
-  
   header .naviBar a {
     text-decoration: none;
   }
