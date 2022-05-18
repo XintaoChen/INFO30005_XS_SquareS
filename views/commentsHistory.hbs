@@ -24,8 +24,9 @@
                     <table id="patient-list-table">
                         {{#each patientList}}
                             <tr class="ch-patient-list-row">
-                                <td class="ch-patient-name">{{nameGiven}} {{nameFamily}}</td>
+                                <td class="ch-patient-name"><a href="/comment/6254e9b4bcd6f0a12a5e5eda/?filterId={{_id}}">{{nameGiven}} {{nameFamily}}</a></td>
                             </tr>
+                        
                         {{/each}}
                     </table>
                 </div>
@@ -100,4 +101,3 @@
     </div>
 </div>
 {{/with}}
-
