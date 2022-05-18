@@ -10,16 +10,6 @@
 
 }
 
-
-@font-face {
-  font-family: "iconfont";
-  /* Project id 3263062 */
-  src: url('../font/icon-font/iconfont.woff2?t=1648121252195') format('woff2'),
-    url('../font/icon-font/iconfont.woff?t=1648121252195') format('woff'),
-    url('../font/icon-font/iconfont.ttf?t=1648121252195') format('truetype'),
-    url('../font/icon-font/iconfont.svg?t=1648121252195#iconfont') format('svg');
-}
-
 html,
 body,
 div,
@@ -549,7 +539,7 @@ table {
     text-decoration-line: underline;
     font-weight: 500;
     line-height: 19px;
-    font-family: "playfairDisplay";
+    font-family: 'lato';
   }
 
   .whiteText {
@@ -591,7 +581,7 @@ table {
     position: absolute;
     width: 428px;
     height: 76px;
-    top: 15px;
+    top: 12px;
   }
 
   .logo .homeTitle {
@@ -627,10 +617,10 @@ table {
     align-items: center;
     flex-direction: column;
     margin-right: 80px;
-    color: #867167;
+    color: #9b7859;
     font-family: "playfairDisplay";
     font-size: 38px;
-    font-weight: 400;
+    /* font-weight: 400; */
     text-align: center;
     cursor: pointer;
   }
@@ -642,7 +632,11 @@ table {
 
   header .naviBarItem .itemName {
     /* display: flex; */
-    line-height: 80px;
+    line-height: 100px;
+  }
+
+  header .naviBarItem .itemName:hover {
+    color: #867167;
   }
 
   header .naviBarItem .highLight {
@@ -655,7 +649,7 @@ table {
   }
 
   header .login {
-    line-height: 80px;
+    line-height: 100px;
     margin: 0;
     padding: 0px 20px;
     background-color: #867167;
