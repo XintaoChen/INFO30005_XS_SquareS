@@ -1,4 +1,19 @@
 @media screen and (min-width: 1366px) {
+    #maskLayer {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 9;
+        background-color: #000;
+        opacity: 0.8;
+    }
+
+    #maskLayer.cdb-hidden {
+        display: none;
+    }
+
     .content {
         padding: 40px 0 0;
     }
@@ -128,7 +143,12 @@
         align-items: center;
         transform: translate(-50%, -50%);
         border-radius: 5px;
-        box-shadow: 0 0 0 999px rgba(0, 0, 0, .8);
+        box-shadow: 0 0 0 5px rgba(0, 0, 0, .8);
+        z-index: 10;
+    }
+
+    .cdb-register-area.cdb-hidden {
+        display: none;
     }
 
     .cdb-register-area input {

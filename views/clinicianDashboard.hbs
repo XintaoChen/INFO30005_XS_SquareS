@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="/css/clinicianDashboard.css" />
 </head>
+<div id="maskLayer" class="cdb-hidden"></div>
 {{#with clinicianDashboardData}}
 <div class="banner">
     <div class="welcome-message">Welcome, Dr. {{nameGiven}}!</div>
@@ -27,7 +28,7 @@
             <button class="add-button">
                 <div class="add">+</div>
             </button>
-            <form action="/patient/add" method="POST" class="cdb-register-area">
+            <form action="/patient/add" method="POST" class="cdb-register-area cdb-hidden">
                 <input type="text" name="emailAddress" placeholder="emailAddress"/>
                 <input type="text" name="dateOfBirth" placeholder="dateOfBirth: YYYYMMDD"/>
                 <input type="text" name="nameGiven" placeholder="nameGiven"/>
@@ -104,7 +105,21 @@
 {{/with}}
 
 <script>
+    let addBtn = document.getElementsByClassName("add-button")[0]
+    let maskLayer = document.getElementById('maskLayer');
     let registerArea = document.getElementsByClassName("cdb-register-area")[0];
+    addBtn.addEventListener('click', () => {
+        if(registerArea.classList.contains('cdb-hidden')){
+            registerArea.classList.remove("cdb-hidden")
+            maskLayer.classList.remove('cdb-hidden')
+        }
+    })
+
+    maskLayer.addEventListener('click', () => {
+        maskLayer.classList.add("cdb-hidden");
+        registerArea.classList.add("cdb-hidden")
+        
+    })
 
     class Btn {
         constructor(btnNode){
