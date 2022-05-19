@@ -319,16 +319,21 @@
 
     // display current date and day
     var today = new Date();
-    var day = today.getDay();
+    var day0 = today.getDay();
     var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
-    var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();    
-    document.getElementById("displayDate").innerHTML = date + ', ' + daylist[day];
+    var month = ((today.getMonth() + 1) < 10 ) ? "0" + (today.getMonth() + 1) : today.getMonth() + 1;
+    var day = (today.getDate() < 10 ) ? "0" + today.getDate() : today.getDate();
+    var date = day+'/'+month+'/'+today.getFullYear();    
+    document.getElementById("displayDate").innerHTML = date + ', ' + daylist[day0];
 
     // display date from start of the week
     var diff = today.getDate() - day + (day === 0 ? -6 : 1);
     var startOfWeek = new Date(today.setDate(diff));
-    var date_startOfWeek = startOfWeek.getDate()+'/'+(startOfWeek.getMonth()+1)+'/'+startOfWeek.getFullYear();
+    var sowMonth = ((startOfWeek.getMonth() + 1) < 10 ) ? "0" + (startOfWeek.getMonth() + 1) : startOfWeek.getMonth() + 1;
+    var sowDay = (startOfWeek.getDate() < 10 ) ? "0" + startOfWeek.getDate() : startOfWeek.getDate();
+    var date_startOfWeek = sowDay+'/'+sowMonth+'/'+startOfWeek.getFullYear();
     document.getElementById("displayStartOfWeek").innerHTML = 'Week of ' + date_startOfWeek;
+
 
     function showSptMsg(){
         if(document.getElementById("greeting").style.display == "none"){

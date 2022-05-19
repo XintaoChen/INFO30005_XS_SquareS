@@ -60,29 +60,23 @@ const getCommentsHistory = async (req, res, next) => {
                         tempRecord.isRequired = isRequired,
                         tempRecord.comment = element.comment;
                         tempRecord.value = element.value;
+                        // tempRecord.date = dtFormat(element.date);
                         tempRecord.date = element.date;
+                        tempRecord.commentDate = dtFormat(element.date);
                         recordList.push(tempRecord);
+                        tempDate = (record.date>tempDate) ? record.date:tempDate;
                       }
                     });
                   }
                 }
-                return {
-                  // upperBound: upperBound,
-                  // lowerBound: lowerBound,
-                  // dataName: dataName,
-                  // unit: unit,
-                  // value: value,
-                  // comment: comment,
-                  // date: date,
-                  // isRequired: isRequired,
-                }
+                return {}
               })
             )
             return {
               _id: patient._id.toString(),
               nameGiven: patient.nameGiven,
               nameFamily: patient.nameFamily,
-              dateLatest: tempDate
+              dateLatest: tempDate,
             }
           })
         )
@@ -91,6 +85,7 @@ const getCommentsHistory = async (req, res, next) => {
           patientList: patientList,
         };
         tempData.patientList.sort(compare("dateLatest"))
+        recordList.sort(compare("date"))
         //store all history data
         tempData.allHistoryData = filterByPId(filterId, recordList)
         console.log(tempData)
@@ -125,6 +120,17 @@ function filterByPId(id, list){
     })
     return tempList;
   }
+}
+
+function dtFormat(unformatDate) {
+  date = new Date(unformatDate);
+  year = date.getFullYear();
+  month = ((date.getMonth() + 1) < 10 ) ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+  day = (date.getDate() < 10 ) ? "0" + date.getDate() : date.getDate();
+  hour = (date.getHours() < 10 ) ? "0" + date.getHours() : date.getHours();
+  minute = (date.getMinutes() < 10 ) ? "0" + date.getMinutes() : date.getMinutes();
+  formatDate = hour + ":" + minute + ", " + day + "/" + month + "/" + year
+  return formatDate;
 }
 
 module.exports = {
