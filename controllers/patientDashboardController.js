@@ -62,8 +62,10 @@ const getTodayDataPatient = async (req, res, next) => {
                 var tempTime = "";
                 tempData.recordingData[j].comment =
                   tempData.recordInfo[i].comment;
-                tempTime += tempData.recordInfo[i].date.getHours();
-                tempTime += ":";
+                tempTime += 
+                  tempData.recordInfo[i].date.getHours() < 10
+                  ? "0" + tempData.recordInfo[i].date.getHours()
+                  : tempData.recordInfo[i].date.getHours();                tempTime += ":";
                 tempTime +=
                   tempData.recordInfo[i].date.getMinutes() < 10
                     ? "0" + tempData.recordInfo[i].date.getMinutes()
