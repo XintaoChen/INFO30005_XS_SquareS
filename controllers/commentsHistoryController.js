@@ -60,8 +60,11 @@ const getCommentsHistory = async (req, res, next) => {
                         tempRecord.isRequired = isRequired,
                         tempRecord.comment = element.comment;
                         tempRecord.value = element.value;
-                        tempRecord.date = dtFormat(element.date);
+                        // tempRecord.date = dtFormat(element.date);
+                        tempRecord.date = element.date;
+                        tempRecord.commentDate = dtFormat(element.date);
                         recordList.push(tempRecord);
+                        tempDate = (record.date>tempDate) ? record.date:tempDate;
                       }
                     });
                   }
@@ -73,7 +76,7 @@ const getCommentsHistory = async (req, res, next) => {
               _id: patient._id.toString(),
               nameGiven: patient.nameGiven,
               nameFamily: patient.nameFamily,
-              dateLatest: tempDate
+              dateLatest: tempDate,
             }
           })
         )
@@ -82,6 +85,7 @@ const getCommentsHistory = async (req, res, next) => {
           patientList: patientList,
         };
         tempData.patientList.sort(compare("dateLatest"))
+        recordList.sort(compare("date"))
         //store all history data
         tempData.allHistoryData = filterByPId(filterId, recordList)
         console.log(tempData)

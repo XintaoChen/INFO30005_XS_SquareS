@@ -184,7 +184,7 @@
         height: 50px;
         margin: auto;
         color: #5C4435;
-        font-size: 18px;
+        font-size: 24px;
         font-weight: bold;
         display: flex;
         flex-direction: row;
@@ -211,15 +211,15 @@
     }
     .ch-comments-history td:nth-child(1) {
         /* width: 150px; */
-        width: 10%;
+        width: 13%;
     }
     .ch-comments-history td:nth-child(2) {
         /* width: 400px; */
-        width: 25%;
+        width: 45%;
     }
     .ch-comments-history td:nth-child(3) {
         /* width: 580px; */
-        width: 45%;
+        width: 17%;
     }
     .ch-comments-history td:nth-child(4) {
         /* width: 40px; */
@@ -227,7 +227,7 @@
     }
     .ch-comments-history td:nth-child(5) {
         /* width: 250px; */
-        width: 15%;
+        width: 20%;
     }
 
     .ch-comment-row td:nth-child(1) {
