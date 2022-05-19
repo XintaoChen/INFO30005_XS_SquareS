@@ -385,6 +385,43 @@
             }
         });
     }
+
+    let saveBtn = document.getElementById("sp-data-save-btn");
+
+    let upperBoundInputs = document.getElementsByClassName("data-setting-upperbound");
+    for(let input of upperBoundInputs) {
+        input.addEventListener('keyup', function() {
+            if(+this.value <= +this.parentElement.nextElementSibling.children[2].value){
+                this.style.backgroundColor = "#F8AFA6";
+                saveBtn.disabled = true;
+            } else {
+                this.style.backgroundColor = "transparent"
+                saveBtn.disabled = false;
+            }
+        })
+    }
+
+    let lowerBoundInputs = document.getElementsByClassName("data-setting-lowerbound");
+    for(let input of lowerBoundInputs) {
+        input.addEventListener('keyup', function() {
+            if(Number(this.value) >= Number(this.parentElement.parentElement.children[0].children[2].value)){
+                this.style.backgroundColor = "#F8AFA6";
+                console.log("not valid")
+                saveBtn.disabled = true;
+            } else {
+                this.style.backgroundColor = "transparent"
+                saveBtn.disabled = false;
+                console.log("valid")
+            }
+        })
+    }
+
+    function validateUpper(e) {
+        console.log(this);
+        console.log(e)
+    }
+
+    function validateLower(){}
 </script>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="/js/singlePatient.js" type="module"></script>
