@@ -302,10 +302,16 @@ table {
     letter-spacing: 0.01em;
     background-color: #F4F2F0;
     text-align: left;
+    padding: 0;
   }
 
-  header .menuButton .menu button span {
-    padding: 0 34px;
+  header .menuButton .menu button .back-btn {
+    padding: 0 0 0 56px;
+  }
+
+  header .menuButton .menu button i {
+    font-size: 24px;
+    padding: 20px;
   }
 
   header .menuButton .menu .container {
@@ -354,7 +360,7 @@ table {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 420px;
+    min-height: 435px;
   }
 
   .content .title img {
@@ -661,6 +667,13 @@ table {
     background-color: #BFA38A;
   }
 
+  i.icon-logout,
+  i.icon-long-right-arrow {
+    font-size: 1em;
+    padding: 1em;
+    color: #1b141f;
+  }
+
   header .menuButton {
     display: none;
   }
@@ -697,7 +710,7 @@ table {
 
   header .menuButton .menu button {
     border: none;
-    margin: 1.5em 0.5em;
+    margin: 1.5em 50px;
     color: inherit;
     font-size: 1em;
     line-height: 1.6;
@@ -711,7 +724,7 @@ table {
   }
 
   header .menuButton .menu .container {
-    padding: 134px 34px;
+    padding: 120px 34px;
   }
 
   header .menuButton .menu .container a {

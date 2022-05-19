@@ -13,8 +13,9 @@
 #cp-data>.cp-footer {
   display: flex;
   justify-content: space-between;
-  font-size: 0.5em;
+  font-size: 1em;
   cursor: pointer;
+  margin-top: 2%;
 }
 
 #cp-year,
@@ -85,4 +86,5 @@
 
 .cp-active {
   font-weight: bold;
+  background-color: #f4f2f0;
 }
