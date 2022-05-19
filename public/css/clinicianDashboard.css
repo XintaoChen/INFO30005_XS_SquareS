@@ -199,11 +199,34 @@
         background-color: #FFFFFF;
     }
 
-    .right-page .comment-text {
+    .right-page .right-title-line {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .right-page .right-title-line .comment-text {
         font-size: 36px;
         font-weight: bolder;
         padding-top: 6px;
         color: #A09E9D;
+    }
+
+    .right-page .right-title-line .show-more-text {
+        text-indent: 175px;
+    }
+
+    .right-page .right-title-line .show-more-icon {
+        width: 36px;
+        height: 36px;
+        border: 0px;
+        background: none;
+        cursor: pointer;
+        background-size: contain;
+        background-image: url(../img/right_arrow.png);
+        background-repeat: no-repeat;
     }
 
     .right-page .comments-for-today {
