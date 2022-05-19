@@ -10,7 +10,9 @@ const getTodayDataPatient = async (req, res, next) => {
   var today = new Date();
   try {
     // const tempDataNoRecords = await patientModel.findById(req.params.id).lean()
+    const engagementRate = await updateEngagementRate(req.params.id);
     const leaderBoard = await updateLeaderBoard();
+    let tempData = {leaderBoard : leaderBoard} 
     //get all required data from database
     patientModel.aggregate(
       [
@@ -109,6 +111,36 @@ const postTodayDataPatient = (req, res) => {
   });
   res.redirect("/patient/today/");
 };
+
+async function updateEngagementRate(id) {
+    const yesterday = moment().subtract(1, 'days').endOf('day');
+    const patientId = mongoose.Types.ObjectId(id);
+    const timeStamp = patientId.getTimestamp();
+
+    const totalDays = yesterday.diff(moment(timeStamp), 'days') + 1;
+    var engRateBool = false;
+
+    const records = await recordModel.aggregate([
+        {$match: {patientId : patientId, date : {$lte: new Date(yesterday)} }},
+        {$group: { _id: {$dateToString: { format: "%Y-%m-%d", date: "$date" }}, count: {$sum: 1}}}
+    ])
+
+    const recordDays = records.length;
+    const engagementRate = (recordDays/totalDays * 100).toFixed(1);
+
+    if (engagementRate >= 80) {
+        engRateBool = true;
+    }
+
+    const update = {
+        engagementRate : engRateBool
+    }
+
+    const result = await patientModel.findByIdAndUpdate(patientId, update, { new : true }).lean();
+    
+}
+
+
 
 async function updateLeaderBoard() {
   //Get last Sunday's and this Monday's dates
