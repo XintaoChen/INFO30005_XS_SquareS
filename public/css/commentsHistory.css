@@ -127,6 +127,10 @@
         width: 100%;
         height: 20px;
     }
+    .ch-patient-list .ch-bottom-padding-line{
+        width: 100%;
+        height: 45px;
+    }
     #patient-list-table{
         width: 100%;
     }
@@ -137,12 +141,37 @@
     }
     .ch-patient-list-row .ch-patient-name{
         cursor: pointer;
+        text-decoration: none;
     }
     .ch-patient-list td{
         display: block;
         text-align: center;
         line-height: 50px;
         height: 100%;
+    }
+
+    .ch-reselect {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .ch-reselect-btn {
+        width: 30px;
+        height: 30px;
+        border: 0px;
+        background: none;
+        cursor: pointer;
+        background-size: contain;
+        background-image: url(../img/reselect.png);
+        background-repeat: no-repeat;
+    }
+    .ch-reselect-text {
+        position: relative;
+    }
+    .ch-reselect-text h2 {
+        font-size: 24px;
     }
 
     .ch-right-page .ch-up-padding-line{
@@ -153,6 +182,7 @@
         width: 100%;
         height: 20px;
     }
+
     .ch-comments-history{
         display: flex;
         flex-direction: column;
