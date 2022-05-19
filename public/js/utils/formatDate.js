@@ -79,10 +79,17 @@ export const listOfMonth = (date) => {
   const time = date.getTime();
   const day = date.getDate();
   const oneDayTime = 24 * 60 * 60 * 1000;
-  let startOfThisWeek = time - day * oneDayTime;
+  const endOfThisMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  let num;
+  if (new Date() - endOfThisMonth < 0) {
+    num = new Date().getDate();
+  } else {
+    num = endOfThisMonth.getDate();
+  }
+  let startOfThisMonth = time - day * oneDayTime;
   let result = [];
-  for (let i = 0; i < day; i++) {
-    result[i] = dateFormat(startOfThisWeek + (i + 1) * oneDayTime);
+  for (let i = 0; i < num; i++) {
+    result[i] = dateFormat(startOfThisMonth + (i + 1) * oneDayTime);
   }
   return result;
 };

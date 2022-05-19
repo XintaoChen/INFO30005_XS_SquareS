@@ -9,6 +9,9 @@
     chartSize: 0,
     completionRate: 0,
     init: function (element_id, containerSize) {
+      document.getElementById(element_id).style.width = containerSize + "px";
+      document.getElementById(element_id).style.height = containerSize + "px";
+
       this.completionRate = document.getElementById(element_id).innerHTML;
       document.getElementById(element_id).innerHTML = "";
       this.chartSize = (containerSize * 0.9) / 2;
@@ -67,7 +70,6 @@
         "px";
       document.getElementById("crcp-completion").style.strokeDashoffset =
         completion;
-      console.log(this.totalCompletion);
     },
   };
   window.CompletionRateChartPlugin = CompletionRateChartPlugin;
