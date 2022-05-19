@@ -36,7 +36,7 @@ const moment = require('moment');
             const result = await Patient.findByIdAndUpdate(patientId, updates, { new : true }).lean();
 
         } catch (error) {
-            console.log("err");
+            console.log(err);
         }
         
     }

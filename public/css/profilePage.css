@@ -9,34 +9,49 @@
 
     .data-field{
         line-height: 5vh;
+        color: #000000;
     }
+
     .badge{
+        position: absolute;
         height: 32px;
         width: 32px;
-        border: none;
-        display: inline;
+        left: 10px;
+        top: 100px;
     }
 
     .value{
         width: 80vw;
         line-height: 0vh;
+        color: #000000;
+        margin-top: 20px;
+        margin-bottom: 15px;
     }
 
     .information-box{
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-bottom: 5vh;
+        padding-bottom: 10vh;
         margin-inline: 10vw;
     }
 
-
-    #profile-name{
+    .clinician-profile-name{
         color: #000000;
         text-align: center;
         width: -webkit-fill-available;
         border-bottom: none;
         margin-block-start: 120px;
+    }
+
+    #profile-name{
+        position: relative;
+        color: #000000;
+        text-align: center;
+        border-bottom: none;
+        margin-block-start: 120px;
+        margin-left: 10%;
+        margin-right: 2%;
     }
 
     .profile-photo{
@@ -128,11 +143,15 @@
 
     .data-field{
         line-height: 5vh;
+        color: #000000;
     }
 
     .value{
         width: 80vw;
         line-height: 0vh;
+        color: #000000;
+        margin-top: 45px;
+        margin-bottom: 30px;
     }
 
     .information-box{
@@ -140,6 +159,15 @@
        padding-top: 5vh;
        padding-bottom: 15vh;
        display: flex;
+       color: #000000;
+    }
+
+    .clinician-profile-name{
+        color: #000000;
+        text-align: center;
+        width: -webkit-fill-available;
+        border-bottom: none;
+        margin-block-start: 120px;
     }
 
     #profile-name{
@@ -163,6 +191,7 @@
         height: 1px;
         border: none;
         background-color: #000000;
+        margin-bottom: 25px;
     }
 
     label{
@@ -208,6 +237,14 @@
         margin-top: 40px;
         text-align: center;
         
+    }
+
+    .badge{
+        position: absolute;
+        height: 32px;
+        width: 32px;
+        left: 10px;
+        top: 10px;
     }
 
     #submit-btn{

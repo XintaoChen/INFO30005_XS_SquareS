@@ -31,6 +31,7 @@ const patientSchema = new mongoose.Schema({
     profilePhoto: Buffer,
     briefTextBio: String,
     supportMessage: String,
+    engagementRate: Boolean,
 })
 
 const Patient = mongoose.model('Patient', patientSchema, 'Patient')

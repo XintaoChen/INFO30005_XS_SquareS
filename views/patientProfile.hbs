@@ -6,9 +6,13 @@
 <div class ="upper-box"></div>
 <button type="button" class="btn" id="edit-btn" onclick="makeEditable()"></button>
 <form action="/patient/profile/edit" method="post" id="edit-profile">
-    <img class="profile-photo" src="/img/defaultProfile.png", alt="default_profile_picture">
+    <div class="inner-box"> 
+        <img class="profile-photo" src="/img/patient1.png", alt="default_profile_picture">
+        {{#if this.engagementRate}}
+            <img class="badge" src="/img/badge.png" alt="badge">
+        {{/if}}
+    </div>
     <input class="edit-input" id="profile-name" name="profileName" type="text" value="{{this.profileName}}" disabled>
-    <input class="badge" type="image" src="/img/badge.png" alt="badge" disabled>
     <div class = "information-box">
         <div class="info-text">
             <div id="non-editable">
