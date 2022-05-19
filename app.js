@@ -48,6 +48,7 @@ app.engine(
             hData3: (x) => x == '625576acbcd6f0a12a5e5fa8',
             hData4: (x) => x == '625576b0bcd6f0a12a5e5fa9',
             hData: (x) => x == true,
+            true: (x) => x == true,
             compare: (x, y) => x > y,
             true: (x) => x == true,
             false: (x) => x == false,
@@ -67,6 +68,8 @@ const patientRouter = require("./routes/patientRouter");
 const recordRouter = require("./routes/recordRouter");
 const clinicianDashboardRouter = require("./routes/clinicianDashboardRouter");
 const clinicianProfileRouter = require('./routes/clinicianProfileRouter')
+const { patientDashboardRouter } = require('./routes/patientDashboardRouter')
+const commentsHistoryRouter = require('./routes/commentsHistoryRouter')
 
 // middleware to log a message each time a request arrives at the server - handy for debugging
 app.use((req, res, next) => {
@@ -88,6 +91,8 @@ app.use("/clinician", clinicianDashboardRouter);
 // app.use('/patient/clinician', clinicianProfileRouter)
 
 // app.use('/patient/profile', patientProfileRouter)
+
+app.use('/comment', commentsHistoryRouter)
 
 // Tells the app to send the string: "Our demo app is working!" when you
 // hit the '/' endpoint.
