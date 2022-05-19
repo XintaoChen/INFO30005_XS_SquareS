@@ -8,7 +8,7 @@ const Clinician = require('../models/clinician')
             console.log(err);
         }
         console.log(clinician);
-        res.render('patientProfile.hbs', {
+        res.render('clinician.hbs', {
             clinicianData : clinician,
             loggedin: req.isAuthenticated(),
             isPatient: false,
