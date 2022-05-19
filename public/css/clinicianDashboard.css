@@ -211,9 +211,10 @@
         background-color: #F4F2F0;
         height: 650px;
     }
-    /* .right-page .comments-for-today table{
-        border-radius: 25px;
-    } */
+    .right-page .comments-for-today table{
+        /* border-radius: 25px; */
+        width: 100%;
+    }
 
 
     .data-record {

@@ -60,22 +60,13 @@ const getCommentsHistory = async (req, res, next) => {
                         tempRecord.isRequired = isRequired,
                         tempRecord.comment = element.comment;
                         tempRecord.value = element.value;
-                        tempRecord.date = element.date;
+                        tempRecord.date = dtFormat(element.date);
                         recordList.push(tempRecord);
                       }
                     });
                   }
                 }
-                return {
-                  // upperBound: upperBound,
-                  // lowerBound: lowerBound,
-                  // dataName: dataName,
-                  // unit: unit,
-                  // value: value,
-                  // comment: comment,
-                  // date: date,
-                  // isRequired: isRequired,
-                }
+                return {}
               })
             )
             return {
@@ -125,6 +116,17 @@ function filterByPId(id, list){
     })
     return tempList;
   }
+}
+
+function dtFormat(unformatDate) {
+  date = new Date(unformatDate);
+  year = date.getFullYear();
+  month = ((date.getMonth() + 1) < 10 ) ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+  day = (date.getDate() < 10 ) ? "0" + date.getDate() : date.getDate();
+  hour = (date.getHours() < 10 ) ? "0" + date.getHours() : date.getHours();
+  minute = (date.getMinutes() < 10 ) ? "0" + date.getMinutes() : date.getMinutes();
+  formatDate = hour + ":" + minute + ", " + day + "/" + month + "/" + year
+  return formatDate;
 }
 
 module.exports = {
