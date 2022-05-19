@@ -75,7 +75,7 @@
                 <table id="comments-history-table">
                         {{#each allHistoryData}}
                             {{#if (true isRequired)}}
-                                    <tr class="ch-comment-row" data-href="/patient/{{patientId}}">
+                                    <tr class="ch-comment-row" data-href="/clinician/patient/{{patientId}}">
                                         <td class="ch-patient-name">{{nameGiven}} {{nameFamily}}</td>
                                         <td class="ch-comment">{{comment}}</td>
                                         <td class="ch-time">{{date}}</td>
