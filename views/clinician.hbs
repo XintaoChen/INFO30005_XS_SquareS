@@ -1,0 +1,91 @@
+<head>
+    <link rel="stylesheet" href="/css/profilePage.css" />
+</head>
+
+{{#with clinicianData}}
+<div class ="upper-box"></div>
+<button type="button" class="btn" id="edit-btn" onclick="makeEditable()"></button>
+<form action="/clinician/profile/edit" method="post" id="edit-profile">
+    <img class="profile-photo" src="/img/clinicianProfile.png", alt="default_profile_picture">
+    <div class="info-text">
+        <div id="non-editable">
+            <label class="data-field">Full name</label>
+            <input class="non-edit-input" type="text" value="{{this.nameGiven}} {{this.nameFamily}}" disabled>
+            
+            <label class="data-field">Email Address</label>
+            <input class="non-edit-input" type="email" value="{{this.emailAddress}}" disabled>
+        </div>
+
+        <div class="edit-info">
+            <label class="data-field" for="clinicNumber">Clinic Number</label>
+            <input class="edit-input" type="text" name="clinicNumber" value="{{this.clinicNumber}}" disabled> 
+            
+            <label class="data-field" for="homeAddress">Clinic Address</label>
+            <input class="edit-input" type="text" name="homeAddress" value="{{this.clinicAddress}}" disabled>
+                
+            <label class="data-field" for="password">Password</label>
+            <input class="edit-input" type="password" name="password" value="{{this.password}}" disabled>
+                
+            <label class="data-field" for="briefTextBio">Brief Text Bio</label>
+            <input class="edit-input" type="text" name="briefTextBio" value="{{this.briefTextBio}}" disabled>
+        </div>
+        <div class = "button">
+            <input id="submit-btn" type="submit" value=" Save" style="visibility:hidden">
+            <input id="reset-btn" type="reset" value=" Cancel" onclick="cancelChanges()"style="visibility:hidden">
+        </div>
+    </div>
+</form>
+{{/with}}
+
+<script>
+
+    var non_editable_label = document.getElementById("non-editable").querySelectorAll("label");
+    var non_editable_input = document.getElementById("non-editable").querySelectorAll("input");
+    var edit_btn = document.getElementById("edit-btn");
+    var submitBtn = document.getElementById("submit-btn");
+    var resetBtn = document.getElementById("reset-btn");
+    var inputs = document.getElementsByClassName("edit-input");
+
+    function makeEditable() {
+
+        for (i=0; i<non_editable_label.length; i++) {
+            non_editable_label[i].style.color = "#C4C4C4"
+        }
+
+        for (i=0; i<non_editable_input.length; i++) {
+            non_editable_input[i].style.color = "#C4C4C4"
+            non_editable_input[i].style.borderBottomColor = "#C4C4C4"
+        }
+        
+        for (i=0; i<inputs.length; i++) {
+            inputs[i].disabled = false;
+        }
+
+        submitBtn.style.visibility = "visible";
+        resetBtn.style.visibility = "visible";
+        //edit_btn.style.backgroundImage = "url(../img/pen_disabled.png)";
+
+    }
+
+    function cancelChanges() {
+    
+        for (i=0; i<non_editable_label.length; i++) {
+            non_editable_label[i].style.color = "#000000"
+        }
+
+        for (i=0; i<non_editable_input.length; i++) {
+            non_editable_input[i].style.color = "#5C4435"
+            non_editable_input[i].style.borderBottomColor = "#000000"
+        }
+        
+        for (i=0; i<inputs.length; i++) {
+            inputs[i].disabled = true;
+        }
+
+        //edit_btn.style.backgroundImage = "url(../img/pen_enabled.png)";
+        submitBtn.style.visibility = "hidden";
+        resetBtn.style.visibility = "hidden";
+
+    }
+
+</script>
