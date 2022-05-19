@@ -120,7 +120,7 @@ async function updateEngagementRate(id) {
     const totalDays = yesterday.diff(moment(timeStamp), 'days') + 1;
     var engRateBool = false;
 
-    const records = await recordModel.aggregate([
+    const records = await Record.aggregate([
         {$match: {patientId : patientId, date : {$lte: new Date(yesterday)} }},
         {$group: { _id: {$dateToString: { format: "%Y-%m-%d", date: "$date" }}, count: {$sum: 1}}}
     ])

@@ -5,7 +5,6 @@ const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 const flash = require('express-flash')
 const session = require('express-session')
 app.use(flash())
@@ -27,10 +26,6 @@ if (app.get('env') === 'production') {
 // Initialise Passport.js
 const passport = require('./passport')
 app.use(passport.authenticate('session'))
-// Load authentication router
-const authRouter = require('./routes/auth')
-app.use(authRouter)
-
 
 
 app.use(express.static('public'))
@@ -62,13 +57,15 @@ require("./models/db");
 app.set("view engine", "hbs");
 
 // link to our router
-
 const { patientDashboardRouter } = require("./routes/patientDashboardRouter");
-const patientRouter = require("./routes/patientRouter");
-const recordRouter = require("./routes/recordRouter");
+// const patientRouter = require("./routes/patientRouter");
+// const recordRouter = require("./routes/recordRouter");
 const clinicianDashboardRouter = require("./routes/clinicianDashboardRouter");
-const clinicianProfileRouter = require('./routes/clinicianProfileRouter')
-const commentsHistoryRouter = require('./routes/commentsHistoryRouter')
+// const clinicianProfileRouter = require('./routes/clinicianProfileRouter')
+// const commentsHistoryRouter = require('./routes/commentsHistoryRouter')
+// Load authentication router
+const authRouter = require('./routes/auth')
+app.use(authRouter)
 
 // middleware to log a message each time a request arrives at the server - handy for debugging
 app.use((req, res, next) => {
@@ -76,28 +73,19 @@ app.use((req, res, next) => {
   next();
 });
 
-// the demo routes are added to the end of the '/demo-management' path
-
-// app.use("/clinician/patient", patientRouter);
-
+//All routers here
 app.use("/patient", patientDashboardRouter);
-
-// app.use("/record", recordRouter);
 
 app.use("/clinician", clinicianDashboardRouter);
 
-// app.use('/patient/clinician', clinicianProfileRouter)
 
-// app.use('/patient/profile', patientProfileRouter)
+// // Tells the app to send the string: "Our demo app is working!" when you
+// // hit the '/' endpoint.
+// app.get('/ajax', (req, res) => {
+//     res.render('test.hbs')
+// })
 
-// app.use('/comment', commentsHistoryRouter)
-
-// Tells the app to send the string: "Our demo app is working!" when you
-// hit the '/' endpoint.
-app.get('/ajax', (req, res) => {
-    res.render('test.hbs')
-})
-
+//Pages not using routers (static pages)
 app.get('/', (req, res) => {res.redirect('/home')})
 app.get('/home', (req, res) => {
     if(req.isAuthenticated()){
