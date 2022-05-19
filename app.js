@@ -82,7 +82,7 @@ app.use((req, res, next) => {
 
 app.use("/patient", patientDashboardRouter);
 
-app.use("/record", recordRouter);
+// app.use("/record", recordRouter);
 
 app.use("/clinician", clinicianDashboardRouter);
 
