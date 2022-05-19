@@ -9,7 +9,7 @@
 <div class="comments-page">
     <div class="ch-left-page">
         <div class="ch-back">
-            <button type="button" class="ch-back-button"></button>
+            <button type="button" class="ch-back-button" onclick="window.location='/clinician'"></button>
             <div class="ch-back-text">
                 <h2>Dashboard</h2>
             </div>
@@ -78,7 +78,7 @@
                                     <tr class="ch-comment-row" data-href="/clinician/patient/{{patientId}}">
                                         <td class="ch-patient-name">{{nameGiven}} {{nameFamily}}</td>
                                         <td class="ch-comment">{{comment}}</td>
-                                        <td class="ch-time">{{date}}</td>
+                                        <td class="ch-time">{{commentDate}}</td>
                                         <td class="ch-padding"></td>
                                         <td class="ch-health-data">{{dataName}} - {{value}}</td>
                                     </tr>
