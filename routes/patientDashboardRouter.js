@@ -1,6 +1,8 @@
 const express = require('express')
 const patientDashboardController = require('../controllers/patientDashboardController')
 const leaderBoardController = require('../controllers/leaderBoardController')
+const patientProfileController = require('../controllers/patientProfileController')
+const clinicianProfileController = require('../controllers/clinicianProfileController')
 
 const patientDashboardRouter = express.Router()
 
@@ -14,7 +16,7 @@ const isAuthenticated = (req, res, next) => {
     }
 
 patientDashboardRouter.get(
-    '/', isAuthenticated,
+    '/today', isAuthenticated,
     patientDashboardController.getTodayDataPatient
 )
 
@@ -29,6 +31,19 @@ patientDashboardRouter.post(
 )
 
 patientDashboardRouter.get('/:d/leaderBoard', leaderBoardController.updateLeaderBoard)
+
+patientDashboardRouter.get(
+    '/profile', isAuthenticated,
+    patientProfileController.getPatientProfile
+)
+patientDashboardRouter.post(
+    '/profile/edit', isAuthenticated,
+    patientProfileController.updatePatientProfile
+)
+patientDashboardRouter.get(
+    '/clinician', isAuthenticated,
+    clinicianProfileController.getClinicianInfo
+)
 
 module.exports = {
     patientDashboardRouter,

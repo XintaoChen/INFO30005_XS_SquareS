@@ -168,6 +168,7 @@ const getPatientInfo = async (req, res, next) => {
       res.render("singlePatient.hbs", {
         singlePatientData: tempData,
         code: temCode,
+        loggedin: req.isAuthenticated(),
         isPatient: false,
         pageName: "Single Patient Page"
       });

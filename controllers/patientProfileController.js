@@ -33,10 +33,11 @@ const updatePatientProfile = async (req, res, next) => {
             doc.password = req.body.password;
             doc.save();
             })
-        // res.redirect("/login");
+        res.redirect("/login");
         }
     catch (error) {
         console.log("err");
+        res.redirect("/login");
     }
 }
 
