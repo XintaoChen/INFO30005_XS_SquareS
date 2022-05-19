@@ -10,7 +10,7 @@ const getCommentsHistory = async (req, res, next) => {
       let recordList = [];
         const filterId = req.query.filterId;
 
-        const clinicianId = req.params.id;
+        const clinicianId = req.user._id;
         const untrackedHealthDataList = await HealthData.find({}, "dataName unit");
         const clinicianInfo = await Clinician.findById(mongoose.Types.ObjectId(clinicianId))
         if (!clinicianInfo) {
@@ -96,7 +96,9 @@ const getCommentsHistory = async (req, res, next) => {
         console.log(tempData)
         res.render('commentsHistory.hbs', {
           commentsHistoryData: tempData,              
-          allHistoryData: recordList,        
+          allHistoryData: recordList,
+          loggedin: req.isAuthenticated(),
+          isPatient: false,        
         })
     } catch (err) {
         return next(err)

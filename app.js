@@ -90,7 +90,7 @@ app.use("/clinician", clinicianDashboardRouter);
 
 // app.use('/patient/profile', patientProfileRouter)
 
-app.use('/comment', commentsHistoryRouter)
+// app.use('/comment', commentsHistoryRouter)
 
 // Tells the app to send the string: "Our demo app is working!" when you
 // hit the '/' endpoint.
