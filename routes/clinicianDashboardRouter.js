@@ -2,6 +2,7 @@ const express = require('express')
 const clinicianDashboardController = require('../controllers/clinicianDashboardController')
 const patientController = require('../controllers/patientController')
 const commentsHistoryController = require('../controllers/commentsHistoryController')
+const clinicianController = require('../controllers/clinicianController')
 
 const clinicianDashboardRouter = express.Router()
 
@@ -14,6 +15,9 @@ if (!req.isAuthenticated()) {
 return next()
 }
 clinicianDashboardRouter.get('/', isAuthenticated, clinicianDashboardController.getTodayDataClinician)
+
+clinicianDashboardRouter.get('/profile', isAuthenticated, clinicianController.getClinicianProfile)
+clinicianDashboardRouter.post('/profile/edit', isAuthenticated, clinicianController.updateClinicianProfile)
 
 //for viewing all coments
 clinicianDashboardRouter.get('/comment', isAuthenticated, commentsHistoryController.getCommentsHistory)

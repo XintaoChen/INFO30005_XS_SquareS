@@ -2,14 +2,17 @@ const Clinician = require('../models/clinician')
 
   const getClinicianProfile = async (req, res, next) => {
     try {
-        const clinicianId = req.params.id;
+        const clinicianId = req.user._id;
         const clinician = await Clinician.findById(clinicianId).lean();
         if (!clinician) {
             console.log(err);
         }
-
+        console.log(clinician);
         res.render('patientProfile.hbs', {
-            clinicianData : clinician
+            clinicianData : clinician,
+            loggedin: req.isAuthenticated(),
+            isPatient: false,
+            pageName: "Clinician Profile"
         });
     
     } catch (err) {
@@ -19,18 +22,15 @@ const Clinician = require('../models/clinician')
 
     const updateClinicianProfile = async (req, res, next) => {
         try {
-
-            const clinicianId = req.body.clinicianId;
-            
-            const updates = {
-                clinicNumber: req.body.clinicNumber,
-                clinicAddress: req.body.clinicAddress,
-                password: req.body.password,
-                briefTextBio: req.body.briefTextBio,
-            }
-
-            const result = await Clinician.findByIdAndUpdate(clinicianId, updates, { new : true }).lean();
-
+            const filter = { _id: req.user._id };
+            Clinician.findOne(filter).then(async (doc) => {
+                doc.clinicNumber = req.body.clinicNumber;
+                doc.clinicAddress = req.body.clinicAddress;
+                doc.briefTextBio = req.body.briefTextBio;
+                doc.password = req.body.password;
+                doc.save();
+                })
+            res.redirect("/login");
         } catch (error) {
             console.log(err);
         }
