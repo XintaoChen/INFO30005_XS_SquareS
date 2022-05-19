@@ -1,74 +1,77 @@
 <head>
-    <link rel="stylesheet" href="/css/loginTable.css" />
+  <script>
+    document.title = "Login | Diabetes@Home"
+  </script>
+  <link rel="stylesheet" href="/css/loginTable.css" />
 </head>
-    <div class="lgt-container">
-      <div class="lgt-form-box">
-        <div class="lgt-patient-box">
-          <img src="img/patientIMG.PNG" alt="" />
-          <h1>Sign in as <b>Patient</b></h1>
-          <form action="login-patient" method="POST" class="lgt-form">
-            <input type="text" name="username" placeholder="Username" />
-            <input type="password" name="password" placeholder="Password" />
-            <button>Log in</button>
-          </form>
-        </div>
-        <div class="lgt-clinician-box lgt-hidden">
-          <img src="img/ClinicianIMG.PNG" alt="" />
-          <h1>Sign in as <b>Clinician</b></h1>
-          <form action="login-clinician" method="POST" class="lgt-form">
-            <input type="text" name="username" placeholder="Username" />
-            <input type="password" name="password" placeholder="Password" />
-            <button>Log in</button>
-          </form>
-        </div>
+  <div class="lgt-container">
+    <div class="lgt-form-box">
+      <div class="lgt-patient-box">
+        <img src="img/patientIMG.PNG" alt="" />
+        <h1>Sign in as <b>Patient</b></h1>
+        <form action="login-patient" method="POST" class="lgt-form">
+          <input type="text" name="username" placeholder="Username" />
+          <input type="password" name="password" placeholder="Password" />
+          <button>Log in</button>
+        </form>
       </div>
-      <div class="lgt-con-box lgt-left">
-        <div>
-          <h2>Welcome to</h2>
-          <img src="img/Logo.png" alt="" />
-        </div>
-
-        <button id="lgt-clinician-btn">sign in as Patient</button>
+      <div class="lgt-clinician-box lgt-hidden">
+        <img src="img/ClinicianIMG.PNG" alt="" />
+        <h1>Sign in as <b>Clinician</b></h1>
+        <form action="login-clinician" method="POST" class="lgt-form">
+          <input type="text" name="username" placeholder="Username" />
+          <input type="password" name="password" placeholder="Password" />
+          <button>Log in</button>
+        </form>
       </div>
-      <div class="lgt-con-box lgt-right">
-        <div>
-          <h2>Welcome to</h2>
-          <img src="img/Logo.png" alt="" />
-        </div>
-
-        <button id="lgt-patient-btn">sign in as Clinician</button>
-      </div>
-      <div class="lgt-cover lgt-left"></div>
-      <div class="lgt-cover lgt-right lgt-hidden"></div>
-      <div class="lgt-cover lgt-first"></div>
     </div>
-    <script>
-      let patient_btn = document.getElementById("lgt-patient-btn");
-      let clinician_btn = document.getElementById("lgt-clinician-btn");
-      let form_box = document.getElementsByClassName("lgt-form-box")[0];
-      let patient_box = document.getElementsByClassName("lgt-patient-box")[0];
-      let clinician_box =
-        document.getElementsByClassName("lgt-clinician-box")[0];
-      let cover_patient = document.getElementsByClassName("lgt-cover")[0];
-      let cover_clinician = document.getElementsByClassName("lgt-cover")[1];
-      let cover_first = document.getElementsByClassName("lgt-cover")[2];
+    <div class="lgt-con-box lgt-left">
+      <div>
+        <h2>Welcome to</h2>
+        <img src="img/Logo.png" alt="" />
+      </div>
 
-      setTimeout(() => {
-        cover_first.classList.add("lgt-hidden");
-      }, 1000);
+      <button id="lgt-clinician-btn">sign in as Patient</button>
+    </div>
+    <div class="lgt-con-box lgt-right">
+      <div>
+        <h2>Welcome to</h2>
+        <img src="img/Logo.png" alt="" />
+      </div>
 
-      patient_btn.addEventListener("click", () => {
-        form_box.style.transform = "translateX(80%)";
-        patient_box.classList.add("lgt-hidden");
-        clinician_box.classList.remove("lgt-hidden");
-        cover_patient.classList.add("lgt-hidden");
-        cover_clinician.classList.remove("lgt-hidden");
-      });
-      clinician_btn.addEventListener("click", () => {
-        form_box.style.transform = "translateX(0)";
-        clinician_box.classList.add("lgt-hidden");
-        patient_box.classList.remove("lgt-hidden");
-        cover_patient.classList.remove("lgt-hidden");
-        cover_clinician.classList.add("lgt-hidden");
-      });
-    </script>
+      <button id="lgt-patient-btn">sign in as Clinician</button>
+    </div>
+    <div class="lgt-cover lgt-left"></div>
+    <div class="lgt-cover lgt-right lgt-hidden"></div>
+    <div class="lgt-cover lgt-first"></div>
+  </div>
+  <script>
+    let patient_btn = document.getElementById("lgt-patient-btn");
+    let clinician_btn = document.getElementById("lgt-clinician-btn");
+    let form_box = document.getElementsByClassName("lgt-form-box")[0];
+    let patient_box = document.getElementsByClassName("lgt-patient-box")[0];
+    let clinician_box =
+      document.getElementsByClassName("lgt-clinician-box")[0];
+    let cover_patient = document.getElementsByClassName("lgt-cover")[0];
+    let cover_clinician = document.getElementsByClassName("lgt-cover")[1];
+    let cover_first = document.getElementsByClassName("lgt-cover")[2];
+
+    setTimeout(() => {
+      cover_first.classList.add("lgt-hidden");
+    }, 1000);
+
+    patient_btn.addEventListener("click", () => {
+      form_box.style.transform = "translateX(80%)";
+      patient_box.classList.add("lgt-hidden");
+      clinician_box.classList.remove("lgt-hidden");
+      cover_patient.classList.add("lgt-hidden");
+      cover_clinician.classList.remove("lgt-hidden");
+    });
+    clinician_btn.addEventListener("click", () => {
+      form_box.style.transform = "translateX(0)";
+      clinician_box.classList.add("lgt-hidden");
+      patient_box.classList.remove("lgt-hidden");
+      cover_patient.classList.remove("lgt-hidden");
+      cover_clinician.classList.add("lgt-hidden");
+    });
+  </script>
