@@ -8,9 +8,9 @@
 
 
 .pda-update-btn {
-  width: 99%;
-  margin-bottom: 2%;
-  margin-left: 1%;
+  /* width: 99%; */
+  margin-bottom: 3%;
+  margin-left: 39%;
 }
 
 /* nav */
@@ -101,7 +101,7 @@
 .pda-daily-area .pda-daily-record .pda-record-title {
   width: 40%;
   height: 2.5rem;
-  background-color: #5c4435;
+  background-color: #867167;
   border-radius: 10px;
   display: flex;
   justify-content: center;

@@ -59,10 +59,10 @@
       footer.classList.add("cp-footer");
       var lastMonth = document.createElement("span");
       lastMonth.setAttribute("id", "cp-prev");
-      lastMonth.innerText = "last month";
+      lastMonth.innerText = "< last month";
       var nextMonth = document.createElement("span");
       nextMonth.setAttribute("id", "cp-next");
-      nextMonth.innerText = "next month";
+      nextMonth.innerText = "next month >";
       footer.appendChild(lastMonth);
       footer.appendChild(nextMonth);
       table.appendChild(footer);
