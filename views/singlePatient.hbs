@@ -79,7 +79,7 @@
                 <span><button type="button" id="sp-edit-data-setting-btn" class="sp-data-setting-btn" onclick="editDataSetting()">Edit</button></span>
 
                 <button type="submit" id="sp-data-save-btn" class="sp-data-setting-btn display-none">Save</button>
-                <button id="sp-data-cancel-btn" class="sp-data-setting-btn display-none" onclick="cancelDataSetting()">Cancel</button>
+                <button type="button" id="sp-data-cancel-btn" class="sp-data-setting-btn display-none" onclick="cancelDataSetting()">Cancel</button>
 
             </div>
             
@@ -326,7 +326,6 @@
         save_data_setting_btn.classList.add("display-none")
         cancel_data_setting_btn.classList.add("display-none")
         edit_data_setting_btn.classList.remove("display-none")
-
         for (var i=0; i<display_fields.length; i++) {
             display_fields[i].classList.remove("display-none");
         }
