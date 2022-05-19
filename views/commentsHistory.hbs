@@ -29,12 +29,18 @@
                             <tr class="ch-patient-list-row">
                                 <td class="ch-patient-name"><a href="/clinician/comment/?filterId={{_id}}">{{nameGiven}} {{nameFamily}}</a></td>
                             </tr>
-                        
                         {{/each}}
                     </table>
                 </div>
             </div> 
-            <div class="ch-down-padding-line"></div> 
+            <div class="ch-down-padding-line"></div>
+            <div class="ch-reselect">
+                <button class="ch-reselect-btn" onclick="window.location='/clinician/comment'"></button>
+                <div class="ch-reselect-text">
+                    <h2>&nbsp;&nbsp;Reselect</h2>
+                </div>
+            </div>
+            <div class="ch-bottom-padding-line"></div>
         </div>
         <script>
             function patientSearch(){
