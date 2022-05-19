@@ -1,7 +1,9 @@
 const express = require('express')
 const clinicianDashboardController = require('../controllers/clinicianDashboardController')
-const clinicianDashboardRouter = express.Router()
 const patientController = require('../controllers/patientController')
+const commentsHistoryController = require('../controllers/commentsHistoryController')
+
+const clinicianDashboardRouter = express.Router()
 
 const isAuthenticated = (req, res, next) => {
 // If user is not authenticated via passport, redirect to login page 
@@ -13,6 +15,10 @@ return next()
 }
 clinicianDashboardRouter.get('/', isAuthenticated, clinicianDashboardController.getTodayDataClinician)
 
+//for viewing all coments
+clinicianDashboardRouter.get('/comment', isAuthenticated, commentsHistoryController.getCommentsHistory)
+
+//for management of patients
 clinicianDashboardRouter.get('/patient/:id', isAuthenticated, patientController.getPatientInfo)
 //patientRouter.get('/:id', (req, res) => patientController.getPatientNote(req,res))
 
