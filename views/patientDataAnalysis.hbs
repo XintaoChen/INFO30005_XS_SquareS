@@ -11,18 +11,11 @@
   </div>
   
   <div class="pda-title-area">
-    <div class="pda-title-time">
-      <span>Thursday</span>
-      <span>18 April</span>
-    </div>
+    <div class="pda-title-time"></div>
     <div class="pda-title-completion">
       <div class="pda-completion-title">
-        <span>
-          Today's
-        </span>
-        <span>
-          Completion
-        </span>
+        <span>Today's</span>
+        <span>Completion</span>
       </div>
       <div id="pda-completion-container">50</div>
     </div>
@@ -37,15 +30,7 @@
       <div class="pda-analysis-tag pda-selected">Table</div>
     </div>
     <div id="pda-chart-container" class="pda-hidden"></div>
-    <table class="pda-analysis-table">
-      <tr class="pda-table-head">
-        <th>Date</th>
-        {{#each healthDataList}}
-          <th>{{dataName}} ({{unit}})</th>
-        {{/each}}
-      </tr>
-    </table>
-    
+    <table class="pda-analysis-table"></table>
   </div>
 
 
