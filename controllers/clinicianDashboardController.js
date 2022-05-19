@@ -38,6 +38,8 @@ const getTodayDataClinician = async (req, res, next) => {
                 let { dataName, unit } = dataType;
                 let isRequired = healthDataMatched ? true : false
                 let value = undefined;
+                let comment = undefined;
+                let date = undefined;
                 if (isRequired) {
                   let nDate = new Date();
                   let startOfToday = new Date(
@@ -57,6 +59,8 @@ const getTodayDataClinician = async (req, res, next) => {
                   })
                   if (record) {
                     value = record.value;
+                    comment = record.comment;
+                    date = record.date;
                     tempDate = (record.date>tempDate) ? record.date:tempDate;
                   }
                 }
@@ -66,6 +70,8 @@ const getTodayDataClinician = async (req, res, next) => {
                   dataName: dataName,
                   unit: unit,
                   value: value,
+                  comment: comment,
+                  date: date,
                   isRequired: isRequired
                 }
               })
