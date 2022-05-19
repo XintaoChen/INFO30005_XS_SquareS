@@ -5,19 +5,22 @@
     </script> 
 </head>
 
-{{#with clinicianData}}
+{{#with patientData}}
 <div class ="upper-box"></div>
 <button type="button" class="btn" id="edit-btn" onclick="makeEditable()"></button>
 {{#if this.engagementRate}}
         <img class="badge" src="/img/badge.png", alt="engagementBadge"
 {{/if}}
-<form action="/clinician/profile/edit" method="post" id="edit-profile">
+<form action="/patient/profile/edit" method="post" id="edit-profile">
     <img class="profile-photo" src="/img/patient1.png", alt="default_profile_picture">
     <input class="edit-input" id="profile-name" name="profileName" type="text" value="{{this.profileName}}" disabled>
     <div class="info-text">
         <div id="non-editable">
             <label class="data-field">Full name</label>
             <input class="non-edit-input" type="text" value="{{this.nameGiven}} {{this.nameFamily}}" disabled>
+            
+            <label class="data-field">Date of Birth</label>
+            <input class="non-edit-input" type="text" value="{{this.dateOfBirth}}" disabled>
             
             <label class="data-field">Email Address</label>
             <input class="non-edit-input" type="email" value="{{this.emailAddress}}" disabled>
@@ -26,11 +29,11 @@
         <div class="edit-info">
             <input  type="text" name="patientId" value="{{this._id}}" style="display:none">
 
-            <label class="data-field" for="phoneNumber">Clinic Number</label>
-            <input class="edit-input" type="text" name="clinicNumber" value="{{this.clinicNumber}}" disabled> 
+            <label class="data-field" for="phoneNumber">Phone Number</label>
+            <input class="edit-input" type="text" name="phoneNumber" value="{{this.phoneNumber}}" disabled> 
             
-            <label class="data-field" for="homeAddress">Clinic Address</label>
-            <input class="edit-input" type="text" name="clinicAddress" value="{{this.clinicAddress}}" disabled>
+            <label class="data-field" for="homeAddress">Home Address</label>
+            <input class="edit-input" type="text" name="homeAddress" value="{{this.homeAddress}}" disabled>
                 
             <label class="data-field" for="password">Password</label>
             <input class="edit-input" type="password" name="password" value="{{this.password}}" disabled>
