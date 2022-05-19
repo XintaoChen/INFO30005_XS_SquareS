@@ -68,7 +68,6 @@ const patientRouter = require("./routes/patientRouter");
 const recordRouter = require("./routes/recordRouter");
 const clinicianDashboardRouter = require("./routes/clinicianDashboardRouter");
 const clinicianProfileRouter = require('./routes/clinicianProfileRouter')
-const { patientDashboardRouter } = require('./routes/patientDashboardRouter')
 const commentsHistoryRouter = require('./routes/commentsHistoryRouter')
 
 // middleware to log a message each time a request arrives at the server - handy for debugging
@@ -79,10 +78,9 @@ app.use((req, res, next) => {
 
 // the demo routes are added to the end of the '/demo-management' path
 
+// app.use("/clinician/patient", patientRouter);
 
-app.use("/clinician/patient", patientRouter);
-
-app.use("/patient/today", patientDashboardRouter);
+app.use("/patient", patientDashboardRouter);
 
 app.use("/record", recordRouter);
 
