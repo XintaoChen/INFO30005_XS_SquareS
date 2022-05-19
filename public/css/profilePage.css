@@ -12,12 +12,16 @@
         color: #000000;
     }
 
+    .container{
+        align-items: center;
+    }
+
     .badge{
         position: absolute;
         height: 32px;
         width: 32px;
-        left: 10px;
-        top: 100px;
+        display: flex;
+        align-items: flex-start;
     }
 
     .value{
@@ -50,8 +54,6 @@
         text-align: center;
         border-bottom: none;
         margin-block-start: 120px;
-        margin-left: 10%;
-        margin-right: 2%;
     }
 
     .profile-photo{
@@ -129,6 +131,10 @@
         height: 25px;
         border-radius: 10px;
         display: inline;
+    }
+
+    .info-text{
+        margin-bottom: 10%;
     }
 }
 
@@ -264,6 +270,10 @@
         height: 40px;
         border-radius: 10px;
         display: inline;
+    }
+
+    .info-text{
+        margin-bottom: 15%;
     }
 
 }

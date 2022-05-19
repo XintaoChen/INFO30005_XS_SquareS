@@ -5,46 +5,42 @@
 {{#with patientData}}
 <div class ="upper-box"></div>
 <button type="button" class="btn" id="edit-btn" onclick="makeEditable()"></button>
+{{#if this.engagementRate}}
+        <img class="badge" src="/img/badge.png", alt="engagementBadge"
+{{/if}}
 <form action="/patient/profile/edit" method="post" id="edit-profile">
-    <div class="inner-box"> 
-        <img class="profile-photo" src="/img/patient1.png", alt="default_profile_picture">
-        {{#if this.engagementRate}}
-            <img class="badge" src="/img/badge.png" alt="badge">
-        {{/if}}
-    </div>
+    <img class="profile-photo" src="/img/patient1.png", alt="default_profile_picture">
     <input class="edit-input" id="profile-name" name="profileName" type="text" value="{{this.profileName}}" disabled>
-    <div class = "information-box">
-        <div class="info-text">
-            <div id="non-editable">
-                <label class="data-field">Full name</label>
-                <input class="non-edit-input" type="text" value="{{this.nameGiven}} {{this.nameFamily}}" disabled>
+    <div class="info-text">
+        <div id="non-editable">
+            <label class="data-field">Full name</label>
+            <input class="non-edit-input" type="text" value="{{this.nameGiven}} {{this.nameFamily}}" disabled>
             
-                <label class="data-field">Date of Birth</label>
-                <input class="non-edit-input" type="text" value="{{this.dateOfBirth}}" disabled>
+            <label class="data-field">Date of Birth</label>
+            <input class="non-edit-input" type="text" value="{{this.dateOfBirth}}" disabled>
             
-                <label class="data-field">Email Address</label>
-                <input class="non-edit-input" type="email" value="{{this.emailAddress}}" disabled>
-            </div>
+            <label class="data-field">Email Address</label>
+            <input class="non-edit-input" type="email" value="{{this.emailAddress}}" disabled>
+        </div>
 
-            <div class="edit-info">
-                <input  type="text" name="patientId" value="{{this._id}}" style="display:none">
+        <div class="edit-info">
+            <input  type="text" name="patientId" value="{{this._id}}" style="display:none">
 
-                <label class="data-field" for="phoneNumber">Phone Number</label>
-                <input class="edit-input" type="text" name="phoneNumber" value="{{this.phoneNumber}}" disabled> 
+            <label class="data-field" for="phoneNumber">Phone Number</label>
+            <input class="edit-input" type="text" name="phoneNumber" value="{{this.phoneNumber}}" disabled> 
             
-                <label class="data-field" for="homeAddress">Home Address</label>
-                <input class="edit-input" type="text" name="homeAddress" value="{{this.homeAddress}}" disabled>
+            <label class="data-field" for="homeAddress">Home Address</label>
+            <input class="edit-input" type="text" name="homeAddress" value="{{this.homeAddress}}" disabled>
                 
-                <label class="data-field" for="password">Password</label>
-                <input class="edit-input" type="password" name="password" value="{{this.password}}" disabled>
+            <label class="data-field" for="password">Password</label>
+            <input class="edit-input" type="password" name="password" value="{{this.password}}" disabled>
                 
-                <label class="data-field" for="briefTextBio">Brief Text Bio</label>
-                <input class="edit-input" type="text" name="briefTextBio" value="{{this.briefTextBio}}" disabled>
-            </div>
-            <div class = "button">
-                <input id="submit-btn" type="submit" value=" Save" style="visibility:hidden">
-                <input id="reset-btn" type="reset" value=" Cancel" onclick="cancelChanges()"style="visibility:hidden">
-            </div>
+            <label class="data-field" for="briefTextBio">Brief Text Bio</label>
+            <input class="edit-input" type="text" name="briefTextBio" value="{{this.briefTextBio}}" disabled>
+        </div>
+        <div class = "button">
+            <input id="submit-btn" type="submit" value=" Save" style="visibility:hidden">
+            <input id="reset-btn" type="reset" value=" Cancel" onclick="cancelChanges()"style="visibility:hidden">
         </div>
     </div>
 </form>
