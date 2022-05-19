@@ -136,14 +136,14 @@
         height: 50vh;
         left: 50%;
         top: 50%;
-        background: linear-gradient(200deg, #f3e7e9, #5c4435);
+        background: linear-gradient(180deg, #ad949f, #5c4435);
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         transform: translate(-50%, -50%);
-        border-radius: 5px;
-        box-shadow: 0 0 0 5px rgba(0, 0, 0, .8);
+        border-radius: 15px;
+        box-shadow: 0 0 0 5px rgba(79, 68, 68, 0.8);
         z-index: 10;
     }
 
