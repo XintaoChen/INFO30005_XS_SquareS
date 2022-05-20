@@ -30,14 +30,14 @@ clinicianDashboardRouter.post("/patient/add", isAuthenticated, patientController
 
 clinicianDashboardRouter.post('/patient/addNote', isAuthenticated, function (req, res) {
     patientController.addNote(req.body)
-    console.log(req.body)
+    // console.log(req.body)
     res.redirect('/clinician/patient/' + req.body.patientId.toString())
 })
 
 clinicianDashboardRouter.post('/patient/updateSupportMessage', isAuthenticated, function (req, res) {
-    console.log(req.body)
+    // console.log(req.body)
     patientController.updateSupportMessage(req.body)
-    console.log(req.body)
+    // console.log(req.body)
     res.redirect('/clinician/patient/' + req.body.patientId.toString())
 })
 

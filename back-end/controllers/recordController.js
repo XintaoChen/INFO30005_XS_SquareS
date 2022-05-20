@@ -6,7 +6,7 @@ const { post } = require('../routes/patientRouter')
 const getOneRecordBypatientId = async (req, res) => {
     try {
         const { patientId, date, healthDataId } = req.query
-        console.log(patientId, healthDataId)
+        // console.log(patientId, healthDataId)
         const record = await Record.findOne(
             {
                 patientId: patientId,
