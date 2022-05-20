@@ -35,7 +35,7 @@ const updateLeaderBoard = async () => {
 
     }
 
-    console.log(engRate);
+    // console.log(engRate);
 
     return engRate;
 
