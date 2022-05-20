@@ -7,7 +7,7 @@
 {{#with todayHealthData}}
 <div class="banner" id="banner">
     <div class="support-message" id="sptMsg" style="display: none;">Message from your clinician:<p id="sptMsgMobile"></p> {{this.supportMessage}}</div>
-    <div class="support-message" id="greeting">Welcome, {{this.profileName}}!</div>
+    <div class="support-message" id="greeting">Welcome, {{this.profileName}}! {{#if this.engagementRate}}<img class="badge" src="/img/badge.png", alt="engagementBadge">{{/if}}</div>
     <div class="clinician-icon" onclick="showSptMsg();">
         <i id="sptMsgClosed">🙋🏽</i>
         <i id="sptMsgOpened" style="display: none;">🙅🏽</i>
