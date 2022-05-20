@@ -394,10 +394,10 @@
     }
     .today-comments-row1{
         width: 100%;
-        height: 20px;
+        height: 22px;
         margin: auto;
-        font-size: 16px;
-        line-height: 20px;
+        font-size: 20px;
+        line-height: 22px;
         text-align: left;
         font-weight: bold;
         background-color: #F4F2F0;
@@ -407,10 +407,10 @@
     }
     .today-comments-row2{
         width: 100%;
-        height: 15px;
+        height: 20px;
         margin: auto;
-        font-size: 12px;
-        line-height: 15px;
+        font-size: 16px;
+        line-height: 20px;
         text-align: left;
         background-color: #F4F2F0;
     }

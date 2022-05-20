@@ -61,6 +61,7 @@
         background-color: #E3D1BD;
         border: none;
         color: #867167;
+        margin-top: 4px;
     }
     .sp-msg-btns:hover {
         color: #5c4435;
@@ -68,14 +69,16 @@
     }
 
     #sp-confirm-btn {
-        font-size: 1em;
+        font-size: 1.7em;
         /* margin-left: auto; */
         margin-right: 0;
+        margin-top: 5px;
         color: green;
     }
     #sp-cancel-btn {
-        font-size: 1em;
+        font-size: 1.7em;
         margin-right: 0;
+        margin-top: 5px;
     }
 
     .icon-edit-clinician{
