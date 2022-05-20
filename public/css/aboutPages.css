@@ -602,7 +602,7 @@ table {
   }
 
   header .naviBar {
-    display: flex;
+    display: none;
     justify-content: flex-end;
     position: relative;
     height: 100%;
@@ -611,7 +611,7 @@ table {
   }
 
   #menuButtonMobile {
-    display: none;
+    display: block;
   }
 
   #menuButtonDesktop {
