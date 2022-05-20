@@ -111,6 +111,7 @@
         color: #F4F2F0;
         transition: transform 300ms ease-in-out;
         position: relative;
+        left: 20px;
     }
 
     .add-button Text {
