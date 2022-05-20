@@ -8,9 +8,10 @@ const moment = require("moment");
 
 const getTodayDataPatient = async (req, res, next) => {
   var today = new Date();
+  const patientId = req.user._id;
   try {
     // const tempDataNoRecords = await patientModel.findById(req.params.id).lean()
-    const engagementRate = await updateEngagementRate(req.params.id);
+    const engagementRate = await updateEngagementRate(patientId);
     const leaderBoard = await updateLeaderBoard();
     let tempData = { leaderBoard: leaderBoard };
     //get all required data from database
@@ -138,13 +139,12 @@ async function updateEngagementRate(id) {
     engRateBool = true;
   }
 
+  console.log(engRateBool);
+
   const update = {
     engagementRate: engRateBool,
   };
-
-  const result = await patientModel
-    .findByIdAndUpdate(patientId, update, { new: true })
-    .lean();
+  const result = await patientModel.findByIdAndUpdate(id, update, { new: true });
 }
 
 async function updateLeaderBoard() {
