@@ -119,10 +119,15 @@
             <div class="comment-text">
                 COMMENTS FOR TODAY
             </div>
-            <div class="show-more-text">
+            {{!-- <div class="show-more-text">
                 <h2>Show More&nbsp;&nbsp;</h2>
-            </div>
-            <button class="show-more-icon" onclick="window.location='/clinician/comment'"></button>
+            </div> --}}
+            <button class="show-more-btn" onclick="window.location='/clinician/comment'">
+                <div class="show-more-text">Show More</div>
+                <div style="transform: rotate(180deg);">
+                    <i class="iconfont icon-double-left-arrow show-more-icon"></i>
+                </div>
+            </button>
         </div>
         <div class="comments-for-today">
             <div class="comments-for-today-list">
@@ -198,7 +203,7 @@
     // email
     let emailInput = registerArea.children[0];
     emailInput.addEventListener('blur', function() {
-        var reg = /^[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]+){1,2}$/;
+        var reg = /^[0-9a-zA-Z_.-]+[@][0-9a-zA-Z_.-]+([.][a-zA-Z]{2,3}){1,2}$/;
         if (reg.test(this.value)) {
             this.style.borderColor = "green";
             submitBtn.unlock(0);

@@ -26,7 +26,7 @@
         text-align: left;
         text-indent: 20px;
         line-height: 60px;
-        font-size: 18px;
+        font-size: 26px;
         background-color: #F4F2F0;
     }
 
@@ -84,7 +84,7 @@
 
     .left-page .left-title-line .search-bar input[type=text] {
         height: 36px;
-        font-size: 18px;
+        font-size: 19px;
         color: #5C4435;
         background-color: #F4F2F0;
         outline-style: none;
@@ -125,7 +125,7 @@
     }
 
     .add {
-        font-size: 24px;
+        font-size: 28px;
         color: #F4F2F0;
     }
 
@@ -136,7 +136,7 @@
         height: 50vh;
         left: 50%;
         top: 50%;
-        background: linear-gradient(180deg, #ad949f, #5c4435);
+        background: linear-gradient(180deg, #bfa38a, #5c4435);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -179,13 +179,13 @@
         height: 2em;
         margin: 1em 0;
         background-color: #fff;
-        color: #867167;
+        color: #5c4435;
         outline: none;
         border-radius: 10px;
         letter-spacing: 2px;
         border: none;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 0.85em;
     }
 
     .left-page .data-record {
@@ -200,11 +200,12 @@
     }
 
     .right-page .right-title-line {
-        width: 100%;
+        width: 97%;
         height: 60px;
         display: flex;
         flex-direction: row;
         align-items: center;
+        justify-content: space-between;
     }
 
     .right-page .right-title-line .comment-text {
@@ -214,19 +215,22 @@
         color: #A09E9D;
     }
 
+    .right-page .right-title-line .show-more-btn {
+        border: 0px;
+        cursor: pointer;
+        background-color: #fff;
+        display: flex;
+        flex-direction: row;
+        color: #5C4435;
+    }
     .right-page .right-title-line .show-more-text {
-        text-indent: 175px;
+        font-size: 30px;
+        font-family: 'Lato Regular';
+        margin-right: 10px;
     }
 
     .right-page .right-title-line .show-more-icon {
-        width: 36px;
-        height: 36px;
-        border: 0px;
-        background: none;
-        cursor: pointer;
-        background-size: contain;
-        background-image: url(../img/right_arrow.png);
-        background-repeat: no-repeat;
+        font-size: 30px;
     }
 
     .right-page .comments-for-today {
