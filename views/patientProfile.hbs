@@ -33,12 +33,13 @@
             
             <label class="data-field" for="homeAddress">Home Address</label>
             <input class="edit-input" type="text" name="homeAddress" value="{{this.homeAddress}}" disabled>
-                
-            <label class="data-field" for="password">Password</label>
-            <input class="edit-input" id="password" type="password" name="password" value="{{this.password}}" disabled>
-                
+
             <label class="data-field" for="briefTextBio">Brief Text Bio</label>
-            <input class="edit-input" type="text" name="briefTextBio" value="{{this.briefTextBio}}" disabled>
+            <input class="edit-input" type="text" name="briefTextBio" value="{{this.briefTextBio}}" disabled> 
+
+            <label class="data-field" for="password" style="visibility:hidden">Password</label>
+            <input class="edit-input" id="password" type="password" name="password" placeholder="input new password here to change password" disabled style="visibility:hidden">
+                
         </div>
         <div class = "button">
             <input id="submit-btn" type="submit" value=" Save" style="visibility:hidden">
@@ -75,6 +76,8 @@
             inputs[i].disabled = false;
         }
 
+        password.style.visibility = "visible";
+        password.parentElement.children[7].style.visibility = "visible";
         submitBtn.style.visibility = "visible";
         resetBtn.style.visibility = "visible";
 
@@ -97,6 +100,8 @@
             inputs[i].disabled = true;
         }
 
+        password.style.visibility = "hidden";
+        password.parentElement.children[7].style.visibility = "hidden";
         submitBtn.style.visibility = "hidden";
         resetBtn.style.visibility = "hidden";
 
