@@ -90,7 +90,7 @@ const getTodayDataClinician = async (req, res, next) => {
           patientList: patientList,
           healthDataList: healthDataList,
         };
-        console.log(tempData.patientList);
+        // console.log(tempData.patientList);
         tempData.patientList.sort(compare("dateLatest"))
         res.render('clinicianDashboard.hbs', 
         { clinicianDashboardData: tempData,

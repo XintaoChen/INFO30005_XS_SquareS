@@ -160,7 +160,7 @@ const getPatientInfo = async (req, res, next) => {
       healthDataList: healthDataList,
     };
 
-    console.log(tempData.patientData._id);
+    // console.log(tempData.patientData._id);
 
     let temCode = JSON.stringify(tempData);
 
@@ -229,7 +229,7 @@ const postNewPatient = async (req, res, next) => {
 };
 
 const addNote = async (req, res) => {
-  console.log("from addNote:" + req.note);
+  // console.log("from addNote:" + req.note);
 
   var newNote = new Note({
     patientId: req.patientId,
@@ -284,7 +284,7 @@ const editDataSetting = async (req, res, next) => {
       recordingDataArray.push(recordingData);
     }
 
-    console.log(recordingDataArray);
+    // console.log(recordingDataArray);
 
     await Patient.findByIdAndUpdate(
       patientId,
