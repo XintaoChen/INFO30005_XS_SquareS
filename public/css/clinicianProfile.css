@@ -28,6 +28,14 @@
         display: block; 
     }
 
+    .clinician-profile-name{
+        color: #000000;
+        text-align: center;
+        width: -webkit-fill-available;
+        border-bottom: none;
+        margin-block-start: 120px;
+    }
+
     label{
         display:inline-block;
         width: 80vw;

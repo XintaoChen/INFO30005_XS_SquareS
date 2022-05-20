@@ -9,10 +9,10 @@
 <div class ="upper-box"></div>
 <button type="button" class="btn" id="edit-btn" onclick="makeEditable()"></button>
 {{#if this.engagementRate}}
-        <img class="badge" src="/img/badge.png", alt="engagementBadge"
+        <img class="badge" src="/img/badge.png", alt="engagementBadge">
 {{/if}}
 <form action="/patient/profile/edit" method="post" id="edit-profile">
-    <img class="profile-photo" src="/img/patient1.png", alt="default_profile_picture">
+    <img class="profile-photo" src="/img/patientProfile.png", alt="default_profile_picture">
     <input class="edit-input" id="profile-name" name="profileName" type="text" value="{{this.profileName}}" disabled>
     <div class="info-text">
         <div id="non-editable">
@@ -25,7 +25,6 @@
             <label class="data-field">Email Address</label>
             <input class="non-edit-input" type="email" value="{{this.emailAddress}}" disabled>
         </div>
-
         <div class="edit-info">
             <input  type="text" name="patientId" value="{{this._id}}" style="display:none">
 
@@ -75,7 +74,6 @@
 
         submitBtn.style.visibility = "visible";
         resetBtn.style.visibility = "visible";
-        //edit_btn.style.backgroundImage = "url(../img/pen_disabled.png)";
 
     }
 
@@ -94,7 +92,6 @@
             inputs[i].disabled = true;
         }
 
-        //edit_btn.style.backgroundImage = "url(../img/pen_enabled.png)";
         submitBtn.style.visibility = "hidden";
         resetBtn.style.visibility = "hidden";
 
