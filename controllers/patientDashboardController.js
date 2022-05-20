@@ -148,29 +148,27 @@ async function updateEngagementRate(id) {
 }
 
 async function updateLeaderBoard() {
-  //Get last Sunday's and this Monday's dates
-  const lastSunday = moment().subtract(1, "weeks").endOf("isoWeek");
-  const thisMonday = moment().startOf("isoWeek");
+  //Get yesterday's date
+  const yesterday = moment().subtract(1, "days").endOf("day");
 
   //Get all patientIds in mongoDB
   const patientIds = await patientModel.find().distinct("_id");
 
-  //An array to store all engagementRates of patients
+  //Create an array to store all engagementRates of patients
   let engRate = [];
 
   for (const id of patientIds) {
-    //Get profileName of this patient
+    //Get profileName of the current patient
     const profileName = await patientModel.findById(id).distinct("profileName");
     //Retrive date that patient's account was created (first date)
     const timeStamp = id.getTimestamp();
-    //Calculate number of days between registered day and thisMonday
-    const numDays = thisMonday.diff(moment(timeStamp), "days") + 1;
+    //Calculate number of days between registered day and yesterday
+    const numDays = yesterday.diff(moment(timeStamp), "days") + 1;
 
-    //Calculate the number of days this patient recorded data
-    //Get all of this patient's records that were recorded before thisMonday
+    //Get all of this patient's records that were recorded before yesterday
     //Group the retrieved records by date
     const records = await Record.aggregate([
-      { $match: { patientId: id, date: { $lte: new Date(lastSunday) } } },
+      { $match: { patientId: id, date: { $lte: new Date(yesterday) } } },
       {
         $group: {
           _id: { $dateToString: { format: "%Y-%m-%d", date: "$date" } },
@@ -178,7 +176,6 @@ async function updateLeaderBoard() {
         },
       },
     ]);
-
     //Calculate the number of days this patient recorded data
     const recordDays = records.length;
 
@@ -196,7 +193,7 @@ async function updateLeaderBoard() {
   engRate.sort((x, y) => y.engagementRate - x.engagementRate);
   //Get top 5 engagementRate
   leaderBoardEngRate = engRate.slice(0, 5);
-
+  
   return leaderBoardEngRate;
 }
 
