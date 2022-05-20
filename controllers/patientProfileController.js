@@ -27,6 +27,7 @@ const updatePatientProfile = async (req, res, next) => {
     try {
         const filter = { _id: req.user._id };
         Patient.findOne(filter).then(async (doc) => {
+            doc.profileName = req.body.profileName
             doc.phoneNumber = req.body.phoneNumber;
             doc.homeAddress = req.body.homeAddress;
             doc.briefTextBio = req.body.briefTextBio;
