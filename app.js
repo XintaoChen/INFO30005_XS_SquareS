@@ -109,6 +109,10 @@ app.get('/aboutUs', (req, res) => {
     }
 })
 
+app.get('*', (req, res) => {
+    res.render('404.hbs')
+})
+
 
 // link to our router
 // const demoRouter = require('./routes/demoRouter')
