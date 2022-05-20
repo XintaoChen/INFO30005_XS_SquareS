@@ -162,15 +162,13 @@ function patientDataAnalysis() {
 
   tags[1].addEventListener("click", () => {
     let weeklyRate = 0,
-      weeklyTotal = 0;
-    healthDataList.forEach((item) => {
-      if (item.isRequired) weeklyTotal++;
-    });
-    weeklyTotal *= 7;
-    for (let i = 0; i < healthDataList.length; i++) {
-      for (let dateRecord of listOfWeek(selectDate)) {
+      weeklyTotal = listOfWeek(selectDate).length;
+    for (let dateRecord of listOfWeek(selectDate)) {
+      let isCount = false;
+      for (let i = 0; i < healthDataList.length; i++) {
         if (!hashMap[dateRecord]) continue;
-        if (hashMap[dateRecord].records[i].value) {
+        if (hashMap[dateRecord].records[i].value && !isCount) {
+          isCount = true;
           weeklyRate++;
         }
       }
@@ -188,17 +186,14 @@ function patientDataAnalysis() {
 
   tags[2].addEventListener("click", () => {
     let monthlyRate = 0,
-      monthlyTotal = 0;
-    healthDataList.forEach((item) => {
-      if (item.isRequired) monthlyTotal++;
-    });
-    monthlyTotal *= selectDate.getDate();
-
-    for (let i = 0; i < healthDataList.length; i++) {
-      for (let dateRecord of listOfMonth(selectDate)) {
+      monthlyTotal = listOfMonth(selectDate).length;
+    for (let dateRecord of listOfMonth(selectDate)) {
+      let isCount = false;
+      for (let i = 0; i < healthDataList.length; i++) {
         if (!hashMap[dateRecord]) continue;
-        if (hashMap[dateRecord].records[i].value) {
+        if (hashMap[dateRecord].records[i].value && !isCount) {
           monthlyRate++;
+          isCount = true;
         }
       }
     }
@@ -209,6 +204,7 @@ function patientDataAnalysis() {
     window.completionRateChartPlugin.setCompletion(
       ((monthlyRate / monthlyTotal) * 100).toFixed(2)
     );
+
     generateTable(listOfMonth(selectDate));
     generateChart(listOfMonth(selectDate));
   });
