@@ -175,7 +175,7 @@ function patientDataAnalysis() {
     }
     crcpTitle.innerHTML = `
     <span>This week's</span>
-    <span>Completion</span>
+    <span>Engagement</span>
     `;
     window.completionRateChartPlugin.setCompletion(
       ((weeklyRate / weeklyTotal) * 100).toFixed(2)
@@ -199,7 +199,7 @@ function patientDataAnalysis() {
     }
     crcpTitle.innerHTML = `
     <span>This Month's</span>
-    <span>Completion</span>
+    <span>Engagement</span>
     `;
     window.completionRateChartPlugin.setCompletion(
       ((monthlyRate / monthlyTotal) * 100).toFixed(2)
