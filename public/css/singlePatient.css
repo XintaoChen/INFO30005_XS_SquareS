@@ -2,6 +2,8 @@
     display: none;
 }
 
+
+/* desktop */
 @media screen and (min-width: 1366px) {
     .content {
         padding: 40px 0 0;
@@ -108,7 +110,7 @@
     }
 
     .sp-left-page .sp-info .sp-avatar {
-        background-image: url('/img/avatar.png');
+        background-image: url('/img/patientProfile.png');
         width: 220px;
         height: 220px;
         border-radius: 110px;
