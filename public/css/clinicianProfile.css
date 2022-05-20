@@ -63,16 +63,15 @@
 
     .btn{
         position: relative;
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         margin-left: 95vw;
-        margin-block-start: -35px;
+        margin-block-start: -55px;
         background-color: transparent;
         background-image: url(../img/pen_enabled.png);
         background-repeat: no-repeat;
         border: none;
-        display: flex;
-        align-items: flex-end;
+        background-size: 40px 40px;
     }
 
     .button{
