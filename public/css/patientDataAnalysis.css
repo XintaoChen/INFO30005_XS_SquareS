@@ -17,8 +17,10 @@
   font-size: 1em;
   border: solid 1px black;
   border-radius: 5px;
-  background: linear-gradient(200deg, #c7c2bf, #a87c61);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, .1);
+  /* background: linear-gradient(180deg, #c7c2bf, #a87c61); */
+  color: white;
+  box-shadow: 0 0 0 3px rgb(0 0 0 / 10%);
+  background-color: #825f49;
 }
 
 /* nav */
