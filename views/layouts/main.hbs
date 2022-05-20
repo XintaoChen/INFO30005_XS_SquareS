@@ -38,6 +38,10 @@
               <i class="iconfont icon-dashboard"></i>
               <span>My Dashboard</span>
             </a>
+            <a href="/patient/pda" class="dashboard">
+              <i class="iconfont icon-graph"></i>
+                <span>View Records</span>
+            </a>
             <a href="/patient/profile" class="dashboard">
               <i class="iconfont icon-user"></i>
               <span>My Profile</span>
@@ -46,22 +50,23 @@
               <i class="iconfont icon-clinician-info"></i>
               <span>My Clinician</span>
             </a>
-            {{else}}
+            {{!-- clinician has no mobile version --}}
+            {{!-- {{else}}
               {{#if (false isPatient)}}
               <a href="/clinician"  class="dashboard">
                 <i class="iconfont icon-dashboard"></i>
                 <span>Dashboard</span>
               </a>
-              <a href="/clinician/profile"  class="dashboard">
-              <i class="iconfont icon-user"></i>
-                <span>My Profile</span>
-              </a>
               <a href="/clinician/comment"  class="dashboard">
                 <i class="iconfont icon-comment"></i>
                 <span>Comment</span>
               </a>
+              <a href="/clinician/profile"  class="dashboard">
+                <i class="iconfont icon-user"></i>
+                  <span>My Profile</span>
+              </a>
               {{else}}
-              {{/if}}
+              {{/if}} --}}
             {{/if}}
           </div>
             <div class="container">
@@ -102,6 +107,10 @@
               <i class="iconfont icon-dashboard"></i>
               <span>My Dashboard</span>
             </a>
+            <a href="/patient/pda" class="dashboard">
+              <i class="iconfont icon-graph"></i>
+                <span>View Records</span>
+            </a>
             <a href="/patient/profile" class="dashboard">
               <i class="iconfont icon-user"></i>
               <span>My Profile</span>
@@ -115,13 +124,13 @@
               <i class="iconfont icon-dashboard"></i>
               <span>Dashboard</span>
             </a>
-            <a href="/clinician/profile"  class="dashboard">
-              <i class="iconfont icon-user"></i>
-              <span>My Profile</span>
-            </a>
             <a href="/clinician/comment"  class="dashboard">
               <i class="iconfont icon-comment"></i>
               <span>Comment</span>
+            </a>
+            <a href="/clinician/profile"  class="dashboard">
+              <i class="iconfont icon-user"></i>
+              <span>My Profile</span>
             </a>
             {{/if}}
 
