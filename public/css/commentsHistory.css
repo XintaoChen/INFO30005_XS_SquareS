@@ -101,6 +101,7 @@
         border-spacing: 0;
         overflow-y: scroll;
         margin-bottom: 5px;
+        width: 80%;
     }
     .ch-patient-list .ch-search-patient{
         padding-top: 30px;
