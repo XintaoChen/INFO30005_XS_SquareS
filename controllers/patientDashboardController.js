@@ -123,32 +123,39 @@ const postTodayDataPatient = (req) => {
 }
 
 async function updateEngagementRate(id) {
-    const yesterday = moment().subtract(1, 'days').endOf('day');
+    const yesterday = moment().subtract(1, "days").endOf("day");
     const patientId = mongoose.Types.ObjectId(id);
     const timeStamp = patientId.getTimestamp();
-
-    const totalDays = yesterday.diff(moment(timeStamp), 'days') + 1;
+  
+    const totalDays = yesterday.diff(moment(timeStamp), "days") + 1;
     var engRateBool = false;
-
-    const records = await recordModel.aggregate([
-        {$match: {patientId : patientId, date : {$lte: new Date(yesterday)} }},
-        {$group: { _id: {$dateToString: { format: "%Y-%m-%d", date: "$date" }}, count: {$sum: 1}}}
-    ])
-
+  
+    const records = await Record.aggregate([
+      { $match: { patientId: patientId, date: { $lte: new Date(yesterday) } } },
+      {
+        $group: {
+          _id: { $dateToString: { format: "%Y-%m-%d", date: "$date" } },
+          count: { $sum: 1 },
+        },
+      },
+    ]);
+  
     const recordDays = records.length;
-    const engagementRate = (recordDays/totalDays * 100).toFixed(1);
-
+    const engagementRate = ((recordDays / totalDays) * 100).toFixed(1);
+  
     if (engagementRate >= 80) {
-        engRateBool = true;
+      engRateBool = true;
     }
-
+  
+    console.log(engRateBool);
+  
     const update = {
-        engagementRate : engRateBool
-    }
+      engagementRate: engRateBool,
+    };
+    const result = await patientModel.findByIdAndUpdate(id, update, { new: true });
+  }
+  
 
-    const result = await patientModel.findByIdAndUpdate(patientId, update, { new : true }).lean();
-    
-}
 
 
 
