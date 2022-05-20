@@ -26,7 +26,7 @@ patientDashboardRouter.get(
 )
 
 patientDashboardRouter.post(
-    '/add', isAuthenticated,
+    '/today/add', isAuthenticated,
     patientDashboardController.postTodayDataPatient
 )
 
