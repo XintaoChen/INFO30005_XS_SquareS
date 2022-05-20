@@ -68,8 +68,15 @@ export const listOfWeek = (date) => {
   const day = date.getDay();
   const oneDayTime = 24 * 60 * 60 * 1000;
   let startOfThisWeek = time - day * oneDayTime;
+  const endOfThisWeek = startOfThisWeek + 6 * oneDayTime;
+  let num;
+  if (new Date() - endOfThisWeek < 0) {
+    num = new Date().getDay() + 1;
+  } else {
+    num = 7;
+  }
   let result = [];
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < num; i++) {
     result[i] = dateFormat(startOfThisWeek + i * oneDayTime);
   }
   return result;
