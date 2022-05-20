@@ -32,7 +32,11 @@ const updatePatientProfile = async (req, res, next) => {
       doc.briefTextBio = req.body.briefTextBio;
       doc.password = req.body.password ? req.body.password : doc.password;
       doc.save();
-      res.redirect("/login");
+      if (req.body.password) {
+        res.redirect("/login");
+      } else {
+        res.redirect("/patient/profile");
+      }
     });
   } catch (error) {
     console.log("err");
