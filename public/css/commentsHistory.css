@@ -33,6 +33,7 @@
         padding-left: 30px;
         background-color: #FFFFFF;
     }
+
     .ch-left-page .ch-back {
         width: 100%;
         height: 60px;
@@ -41,21 +42,22 @@
         flex-direction: row;
         align-items: center;
     }
-    .ch-left-page .ch-back .ch-back-button{
-        width: 30px;
-        height: 30px;
-        padding: 0;
-        border: none;
-        background: none;
+    .ch-left-page .ch-back .ch-back-btn{
+        border: 0px;
         cursor: pointer;
-        background-image: url(/img/arrow_left.png);
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
+        background-color: #fff;
+        display: flex;
+        flex-direction: row;
+        color: #5C4435;
     }
     .ch-left-page .ch-back .ch-back-text h2{
-        width: max-content;
-        text-indent: 10px;
+        font-size: 30px;
+        font-family: 'Lato Regular';
+        margin-left: 10px;
+    }
+
+    .ch-left-page .ch-back .ch-back-btn i {
+        font-size: 30px;
     }
     
     .ch-left-page .ch-patient-list{
