@@ -27,7 +27,7 @@
     .value{
         width: 80vw;
         line-height: 0vh;
-        color: #000000;
+        color: #694b38;
         margin-top: 20px;
         margin-bottom: 15px;
     }
@@ -155,7 +155,7 @@
     .value{
         width: 80vw;
         line-height: 0vh;
-        color: #000000;
+        color: #694b38;
         margin-top: 45px;
         margin-bottom: 30px;
     }
@@ -197,7 +197,7 @@
         height: 1px;
         border: none;
         background-color: #000000;
-        margin-bottom: 25px;
+        margin-bottom: 30px;
     }
 
     label{
