@@ -330,13 +330,12 @@
     document.getElementById("displayDate").innerHTML = date + ', ' + daylist[day0];
 
     // display date from start of the week
-    var diff = today.getDate() - day + (day === 0 ? -6 : 1);
+    var diff = today.getDate() - day0;
     var startOfWeek = new Date(today.setDate(diff));
     var sowMonth = ((startOfWeek.getMonth() + 1) < 10 ) ? "0" + (startOfWeek.getMonth() + 1) : startOfWeek.getMonth() + 1;
     var sowDay = (startOfWeek.getDate() < 10 ) ? "0" + startOfWeek.getDate() : startOfWeek.getDate();
     var date_startOfWeek = sowDay+'/'+sowMonth+'/'+startOfWeek.getFullYear();
     document.getElementById("displayStartOfWeek").innerHTML = 'Week of ' + date_startOfWeek;
-
 
     function showSptMsg(){
         if(document.getElementById("greeting").style.display == "none"){
