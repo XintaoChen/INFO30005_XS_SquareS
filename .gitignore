@@ -12,3 +12,4 @@ routes/.DS_Store
 back-end/.DS_Store
 public/.DS_Store
 public/img/.DS_Store
+back-end/models/db.js
